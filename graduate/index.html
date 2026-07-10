@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="DGIST, 서울대학교, KAIST, POSTECH 대학원 연구실 추천 서비스 학교 선택">
+  <title>대학원 연구실 추천 서비스 | LAB MATCH AI</title>
+  <style>
+    :root{--bg:#f5f7fb;--panel:#fff;--text:#172033;--muted:#667085;--line:#e5eaf2;--blue:#2457ff;--soft:#eef3ff;--shadow:0 17px 48px rgba(18,32,64,.10)}
+    *{box-sizing:border-box} html{-webkit-text-size-adjust:100%;text-size-adjust:100%} body{margin:0;min-height:100vh;background:linear-gradient(180deg,#eaf0ff 0,#f7f9fd 330px,var(--bg) 100%);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",Arial,sans-serif;color:var(--text)}
+    a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}.wrap{width:min(100%,960px);margin:0 auto;padding:calc(24px + env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) calc(48px + env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left))}
+    .back{display:inline-flex;align-items:center;gap:7px;min-height:42px;padding:9px 13px;border:1px solid #d9e1ef;border-radius:13px;background:rgba(255,255,255,.85);color:#475467;font-size:13px;font-weight:850}.back:hover{background:#fff}.back:focus-visible,.school:focus-visible{outline:4px solid rgba(36,87,255,.24);outline-offset:3px}
+    .hero{text-align:center;padding:42px 0 29px}.badge{display:inline-flex;padding:8px 13px;border:1px solid #d7e1ff;border-radius:999px;background:#fff;color:#3151a3;font-size:13px;font-weight:850}h1{margin:17px 0 11px;font-size:clamp(31px,6.7vw,50px);line-height:1.12;letter-spacing:-.05em;word-break:keep-all}.lead{margin:0;color:#475467;font-size:clamp(15px,3.4vw,17px);line-height:1.7;word-break:keep-all}
+    .schools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.school{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;min-height:145px;padding:23px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(180deg,#fff,#fbfcff);box-shadow:var(--shadow);transition:transform .16s ease,border-color .16s ease}.school:after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;right:-43px;top:-50px;background:var(--soft)}.school:hover{transform:translateY(-3px);border-color:#adc1ff}.name{position:relative;z-index:1}.name small{display:block;margin-bottom:8px;color:#667085;font-size:12px;font-weight:800}.name strong{display:block;font-size:24px;line-height:1.2;letter-spacing:-.035em}.arrow{position:relative;z-index:1;width:43px;height:43px;display:grid;place-items:center;border-radius:14px;background:#101828;color:#fff;font-size:19px;font-weight:900}
+    .note{text-align:center;color:#98a2b3;font-size:12px;line-height:1.65;margin:25px 0 0}
+    @media(max-width:640px){.wrap{padding-top:14px}.hero{padding:31px 0 22px}.schools{grid-template-columns:1fr;gap:12px}.school{min-height:116px;padding:19px;border-radius:20px}.name strong{font-size:21px}.arrow{width:40px;height:40px;border-radius:13px}}
+    @media(prefers-reduced-motion:reduce){.school{transition:none}}
+  </style>
+  <!-- GoatCounter: privacy-friendly pageview counter. Counts pageviews only. -->
+  <script data-goatcounter="https://dgist-intern-match.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+  <main class="wrap">
+    <a class="back" href="../index.html" aria-label="LAB MATCH AI 첫 화면으로 돌아가기">← 첫 화면으로 돌아가기</a>
+    <header class="hero">
+      <span class="badge">학교 선택</span>
+      <h1>대학원 연구실 추천 서비스</h1>
+      <p class="lead">관심 분야를 기준으로 학교별 교수님과 연구실을 탐색하세요.</p>
+    </header>
+    <section class="schools" aria-label="대학원 학교 선택">
+      <a class="school" href="dgist/" aria-label="DGIST 대학원 연구실 추천 서비스로 이동"><span class="name"><small>Daegu Gyeongbuk Institute of Science &amp; Technology</small><strong>DGIST</strong></span><span class="arrow" aria-hidden="true">→</span></a>
+      <a class="school" href="snu/" aria-label="서울대학교 대학원 연구실 추천 서비스로 이동"><span class="name"><small>Seoul National University</small><strong>서울대학교</strong></span><span class="arrow" aria-hidden="true">→</span></a>
+      <a class="school" href="kaist/" aria-label="KAIST 대학원 연구실 추천 서비스로 이동"><span class="name"><small>Korea Advanced Institute of Science &amp; Technology</small><strong>KAIST</strong></span><span class="arrow" aria-hidden="true">→</span></a>
+      <a class="school" href="postech/" aria-label="POSTECH 대학원 연구실 추천 서비스로 이동"><span class="name"><small>Pohang University of Science &amp; Technology</small><strong>POSTECH</strong></span><span class="arrow" aria-hidden="true">→</span></a>
+    </section>
+    <p class="note">학교별 서비스는 각각의 원본 추천 로직과 내부 데이터베이스를 그대로 사용합니다.</p>
+  </main>
+</body>
+</html>

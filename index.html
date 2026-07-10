@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="인턴 추천과 대학원 연구실 추천을 한 곳에서 탐색하는 LAB MATCH AI 통합 플랫폼">
+  <title>LAB MATCH AI</title>
+  <style>
+    :root{--bg:#f4f7fc;--panel:#fff;--text:#152033;--muted:#667085;--line:#e4e9f2;--blue:#2457ff;--blue-dark:#1538ad;--soft:#edf3ff;--shadow:0 20px 55px rgba(31,55,104,.12)}
+    *{box-sizing:border-box} html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+    body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% -10%,#dfe9ff 0,#eef3ff 25%,var(--bg) 55%);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",Arial,sans-serif;color:var(--text)}
+    a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+    .wrap{width:min(100%,880px);margin:0 auto;padding:calc(42px + env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) calc(48px + env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left))}
+    .hero{text-align:center;margin:12px auto 30px}.eyebrow{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border:1px solid #d7e2ff;border-radius:999px;background:rgba(255,255,255,.78);color:#3152a6;font-size:13px;font-weight:850}
+    h1{margin:18px 0 12px;font-size:clamp(38px,8vw,66px);line-height:1.04;letter-spacing:-.055em}.lead{max-width:660px;margin:0 auto;color:#475467;font-size:clamp(15px,3.8vw,18px);line-height:1.72;word-break:keep-all}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{position:relative;display:flex;min-height:270px;flex-direction:column;justify-content:space-between;overflow:hidden;border:1px solid rgba(223,229,240,.95);border-radius:28px;background:linear-gradient(180deg,#fff,#fbfcff);padding:26px;box-shadow:var(--shadow);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+    .card:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;right:-70px;top:-75px;background:var(--soft)}.card:hover{transform:translateY(-4px);border-color:#b8caff;box-shadow:0 25px 65px rgba(31,55,104,.17)}.card:focus-visible{outline:4px solid rgba(36,87,255,.25);outline-offset:4px}
+    .icon{position:relative;z-index:1;width:54px;height:54px;display:grid;place-items:center;border-radius:17px;background:#101828;color:#fff;font-size:25px;box-shadow:0 10px 24px rgba(16,24,40,.18)}.card:nth-child(2) .icon{background:var(--blue)}
+    h2{position:relative;z-index:1;margin:26px 0 9px;font-size:24px;line-height:1.25;letter-spacing:-.035em}.desc{position:relative;z-index:1;margin:0;color:var(--muted);font-size:14px;line-height:1.68;word-break:keep-all}.go{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;margin-top:23px;color:var(--blue);font-size:14px;font-weight:900}.arrow{width:35px;height:35px;display:grid;place-items:center;border-radius:12px;background:var(--soft);font-size:18px}
+    .footer{text-align:center;color:#98a2b3;font-size:12px;margin-top:28px;line-height:1.6}
+    @media(max-width:680px){.wrap{padding-top:30px}.hero{margin-bottom:23px}.grid{grid-template-columns:1fr;gap:14px}.card{min-height:218px;padding:21px;border-radius:23px}.icon{width:49px;height:49px;border-radius:15px;font-size:23px}h2{margin-top:21px;font-size:21px}.desc{font-size:14px}.go{margin-top:19px}}
+    @media(prefers-reduced-motion:reduce){.card{transition:none}}
+  </style>
+  <!-- GoatCounter: privacy-friendly pageview counter. Counts pageviews only. -->
+  <script data-goatcounter="https://dgist-intern-match.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <span class="eyebrow">통합 진로 탐색 플랫폼</span>
+      <h1>LAB MATCH AI</h1>
+      <p class="lead">인턴 추천과 대학원 연구실 추천을 한 곳에서 탐색하세요.</p>
+    </header>
+    <section class="grid" aria-label="서비스 선택">
+      <a class="card" href="intern/index.html" aria-label="인턴 추천 서비스로 이동">
+        <div><div class="icon" aria-hidden="true">💼</div><h2>인턴 추천 서비스</h2><p class="desc">기업, 직무, 전공 분야를 기준으로 이공계 인턴 공고를 탐색합니다.</p></div>
+        <div class="go"><span>서비스 시작하기</span><span class="arrow" aria-hidden="true">→</span></div>
+      </a>
+      <a class="card" href="graduate/index.html" aria-label="대학원 연구실 추천 서비스로 이동">
+        <div><div class="icon" aria-hidden="true">🎓</div><h2>대학원 연구실 추천 서비스</h2><p class="desc">DGIST, 서울대학교, KAIST, POSTECH 교수님과 연구실을 관심 분야 기준으로 탐색합니다.</p></div>
+        <div class="go"><span>학교 선택하기</span><span class="arrow" aria-hidden="true">→</span></div>
+      </a>
+    </section>
+    <p class="footer">각 서비스는 독립된 추천 로직과 데이터베이스를 유지합니다.</p>
+  </main>
+</body>
+</html>
