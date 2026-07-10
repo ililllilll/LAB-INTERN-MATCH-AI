@@ -51,3 +51,14 @@ python analysis/goatcounter_analysis.py goatcounter-export.zip --output outputs 
 ```
 
 JSON export는 집계형 통계만 사용하므로 `Individual pageviews`를 활성화할 필요가 없습니다. 자세한 내용은 `analysis/README.md`를 확인하세요.
+
+
+## 이용 통계와 개인정보 보호
+
+첫 방문 시 이용 통계 동의 또는 거부를 선택할 수 있습니다. 동의 전에는 GoatCounter가 로드되지 않으며, 거부해도 모든 기능을 이용할 수 있습니다. 자세한 내용은 `privacy.html`과 `PRIVACY_IMPLEMENTATION.md`를 확인하세요.
+
+## 데이터 운영 안내
+
+- 교수 및 연구실 데이터의 출처, 비공식 서비스 고지, 검색 순위의 의미와 정정·삭제 절차는 `data-policy.html`에서 안내합니다.
+- 내부 수집 및 검증 원칙은 `DATA_GOVERNANCE.md`에 정리했습니다.
+- 정정 및 삭제 요청은 저장소 GitHub Issues를 통해 접수합니다.

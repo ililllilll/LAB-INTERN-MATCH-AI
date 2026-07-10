@@ -116,6 +116,10 @@
     return Array.from(document.querySelectorAll(selector)).filter(isVisible).length;
   }
 
+  function analyticsAllowed() {
+    return !!(window.LMAnalyticsConsent && window.LMAnalyticsConsent.hasConsent());
+  }
+
   function flushQueue() {
     if (!window.goatcounter || typeof window.goatcounter.count !== 'function') return;
     while (queue.length) {
@@ -128,6 +132,7 @@
   }
 
   function track(name, title) {
+    if (!analyticsAllowed()) return;
     const eventName = safeToken(EVENT_PREFIX + '-' + name);
     const payload = {
       path: eventName,
@@ -191,6 +196,7 @@
   }
 
   function renderFeedback(context) {
+    if (!analyticsAllowed()) { hideFeedback(); return; }
     const host = feedbackHost();
     if (!host || !context || context.sequence !== searchSequence) return;
     ensureFeedbackStyles();
@@ -209,7 +215,7 @@
     box.dataset.sequence = String(context.sequence);
     box.innerHTML = `
       <p class="lm-feedback-title">이 검색 결과가 탐색에 도움이 되었나요?</p>
-      <p class="lm-feedback-note">검색어 원문, 이름, 학번 등 개인정보는 전송하지 않고 선택 결과만 집계합니다.</p>
+      <p class="lm-feedback-note">선택하신 의견은 더 나은 추천 서비스를 만드는 데 익명으로 활용됩니다.</p>
       <div class="lm-feedback-actions">
         <button type="button" class="lm-feedback-button" data-lm-feedback="helpful">도움이 됐어요</button>
         <button type="button" class="lm-feedback-button" data-lm-feedback="not-helpful">아쉬워요</button>
