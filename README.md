@@ -62,3 +62,7 @@ JSON export는 집계형 통계만 사용하므로 `Individual pageviews`를 활
 - 교수 및 연구실 데이터의 출처, 비공식 서비스 고지, 검색 순위의 의미와 정정·삭제 절차는 `data-policy.html`에서 안내합니다.
 - 내부 수집 및 검증 원칙은 `DATA_GOVERNANCE.md`에 정리했습니다.
 - 정정 및 삭제 요청은 저장소 GitHub Issues를 통해 접수합니다.
+
+## 공개 데이터 개인정보 최소화
+
+공개 `data.js`에는 연구실과 인턴 탐색에 필요한 이름, 소속, 연구 분야, 추천용 구조화 데이터와 공식 URL을 유지하고, 불필요한 이메일 및 전화번호 필드와 원문 속 연락처는 제거했습니다. 추천 및 정렬 코드, UI와 통계 기능은 변경하지 않았습니다. 자세한 검증 내용은 `PRIVACY_MINIMIZATION_REPORT.md`, `REGRESSION_COMPARISON.md`, `PII_SCAN_REPORT.md`를 참고하세요.
