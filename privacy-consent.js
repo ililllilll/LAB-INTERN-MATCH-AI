@@ -72,13 +72,13 @@
     banner.id = 'lm-consent-banner';
     banner.className = 'lm-consent-banner';
     banner.setAttribute('role', 'dialog');
-    banner.setAttribute('aria-label', '이용 통계 선택');
+    banner.setAttribute('aria-label', '서비스 이용 정보 선택');
     banner.innerHTML = `
-      <p class="lm-consent-text"><strong>이용 통계 안내</strong><br>서비스 개선을 위해 페이지 조회, 버튼 클릭, 학교 및 서비스 선택, 검색 결과 수 구간, 만족도 응답을 집계합니다. 검색어 원문, 이름, 학번, 이메일, 사용자 ID는 저장하지 않으며, 거부해도 모든 기능을 이용할 수 있습니다.</p>
+      <p class="lm-consent-text"><strong>서비스 이용 정보 안내</strong><br>서비스 개선을 위해 이용 현황과 만족도 응답을 익명으로 집계합니다. 사용자의 개인정보는 저장하지 않으며, 통계 수집을 거부해도 모든 기능을 이용할 수 있습니다.</p>
       <div class="lm-consent-actions">
         <button type="button" class="lm-consent-btn primary" data-lm-consent="granted">동의</button>
         <button type="button" class="lm-consent-btn" data-lm-consent="denied">거부</button>
-        <a class="lm-consent-link" href="${privacyUrl}">자세한 이용 통계 안내</a>
+        <a class="lm-consent-link" href="${privacyUrl}">자세히 보기</a>
       </div>`;
     banner.addEventListener('click', function (event) {
       const button = event.target.closest('[data-lm-consent]');
@@ -107,7 +107,7 @@
     const footer = document.createElement('div');
     footer.id = 'lm-privacy-footer';
     footer.className = 'lm-privacy-footer';
-    footer.innerHTML = `<a href="${privacyUrl}">이용 통계 안내</a> · <a href="${dataPolicyUrl}">교수·연구실 데이터 안내</a> · <button type="button" data-lm-open-consent>이용 통계 설정</button>`;
+    footer.innerHTML = `<a href="${privacyUrl}">서비스 이용 정보 안내</a> · <a href="${dataPolicyUrl}">교수·연구실 데이터 안내</a> · <button type="button" data-lm-open-consent>이용 통계 설정</button>`;
     footer.querySelector('[data-lm-open-consent]').addEventListener('click', showBanner);
     document.body.appendChild(footer);
   }
