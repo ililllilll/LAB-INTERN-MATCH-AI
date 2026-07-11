@@ -48,7 +48,7 @@ other
 | 변수 | 값 예시 | 분석 목적 |
 |---|---|---|
 | `page_path` | `/LAB-INTERN-MATCH-AI/graduate/kaist/` | 페이지별 이용량 |
-| `service_choice` | `intern`, `graduate` | 서비스 수요 비교 |
+| `service_choice` | `intern`, `graduate`, `field` | 인턴, 학교별 연구실, 분야별 통합 연구실 수요 비교 |
 | `school_choice` | `dgist`, `snu`, `kaist`, `postech` | 학교 관심도 비교 |
 | `action_type` | `search`, `more`, `adjacent`, `homepage`, `profile`, `job-open` | 기능 사용 분석 |
 | `intent_category` | `battery`, `bio-medical`, `hci-ux` | 분야별 검색 품질 분석 |
@@ -67,10 +67,13 @@ other
 ```text
 lm-nav-home-intern
 lm-nav-home-graduate
+lm-nav-home-field
 lm-nav-school-dgist
 lm-nav-school-snu
 lm-nav-school-kaist
 lm-nav-school-postech
+lm-lab-major-field-electrical
+lm-search-outcome-field-banner-i-semiconductor-q-preset-r-11-plus
 
 lm-search-outcome-dgist-manual-i-bio-medical-q-short-r-1-3
 lm-search-outcome-postech-banner-i-hci-ux-q-preset-r-11-plus
@@ -92,13 +95,16 @@ lm-intern-job-open-rank-1-3
 
 ```text
 인턴 선택 비중
-= 인턴 선택 이벤트 / 전체 서비스 선택 이벤트
+= 인턴 선택 이벤트 / 세 서비스 선택 이벤트 합계
+
+분야별 통합 추천 선택 비중
+= 분야별 통합 추천 선택 이벤트 / 세 서비스 선택 이벤트 합계
 
 KAIST 선택 비중
 = KAIST 선택 이벤트 / 네 학교 선택 이벤트 합계
 ```
 
-### B. 학교 및 분야별 검색 실패율
+### B. 학교별 및 분야 중심 통합 검색 실패율
 
 ```text
 DGIST 바이오 검색 실패율
@@ -106,7 +112,7 @@ DGIST 바이오 검색 실패율
   / DGIST + bio-medical 전체 검색 결과 이벤트
 ```
 
-이를 통해 `DGIST 전체 실패율이 높다`에서 끝나지 않고 `DGIST 바이오 분야의 동의어와 DB가 부족하다`처럼 원인을 좁힐 수 있습니다.
+학교별 페이지에서는 학교와 익명 분야를 함께 보고, 분야별 통합 페이지에서는 네 대학을 합친 상태에서 특정 분야의 결과 부족이나 과다를 확인할 수 있습니다.
 
 ### C. 결과 과다 및 오탐 가능성
 
@@ -231,3 +237,14 @@ https://dgist-intern-match.goatcounter.com/
 - 외부 링크 클릭은 반복 클릭을 포함할 수 있습니다.
 - 도움 비율은 자발적 응답 편향이 있을 수 있습니다.
 - 광고 차단기가 GoatCounter를 막으면 일부 데이터가 누락될 수 있습니다.
+
+## 10. 분야별 통합 연구실 추천 추가 지표
+
+- `lm-nav-home-field`: 첫 화면에서 분야별 연구실 추천 선택
+- `lm-lab-major-field-*`: 화학, 전기전자, 물리 등 큰 분야 선택
+- `lm-lab-banner-field-*`: 세부 분야 선택
+- `lm-search-outcome-field-*`: 분야별 통합 검색 직후 표시 결과 수 구간
+- `lm-lab-homepage-field-rank-*`, `lm-lab-profile-field-rank-*`: 통합 결과의 공식 링크 이동
+- `lm-feedback-field-*`: 통합 결과 만족도
+
+학교별 추천과 분야별 통합 추천의 검색 100회당 외부 링크 클릭 수, 결과 0개 비율과 도움 비율을 비교하면 사용자가 학교를 먼저 선택하는 방식과 분야를 먼저 선택하는 방식 중 어느 경로에서 더 원활하게 탐색하는지 확인할 수 있습니다. 개인별 전환율이나 동일 사용자 비교로 해석하지 않습니다.

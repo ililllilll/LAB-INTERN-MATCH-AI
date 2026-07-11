@@ -22,8 +22,8 @@ python analysis/goatcounter_analysis.py goatcounter-export.zip --output outputs 
 
 ## 3. 생성 파일
 
-- `school_summary.csv`: 학교별 검색 실패율, 공식 링크 클릭, 만족도
-- `intent_summary.csv`: 학교 및 익명 분야 범주별 결과 분포와 만족도
+- `school_summary.csv`: 인턴, 분야별 통합 검색, 학교별 검색의 실패율, 공식 링크 클릭과 만족도
+- `intent_summary.csv`: 서비스 페이지와 익명 분야 범주별 결과 분포와 만족도
 - `event_counts.csv`: 이벤트별 총 횟수
 - `daily_event_counts.csv`: 날짜별 이벤트 횟수
 - `before_after.csv`: 수정 전후 지표와 두 비율 검정, `--split-date` 사용 시 생성
@@ -32,3 +32,5 @@ python analysis/goatcounter_analysis.py goatcounter-export.zip --output outputs 
 ## 개인정보 보호
 
 분석에 사용하는 이벤트에는 검색어 원문, 이름, 학번, 이메일, 전화번호, 교수명 및 사용자 ID가 포함되지 않습니다. 검색어는 브라우저 안에서 넓은 분야 범주로만 변환됩니다.
+
+분야별 통합 연구실 추천 페이지는 분석 결과에서 `field`로 표시됩니다. `lm-nav-home-field`, `lm-lab-major-field-*`, `lm-search-outcome-field-*` 이벤트를 통해 이용량과 검색 품질을 분리해 확인할 수 있습니다.

@@ -24,6 +24,7 @@
 
   function pageKey() {
     const path = String(window.location.pathname || '').toLowerCase();
+    if (path.includes('/graduate/field')) return 'field';
     if (path.includes('/graduate/dgist')) return 'dgist';
     if (path.includes('/graduate/snu')) return 'snu';
     if (path.includes('/graduate/kaist')) return 'kaist';
@@ -184,6 +185,9 @@
     if (page === 'intern') {
       return document.querySelector('.main-panel .chat') || document.querySelector('.main-panel');
     }
+    if (page === 'field') {
+      return document.getElementById('resultsSection') || document.querySelector('.panel');
+    }
     if (['dgist', 'snu', 'kaist', 'postech'].includes(page)) {
       return document.getElementById('chatFeed') || document.querySelector('.query-area');
     }
@@ -315,6 +319,10 @@
       return ['lab-banner-list-toggle-' + page, page.toUpperCase() + ' 대표 분야 목록 펼치기 또는 접기'];
     }
 
+    if (button.classList.contains('major-chip')) {
+      return ['lab-major-field-' + safeToken(button.dataset.major || button.textContent), '분야별 통합 검색 큰 분야 선택: ' + button.textContent.trim()];
+    }
+
     if (button.closest('#exampleChips') || button.classList.contains('field-chip')) {
       const container = button.closest('#exampleChips') || button.parentElement;
       const buttons = Array.from(container?.querySelectorAll('button:not([data-toggle-examples]), .chip:not([data-toggle-examples]), .field-chip:not([data-toggle-examples])') || []);
@@ -356,7 +364,8 @@
 
     if (page === 'home') {
       if (href.includes('intern')) return ['nav-home-intern', '첫 화면에서 인턴 추천 서비스 선택'];
-      if (href.includes('graduate')) return ['nav-home-graduate', '첫 화면에서 대학원 연구실 추천 서비스 선택'];
+      if (href.includes('graduate/field')) return ['nav-home-field', '첫 화면에서 분야별 통합 연구실 추천 선택'];
+      if (href.includes('graduate')) return ['nav-home-graduate', '첫 화면에서 학교별 연구실 추천 선택'];
     }
 
     if (page === 'graduate') {
@@ -370,6 +379,10 @@
       return ['nav-back-home-intern', '인턴 서비스에서 첫 화면으로 돌아가기'];
     }
 
+    if (page === 'field' && anchor.classList.contains('field-back')) {
+      return ['nav-back-home-field', '분야별 연구실 추천에서 첫 화면으로 돌아가기'];
+    }
+
     if (['dgist', 'snu', 'kaist', 'postech'].includes(page) && anchor.classList.contains('portal-back')) {
       return ['nav-back-school-' + page, page.toUpperCase() + '에서 학교 선택 화면으로 돌아가기'];
     }
@@ -378,7 +391,7 @@
       return ['intern-job-open-rank-' + rankBucket(anchor), '인턴 공고 링크 열기, 결과 순위 ' + rankBucket(anchor)];
     }
 
-    if (['dgist', 'snu', 'kaist', 'postech'].includes(page)) {
+    if (['field', 'dgist', 'snu', 'kaist', 'postech'].includes(page)) {
       if (/홈페이지/.test(text) || anchor.classList.contains('summary-link')) {
         return ['lab-homepage-' + page + '-rank-' + rankBucket(anchor), page.toUpperCase() + ' 연구실 홈페이지 열기, 결과 순위 ' + rankBucket(anchor)];
       }
@@ -408,7 +421,7 @@
     const summary = event.target.closest('summary');
     if (summary) {
       const page = pageKey();
-      if (['dgist', 'snu', 'kaist', 'postech'].includes(page)) {
+      if (['field', 'dgist', 'snu', 'kaist', 'postech'].includes(page)) {
         track('lab-details-' + page + '-rank-' + rankBucket(summary), page.toUpperCase() + ' 교수 카드 상세정보 열기, 결과 순위 ' + rankBucket(summary));
       }
       return;
@@ -441,7 +454,7 @@
       scheduleOutcome('chat', value, false);
     }
 
-    if (['dgist', 'snu', 'kaist', 'postech'].includes(page) && target.id === 'goalInput' && (event.ctrlKey || event.metaKey)) {
+    if (['field', 'dgist', 'snu', 'kaist', 'postech'].includes(page) && target.id === 'goalInput' && (event.ctrlKey || event.metaKey)) {
       const value = target.value || '';
       const intent = intentCategory(value);
       track('lab-search-submit-' + page + '-i-' + intent + '-q-' + queryLengthBucket(value, false), page.toUpperCase() + ' 연구실 추천 실행, 단축키, 분야 ' + intent);

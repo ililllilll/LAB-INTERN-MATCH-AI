@@ -21,8 +21,9 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Iterable
 
-PAGES = ("home", "intern", "graduate", "dgist", "snu", "kaist", "postech")
+PAGES = ("home", "intern", "graduate", "field", "dgist", "snu", "kaist", "postech")
 SCHOOLS = ("dgist", "snu", "kaist", "postech")
+SEARCH_PAGES = ("intern", "field", *SCHOOLS)
 RESULT_BUCKETS = ("0", "1-3", "4-10", "11-plus")
 
 
@@ -116,6 +117,8 @@ def page_from_path(path: str, site_prefix: str) -> str | None:
     prefix = site_prefix.lower().strip("/")
     if prefix and prefix not in low:
         return None
+    if "/graduate/field" in low:
+        return "field"
     if "/graduate/dgist" in low:
         return "dgist"
     if "/graduate/snu" in low:
@@ -152,7 +155,7 @@ def parse_search_outcome(name: str) -> dict | None:
     if not name.startswith(prefix):
         return None
     rest = name[len(prefix):]
-    page = next((p for p in ("intern", *SCHOOLS) if rest.startswith(p + "-")), None)
+    page = next((p for p in SEARCH_PAGES if rest.startswith(p + "-")), None)
     if not page:
         return None
     rest = rest[len(page) + 1 :]
@@ -178,7 +181,7 @@ def parse_feedback(name: str) -> dict | None:
     if not name.startswith(prefix) or name.startswith("lm-feedback-prompt-"):
         return None
     rest = name[len(prefix):]
-    page = next((p for p in ("intern", *SCHOOLS) if rest.startswith(p + "-")), None)
+    page = next((p for p in SEARCH_PAGES if rest.startswith(p + "-")), None)
     if not page:
         return None
     rest = rest[len(page) + 1 :]
@@ -207,7 +210,7 @@ def parse_feedback_prompt(name: str) -> dict | None:
     if not name.startswith(prefix):
         return None
     rest = name[len(prefix):]
-    page = next((p for p in ("intern", *SCHOOLS) if rest.startswith(p + "-")), None)
+    page = next((p for p in SEARCH_PAGES if rest.startswith(p + "-")), None)
     if not page:
         return None
     rest = rest[len(page) + 1 :]
@@ -268,7 +271,7 @@ def metrics_for(hits: list[Hit], site_prefix: str) -> tuple[list[dict], list[dic
             feedback[(parsed_feedback["page"], parsed_feedback["intent"])][parsed_feedback["sentiment"]] += count
 
     page_rows: list[dict] = []
-    for page in ("intern", *SCHOOLS):
+    for page in SEARCH_PAGES:
         bucket = page_outcomes[page]
         searches = sum(bucket.values())
         zero = bucket["0"]
@@ -352,7 +355,7 @@ def comparison_rows(before: list[dict], after: list[dict]) -> list[dict]:
     before_map = {row["page"]: row for row in before}
     after_map = {row["page"]: row for row in after}
     rows = []
-    for page in ("intern", *SCHOOLS):
+    for page in SEARCH_PAGES:
         b = before_map.get(page, {})
         a = after_map.get(page, {})
         bz, bp = int(b.get("zero_results", 0)), int(b.get("searches", 0))
