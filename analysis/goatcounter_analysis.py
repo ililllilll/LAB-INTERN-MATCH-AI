@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Analyze LAB MATCH AI events from a GoatCounter JSON export.
+"""Analyze privacy-preserving LAB MATCH AI GoatCounter aggregate exports.
 
-This script uses only aggregate GoatCounter JSON export files (paths.jsonl and
-hit_stats.jsonl). It does not need or use individual visitor/session data.
+The analyzer reads only paths.jsonl and hit_stats.jsonl. It never needs raw
+search text, visitor IDs, IP addresses, cookies, or person-level paths.
 """
-
 from __future__ import annotations
 
 import argparse
@@ -17,19 +16,22 @@ import tempfile
 import zipfile
 from collections import Counter, defaultdict
 from dataclasses import dataclass
-from datetime import date, datetime, timezone
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
+from zoneinfo import ZoneInfo
 
 PAGES = ("home", "intern", "graduate", "field", "dgist", "snu", "kaist", "postech")
+SEARCH_PAGES = ("intern", "field", "dgist", "snu", "kaist", "postech")
 SCHOOLS = ("dgist", "snu", "kaist", "postech")
-SEARCH_PAGES = ("intern", "field", *SCHOOLS)
 RESULT_BUCKETS = ("0", "1-3", "4-10", "11-plus")
+QUERY_BUCKETS = ("empty", "short", "medium", "long", "preset")
 
 
 @dataclass(frozen=True)
 class Hit:
-    when: datetime
+    when_utc: datetime
+    when_local: datetime
     path: str
     title: str
     event: bool
@@ -37,20 +39,14 @@ class Hit:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Analyze privacy-preserving LAB MATCH AI GoatCounter events."
-    )
+    parser = argparse.ArgumentParser(description="Analyze LAB MATCH AI GoatCounter aggregate events")
     parser.add_argument("export", help="GoatCounter JSON export ZIP or extracted directory")
     parser.add_argument("--output", default="lab_match_analysis", help="Output directory")
-    parser.add_argument(
-        "--site-prefix",
-        default="LAB-INTERN-MATCH-AI",
-        help="Repository/path keyword used to keep this platform's pageviews",
-    )
-    parser.add_argument(
-        "--split-date",
-        help="Optional deployment date (YYYY-MM-DD) for before/after comparison",
-    )
+    parser.add_argument("--site-prefix", default="LAB-INTERN-MATCH-AI")
+    parser.add_argument("--timezone", default="Asia/Seoul", help="IANA time zone")
+    parser.add_argument("--start-kst", help="Inclusive local datetime, e.g. 2026-07-10T20:00")
+    parser.add_argument("--end-kst", help="Exclusive local datetime, e.g. 2026-07-12T01:00")
+    parser.add_argument("--split-kst", help="Optional deployment local datetime for before/after")
     return parser.parse_args()
 
 
@@ -77,22 +73,28 @@ def materialize_export(source: Path) -> tuple[Path, Path | None]:
     candidates = [p.parent for p in temp.rglob("paths.jsonl")]
     if not candidates:
         shutil.rmtree(temp, ignore_errors=True)
-        raise FileNotFoundError("paths.jsonl was not found in the export ZIP")
+        raise FileNotFoundError("paths.jsonl was not found")
     return candidates[0], temp
 
 
-def load_hits(root: Path) -> list[Hit]:
-    paths_file = root / "paths.jsonl"
-    stats_file = root / "hit_stats.jsonl"
+def parse_local_datetime(value: str | None, tz: ZoneInfo) -> datetime | None:
+    if not value:
+        return None
+    dt = datetime.fromisoformat(value)
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=tz)
+    return dt.astimezone(tz)
+
+
+def load_hits(root: Path, tz: ZoneInfo) -> list[Hit]:
+    paths_file, stats_file = root / "paths.jsonl", root / "hit_stats.jsonl"
     if not paths_file.exists() or not stats_file.exists():
-        raise FileNotFoundError("The JSON export must contain paths.jsonl and hit_stats.jsonl")
+        raise FileNotFoundError("paths.jsonl and hit_stats.jsonl are required")
 
     paths: dict[int, tuple[str, str, bool]] = {}
     for row in jsonl_rows(paths_file):
         paths[int(row["id"])] = (
-            str(row.get("path", "")),
-            str(row.get("title", "")),
-            bool(row.get("event", False)),
+            str(row.get("path", "")), str(row.get("title", "")), bool(row.get("event", False))
         )
 
     aggregate: Counter[tuple[datetime, int]] = Counter()
@@ -101,32 +103,38 @@ def load_hits(root: Path) -> list[Hit]:
         when = datetime.fromisoformat(raw)
         if when.tzinfo is None:
             when = when.replace(tzinfo=timezone.utc)
+        when = when.astimezone(timezone.utc)
         aggregate[(when, int(row["path_id"]))] += int(row.get("count", 0))
 
     hits: list[Hit] = []
-    for (when, path_id), count in sorted(aggregate.items()):
+    for (when_utc, path_id), count in sorted(aggregate.items()):
         if path_id not in paths:
             continue
         path, title, event = paths[path_id]
-        hits.append(Hit(when, path, title, event, count))
+        hits.append(Hit(when_utc, when_utc.astimezone(tz), path, title, event, count))
     return hits
 
 
+def normalize_page_path(path: str) -> str:
+    """Merge /, trailing slash and /index.html variants for analysis."""
+    clean = str(path or "").split("?", 1)[0].split("#", 1)[0]
+    clean = re.sub(r"/+", "/", clean)
+    if clean.endswith("/index.html"):
+        clean = clean[:-10]
+    clean = clean.rstrip("/")
+    return clean or "/"
+
+
 def page_from_path(path: str, site_prefix: str) -> str | None:
-    low = path.lower()
+    low = normalize_page_path(path).lower()
     prefix = site_prefix.lower().strip("/")
     if prefix and prefix not in low:
         return None
     if "/graduate/field" in low:
         return "field"
-    if "/graduate/dgist" in low:
-        return "dgist"
-    if "/graduate/snu" in low:
-        return "snu"
-    if "/graduate/kaist" in low:
-        return "kaist"
-    if "/graduate/postech" in low:
-        return "postech"
+    for school in SCHOOLS:
+        if f"/graduate/{school}" in low:
+            return school
     if "/intern" in low:
         return "intern"
     if "/graduate" in low:
@@ -135,210 +143,93 @@ def page_from_path(path: str, site_prefix: str) -> str | None:
 
 
 def event_counts(hits: Iterable[Hit]) -> Counter[str]:
-    counter: Counter[str] = Counter()
+    result: Counter[str] = Counter()
     for hit in hits:
         if hit.event and hit.path.startswith("lm-"):
-            counter[hit.path] += hit.count
-    return counter
+            result[hit.path] += hit.count
+    return result
 
 
 def prefix_sum(counter: Counter[str], prefix: str) -> int:
-    return sum(count for name, count in counter.items() if name.startswith(prefix))
-
-
-def exact_sum(counter: Counter[str], *names: str) -> int:
-    return sum(counter[name] for name in names)
-
-
-def parse_search_outcome(name: str) -> dict | None:
-    prefix = "lm-search-outcome-"
-    if not name.startswith(prefix):
-        return None
-    rest = name[len(prefix):]
-    page = next((p for p in SEARCH_PAGES if rest.startswith(p + "-")), None)
-    if not page:
-        return None
-    rest = rest[len(page) + 1 :]
-    try:
-        source, rest = rest.split("-i-", 1)
-        intent, rest = rest.split("-q-", 1)
-        qbucket, result_bucket = rest.rsplit("-r-", 1)
-    except ValueError:
-        return None
-    if result_bucket not in RESULT_BUCKETS:
-        return None
-    return {
-        "page": page,
-        "source": source,
-        "intent": intent,
-        "query_bucket": qbucket,
-        "result_bucket": result_bucket,
-    }
-
-
-def parse_feedback(name: str) -> dict | None:
-    prefix = "lm-feedback-"
-    if not name.startswith(prefix) or name.startswith("lm-feedback-prompt-"):
-        return None
-    rest = name[len(prefix):]
-    page = next((p for p in SEARCH_PAGES if rest.startswith(p + "-")), None)
-    if not page:
-        return None
-    rest = rest[len(page) + 1 :]
-    sentiment = "not-helpful" if rest.startswith("not-helpful-") else "helpful" if rest.startswith("helpful-") else None
-    if not sentiment:
-        return None
-    rest = rest[len(sentiment) + 1 :]
-    if rest.startswith("i-"):
-        rest = rest[2:]
-    try:
-        intent, rest = rest.split("-src-", 1)
-        source, result_bucket = rest.rsplit("-r-", 1)
-    except ValueError:
-        return None
-    return {
-        "page": page,
-        "sentiment": sentiment,
-        "intent": intent,
-        "source": source,
-        "result_bucket": result_bucket,
-    }
-
-
-def parse_feedback_prompt(name: str) -> dict | None:
-    prefix = "lm-feedback-prompt-"
-    if not name.startswith(prefix):
-        return None
-    rest = name[len(prefix):]
-    page = next((p for p in SEARCH_PAGES if rest.startswith(p + "-")), None)
-    if not page:
-        return None
-    rest = rest[len(page) + 1 :]
-    if rest.startswith("i-"):
-        rest = rest[2:]
-    try:
-        intent, rest = rest.split("-src-", 1)
-        source, result_bucket = rest.rsplit("-r-", 1)
-    except ValueError:
-        return None
-    return {"page": page, "intent": intent, "source": source, "result_bucket": result_bucket}
+    return sum(v for k, v in counter.items() if k.startswith(prefix))
 
 
 def ratio(num: int, den: int, scale: float = 100.0) -> float:
-    return round((num / den * scale), 2) if den else 0.0
+    return round(num / den * scale, 2) if den else 0.0
 
 
-def two_proportion_test(x1: int, n1: int, x2: int, n2: int) -> tuple[float | None, float | None]:
-    if n1 <= 0 or n2 <= 0:
-        return None, None
-    pooled = (x1 + x2) / (n1 + n2)
-    variance = pooled * (1 - pooled) * (1 / n1 + 1 / n2)
-    if variance <= 0:
-        return None, None
-    z = (x2 / n2 - x1 / n1) / math.sqrt(variance)
-    p = math.erfc(abs(z) / math.sqrt(2))
-    return round(z, 4), round(p, 6)
+def parse_search_outcome(name: str) -> dict | None:
+    m = re.match(
+        r"^lm-search-outcome-(intern|field|dgist|snu|kaist|postech)-(.+?)-i-(.+?)-q-(empty|short|medium|long|preset)-r-(0|1-3|4-10|11-plus)$",
+        name,
+    )
+    if not m:
+        return None
+    return dict(zip(("page", "source", "intent", "query_bucket", "result_bucket"), m.groups()))
 
 
-def metrics_for(hits: list[Hit], site_prefix: str) -> tuple[list[dict], list[dict], Counter[str]]:
-    events = event_counts(hits)
-    pageviews: Counter[str] = Counter()
-    for hit in hits:
-        if hit.event:
+def parse_query_assist(name: str) -> dict | None:
+    m = re.match(r"^lm-query-assist-applied-(field|dgist|snu|kaist|postech)-i-(.+?)-q-(empty|short|medium|long|preset)$", name)
+    if m:
+        return {"kind": "applied", "page": m.group(1), "intent": m.group(2), "query_bucket": m.group(3)}
+    m = re.match(r"^lm-query-assist-outcome-(field|dgist|snu|kaist|postech)-i-(.+?)-r-(0|1-3|4-10|11-plus)$", name)
+    if m:
+        return {"kind": "outcome", "page": m.group(1), "intent": m.group(2), "result_bucket": m.group(3)}
+    return None
+
+
+def parse_recovery(name: str) -> dict | None:
+    patterns = [
+        ("shown", r"^lm-zero-recovery-shown-(field|dgist|snu|kaist|postech)-i-(.+?)-q-(empty|short|medium|long|preset)$"),
+        ("choice", r"^lm-zero-recovery-choice-(field|dgist|snu|kaist|postech)-from-(.+?)-to-(.+)$"),
+        ("outcome", r"^lm-zero-recovery-outcome-(field|dgist|snu|kaist|postech)-i-(.+?)-r-(0|1-3|4-10|11-plus)$"),
+        ("external", r"^lm-zero-recovery-external-(field|dgist|snu|kaist|postech)-rank-(1-3|4-10|11-plus|unknown)$"),
+    ]
+    for kind, pattern in patterns:
+        m = re.match(pattern, name)
+        if not m:
             continue
-        page = page_from_path(hit.path, site_prefix)
-        if page:
-            pageviews[page] += hit.count
+        if kind == "shown":
+            return {"kind": kind, "page": m.group(1), "intent": m.group(2), "query_bucket": m.group(3)}
+        if kind == "choice":
+            return {"kind": kind, "page": m.group(1), "from_intent": m.group(2), "to_intent": m.group(3)}
+        if kind == "outcome":
+            return {"kind": kind, "page": m.group(1), "intent": m.group(2), "result_bucket": m.group(3)}
+        return {"kind": kind, "page": m.group(1), "rank_bucket": m.group(2)}
+    return None
 
-    outcomes: defaultdict[tuple[str, str], Counter[str]] = defaultdict(Counter)
-    page_outcomes: defaultdict[str, Counter[str]] = defaultdict(Counter)
-    prompts: defaultdict[tuple[str, str], int] = defaultdict(int)
-    feedback: defaultdict[tuple[str, str], Counter[str]] = defaultdict(Counter)
 
-    for name, count in events.items():
-        parsed = parse_search_outcome(name)
-        if parsed:
-            key = (parsed["page"], parsed["intent"])
-            outcomes[key][parsed["result_bucket"]] += count
-            page_outcomes[parsed["page"]][parsed["result_bucket"]] += count
-            continue
-        parsed_prompt = parse_feedback_prompt(name)
-        if parsed_prompt:
-            prompts[(parsed_prompt["page"], parsed_prompt["intent"])] += count
-            continue
-        parsed_feedback = parse_feedback(name)
-        if parsed_feedback:
-            feedback[(parsed_feedback["page"], parsed_feedback["intent"])][parsed_feedback["sentiment"]] += count
+def parse_feedback(name: str) -> dict | None:
+    m = re.match(
+        r"^lm-feedback-(field|intern|dgist|snu|kaist|postech)-(helpful|not-helpful)-i-(.+?)-src-(.+?)-r-(0|1-3|4-10|11-plus|unknown)$",
+        name,
+    )
+    if not m:
+        return None
+    return dict(zip(("page", "sentiment", "intent", "source", "result_bucket"), m.groups()))
 
-    page_rows: list[dict] = []
-    for page in SEARCH_PAGES:
-        bucket = page_outcomes[page]
-        searches = sum(bucket.values())
-        zero = bucket["0"]
-        large = bucket["11-plus"]
-        prompt_count = sum(v for (p, _), v in prompts.items() if p == page)
-        helpful = sum(v["helpful"] for (p, _), v in feedback.items() if p == page)
-        not_helpful = sum(v["not-helpful"] for (p, _), v in feedback.items() if p == page)
-        responses = helpful + not_helpful
-        if page == "intern":
-            external = prefix_sum(events, "lm-intern-job-open-")
-            deep = prefix_sum(events, "lm-intern-copy-") + prefix_sum(events, "lm-intern-filter-")
-        else:
-            external = prefix_sum(events, f"lm-lab-homepage-{page}-") + prefix_sum(events, f"lm-lab-profile-{page}-")
-            deep = (
-                events[f"lm-lab-more-direct-{page}"]
-                + events[f"lm-lab-more-adjacent-{page}"]
-                + events[f"lm-lab-show-adjacent-{page}"]
-                + events[f"lm-lab-more-results-{page}"]
-                + prefix_sum(events, f"lm-lab-details-{page}-")
-            )
-        page_rows.append({
-            "page": page,
-            "pageviews": pageviews[page],
-            "searches": searches,
-            "searches_per_100_pageviews": ratio(searches, pageviews[page]),
-            "zero_results": zero,
-            "zero_result_rate_pct": ratio(zero, searches),
-            "results_11_plus": large,
-            "results_11_plus_rate_pct": ratio(large, searches),
-            "external_link_clicks": external,
-            "external_clicks_per_100_searches": ratio(external, searches),
-            "deep_exploration_actions": deep,
-            "deep_actions_per_100_searches": ratio(deep, searches),
-            "feedback_prompts": prompt_count,
-            "feedback_responses": responses,
-            "feedback_response_rate_pct": ratio(responses, prompt_count),
-            "helpful_feedback": helpful,
-            "not_helpful_feedback": not_helpful,
-            "helpful_rate_pct": ratio(helpful, responses),
-        })
 
-    intent_rows: list[dict] = []
-    for (page, intent), bucket in sorted(outcomes.items()):
-        searches = sum(bucket.values())
-        helpful = feedback[(page, intent)]["helpful"]
-        not_helpful = feedback[(page, intent)]["not-helpful"]
-        responses = helpful + not_helpful
-        prompt_count = prompts[(page, intent)]
-        intent_rows.append({
-            "page": page,
-            "intent": intent,
-            "searches": searches,
-            "result_0": bucket["0"],
-            "result_1_3": bucket["1-3"],
-            "result_4_10": bucket["4-10"],
-            "result_11_plus": bucket["11-plus"],
-            "zero_result_rate_pct": ratio(bucket["0"], searches),
-            "results_11_plus_rate_pct": ratio(bucket["11-plus"], searches),
-            "feedback_prompts": prompt_count,
-            "feedback_responses": responses,
-            "feedback_response_rate_pct": ratio(responses, prompt_count),
-            "helpful_feedback": helpful,
-            "not_helpful_feedback": not_helpful,
-            "helpful_rate_pct": ratio(helpful, responses),
-        })
+def parse_feedback_prompt(name: str) -> dict | None:
+    m = re.match(
+        r"^lm-feedback-prompt-(field|intern|dgist|snu|kaist|postech)-i-(.+?)-src-(.+?)-r-(0|1-3|4-10|11-plus|unknown)$",
+        name,
+    )
+    if not m:
+        return None
+    return dict(zip(("page", "intent", "source", "result_bucket"), m.groups()))
 
-    return page_rows, intent_rows, events
+
+def known_event(name: str) -> bool:
+    if parse_search_outcome(name) or parse_query_assist(name) or parse_recovery(name) or parse_feedback(name) or parse_feedback_prompt(name):
+        return True
+    prefixes = (
+        "lm-total-", "lm-nav-", "lm-reset-", "lm-lab-search-submit-", "lm-intern-search-submit-",
+        "lm-intern-chat-submit-", "lm-lab-banner-", "lm-lab-banner-list-toggle-", "lm-lab-major-field-",
+        "lm-intern-category-", "lm-lab-more-", "lm-lab-show-adjacent-", "lm-lab-details-",
+        "lm-lab-homepage-", "lm-lab-profile-", "lm-intern-job-open-", "lm-intern-filter-",
+        "lm-intern-sort-", "lm-intern-toggle-", "lm-intern-copy-", "lm-lab-filter-"
+    )
+    return name.startswith(prefixes)
 
 
 def write_csv(path: Path, rows: list[dict]) -> None:
@@ -351,114 +242,236 @@ def write_csv(path: Path, rows: list[dict]) -> None:
         writer.writerows(rows)
 
 
+def two_proportion_test(x1: int, n1: int, x2: int, n2: int) -> tuple[float | None, float | None]:
+    if n1 <= 0 or n2 <= 0:
+        return None, None
+    pooled = (x1 + x2) / (n1 + n2)
+    var = pooled * (1 - pooled) * (1 / n1 + 1 / n2)
+    if var <= 0:
+        return None, None
+    z = (x2 / n2 - x1 / n1) / math.sqrt(var)
+    return round(z, 4), round(math.erfc(abs(z) / math.sqrt(2)), 6)
+
+
+def analyze(hits: list[Hit], site_prefix: str) -> dict:
+    events = event_counts(hits)
+    pageviews: Counter[str] = Counter()
+    normalized_paths: Counter[str] = Counter()
+    outcomes: list[dict] = []
+    feedback_prompts: Counter[tuple[str, str]] = Counter()
+    feedback: defaultdict[tuple[str, str], Counter[str]] = defaultdict(Counter)
+
+    for hit in hits:
+        if not hit.event:
+            page = page_from_path(hit.path, site_prefix)
+            if page:
+                pageviews[page] += hit.count
+                normalized_paths[normalize_page_path(hit.path)] += hit.count
+
+    for name, count in events.items():
+        parsed = parse_search_outcome(name)
+        if parsed:
+            outcomes.append({**parsed, "count": count})
+            continue
+        prompt = parse_feedback_prompt(name)
+        if prompt:
+            feedback_prompts[(prompt["page"], prompt["intent"])] += count
+            continue
+        response = parse_feedback(name)
+        if response:
+            feedback[(response["page"], response["intent"])][response["sentiment"]] += count
+
+    by_page: defaultdict[str, Counter[str]] = defaultdict(Counter)
+    by_page_intent: defaultdict[tuple[str, str], Counter[str]] = defaultdict(Counter)
+    by_source_query: defaultdict[tuple[str, str], Counter[str]] = defaultdict(Counter)
+    for row in outcomes:
+        by_page[row["page"]][row["result_bucket"]] += row["count"]
+        by_page_intent[(row["page"], row["intent"])][row["result_bucket"]] += row["count"]
+        by_source_query[(row["source"], row["query_bucket"])][row["result_bucket"]] += row["count"]
+
+    school_rows = []
+    for page in SEARCH_PAGES:
+        buckets = by_page[page]
+        searches = sum(buckets.values())
+        prompts = sum(v for (p, _), v in feedback_prompts.items() if p == page)
+        helpful = sum(v["helpful"] for (p, _), v in feedback.items() if p == page)
+        not_helpful = sum(v["not-helpful"] for (p, _), v in feedback.items() if p == page)
+        responses = helpful + not_helpful
+        if page == "intern":
+            external = prefix_sum(events, "lm-intern-job-open-")
+            deep = prefix_sum(events, "lm-intern-filter-") + prefix_sum(events, "lm-intern-copy-")
+        else:
+            external = prefix_sum(events, f"lm-lab-homepage-{page}-") + prefix_sum(events, f"lm-lab-profile-{page}-")
+            deep = (events[f"lm-lab-more-direct-{page}"] + events[f"lm-lab-more-adjacent-{page}"] +
+                    events[f"lm-lab-show-adjacent-{page}"] + events[f"lm-lab-more-results-{page}"] +
+                    prefix_sum(events, f"lm-lab-details-{page}-"))
+        school_rows.append({
+            "page": page, "pageviews": pageviews[page], "searches": searches,
+            "searches_per_100_pageviews": ratio(searches, pageviews[page]),
+            "result_0": buckets["0"], "zero_result_rate_pct": ratio(buckets["0"], searches),
+            "result_1_3": buckets["1-3"], "result_4_10": buckets["4-10"],
+            "result_11_plus": buckets["11-plus"], "result_11_plus_rate_pct": ratio(buckets["11-plus"], searches),
+            "external_link_clicks": external, "external_clicks_per_100_searches": ratio(external, searches),
+            "deep_exploration_actions": deep, "deep_actions_per_100_searches": ratio(deep, searches),
+            "feedback_prompts": prompts, "feedback_responses": responses,
+            "feedback_response_rate_pct": ratio(responses, prompts), "helpful_feedback": helpful,
+            "not_helpful_feedback": not_helpful, "helpful_rate_pct": ratio(helpful, responses),
+            "reset_actions": events[f"lm-reset-{page}"],
+        })
+
+    intent_rows = []
+    for (page, intent), buckets in sorted(by_page_intent.items()):
+        searches = sum(buckets.values())
+        helpful = feedback[(page, intent)]["helpful"]
+        not_helpful = feedback[(page, intent)]["not-helpful"]
+        responses = helpful + not_helpful
+        prompts = feedback_prompts[(page, intent)]
+        intent_rows.append({
+            "page": page, "intent": intent, "searches": searches,
+            "result_0": buckets["0"], "result_1_3": buckets["1-3"], "result_4_10": buckets["4-10"],
+            "result_11_plus": buckets["11-plus"], "zero_result_rate_pct": ratio(buckets["0"], searches),
+            "result_11_plus_rate_pct": ratio(buckets["11-plus"], searches),
+            "feedback_prompts": prompts, "feedback_responses": responses,
+            "feedback_response_rate_pct": ratio(responses, prompts), "helpful_rate_pct": ratio(helpful, responses),
+        })
+
+    query_rows = []
+    for (source, bucket), counts in sorted(by_source_query.items()):
+        total = sum(counts.values())
+        query_rows.append({
+            "source": source, "query_bucket": bucket, "searches": total,
+            "result_0": counts["0"], "zero_result_rate_pct": ratio(counts["0"], total),
+            "result_1_3": counts["1-3"], "result_4_10": counts["4-10"],
+            "result_11_plus": counts["11-plus"],
+        })
+
+    service_counts = {
+        "intern": events["lm-nav-home-intern"], "graduate": events["lm-nav-home-graduate"],
+        "field": events["lm-nav-home-field"],
+    }
+    service_total = sum(service_counts.values())
+    service_rows = [{"service": k, "selections": v, "share_pct": ratio(v, service_total)} for k, v in service_counts.items()]
+    school_counts = {s: events[f"lm-nav-school-{s}"] for s in SCHOOLS}
+    school_total = sum(school_counts.values())
+    school_choice_rows = [{"school": k, "selections": v, "share_pct": ratio(v, school_total)} for k, v in school_counts.items()]
+
+    assist = defaultdict(Counter)
+    recovery = defaultdict(Counter)
+    for name, count in events.items():
+        parsed = parse_query_assist(name)
+        if parsed:
+            assist[parsed["page"]][parsed["kind"]] += count
+            if parsed["kind"] == "outcome" and parsed["result_bucket"] != "0":
+                assist[parsed["page"]]["successful"] += count
+        parsed_r = parse_recovery(name)
+        if parsed_r:
+            recovery[parsed_r["page"]][parsed_r["kind"]] += count
+            if parsed_r["kind"] == "outcome" and parsed_r["result_bucket"] != "0":
+                recovery[parsed_r["page"]]["successful"] += count
+
+    recovery_rows = []
+    for page in ("field", *SCHOOLS):
+        a, r = assist[page], recovery[page]
+        recovery_rows.append({
+            "page": page,
+            "query_assist_applied": a["applied"], "query_assist_outcomes": a["outcome"],
+            "query_assist_successful": a["successful"], "query_assist_success_rate_pct": ratio(a["successful"], a["outcome"]),
+            "zero_recovery_shown": r["shown"], "zero_recovery_choices": r["choice"],
+            "zero_recovery_choice_rate_pct": ratio(r["choice"], r["shown"]),
+            "zero_recovery_outcomes": r["outcome"], "zero_recovery_successful": r["successful"],
+            "zero_recovery_success_rate_pct": ratio(r["successful"], r["outcome"]),
+            "zero_recovery_external_clicks": r["external"],
+            "external_clicks_per_100_successful_recoveries": ratio(r["external"], r["successful"]),
+        })
+
+    return {
+        "events": events, "pageviews": pageviews, "normalized_paths": normalized_paths,
+        "school_rows": school_rows, "intent_rows": intent_rows, "query_rows": query_rows,
+        "service_rows": service_rows, "school_choice_rows": school_choice_rows,
+        "recovery_rows": recovery_rows,
+        "unparsed_rows": [{"event": k, "count": v} for k, v in events.most_common() if not known_event(k)],
+    }
+
+
 def comparison_rows(before: list[dict], after: list[dict]) -> list[dict]:
-    before_map = {row["page"]: row for row in before}
-    after_map = {row["page"]: row for row in after}
+    bm, am = {r["page"]: r for r in before}, {r["page"]: r for r in after}
     rows = []
     for page in SEARCH_PAGES:
-        b = before_map.get(page, {})
-        a = after_map.get(page, {})
-        bz, bp = int(b.get("zero_results", 0)), int(b.get("searches", 0))
-        az, ap = int(a.get("zero_results", 0)), int(a.get("searches", 0))
-        zero_z, zero_p = two_proportion_test(bz, bp, az, ap)
-        bh, br = int(b.get("helpful_feedback", 0)), int(b.get("feedback_responses", 0))
-        ah, ar = int(a.get("helpful_feedback", 0)), int(a.get("feedback_responses", 0))
-        helpful_z, helpful_p = two_proportion_test(bh, br, ah, ar)
+        b, a = bm.get(page, {}), am.get(page, {})
+        bz, bn = int(b.get("result_0", 0)), int(b.get("searches", 0))
+        az, an = int(a.get("result_0", 0)), int(a.get("searches", 0))
+        z, p = two_proportion_test(bz, bn, az, an)
         rows.append({
-            "page": page,
-            "before_searches": bp,
-            "after_searches": ap,
+            "page": page, "before_searches": bn, "after_searches": an,
             "before_zero_rate_pct": b.get("zero_result_rate_pct", 0),
             "after_zero_rate_pct": a.get("zero_result_rate_pct", 0),
             "zero_rate_change_pct_point": round(float(a.get("zero_result_rate_pct", 0)) - float(b.get("zero_result_rate_pct", 0)), 2),
-            "zero_rate_z": zero_z,
-            "zero_rate_p": zero_p,
-            "before_helpful_rate_pct": b.get("helpful_rate_pct", 0),
-            "after_helpful_rate_pct": a.get("helpful_rate_pct", 0),
-            "helpful_rate_change_pct_point": round(float(a.get("helpful_rate_pct", 0)) - float(b.get("helpful_rate_pct", 0)), 2),
-            "helpful_rate_z": helpful_z,
-            "helpful_rate_p": helpful_p,
+            "zero_rate_z": z, "zero_rate_p": p,
             "before_external_per_100_searches": b.get("external_clicks_per_100_searches", 0),
             "after_external_per_100_searches": a.get("external_clicks_per_100_searches", 0),
         })
     return rows
 
 
-def write_report(output: Path, page_rows: list[dict], intent_rows: list[dict], events: Counter[str], split_date: str | None) -> None:
+def write_report(output: Path, analysis: dict, start: datetime | None, end: datetime | None) -> None:
+    rows = analysis["school_rows"]
     lines = [
-        "# LAB MATCH AI GoatCounter 분석 결과",
-        "",
-        "이 결과는 GoatCounter JSON export의 집계형 이벤트를 사용합니다. 검색어 원문과 사용자별 이동 경로는 포함하지 않습니다.",
-        "",
-        "## 페이지 및 학교별 핵심 지표",
-        "",
-        "| 서비스 | 조회 | 검색 | 결과 0개 비율 | 11개 이상 비율 | 외부 링크/검색 100회 | 도움 비율 |",
-        "|---|---:|---:|---:|---:|---:|---:|",
+        "# LAB MATCH AI GoatCounter 분석 결과", "",
+        "집계형 이벤트만 사용하며 검색어 원문, 사용자 ID, 개인별 이동 경로는 사용하지 않습니다.", "",
+        f"- 분석 시작: {start.isoformat() if start else 'export 전체'}",
+        f"- 분석 종료(미포함): {end.isoformat() if end else 'export 전체'}", "",
+        "## 서비스별 핵심 지표", "",
+        "| 서비스 | 조회 | 검색 | 0개 비율 | 공식 링크/검색 100회 | 심화 탐색/검색 100회 |",
+        "|---|---:|---:|---:|---:|---:|",
     ]
-    for row in page_rows:
-        lines.append(
-            f"| {row['page']} | {row['pageviews']} | {row['searches']} | "
-            f"{row['zero_result_rate_pct']:.2f}% | {row['results_11_plus_rate_pct']:.2f}% | "
-            f"{row['external_clicks_per_100_searches']:.2f} | {row['helpful_rate_pct']:.2f}% |"
-        )
-
-    lines.extend(["", "## 개선 우선순위 후보", ""])
-    valid = [r for r in intent_rows if r["searches"] >= 5]
-    for row in sorted(valid, key=lambda r: (r["zero_result_rate_pct"], r["searches"]), reverse=True)[:10]:
-        lines.append(
-            f"- {row['page']} / {row['intent']}: 검색 {row['searches']}회, "
-            f"결과 0개 {row['zero_result_rate_pct']:.2f}%, 도움 비율 {row['helpful_rate_pct']:.2f}%"
-        )
-    if not valid:
-        lines.append("- 분야별 검색이 5회 이상 쌓이면 개선 우선순위를 표시합니다.")
-
-    lines.extend([
-        "",
-        "## 해석 주의사항",
-        "",
-        "- 클릭과 검색은 사용자 수가 아니라 발생 횟수입니다.",
-        "- 외부 링크 이동률은 반복 클릭이 포함될 수 있으므로 ‘검색 100회당 클릭 수’로 해석합니다.",
-        "- 도움 비율은 자발적으로 응답한 이용자에 한정된 지표입니다.",
-        "- 결과 0개 비율과 도움 비율을 함께 보고 개선 여부를 판단하는 것이 안전합니다.",
-    ])
-    if split_date:
-        lines.extend(["", f"전후 비교 기준일: **{split_date}**", "`before_after.csv`에서 비율 변화와 두 비율 검정 결과를 확인하세요."])
+    for row in rows:
+        lines.append(f"| {row['page']} | {row['pageviews']} | {row['searches']} | {row['zero_result_rate_pct']:.2f}% | {row['external_clicks_per_100_searches']:.2f} | {row['deep_actions_per_100_searches']:.2f} |")
+    lines += ["", "## 실패 검색 우선 점검 후보", ""]
+    valid = [r for r in analysis["intent_rows"] if r["searches"] >= 5]
+    for row in sorted(valid, key=lambda x: (x["zero_result_rate_pct"], x["searches"]), reverse=True)[:12]:
+        lines.append(f"- {row['page']} / {row['intent']}: 검색 {row['searches']}회, 0개 {row['result_0']}회 ({row['zero_result_rate_pct']:.2f}%)")
+    lines += [
+        "", "## 해석 주의", "",
+        "- 시간별 집계이므로 공개 시각이 정각이 아니면 해당 시각이 포함된 한 시간은 정확히 분리할 수 없습니다.",
+        "- 클릭과 검색은 사람 수가 아니라 이벤트 횟수입니다.",
+        "- `/index.html`과 `/`는 분석기에서 같은 페이지로 정규화합니다.",
+        "- 도움 비율은 응답 수가 충분할 때만 해석합니다.",
+    ]
     (output / "analysis_report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def main() -> int:
     args = parse_args()
-    source = Path(args.export).expanduser().resolve()
-    output = Path(args.output).expanduser().resolve()
+    tz = ZoneInfo(args.timezone)
+    start = parse_local_datetime(args.start_kst, tz)
+    end = parse_local_datetime(args.end_kst, tz)
+    split = parse_local_datetime(args.split_kst, tz)
+    source, output = Path(args.export).expanduser().resolve(), Path(args.output).expanduser().resolve()
     output.mkdir(parents=True, exist_ok=True)
     root, temp = materialize_export(source)
     try:
-        hits = load_hits(root)
-        page_rows, intent_rows, events = metrics_for(hits, args.site_prefix)
-        write_csv(output / "school_summary.csv", page_rows)
-        write_csv(output / "intent_summary.csv", intent_rows)
-        write_csv(
-            output / "event_counts.csv",
-            [{"event": name, "count": count} for name, count in events.most_common()],
-        )
-        daily: Counter[tuple[str, str]] = Counter()
-        for hit in hits:
-            if hit.event and hit.path.startswith("lm-"):
-                daily[(hit.when.date().isoformat(), hit.path)] += hit.count
-        write_csv(
-            output / "daily_event_counts.csv",
-            [{"date": d, "event": e, "count": c} for (d, e), c in sorted(daily.items())],
-        )
-
-        if args.split_date:
-            split = date.fromisoformat(args.split_date)
-            before_hits = [h for h in hits if h.when.date() < split]
-            after_hits = [h for h in hits if h.when.date() >= split]
-            before_rows, _, _ = metrics_for(before_hits, args.site_prefix)
-            after_rows, _, _ = metrics_for(after_hits, args.site_prefix)
-            write_csv(output / "before_after.csv", comparison_rows(before_rows, after_rows))
-
-        write_report(output, page_rows, intent_rows, events, args.split_date)
+        hits = load_hits(root, tz)
+        hits = [h for h in hits if (start is None or h.when_local >= start) and (end is None or h.when_local < end)]
+        result = analyze(hits, args.site_prefix)
+        write_csv(output / "school_summary.csv", result["school_rows"])
+        write_csv(output / "intent_summary.csv", result["intent_rows"])
+        write_csv(output / "query_source_summary.csv", result["query_rows"])
+        write_csv(output / "service_choice_summary.csv", result["service_rows"])
+        write_csv(output / "school_choice_summary.csv", result["school_choice_rows"])
+        write_csv(output / "query_recovery_summary.csv", result["recovery_rows"])
+        write_csv(output / "normalized_pageviews.csv", [{"path": k, "pageviews": v} for k, v in result["normalized_paths"].most_common()])
+        write_csv(output / "event_counts.csv", [{"event": k, "count": v} for k, v in result["events"].most_common()])
+        write_csv(output / "unparsed_events.csv", result["unparsed_rows"])
+        hourly: Counter[tuple[str, str]] = Counter()
+        for h in hits:
+            kind = "event" if h.event else "pageview"
+            hourly[(h.when_local.strftime("%Y-%m-%d %H:00"), kind)] += h.count
+        write_csv(output / "hourly_counts.csv", [{"kst_hour": h, "type": t, "count": c} for (h, t), c in sorted(hourly.items())])
+        if split:
+            before = analyze([h for h in hits if h.when_local < split], args.site_prefix)
+            after = analyze([h for h in hits if h.when_local >= split], args.site_prefix)
+            write_csv(output / "before_after.csv", comparison_rows(before["school_rows"], after["school_rows"]))
+        write_report(output, result, start, end)
         print(f"Analysis complete: {output}")
         return 0
     finally:

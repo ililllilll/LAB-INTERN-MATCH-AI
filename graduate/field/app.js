@@ -553,6 +553,15 @@
     state.lastQuery = value;
     state.preset = preset || null;
     state.results = search(value, preset);
+    if (!preset && !state.results.length && window.LMQueryAssist) {
+      const queryAssist = window.LMQueryAssist.expand(value);
+      if (queryAssist.applied) {
+        state.results = search(queryAssist.query || value, null);
+        if (typeof window.LMQueryAssist.markApplied === 'function') {
+          window.LMQueryAssist.markApplied(queryAssist.intent);
+        }
+      }
+    }
     state.visible = 12;
     renderResults();
     document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });

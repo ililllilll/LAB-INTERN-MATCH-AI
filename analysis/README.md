@@ -1,36 +1,46 @@
-# GoatCounter 데이터 Python 분석 방법
+# LAB MATCH AI GoatCounter 분석기
 
-이 분석기는 GoatCounter의 **JSON export**를 사용합니다. JSON export는 시간대별 집계 통계를 제공하므로, `Individual pageviews`를 켜거나 사용자별 세션 데이터를 받을 필요가 없습니다.
+GoatCounter JSON export ZIP의 집계형 `paths.jsonl`, `hit_stats.jsonl`만 사용합니다. 검색어 원문, 사용자 ID, IP, 개인별 이동 경로는 필요하지 않습니다.
 
-## 1. GoatCounter에서 자료 받기
+## 기준 구간 분석
 
-1. `https://dgist-intern-match.goatcounter.com/`에 로그인합니다.
-2. Export 메뉴에서 JSON 형식을 선택합니다.
-3. 분석 기간을 지정해 ZIP을 내려받습니다.
+GoatCounter는 시간 단위 집계이므로 2026년 7월 10일 19시 36분 공개 직후 24분은 정확히 분리할 수 없습니다. 엄격한 공개 후 분석은 다음 정각인 20시부터 시작합니다.
 
-## 2. 분석 실행
-
-```powershell
-python analysis/goatcounter_analysis.py goatcounter-export.zip --output outputs
+```bash
+python analysis/goatcounter_analysis.py goatcounter-export.zip \
+  --output analysis_result \
+  --timezone Asia/Seoul \
+  --start-kst 2026-07-10T20:00 \
+  --end-kst 2026-07-12T01:00
 ```
 
-서비스 수정일을 기준으로 전후 비교하려면 다음처럼 실행합니다.
+## 수정 전후 비교
 
-```powershell
-python analysis/goatcounter_analysis.py goatcounter-export.zip --output outputs --split-date 2026-07-20
+```bash
+python analysis/goatcounter_analysis.py goatcounter-export.zip \
+  --output before_after_result \
+  --timezone Asia/Seoul \
+  --start-kst 2026-07-10T20:00 \
+  --end-kst 2026-07-26T01:00 \
+  --split-kst 2026-07-12T01:30
 ```
 
-## 3. 생성 파일
+`split-kst`에는 실제 수정본 배포 시각을 입력합니다.
 
-- `school_summary.csv`: 인턴, 분야별 통합 검색, 학교별 검색의 실패율, 공식 링크 클릭과 만족도
-- `intent_summary.csv`: 서비스 페이지와 익명 분야 범주별 결과 분포와 만족도
-- `event_counts.csv`: 이벤트별 총 횟수
-- `daily_event_counts.csv`: 날짜별 이벤트 횟수
-- `before_after.csv`: 수정 전후 지표와 두 비율 검정, `--split-date` 사용 시 생성
-- `analysis_report.md`: 핵심 결과 요약
+## 생성 파일
 
-## 개인정보 보호
+- `school_summary.csv`: 학교 및 서비스별 검색·0개·공식 링크·심화 탐색
+- `intent_summary.csv`: 학교와 익명 분야별 결과 분포
+- `query_source_summary.csv`: 배너/직접 입력 및 입력 길이별 결과 분포
+- `service_choice_summary.csv`, `school_choice_summary.csv`: 선택 비중
+- `query_recovery_summary.csv`: 자동 보강과 분야 선택 복구 성과
+- `normalized_pageviews.csv`: `/index.html` 변형을 합친 페이지뷰
+- `event_counts.csv`: 전체 이벤트
+- `unparsed_events.csv`: 아직 문서화되지 않은 이벤트
+- `hourly_counts.csv`: 한국시간 시간대별 페이지뷰와 이벤트
+- `before_after.csv`: 수정 전후 핵심 비율과 검정 결과
+- `analysis_report.md`: 요약 보고서
 
-분석에 사용하는 이벤트에는 검색어 원문, 이름, 학번, 이메일, 전화번호, 교수명 및 사용자 ID가 포함되지 않습니다. 검색어는 브라우저 안에서 넓은 분야 범주로만 변환됩니다.
+## 개인정보 원칙
 
-분야별 통합 연구실 추천 페이지는 분석 결과에서 `field`로 표시됩니다. `lm-nav-home-field`, `lm-lab-major-field-*`, `lm-search-outcome-field-*` 이벤트를 통해 이용량과 검색 품질을 분리해 확인할 수 있습니다.
+분석 결과는 항상 `학생 수`가 아니라 `검색 이벤트 수`, `클릭 이벤트 수`로 표현합니다. 검색어 원문은 분석 파일에도 존재하지 않습니다.

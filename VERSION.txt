@@ -1,0 +1,4 @@
+LAB MATCH AI - Data-Driven Query Recovery
+Build date: 2026-07-12
+Baseline window: 2026-07-10 20:00 KST to 2026-07-12 01:00 KST
+Primary change: zero-result-only short-query assistance and guided recovery

@@ -248,3 +248,87 @@ https://dgist-intern-match.goatcounter.com/
 - `lm-feedback-field-*`: 통합 결과 만족도
 
 학교별 추천과 분야별 통합 추천의 검색 100회당 외부 링크 클릭 수, 결과 0개 비율과 도움 비율을 비교하면 사용자가 학교를 먼저 선택하는 방식과 분야를 먼저 선택하는 방식 중 어느 경로에서 더 원활하게 탐색하는지 확인할 수 있습니다. 개인별 전환율이나 동일 사용자 비교로 해석하지 않습니다.
+
+## 11. 2026-07-12 데이터 기반 검색 실패 복구 기능
+
+2026년 7월 10일 20:00부터 7월 12일 01:00 한국시간 구간의 초기 집계에서 대표 분야 버튼 검색은 190회 모두 결과가 표시됐지만, 직접 입력 검색은 197회 중 38회가 결과 0개였습니다. 특히 10자 이하의 짧은 직접 입력은 86회 중 26회가 0개였습니다.
+
+이 차이를 줄이기 위해 기존 검색을 먼저 실행하고, **직접 입력·짧은 검색어·결과 0개**가 동시에 발생할 때만 브라우저 내부에서 보수적인 동의어 확장을 한 번 적용합니다. 기존 검색에서 결과가 나온 경우에는 점수와 순서를 바꾸지 않습니다.
+
+확장 후에도 결과가 없으면 사용자가 넓은 분야를 선택해 다시 검색할 수 있는 복구 패널을 표시합니다. 검색어 원문과 확장 문자열은 GoatCounter에 보내지 않습니다.
+
+### 추가 이벤트
+
+```text
+lm-query-assist-applied-{page}-i-{intent}-q-{query_bucket}
+lm-query-assist-outcome-{page}-i-{intent}-r-{result_bucket}
+lm-zero-recovery-shown-{page}-i-{intent}-q-{query_bucket}
+lm-zero-recovery-choice-{page}-from-{intent}-to-{selected_intent}
+lm-zero-recovery-outcome-{page}-i-{intent}-r-{result_bucket}
+lm-zero-recovery-external-{page}-rank-{rank_bucket}
+```
+
+각 이벤트의 의미:
+
+- `query-assist-applied`: 원래 검색이 0개였고 로컬 동의어 보강이 실제 적용됨
+- `query-assist-outcome`: 동의어 보강 이후 화면에 표시된 결과 수 구간
+- `zero-recovery-shown`: 자동 보강 이후에도 0개여서 분야 선택 패널이 표시됨
+- `zero-recovery-choice`: 사용자가 복구 분야를 선택함
+- `zero-recovery-outcome`: 복구 분야 검색 이후 결과 수 구간
+- `zero-recovery-external`: 복구된 결과에서 공식 홈페이지 또는 프로필을 클릭함
+
+### 사후 검증 지표
+
+```text
+자동 보강 성공률
+= 결과가 1개 이상인 query-assist-outcome
+÷ 전체 query-assist-outcome
+× 100
+```
+
+```text
+결과 0개 복구 선택률
+= zero-recovery-choice
+÷ zero-recovery-shown
+× 100
+```
+
+```text
+분야 선택 복구 성공률
+= 결과가 1개 이상인 zero-recovery-outcome
+÷ 전체 zero-recovery-outcome
+× 100
+```
+
+```text
+복구 성공 100회당 공식 링크 클릭
+= zero-recovery-external
+÷ 결과가 1개 이상인 zero-recovery-outcome
+× 100
+```
+
+사용자 ID가 없으므로 개인별 퍼널이 아니라 집계 이벤트 간 비율로 표현합니다.
+
+## 12. 페이지 경로 정규화
+
+GoatCounter에는 같은 페이지가 다음처럼 나뉘어 기록될 수 있습니다.
+
+```text
+/LAB-INTERN-MATCH-AI
+/LAB-INTERN-MATCH-AI/
+/LAB-INTERN-MATCH-AI/index.html
+```
+
+분석기에서는 쿼리 문자열과 해시를 제거하고, 중복 슬래시와 마지막 `/`, `/index.html`을 정리해 같은 페이지로 합칩니다. 원본 데이터는 변경하지 않으며 분석 단계에서만 정규화합니다.
+
+## 13. 검색 초기화 이벤트
+
+```text
+lm-reset-field
+lm-reset-dgist
+lm-reset-snu
+lm-reset-kaist
+lm-reset-postech
+```
+
+검색 조건과 화면을 초기 상태로 돌린 횟수입니다. 초기화가 많다고 검색 품질이 나쁘다고 단정하지 않으며, 검색 횟수 및 결과 0개 비율과 함께 참고합니다.

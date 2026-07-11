@@ -6,6 +6,7 @@
   let flushTimer = null;
   let latestSearchContext = null;
   let searchSequence = 0;
+  let activeRecoveryContext = null;
 
   const INTENT_RULES = [
     ['hci-ux', ['hci', 'ux', 'ui', '사용자경험', '사용자 경험', '인터랙션', 'interaction', 'human computer', '인간컴퓨터', '가상현실', '증강현실', 'vr', 'ar']],
@@ -175,7 +176,14 @@
       .lm-feedback-button:hover{border-color:#7896ff;background:#eef3ff;color:#173b9a}
       .lm-feedback-button:disabled{cursor:default;opacity:.58}
       .lm-feedback-thanks{margin:0;color:#3151a3;font-size:13px;font-weight:800}
-      @media(max-width:640px){.lm-feedback-actions{display:grid;grid-template-columns:1fr 1fr}.lm-feedback-button{width:100%;min-height:44px}}
+      .lm-zero-recovery{margin:14px 0;padding:16px;border:1px solid #c9d8ff;border-radius:16px;background:linear-gradient(180deg,#f7faff,#eef4ff);color:#24324a;box-shadow:0 8px 22px rgba(36,87,255,.08)}
+      .lm-zero-recovery[hidden]{display:none!important}
+      .lm-zero-recovery-title{margin:0 0 6px;font-size:15px;font-weight:900;line-height:1.45}
+      .lm-zero-recovery-note{margin:0 0 12px;color:#5d6b82;font-size:12px;line-height:1.55}
+      .lm-zero-recovery-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+      .lm-zero-recovery-button{min-height:44px;padding:10px 11px;border:1px solid #b9c9ef;border-radius:12px;background:#fff;color:#24469b;font:inherit;font-size:13px;font-weight:850;cursor:pointer}
+      .lm-zero-recovery-button:hover{border-color:#597cff;background:#e9efff;color:#173b9a}
+      @media(max-width:640px){.lm-feedback-actions{display:grid;grid-template-columns:1fr 1fr}.lm-feedback-button{width:100%;min-height:44px}.lm-zero-recovery-actions{grid-template-columns:1fr}}
     `;
     document.head.appendChild(style);
   }
@@ -197,6 +205,77 @@
   function hideFeedback() {
     const existing = document.getElementById('lm-feedback');
     if (existing) existing.hidden = true;
+  }
+
+  function hideRecovery() {
+    const existing = document.getElementById('lm-zero-recovery');
+    if (existing) existing.hidden = true;
+  }
+
+  function queryAssistPreview(value) {
+    if (!window.LMQueryAssist || typeof window.LMQueryAssist.preview !== 'function') return null;
+    try { return window.LMQueryAssist.preview(value); } catch (error) { return null; }
+  }
+
+  function renderZeroRecovery(context) {
+    if (!context || context.sequence !== searchSequence) return;
+    if (!['field', 'dgist', 'snu', 'kaist', 'postech'].includes(context.page)) return;
+    if (!window.LMQueryAssist || typeof window.LMQueryAssist.recoveryOptions !== 'function') return;
+    const host = feedbackHost();
+    if (!host) return;
+    ensureFeedbackStyles();
+    const options = window.LMQueryAssist.recoveryOptions(context.intent).slice(0, 6);
+    if (!options.length) return;
+
+    let box = document.getElementById('lm-zero-recovery');
+    if (!box) {
+      box = document.createElement('section');
+      box.id = 'lm-zero-recovery';
+      box.className = 'lm-zero-recovery';
+      box.setAttribute('aria-live', 'polite');
+      host.insertAdjacentElement('afterend', box);
+    }
+    box.hidden = false;
+    box.dataset.sequence = String(context.sequence);
+    box.innerHTML = `
+      <p class="lm-zero-recovery-title">검색 결과가 없어 넓은 분야로 다시 찾아볼 수 있습니다.</p>
+      <p class="lm-zero-recovery-note">아래 분야를 선택하면 입력 내용은 서버로 보내지 않고 브라우저 안에서만 관련 키워드로 확장합니다.</p>
+      <div class="lm-zero-recovery-actions">
+        ${options.map(function (option) {
+          return '<button type="button" class="lm-zero-recovery-button" data-lm-recovery-intent="' + safeToken(option.intent) + '">' + String(option.label || option.intent) + '</button>';
+        }).join('')}
+      </div>
+    `;
+    track(
+      'zero-recovery-shown-' + context.page + '-i-' + context.intent + '-q-' + context.queryBucket,
+      context.page.toUpperCase() + ' 결과 0개 복구 선택지 표시'
+    );
+  }
+
+  function activateRecovery(button) {
+    const prior = latestSearchContext;
+    const box = button.closest('#lm-zero-recovery');
+    if (!prior || !box || String(prior.sequence) !== box.dataset.sequence) return null;
+    const targetIntent = safeToken(button.dataset.lmRecoveryIntent || 'other');
+    const query = window.LMQueryAssist && typeof window.LMQueryAssist.canonical === 'function'
+      ? window.LMQueryAssist.canonical(targetIntent)
+      : '';
+    const input = document.getElementById('goalInput');
+    const askButton = document.getElementById('askButton');
+    if (!query || !input || !askButton) return null;
+
+    activeRecoveryContext = {
+      page: prior.page,
+      fromIntent: prior.intent,
+      toIntent: targetIntent
+    };
+    input.value = query;
+    scheduleOutcome('recovery', query, true);
+    setTimeout(function () { askButton.click(); }, 0);
+    return [
+      'zero-recovery-choice-' + prior.page + '-from-' + prior.intent + '-to-' + targetIntent,
+      prior.page.toUpperCase() + ' 결과 0개 복구 분야 선택: ' + targetIntent
+    ];
   }
 
   function renderFeedback(context) {
@@ -252,8 +331,12 @@
 
   function scheduleOutcome(source, queryValue, preset) {
     const page = pageKey();
+    if (window.LMQueryAssist && typeof window.LMQueryAssist.clearApplied === 'function') {
+      window.LMQueryAssist.clearApplied();
+    }
     const context = {
       sequence: ++searchSequence,
+      startedAt: Date.now(),
       page: page,
       source: safeToken(source),
       queryBucket: queryLengthBucket(queryValue, Boolean(preset)),
@@ -262,7 +345,9 @@
       resultCount: 0
     };
     latestSearchContext = context;
+    if (source !== 'recovery') activeRecoveryContext = null;
     hideFeedback();
+    hideRecovery();
 
     setTimeout(function () {
       if (context.sequence !== searchSequence) return;
@@ -273,7 +358,30 @@
         'search-outcome-' + page + '-' + context.source + '-i-' + context.intent + '-q-' + context.queryBucket + '-r-' + context.resultBucket,
         page.toUpperCase() + ' 검색 결과: ' + count + '개, 분야 ' + context.intent
       );
+      const appliedAssist = window.LMQueryAssist && typeof window.LMQueryAssist.consumeApplied === 'function'
+        ? window.LMQueryAssist.consumeApplied(context.startedAt)
+        : null;
+      if (appliedAssist) {
+        const assistIntent = safeToken(appliedAssist.intent || 'other');
+        track(
+          'query-assist-applied-' + page + '-i-' + assistIntent + '-q-' + context.queryBucket,
+          page.toUpperCase() + ' 결과 0개 발생 후 짧은 검색어 로컬 확장 적용'
+        );
+        track(
+          'query-assist-outcome-' + page + '-i-' + assistIntent + '-r-' + context.resultBucket,
+          page.toUpperCase() + ' 로컬 확장 후 결과 구간 ' + context.resultBucket
+        );
+      }
+      if (context.source === 'recovery') {
+        track(
+          'zero-recovery-outcome-' + page + '-i-' + context.intent + '-r-' + context.resultBucket,
+          page.toUpperCase() + ' 결과 0개 복구 후 결과 구간 ' + context.resultBucket
+        );
+      }
       renderFeedback(context);
+      if (count === 0 && context.source === 'manual' && context.queryBucket !== 'empty') {
+        renderZeroRecovery(context);
+      }
     }, 400);
   }
 
@@ -281,6 +389,7 @@
     const page = pageKey();
     const id = button.id || '';
 
+    if (button.dataset.lmRecoveryIntent) return activateRecovery(button);
     if (button.dataset.lmFeedback) return feedbackEvent(button);
 
     if (id === 'searchBtn') {
@@ -303,6 +412,8 @@
     }
     if (['resetBtn', 'resetButton', 'clearChatButton'].includes(id)) {
       hideFeedback();
+      hideRecovery();
+      activeRecoveryContext = null;
       return ['reset-' + page, page.toUpperCase() + ' 초기화'];
     }
 
@@ -432,6 +543,15 @@
       track('total-navigation-click', '전체 탐색 링크 클릭');
       const classified = classifyLink(anchor);
       if (classified) track(classified[0], classified[1]);
+      if (activeRecoveryContext && latestSearchContext && latestSearchContext.source === 'recovery' && activeRecoveryContext.page === pageKey()) {
+        const text = anchor.textContent.trim();
+        if (/홈페이지|공식 프로필|교수 프로필|프로필/.test(text)) {
+          track(
+            'zero-recovery-external-' + pageKey() + '-rank-' + rankBucket(anchor),
+            pageKey().toUpperCase() + ' 결과 0개 복구 후 공식 링크 열기'
+          );
+        }
+      }
     }
   }, true);
 

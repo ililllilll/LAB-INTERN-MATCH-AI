@@ -3727,12 +3727,22 @@ const DATA = window.KAIST_LAB_MATCH_DATA;
       stream.innerHTML = "";
 
       appendMessage("user", escapeHtml(query));
-      const rankingQuery = state.algorithmQueryOverride || query;
+      const overrideQuery = state.algorithmQueryOverride || "";
+      const rankingQueryBase = overrideQuery || query;
+      const queryAssist = (!overrideQuery && window.LMQueryAssist) ? window.LMQueryAssist.expand(rankingQueryBase) : { query: rankingQueryBase, applied: false, intent: "other" };
+      let rankingQuery = rankingQueryBase;
       const queryMode = state.queryModeOverride || "precise";
       state.algorithmQueryOverride = "";
       state.queryModeOverride = "";
       state.showAdjacentResults = false;
-      const results = recommend(rankingQuery, RECOMMEND_RESULT_LIMIT, queryMode);
+      let results = recommend(rankingQuery, RECOMMEND_RESULT_LIMIT, queryMode);
+      if (!overrideQuery && !results.length && queryAssist.applied) {
+        rankingQuery = queryAssist.query || rankingQueryBase;
+        results = recommend(rankingQuery, RECOMMEND_RESULT_LIMIT, queryMode);
+        if (window.LMQueryAssist && typeof window.LMQueryAssist.markApplied === "function") {
+          window.LMQueryAssist.markApplied(queryAssist.intent);
+        }
+      }
       state.lastResults = results;
       state.lastQuery = query;
       state.visibleResultCount = INITIAL_RESULT_COUNT;

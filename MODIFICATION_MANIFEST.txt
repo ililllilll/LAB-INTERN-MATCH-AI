@@ -1,0 +1,25 @@
+NEW
+- query-assist.js
+- DATA_DRIVEN_QUERY_RECOVERY_REPORT.md
+- DATA_DRIVEN_QUERY_RECOVERY_VALIDATION.md
+- DEPLOYMENT_AND_POST_MEASUREMENT.md
+- VERSION.txt
+- MODIFICATION_MANIFEST.txt
+
+MODIFIED
+- analytics.js
+- privacy.html
+- README.md
+- ANALYTICS_GUIDE.md
+- analysis/README.md
+- analysis/goatcounter_analysis.py
+- graduate/field/index.html
+- graduate/field/app.js
+- graduate/dgist/index.html
+- graduate/dgist/app.js
+- graduate/snu/index.html
+- graduate/snu/app.js
+- graduate/kaist/index.html
+- graduate/kaist/app.js
+- graduate/postech/index.html
+- graduate/postech/app.js

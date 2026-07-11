@@ -365,12 +365,14 @@
       return;
     }
     const userProfileText = [state.grade, state.tracks.join(" "), state.interest].filter(Boolean).join(" ");
-    const matchedProfiles = detectFieldProfiles(query);
-    const results = rankLabs(`${query} ${userProfileText}`, query).slice(0, 5);
+    const queryAssist = window.LMQueryAssist ? window.LMQueryAssist.expand(query) : { query, applied: false };
+    const rankingQuery = queryAssist.query || query;
+    const matchedProfiles = detectFieldProfiles(rankingQuery);
+    const results = rankLabs(`${rankingQuery} ${userProfileText}`, rankingQuery).slice(0, 5);
     lastResults = results;
     const answer = matchedProfiles.length === 1 && !(matchedProfiles[0].recommended_professors || []).length
       ? buildUnsupportedFieldAnswer(query, matchedProfiles[0])
-      : buildAnswer(query, results, mode, matchedProfiles);
+      : buildAnswer(query, results, mode, matchedProfiles, rankingQuery);
     renderSidePanels(results, answer.evidence);
     // KAIST-style page: each new query replaces the previous visible result.
     els.chatFeed.innerHTML = "";
@@ -685,13 +687,14 @@
       .sort((a, b) => b.score - a.score || String(a.lab.professor).localeCompare(String(b.lab.professor), "ko"));
   }
 
-  function buildAnswer(query, results, mode, matchedProfiles) {
+  function buildAnswer(query, results, mode, matchedProfiles, scoringQuery) {
+    const relevanceQuery = scoringQuery || query;
     if (!results.length) {
       const html = `<h3>조건에 적합한 후보를 찾지 못했습니다.</h3><p>검색어를 조금 넓혀 다시 입력해 주세요. 예를 들어 “배터리”처럼 짧게 입력하거나 “전고체전지, 고체전해질, 리튬금속전지”처럼 관련 키워드를 함께 입력하면 추천 정확도가 높아집니다.</p>`;
       return { html, text: stripHtml(html), evidence: [] };
     }
 
-    const visibleResults = applyVisibleRelevanceFilter(results, query, matchedProfiles || []);
+    const visibleResults = applyVisibleRelevanceFilter(results, relevanceQuery, matchedProfiles || []);
     if (!visibleResults.length) {
       const html = `<h3>조건에 적합한 후보를 찾지 못했습니다.</h3><p><strong>${escapeHtml(query)}</strong>와 직접 연결되는 내부 추천 근거가 부족합니다. 더 넓은 분야명 또는 관련 세부 키워드를 함께 입력해 주세요.</p>`;
       return { html, text: stripHtml(html), evidence: [] };
@@ -710,7 +713,7 @@
 
     const tagSummary = summarizeResultTags(top, query, matchedProfiles || []);
     const maxScore = Math.max(...top.map((item) => item.score), 1);
-    const labCards = top.map((item, index) => renderDgistLabCard(item, index, query, matchedProfiles || [], maxScore)).join("");
+    const labCards = top.map((item, index) => renderDgistLabCard(item, index, relevanceQuery, matchedProfiles || [], maxScore)).join("");
     const limitations = quality.limitations.length
       ? `<div class="result-note">${quality.limitations.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}</div>`
       : "";
@@ -4371,19 +4374,34 @@
     }
 
     const precise = context.isBanner ? null : dgistAlgorithm5PreciseContext(rawQuery);
-    const rankingQuery = precise ? `${rawQuery} ${precise.expansion || ""}`.trim() : rawQuery;
+    const localAssist = (!context.isBanner && !precise && window.LMQueryAssist)
+      ? window.LMQueryAssist.expand(rawQuery)
+      : { query: rawQuery, applied: false, intent: "other" };
+    let rankingQuery = precise
+      ? `${rawQuery} ${precise.expansion || ""}`.trim()
+      : rawQuery;
     const nameMatches = context.isBanner ? [] : dgistDirectProfessorMatches(rawQuery);
-    const matchedProfiles = nameMatches.length ? [] : (precise ? dgistAlgorithm5ProfilesByIds(precise.profileIds) : detectFieldProfiles(rankingQuery));
+    let matchedProfiles = nameMatches.length ? [] : (precise ? dgistAlgorithm5ProfilesByIds(precise.profileIds) : detectFieldProfiles(rankingQuery));
     let results = [];
+    const userProfileText = [state.grade, state.tracks.join(" "), state.interest].filter(Boolean).join(" ");
     if (nameMatches.length) {
       results = nameMatches;
     } else if (matchedProfiles.length) {
-      const userProfileText = [state.grade, state.tracks.join(" "), state.interest].filter(Boolean).join(" ");
       results = rankLabs(`${rankingQuery} ${userProfileText}`, rankingQuery).slice(0, 40);
+    }
+    if (!context.isBanner && !precise && !nameMatches.length && !results.length && localAssist.applied) {
+      rankingQuery = localAssist.query || rawQuery;
+      matchedProfiles = detectFieldProfiles(rankingQuery);
+      if (matchedProfiles.length) {
+        results = rankLabs(`${rankingQuery} ${userProfileText}`, rankingQuery).slice(0, 40);
+      }
+      if (window.LMQueryAssist && typeof window.LMQueryAssist.markApplied === "function") {
+        window.LMQueryAssist.markApplied(localAssist.intent);
+      }
     }
     lastResults = results;
 
-    const answer = buildAnswer(rankingQuery, results, mode, matchedProfiles);
+    const answer = buildAnswer(displayQuery, results, mode, matchedProfiles, rankingQuery);
     renderSidePanels(results, answer.evidence);
     els.chatFeed.innerHTML = "";
     appendUserMessage(displayQuery);
