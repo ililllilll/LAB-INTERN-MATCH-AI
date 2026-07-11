@@ -448,6 +448,39 @@
     return 'school-postech';
   }
 
+  function completeSummarySentence(value, record) {
+    let text = String(value || '').replace(/\s+/g, ' ').trim();
+    if (!text) {
+      const fallback = (record.fields || []).slice(0, 3).join(', ');
+      text = fallback ? fallback + ' 관련 연구를 수행합니다.' : '공개된 연구 분야를 바탕으로 관련 연구를 수행합니다.';
+    }
+
+    text = text.replace(/[\s,;:·…]+$/g, '').replace(/\.+$/g, '');
+    text = text
+      .replace(/연구하며$/g, '연구합니다')
+      .replace(/연구한다$/g, '연구합니다')
+      .replace(/수행한다$/g, '수행합니다')
+      .replace(/개발한다$/g, '개발합니다')
+      .replace(/분석한다$/g, '분석합니다')
+      .replace(/다룬다$/g, '다룹니다')
+      .replace(/규명한다$/g, '규명합니다')
+      .replace(/이다$/g, '입니다')
+      .replace(/있다$/g, '있습니다');
+
+    if (!/(합니다|입니다|됩니다|있습니다|없습니다|다룹니다|규명합니다|목표로 합니다)$/.test(text)) {
+      if (text.includes(' 연구실:')) {
+        text = text.replace(' 연구실:', ' 연구실은') + ' 분야를 연구합니다';
+      } else if (/ 분야$/.test(text)) {
+        text += '를 연구합니다';
+      } else if (/ 연구$/.test(text)) {
+        text += '를 수행합니다';
+      } else {
+        text += ' 관련 연구를 수행합니다';
+      }
+    }
+    return text + '.';
+  }
+
   function linkButtons(record) {
     const links = [];
     if (record.homepage) links.push('<a class="summary-link" href="' + escapeHtml(record.homepage) + '" target="_blank" rel="noopener noreferrer">연구실 홈페이지</a>');
@@ -465,7 +498,7 @@
       ...(record.primaryDomains || []),
       ...(record.fields || [])
     ]).slice(0, 5);
-    const summary = record.summary || ((record.fields || []).slice(0, 3).join(', ') + ' 관련 연구를 수행합니다.');
+    const summary = completeSummarySentence(record.summary, record);
     const relationText = item.relation === 'direct' ? '검색어 관련 결과' : '인접 분야 결과';
     const evidenceText = item.evidence.length ? item.evidence.slice(0, 3).join(', ') : fieldTags.slice(0, 3).join(', ');
 
@@ -507,8 +540,8 @@
 
     const counts = {};
     state.results.forEach(function (item) { counts[item.record.school] = (counts[item.record.school] || 0) + 1; });
-    els.resultSummary.textContent = '“' + state.lastQuery + '” 관련 상위 결과 ' + total + '개';
-    els.resultMeta.textContent = ['DGIST','서울대학교','KAIST','POSTECH'].filter(function (school) { return counts[school]; }).map(function (school) { return school + ' ' + counts[school] + '개'; }).join(' · ') + ' · 검색어 관련도 순서';
+    els.resultSummary.textContent = '“' + state.lastQuery + '” 관련 상위 결과 ' + total + '명';
+    els.resultMeta.textContent = ['DGIST','서울대학교','KAIST','POSTECH'].filter(function (school) { return counts[school]; }).map(function (school) { return school + ' ' + counts[school] + '명'; }).join(' · ') + ' · 검색어 관련도 순서';
   }
 
   function executeSearch(query, preset) {
