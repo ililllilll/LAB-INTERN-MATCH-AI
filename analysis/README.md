@@ -44,3 +44,14 @@ python analysis/goatcounter_analysis.py goatcounter-export.zip \
 ## 개인정보 원칙
 
 분석 결과는 항상 `학생 수`가 아니라 `검색 이벤트 수`, `클릭 이벤트 수`로 표현합니다. 검색어 원문은 분석 파일에도 존재하지 않습니다.
+
+## DGIST 학과 우선 탐색 추가 출력
+
+수정본 배포 이후에는 다음 파일이 추가로 생성됩니다.
+
+- `dgist_department_choice_summary.csv`: 학과 선택 횟수와 비중
+- `dgist_subfield_choice_summary.csv`: 학과별 세부 분야 선택 횟수
+- `dgist_department_performance.csv`: 학과별 검색 결과 분포, 결과 0개 비율, 검색 100회당 공식 링크 클릭
+- `dgist_subfield_performance.csv`: 세부 분야별 검색 결과 분포, 결과 0개 비율, 검색 100회당 공식 링크 클릭
+
+기존 export에는 신규 이벤트가 없으므로 이 파일들이 비어 있어도 오류가 아닙니다. 기존 검색 및 페이지 통계는 동일하게 계산됩니다.

@@ -332,3 +332,60 @@ lm-reset-postech
 ```
 
 검색 조건과 화면을 초기 상태로 돌린 횟수입니다. 초기화가 많다고 검색 품질이 나쁘다고 단정하지 않으며, 검색 횟수 및 결과 0개 비율과 함께 참고합니다.
+
+## 14. DGIST 학과 우선 탐색 이벤트
+
+DGIST는 다음 순서로 탐색한다.
+
+```text
+학과 선택
+→ 학과별 세부 분야 선택 또는 학과 내부 직접 입력
+→ 선택 학과 교수님 결과
+```
+
+기존 페이지뷰, 검색 outcome, 공식 링크, 더보기, 만족도와 검색 복구 이벤트는 그대로 유지한다. 따라서 개편 전후의 DGIST 전체 결과 0개 비율과 공식 링크 클릭 수는 계속 비교할 수 있다.
+
+새 구조를 세부적으로 분석하기 위해 다음 집계형 이벤트를 추가한다.
+
+```text
+lm-lab-department-dgist-d-{department}
+lm-lab-subfield-dgist-d-{department}-f-{subfield}-i-{intent}
+lm-dgist-department-outcome-d-{department}-src-{source}-r-{result_bucket}
+lm-dgist-subfield-outcome-d-{department}-f-{subfield}-r-{result_bucket}
+lm-dgist-department-external-d-{department}-rank-{rank_bucket}
+lm-dgist-subfield-external-d-{department}-f-{subfield}-rank-{rank_bucket}
+```
+
+의미:
+
+- `lab-department`: 학과 버튼 선택 횟수
+- `lab-subfield`: 선택한 학과 안의 세부 분야 버튼 선택 횟수
+- `department-outcome`: 해당 학과 안에서 검색한 뒤 표시된 결과 수 구간
+- `subfield-outcome`: 특정 세부 분야 버튼 검색 뒤 표시된 결과 수 구간
+- `department-external`: 해당 학과 결과에서 공식 홈페이지 또는 프로필 클릭
+- `subfield-external`: 해당 세부 분야 결과에서 공식 홈페이지 또는 프로필 클릭
+
+분석 지표:
+
+```text
+학과별 결과 0개 비율
+= 해당 학과 r-0 outcome
+÷ 해당 학과 전체 outcome
+× 100
+```
+
+```text
+세부 분야별 결과 0개 비율
+= 해당 세부 분야 r-0 outcome
+÷ 해당 세부 분야 전체 outcome
+× 100
+```
+
+```text
+학과 검색 100회당 공식 링크 클릭
+= 해당 학과 공식 링크 클릭
+÷ 해당 학과 outcome
+× 100
+```
+
+이 이벤트에는 검색어 원문, 교수명, 사용자 ID와 개인별 이동 경로가 포함되지 않는다. 학과와 사전에 정한 세부 분야 코드, 결과 수 및 화면상 순위 구간만 기록한다.

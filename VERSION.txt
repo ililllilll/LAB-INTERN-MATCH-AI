@@ -1,4 +1,8 @@
-LAB MATCH AI - Data-Driven Query Recovery
+LAB MATCH AI - DGIST Department-First + Data-Driven Query Recovery
 Build date: 2026-07-12
 Baseline window: 2026-07-10 20:00 KST to 2026-07-12 01:00 KST
-Primary change: zero-result-only short-query assistance and guided recovery
+Primary changes:
+- zero-result-only short-query assistance and guided recovery
+- DGIST department-first browser with department-scoped recommendations
+- New Biology department and detailed subfields
+- privacy-preserving department/subfield outcome and official-link analytics

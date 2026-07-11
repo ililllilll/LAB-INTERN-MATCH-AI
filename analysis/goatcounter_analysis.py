@@ -219,12 +219,57 @@ def parse_feedback_prompt(name: str) -> dict | None:
     return dict(zip(("page", "intent", "source", "result_bucket"), m.groups()))
 
 
+def parse_dgist_department(name: str) -> dict | None:
+    m = re.match(r"^lm-lab-department-dgist-d-([a-z0-9-]+)$", name)
+    return {"department": m.group(1)} if m else None
+
+
+def parse_dgist_subfield(name: str) -> dict | None:
+    m = re.match(r"^lm-lab-subfield-dgist-d-(.+?)-f-(.+?)-i-(.+)$", name)
+    if not m:
+        return None
+    return {"department": m.group(1), "subfield": m.group(2), "intent": m.group(3)}
+
+
+def parse_dgist_department_outcome(name: str) -> dict | None:
+    m = re.match(r"^lm-dgist-department-outcome-d-(.+?)-src-(.+?)-r-(0|1-3|4-10|11-plus)$", name)
+    if not m:
+        return None
+    return {"department": m.group(1), "source": m.group(2), "result_bucket": m.group(3)}
+
+
+def parse_dgist_subfield_outcome(name: str) -> dict | None:
+    m = re.match(r"^lm-dgist-subfield-outcome-d-(.+?)-f-(.+?)-r-(0|1-3|4-10|11-plus)$", name)
+    if not m:
+        return None
+    return {"department": m.group(1), "subfield": m.group(2), "result_bucket": m.group(3)}
+
+
+def parse_dgist_department_external(name: str) -> dict | None:
+    m = re.match(r"^lm-dgist-department-external-d-(.+?)-rank-(1-3|4-10|11-plus|unknown)$", name)
+    if not m:
+        return None
+    return {"department": m.group(1), "rank_bucket": m.group(2)}
+
+
+def parse_dgist_subfield_external(name: str) -> dict | None:
+    m = re.match(r"^lm-dgist-subfield-external-d-(.+?)-f-(.+?)-rank-(1-3|4-10|11-plus|unknown)$", name)
+    if not m:
+        return None
+    return {"department": m.group(1), "subfield": m.group(2), "rank_bucket": m.group(3)}
+
+
 def known_event(name: str) -> bool:
-    if parse_search_outcome(name) or parse_query_assist(name) or parse_recovery(name) or parse_feedback(name) or parse_feedback_prompt(name):
+    if (parse_search_outcome(name) or parse_query_assist(name) or parse_recovery(name) or
+            parse_feedback(name) or parse_feedback_prompt(name) or
+            parse_dgist_department(name) or parse_dgist_subfield(name) or
+            parse_dgist_department_outcome(name) or parse_dgist_subfield_outcome(name) or
+            parse_dgist_department_external(name) or parse_dgist_subfield_external(name)):
         return True
     prefixes = (
         "lm-total-", "lm-nav-", "lm-reset-", "lm-lab-search-submit-", "lm-intern-search-submit-",
         "lm-intern-chat-submit-", "lm-lab-banner-", "lm-lab-banner-list-toggle-", "lm-lab-major-field-",
+        "lm-lab-department-", "lm-lab-subfield-", "lm-dgist-department-", "lm-dgist-subfield-",
         "lm-intern-category-", "lm-lab-more-", "lm-lab-show-adjacent-", "lm-lab-details-",
         "lm-lab-homepage-", "lm-lab-profile-", "lm-intern-job-open-", "lm-intern-filter-",
         "lm-intern-sort-", "lm-intern-toggle-", "lm-intern-copy-", "lm-lab-filter-"
@@ -384,11 +429,79 @@ def analyze(hits: list[Hit], site_prefix: str) -> dict:
             "external_clicks_per_100_successful_recoveries": ratio(r["external"], r["successful"]),
         })
 
+    dgist_department_counts: Counter[str] = Counter()
+    dgist_subfield_counts: Counter[tuple[str, str, str]] = Counter()
+    dgist_department_outcomes: defaultdict[str, Counter[str]] = defaultdict(Counter)
+    dgist_subfield_outcomes: defaultdict[tuple[str, str], Counter[str]] = defaultdict(Counter)
+    dgist_department_external: Counter[str] = Counter()
+    dgist_subfield_external: Counter[tuple[str, str]] = Counter()
+    for name, count in events.items():
+        department_event = parse_dgist_department(name)
+        if department_event:
+            dgist_department_counts[department_event["department"]] += count
+        subfield_event = parse_dgist_subfield(name)
+        if subfield_event:
+            dgist_subfield_counts[(subfield_event["department"], subfield_event["subfield"], subfield_event["intent"])] += count
+        department_outcome = parse_dgist_department_outcome(name)
+        if department_outcome:
+            dgist_department_outcomes[department_outcome["department"]][department_outcome["result_bucket"]] += count
+        subfield_outcome = parse_dgist_subfield_outcome(name)
+        if subfield_outcome:
+            dgist_subfield_outcomes[(subfield_outcome["department"], subfield_outcome["subfield"])][subfield_outcome["result_bucket"]] += count
+        department_link = parse_dgist_department_external(name)
+        if department_link:
+            dgist_department_external[department_link["department"]] += count
+        subfield_link = parse_dgist_subfield_external(name)
+        if subfield_link:
+            dgist_subfield_external[(subfield_link["department"], subfield_link["subfield"])] += count
+    department_total = sum(dgist_department_counts.values())
+    dgist_department_rows = [
+        {"department": key, "selections": value, "share_pct": ratio(value, department_total)}
+        for key, value in dgist_department_counts.most_common()
+    ]
+    dgist_subfield_rows = [
+        {"department": department, "subfield": subfield, "intent": intent, "selections": value}
+        for (department, subfield, intent), value in sorted(dgist_subfield_counts.items(), key=lambda item: (-item[1], item[0]))
+    ]
+    all_departments = sorted(set(dgist_department_outcomes) | set(dgist_department_external))
+    dgist_department_performance_rows = []
+    for department in all_departments:
+        buckets = dgist_department_outcomes[department]
+        searches = sum(buckets.values())
+        links = dgist_department_external[department]
+        dgist_department_performance_rows.append({
+            "department": department, "searches": searches,
+            "result_0": buckets["0"], "zero_result_rate_pct": ratio(buckets["0"], searches),
+            "result_1_3": buckets["1-3"], "result_4_10": buckets["4-10"],
+            "result_11_plus": buckets["11-plus"],
+            "official_link_clicks": links,
+            "official_link_clicks_per_100_searches": ratio(links, searches),
+        })
+    all_subfields = sorted(set(dgist_subfield_outcomes) | set(dgist_subfield_external))
+    dgist_subfield_performance_rows = []
+    for department, subfield in all_subfields:
+        buckets = dgist_subfield_outcomes[(department, subfield)]
+        searches = sum(buckets.values())
+        links = dgist_subfield_external[(department, subfield)]
+        dgist_subfield_performance_rows.append({
+            "department": department, "subfield": subfield, "searches": searches,
+            "result_0": buckets["0"], "zero_result_rate_pct": ratio(buckets["0"], searches),
+            "result_1_3": buckets["1-3"], "result_4_10": buckets["4-10"],
+            "result_11_plus": buckets["11-plus"],
+            "official_link_clicks": links,
+            "official_link_clicks_per_100_searches": ratio(links, searches),
+        })
+
+
     return {
         "events": events, "pageviews": pageviews, "normalized_paths": normalized_paths,
         "school_rows": school_rows, "intent_rows": intent_rows, "query_rows": query_rows,
         "service_rows": service_rows, "school_choice_rows": school_choice_rows,
         "recovery_rows": recovery_rows,
+        "dgist_department_rows": dgist_department_rows,
+        "dgist_subfield_rows": dgist_subfield_rows,
+        "dgist_department_performance_rows": dgist_department_performance_rows,
+        "dgist_subfield_performance_rows": dgist_subfield_performance_rows,
         "unparsed_rows": [{"event": k, "count": v} for k, v in events.most_common() if not known_event(k)],
     }
 
@@ -459,6 +572,10 @@ def main() -> int:
         write_csv(output / "service_choice_summary.csv", result["service_rows"])
         write_csv(output / "school_choice_summary.csv", result["school_choice_rows"])
         write_csv(output / "query_recovery_summary.csv", result["recovery_rows"])
+        write_csv(output / "dgist_department_choice_summary.csv", result["dgist_department_rows"])
+        write_csv(output / "dgist_subfield_choice_summary.csv", result["dgist_subfield_rows"])
+        write_csv(output / "dgist_department_performance.csv", result["dgist_department_performance_rows"])
+        write_csv(output / "dgist_subfield_performance.csv", result["dgist_subfield_performance_rows"])
         write_csv(output / "normalized_pageviews.csv", [{"path": k, "pageviews": v} for k, v in result["normalized_paths"].most_common()])
         write_csv(output / "event_counts.csv", [{"event": k, "count": v} for k, v in result["events"].most_common()])
         write_csv(output / "unparsed_events.csv", result["unparsed_rows"])

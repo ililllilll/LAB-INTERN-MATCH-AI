@@ -2101,6 +2101,28 @@
       .quick-row { grid-template-columns: 1fr !important; }
     }
 
+
+
+    /* DGIST 2단계 학과 → 세부 분야 탐색 */
+    .dgist-department-browser{display:grid;gap:14px}
+    .dgist-step-head{display:flex;align-items:flex-start;gap:10px;margin:0 0 11px}
+    .dgist-step-number{display:inline-grid;place-items:center;flex:0 0 28px;width:28px;height:28px;border-radius:9px;background:#102a56;color:#fff;font-size:13px;font-weight:900}
+    .dgist-step-head strong{display:block;color:#1f2f4d;font-size:15px;line-height:1.35}
+    .dgist-step-head span:not(.dgist-step-number){display:block;margin-top:3px;color:#667085;font-size:12px;line-height:1.45}
+    .dgist-department-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+    .dgist-department-chip{min-height:72px;padding:13px 14px;border:1px solid #d6deeb;border-radius:15px;background:#fff;color:#1f2f4d;text-align:left;cursor:pointer;transition:transform .16s ease,border-color .16s ease,background .16s ease,box-shadow .16s ease}
+    .dgist-department-chip strong{display:block;font-size:15px;line-height:1.38;letter-spacing:-.025em;word-break:keep-all}
+    .dgist-department-chip span{display:block;margin-top:5px;color:#7b8494;font-size:11px;line-height:1.42;word-break:keep-all}
+    .dgist-department-chip:hover{transform:translateY(-1px);border-color:#7896e8;background:#f7f9ff}
+    .dgist-department-chip.is-active{border-color:#2457c5;background:#eaf1ff;color:#173f91;box-shadow:0 0 0 2px rgba(36,87,197,.09)}
+    .dgist-subfield-panel{margin-top:3px;padding:15px;border:1px solid #cbd8f2;border-radius:17px;background:linear-gradient(180deg,#fbfdff,#f2f6ff)}
+    .dgist-subfield-panel[hidden]{display:none!important}
+    .dgist-subfield-panel .quick-row{max-height:none;overflow:visible;padding:0}
+    .dgist-subfield-panel .field-chip{min-height:42px}
+    #goalInput:disabled{background:#f3f5f8;color:#98a2b3;cursor:not-allowed}
+    @media(max-width:760px){.dgist-department-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dgist-department-chip{min-height:68px;padding:12px}.dgist-department-chip strong{font-size:14px}}
+    @media(max-width:380px){.dgist-department-grid{grid-template-columns:1fr}.dgist-department-chip{min-height:60px}}
+
 </style>
 </head>
 <body>
@@ -2126,18 +2148,27 @@
 <section aria-label="DGIST 연구실 추천 입력 및 결과" class="panel chat-panel">
 <div class="panel-header">
 <div>
-<h2>관심 분야 입력</h2>
-<p>대표 분야를 선택하거나, 배너에 없는 세부 분야를 직접 입력해 주세요.</p>
+<h2>학과와 세부 연구 분야 선택</h2>
+<p>학과를 먼저 선택한 뒤, 해당 학과의 세부 분야 배너를 눌러 교수님을 확인하세요.</p>
 </div>
 </div>
 <div class="query-area">
-<div aria-label="빠른 탐색용 대표 분야 예시" class="quick-block">
-<div class="quick-title">빠른 탐색용 대표 분야</div>
-<p class="quick-note">배너는 전체 분야 목록이 아니라 빠른 탐색을 위한 대표 예시입니다. 배너에 없는 세부 분야도 검색창에 직접 입력할 수 있습니다.</p>
-<div class="quick-row" id="exampleChips"></div>
+<div class="dgist-department-browser" aria-label="DGIST 학과와 세부 분야 선택">
+  <div class="dgist-step-head">
+    <span class="dgist-step-number">1</span>
+    <div><strong>학과 선택</strong><span>관심 있는 학과를 먼저 선택하세요.</span></div>
+  </div>
+  <div class="dgist-department-grid" id="departmentChips"></div>
+  <section class="dgist-subfield-panel" id="subfieldPanel" hidden aria-live="polite">
+    <div class="dgist-step-head">
+      <span class="dgist-step-number">2</span>
+      <div><strong id="subfieldTitle">세부 연구 분야 선택</strong><span id="subfieldNote">학과를 선택하면 세부 분야가 표시됩니다.</span></div>
+    </div>
+    <div class="quick-row" id="exampleChips"></div>
+  </section>
 </div>
-<p class="input-hint">원하는 연구 키워드를 직접 입력해 주세요.<br/><span>예: 바이오센서, 컴파일러, 의료영상, 세포 이미징, 분자 시뮬레이션, 임베디드 시스템처럼 세부 분야도 검색할 수 있습니다.</span></p>
-<textarea id="goalInput" placeholder="예: 컴파일러, 세포 이미징, 의료영상 딥러닝"></textarea>
+<p class="input-hint"><strong>3. 세부 키워드 직접 입력</strong><br/><span id="departmentSearchHint">먼저 학과를 선택해 주세요. 선택한 학과 안에서 배너에 없는 연구 주제도 직접 검색할 수 있습니다.</span></p>
+<textarea id="goalInput" placeholder="먼저 학과를 선택해 주세요" disabled></textarea>
 <p class="input-hint disclaimer-note">안내: 이 결과는 연구실 탐색을 돕는 보조 자료입니다. 최종 판단 전에는 관련 교수님 홈페이지와 최근 논문을 직접 확인해 주세요.</p>
 <div class="query-actions">
 <button class="ghost-button" id="resetButton" type="button">초기화</button>
@@ -2199,7 +2230,7 @@
 <script src="data.js"></script><script src="../../query-assist.js"></script><script src="app.js"></script>
 
 
-<!-- DGIST 최종 누적 추천용 내부 DB: 화학물리학과 + 전기전자컴퓨터공학과 + 뇌과학과 + 로봇및기계전자공학과 + 에너지공학과 + 뉴바이올로지학과. 화면 표시용 DB와 UI는 변경하지 않음. -->
+<!-- DGIST 학과 우선 탐색: 화학물리학과 + 전기전자컴퓨터공학과 + 뇌과학과 + 로봇및기계전자공학과 + 에너지공학과 + 뉴바이올로지학과(New Biology). -->
 
 <script src="../../privacy-consent.js"></script>
   <script src="../../analytics.js"></script>

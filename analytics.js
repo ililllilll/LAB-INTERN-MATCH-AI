@@ -329,6 +329,16 @@
     ];
   }
 
+  function dgistSelectionContext() {
+    if (pageKey() !== 'dgist') return { department: '', subfield: '' };
+    const activeDepartment = document.querySelector('.dgist-department-chip.is-active');
+    const activeSubfield = document.querySelector('#exampleChips .field-chip.active');
+    return {
+      department: safeToken(activeDepartment?.dataset.lmDepartment || ''),
+      subfield: safeToken(activeSubfield?.dataset.lmSubfield || '')
+    };
+  }
+
   function scheduleOutcome(source, queryValue, preset) {
     const page = pageKey();
     if (window.LMQueryAssist && typeof window.LMQueryAssist.clearApplied === 'function') {
@@ -358,6 +368,21 @@
         'search-outcome-' + page + '-' + context.source + '-i-' + context.intent + '-q-' + context.queryBucket + '-r-' + context.resultBucket,
         page.toUpperCase() + ' 검색 결과: ' + count + '개, 분야 ' + context.intent
       );
+      if (page === 'dgist') {
+        const dgistContext = dgistSelectionContext();
+        if (dgistContext.department) {
+          track(
+            'dgist-department-outcome-d-' + dgistContext.department + '-src-' + context.source + '-r-' + context.resultBucket,
+            'DGIST 학과별 검색 결과 구간: ' + dgistContext.department + ', ' + context.resultBucket
+          );
+          if (context.source === 'banner' && dgistContext.subfield) {
+            track(
+              'dgist-subfield-outcome-d-' + dgistContext.department + '-f-' + dgistContext.subfield + '-r-' + context.resultBucket,
+              'DGIST 세부 분야별 검색 결과 구간: ' + dgistContext.subfield + ', ' + context.resultBucket
+            );
+          }
+        }
+      }
       const appliedAssist = window.LMQueryAssist && typeof window.LMQueryAssist.consumeApplied === 'function'
         ? window.LMQueryAssist.consumeApplied(context.startedAt)
         : null;
@@ -428,6 +453,23 @@
 
     if (button.dataset.toggleExamples) {
       return ['lab-banner-list-toggle-' + page, page.toUpperCase() + ' 대표 분야 목록 펼치기 또는 접기'];
+    }
+
+    if (page === 'dgist' && button.dataset.lmDepartment && !button.dataset.lmSubfield) {
+      return [
+        'lab-department-dgist-d-' + safeToken(button.dataset.lmDepartment),
+        'DGIST 학과 선택: ' + button.textContent.trim()
+      ];
+    }
+
+    if (page === 'dgist' && button.dataset.lmSubfield) {
+      const label = button.textContent.trim();
+      const intent = intentCategory(label);
+      scheduleOutcome('banner', label, true);
+      return [
+        'lab-subfield-dgist-d-' + safeToken(button.dataset.lmDepartment) + '-f-' + safeToken(button.dataset.lmSubfield) + '-i-' + intent,
+        'DGIST 세부 분야 선택: ' + label
+      ];
     }
 
     if (button.classList.contains('major-chip')) {
@@ -543,6 +585,23 @@
       track('total-navigation-click', '전체 탐색 링크 클릭');
       const classified = classifyLink(anchor);
       if (classified) track(classified[0], classified[1]);
+      if (pageKey() === 'dgist') {
+        const dgistContext = dgistSelectionContext();
+        const text = anchor.textContent.trim();
+        if (dgistContext.department && /홈페이지|공식 프로필|교수 프로필|프로필/.test(text)) {
+          const rank = rankBucket(anchor);
+          track(
+            'dgist-department-external-d-' + dgistContext.department + '-rank-' + rank,
+            'DGIST 학과별 공식 링크 열기: ' + dgistContext.department
+          );
+          if (dgistContext.subfield) {
+            track(
+              'dgist-subfield-external-d-' + dgistContext.department + '-f-' + dgistContext.subfield + '-rank-' + rank,
+              'DGIST 세부 분야별 공식 링크 열기: ' + dgistContext.subfield
+            );
+          }
+        }
+      }
       if (activeRecoveryContext && latestSearchContext && latestSearchContext.source === 'recovery' && activeRecoveryContext.page === pageKey()) {
         const text = anchor.textContent.trim();
         if (/홈페이지|공식 프로필|교수 프로필|프로필/.test(text)) {

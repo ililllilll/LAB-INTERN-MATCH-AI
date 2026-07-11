@@ -23,3 +23,7 @@ MODIFIED
 - graduate/kaist/app.js
 - graduate/postech/index.html
 - graduate/postech/app.js
+- DGIST 2-step department/subfield browser; New Biology included; department-scoped recommendations; aggregate department/subfield analytics.
+- Added DGIST department/subfield outcome and official-link aggregate events.
+- Added dgist_department_performance.csv and dgist_subfield_performance.csv analyzer outputs.
+- Updated analytics documentation and deployment handoff notes.

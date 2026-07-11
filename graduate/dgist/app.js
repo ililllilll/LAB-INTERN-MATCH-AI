@@ -4421,6 +4421,341 @@
   };
   // DGIST_ALGORITHM5_DIVERSE_PRECISE_QUERY_PATCH_END
 
+
+
+  // DGIST_DEPARTMENT_FIRST_BROWSER_PATCH_START
+  // 사용자는 학과를 먼저 선택하고, 그 학과 안의 세부 분야 또는 직접 입력으로 탐색합니다.
+  // 선택한 학과는 브라우저 내부 필터에만 쓰이며 서버나 GoatCounter로 전송하지 않습니다.
+  const dgistDepartmentCatalog = [
+    {
+      key: "physchem", label: "화학물리학과", note: "물리·화학·양자·소재",
+      fields: [
+        ["양자·응집물질", "양자 응집물질 위상물질 초전도", "quantum-matter"],
+        ["나노광학·포토닉스", "나노포토닉스 반도체 포토닉스 광물질 상호작용", "nanophotonics"],
+        ["스핀트로닉스·자성", "스핀트로닉스 자성 박막 스커미온", "spintronics"],
+        ["계산물질·시뮬레이션", "계산물질과학 DFT 제일원리 시뮬레이션", "computational-materials"],
+        ["유기합성·촉매", "유기합성 비대칭 합성 촉매 반응", "organic-catalysis"],
+        ["MOF·다공성 소재", "MOF 금속유기구조체 다공성 소재", "mof-porous"],
+        ["분광·반응동역학", "초고속 분광 시분해 X선 반응동역학", "spectroscopy-dynamics"],
+        ["바이오소재·화학생물학", "바이오소재 화학생물학 단백질화학", "chemical-biology"],
+        ["지속가능 화학·수처리", "폐플라스틱 수처리 업사이클링 지속가능 화학", "sustainable-chemistry"]
+      ]
+    },
+    {
+      key: "eecs", label: "전기전자컴퓨터공학과", note: "전자·컴퓨터·AI·통신",
+      fields: [
+        ["반도체 소자·공정", "반도체 소자 공정 나노전자소자", "semiconductor-device"],
+        ["메모리·뉴로모픽", "메모리 반도체 인메모리 뉴로모픽", "memory-neuromorphic"],
+        ["집적회로·시스템반도체", "집적회로 아날로그 혼성신호 시스템반도체", "integrated-circuit"],
+        ["AI·머신러닝", "AI 머신러닝 딥러닝 데이터", "ai-ml"],
+        ["컴퓨터비전·멀티모달", "컴퓨터비전 멀티모달 생성형 AI", "vision-multimodal"],
+        ["컴퓨터시스템·컴파일러", "컴파일러 운영체제 컴퓨터구조 분산시스템", "computer-systems"],
+        ["통신·신호처리", "무선통신 네트워크 신호처리 6G", "communications"],
+        ["보안·암호", "정보보안 암호 포스트양자 보안", "security"],
+        ["임베디드·IoT", "임베디드 시스템 IoT 에지컴퓨팅", "embedded-iot"],
+        ["바이오전자·의료영상", "바이오전자 의료영상 초음파 광학영상", "bioelectronics-imaging"],
+        ["HCI·인터랙션", "HCI 사용자경험 멀티센서리 인터랙션", "hci"]
+      ]
+    },
+    {
+      key: "brain", label: "뇌과학과", note: "신경회로·행동·뇌질환",
+      fields: [
+        ["신경회로·행동", "신경회로 행동 신경과학", "neural-circuit"],
+        ["학습·기억·시냅스", "학습 기억 시냅스 가소성", "learning-memory"],
+        ["뇌질환·신경퇴행", "알츠하이머 뇌질환 신경퇴행", "brain-disease"],
+        ["감각·후각", "감각정보처리 후각 화학감각", "sensory-olfaction"],
+        ["신경조절·정신질환", "신경조절 도파민 세로토닌 정신질환", "neuromodulation"],
+        ["뇌대사·생체리듬", "뇌대사 생체리듬 일주기 행동", "metabolism-circadian"],
+        ["계산신경과학·BMI", "계산신경과학 뇌기계인터페이스 신경신호", "computational-bmi"],
+        ["구조생물학·이온채널", "구조생물학 이온채널 막단백질 cryo-EM", "structural-ion-channel"],
+        ["축삭재생·신경손상", "축삭 재생 신경손상 신경퇴행", "axon-regeneration"],
+        ["환경생명·생분해", "플라스틱 생분해 환경미생물", "environmental-biology"]
+      ]
+    },
+    {
+      key: "robot", label: "로봇및기계전자공학과", note: "로봇·제어·의료·센서",
+      fields: [
+        ["로봇 제어·Physical AI", "로봇 제어 Physical AI 강화학습", "robot-control"],
+        ["자율주행·모빌리티", "자율주행 모빌리티 SLAM 로봇비전", "autonomous-mobility"],
+        ["휴머노이드·매니퓰레이션", "휴머노이드 매니퓰레이터 텔레오퍼레이션", "humanoid-manipulation"],
+        ["의료·재활로봇", "의료로봇 수술로봇 재활로봇", "medical-rehab-robot"],
+        ["소프트·웨어러블로봇", "소프트로봇 웨어러블로봇 바이오인스파이어드", "soft-wearable-robot"],
+        ["마이크로·나노로봇", "마이크로로봇 나노로봇 MEMS NEMS", "micro-nano-robot"],
+        ["생체전자·신경인터페이스", "생체전자 신경인터페이스 BMI 임플란트", "neural-interface"],
+        ["의료영상·광학영상", "의료영상 초음파 광학영상 홀로그래피", "medical-imaging"],
+        ["MEMS·센서", "MEMS 센서 촉각센서 자가발전", "mems-sensor"],
+        ["제조·메커니즘", "로봇 설계 제조 메커니즘 액추에이터", "design-manufacturing"],
+        ["드론·비행로봇", "드론 UAV 비행로봇 제어", "aerial-robot"]
+      ]
+    },
+    {
+      key: "energy", label: "에너지공학과", note: "배터리·수소·태양전지·촉매",
+      fields: [
+        ["이차전지 소재", "이차전지 양극재 음극재 배터리 소재", "battery-materials"],
+        ["전고체전지·계면", "전고체전지 고체전해질 전극 계면", "solid-state-battery"],
+        ["전해질·이온전도", "배터리 전해질 이온전도 리튬금속", "electrolyte-ion"],
+        ["배터리 공정·진단", "배터리 제조 공정 열화 진단 operando", "battery-process"],
+        ["수소·연료전지", "수소 연료전지 수전해 전기촉매", "hydrogen-fuel-cell"],
+        ["CO2 전환·촉매", "이산화탄소 전환 촉매 전기화학", "co2-catalysis"],
+        ["태양전지·광전소자", "태양전지 페로브스카이트 광전소자", "solar-optoelectronics"],
+        ["양자점·발광소자", "양자점 QLED 발광소자 디스플레이", "quantum-dot"],
+        ["에너지 하베스팅·웨어러블", "에너지 하베스팅 자가발전 웨어러블 소자", "energy-harvesting"],
+        ["계산·AI 에너지소재", "계산화학 DFT AI 에너지 소재", "computational-energy"],
+        ["고분자·지속가능 소재", "고분자 지속가능 소재 광촉매 재활용", "sustainable-materials"]
+      ]
+    },
+    {
+      key: "newbiology", label: "뉴바이올로지학과", note: "New Biology·정밀의학·노화·면역",
+      fields: [
+        ["유전체·DNA 복구", "유전체 DNA 손상 복구 크로마틴 후성유전", "genome-dna-repair"],
+        ["암생물학·정밀의학", "암생물학 암 정밀의학 바이오마커", "cancer-precision"],
+        ["면역·면역치료", "면역학 T세포 면역치료 뇌면역", "immunity-therapy"],
+        ["노화·대사·생리", "노화 대사 생리 면역노화 세포노화", "aging-metabolism"],
+        ["줄기세포·재생의학", "줄기세포 재생의학 세포치료 오가노이드", "stem-cell"],
+        ["단백질 구조·공학", "단백질 구조 단백질공학 항체공학 NMR", "protein-engineering"],
+        ["화학생물학·신약", "화학생물학 신약개발 단백질 분해", "chemical-biology-drug"],
+        ["정밀의학·프로테오믹스", "정밀의학 프로테오믹스 질량분석 오믹스", "proteomics-omics"],
+        ["단분자·세포 이미징", "단분자 생물물리 초고해상도 현미경 세포 동역학", "single-molecule-imaging"],
+        ["나노바이오·전자약", "나노바이오의학 전자약 바이오의료기기", "nanobiomedicine"],
+        ["식물생명·환경응답", "식물발달 식물노화 식물 신호전달 환경응답", "plant-biology"],
+        ["동물생태·행동", "동물생태 행동생태 감각생태", "animal-ecology"]
+      ]
+    }
+  ];
+
+  const dgistDepartmentByKey = new Map(dgistDepartmentCatalog.map((item) => [item.key, item]));
+  let dgistActiveDepartmentKey = "";
+
+  function dgistCurrentDepartment() {
+    return dgistDepartmentByKey.get(dgistActiveDepartmentKey) || null;
+  }
+
+  function dgistLabInActiveDepartment(lab) {
+    const department = dgistCurrentDepartment();
+    if (!department) return true;
+    const raw = normalize((lab && lab.department) || "");
+    return raw.includes(normalize(department.label));
+  }
+
+  // 모든 추천·인접 후보·교수명 검색을 선택한 학과 내부로 제한합니다.
+  const dgistDepartmentPreviousRankLabs = rankLabs;
+  rankLabs = function(query, profileQuery) {
+    const ranked = dgistDepartmentPreviousRankLabs(query, profileQuery) || [];
+    return dgistCurrentDepartment() ? ranked.filter((item) => item && dgistLabInActiveDepartment(item.lab)) : ranked;
+  };
+  const dgistDepartmentPreviousProfessorMatches = dgistDirectProfessorMatches;
+  dgistDirectProfessorMatches = function(query) {
+    const matches = dgistDepartmentPreviousProfessorMatches(query) || [];
+    return dgistCurrentDepartment() ? matches.filter((item) => item && dgistLabInActiveDepartment(item.lab)) : matches;
+  };
+
+  els.departmentChips = byId("departmentChips");
+  els.subfieldPanel = byId("subfieldPanel");
+  els.subfieldTitle = byId("subfieldTitle");
+  els.subfieldNote = byId("subfieldNote");
+  els.departmentSearchHint = byId("departmentSearchHint");
+
+  initialMessage = function() {
+    const department = dgistCurrentDepartment();
+    return `
+      <div class="message assistant">
+        <h3>${department ? escapeHtml(department.label) + " 세부 분야를 선택해 주세요" : "먼저 학과를 선택해 주세요"}</h3>
+        <p>${department ? "위의 세부 분야 배너를 누르거나, 해당 학과 안에서 연구 키워드를 직접 입력할 수 있습니다." : "학과를 선택하면 해당 학과의 세부 분야 배너와 검색창이 활성화됩니다."}</p>
+      </div>
+    `;
+  };
+
+  function dgistClearSearchContext() {
+    if (!els.goalInput) return;
+    delete els.goalInput.dataset.searchMode;
+    delete els.goalInput.dataset.internalQuery;
+    delete els.goalInput.dataset.intent;
+    delete els.goalInput.dataset.displayPrompt;
+    delete els.goalInput.dataset.department;
+    delete els.goalInput.dataset.subfield;
+  }
+
+  function dgistSelectDepartment(key, options) {
+    const department = dgistDepartmentByKey.get(key);
+    if (!department) return;
+    dgistActiveDepartmentKey = department.key;
+    els.departmentChips.querySelectorAll(".dgist-department-chip").forEach((button) => {
+      button.classList.toggle("is-active", button.dataset.lmDepartment === department.key);
+      button.setAttribute("aria-pressed", button.dataset.lmDepartment === department.key ? "true" : "false");
+    });
+    els.goalInput.disabled = false;
+    els.goalInput.value = "";
+    els.goalInput.placeholder = `${department.label} 안에서 세부 연구 키워드를 입력해 주세요`;
+    els.departmentSearchHint.textContent = `${department.label} 안에서 배너에 없는 연구 주제도 직접 검색할 수 있습니다.`;
+    els.subfieldTitle.textContent = `${department.label} 세부 연구 분야`;
+    els.subfieldNote.textContent = "서로 다른 연구 주제를 나누어 표시했습니다. 원하는 분야를 누르면 해당 학과 교수님만 보여줍니다.";
+    els.subfieldPanel.hidden = false;
+    dgistClearSearchContext();
+    renderExamples();
+    lastAnswerText = "";
+    lastResults = [];
+    els.chatFeed.innerHTML = initialMessage();
+    if (!options || !options.silent) els.subfieldPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  function dgistRenderDepartments() {
+    els.departmentChips.innerHTML = "";
+    dgistDepartmentCatalog.forEach((department) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "dgist-department-chip";
+      button.dataset.lmDepartment = department.key;
+      button.dataset.departmentLabel = department.label;
+      button.setAttribute("aria-pressed", "false");
+      button.innerHTML = `<strong>${escapeHtml(department.label)}</strong><span>${escapeHtml(department.note)}</span>`;
+      button.addEventListener("click", () => dgistSelectDepartment(department.key));
+      els.departmentChips.appendChild(button);
+    });
+  }
+
+  renderExamples = function() {
+    const department = dgistCurrentDepartment();
+    els.exampleChips.innerHTML = "";
+    if (!department) return;
+    department.fields.forEach((field) => {
+      const [label, internalQuery, fieldKey] = field;
+      const displayPrompt = `${department.label}에서 ${label} 연구 관련 교수님을 추천해 주세요`;
+      const button = document.createElement("button");
+      button.className = "chip field-chip";
+      button.type = "button";
+      button.textContent = label;
+      button.title = displayPrompt;
+      button.dataset.query = internalQuery;
+      button.dataset.intent = fieldKey;
+      button.dataset.mode = "banner_explore";
+      button.dataset.lmSubfield = fieldKey;
+      button.dataset.lmDepartment = department.key;
+      button.addEventListener("click", () => {
+        els.exampleChips.querySelectorAll(".field-chip").forEach((node) => node.classList.remove("active"));
+        button.classList.add("active");
+        els.goalInput.value = displayPrompt;
+        els.goalInput.dataset.searchMode = "banner_explore";
+        els.goalInput.dataset.internalQuery = internalQuery;
+        els.goalInput.dataset.intent = fieldKey;
+        els.goalInput.dataset.displayPrompt = displayPrompt;
+        els.goalInput.dataset.department = department.key;
+        els.goalInput.dataset.subfield = fieldKey;
+        answerQuestion("full");
+      });
+      els.exampleChips.appendChild(button);
+    });
+  };
+
+  // 기존 배너 검색 문맥에 학과·세부 분야를 포함합니다.
+  dgistBannerSearchContext = function() {
+    const displayQuery = els.goalInput.value.trim();
+    const mode = els.goalInput.dataset.searchMode === "banner_explore" ? "banner_explore" : "precise";
+    const internalQuery = mode === "banner_explore"
+      ? String(els.goalInput.dataset.internalQuery || displayQuery).trim()
+      : displayQuery;
+    return {
+      mode,
+      displayQuery,
+      internalQuery: internalQuery || displayQuery,
+      intent: els.goalInput.dataset.intent || "",
+      department: dgistActiveDepartmentKey,
+      subfield: els.goalInput.dataset.subfield || "",
+      isBanner: mode === "banner_explore"
+    };
+  };
+
+  // 직접 입력을 시작해도 선택한 학과는 유지하되 배너 문맥만 해제합니다.
+  els.goalInput.addEventListener("input", () => {
+    if (els.goalInput.dataset.searchMode === "banner_explore") {
+      const department = dgistActiveDepartmentKey;
+      dgistClearSearchContext();
+      els.goalInput.dataset.department = department;
+      els.exampleChips.querySelectorAll(".field-chip").forEach((node) => node.classList.remove("active"));
+    }
+  });
+
+  const dgistDepartmentPreviousAnswerQuestion = answerQuestion;
+  answerQuestion = function(mode, silent) {
+    const department = dgistCurrentDepartment();
+    if (!department) {
+      toast("먼저 학과를 선택해 주세요.");
+      els.departmentChips.querySelector(".dgist-department-chip")?.focus();
+      return;
+    }
+    const context = dgistBannerSearchContext();
+    const displayQuery = context.displayQuery;
+    const rawQuery = context.internalQuery;
+    if (!displayQuery) {
+      toast("세부 분야 배너를 누르거나 연구 키워드를 입력해 주세요.");
+      els.goalInput.focus();
+      return;
+    }
+
+    const precise = context.isBanner ? null : dgistAlgorithm5PreciseContext(rawQuery);
+    const localAssist = (!context.isBanner && !precise && window.LMQueryAssist)
+      ? window.LMQueryAssist.expand(rawQuery)
+      : { query: rawQuery, applied: false, intent: "other" };
+    let rankingQuery = precise ? `${rawQuery} ${precise.expansion || ""}`.trim() : rawQuery;
+    const nameMatches = context.isBanner ? [] : dgistDirectProfessorMatches(rawQuery);
+    let matchedProfiles = nameMatches.length ? [] : (precise ? dgistAlgorithm5ProfilesByIds(precise.profileIds) : detectFieldProfiles(rankingQuery));
+    let results = [];
+    const userProfileText = [state.grade, state.tracks.join(" "), state.interest].filter(Boolean).join(" ");
+    if (nameMatches.length) {
+      results = nameMatches;
+    } else if (matchedProfiles.length || context.isBanner || dgistIntentFirstHasSpecificQuery(rankingQuery)) {
+      results = rankLabs(`${rankingQuery} ${userProfileText}`, rankingQuery).slice(0, 40);
+    }
+    if (!context.isBanner && !precise && !nameMatches.length && !results.length && localAssist.applied) {
+      rankingQuery = localAssist.query || rawQuery;
+      matchedProfiles = detectFieldProfiles(rankingQuery);
+      results = rankLabs(`${rankingQuery} ${userProfileText}`, rankingQuery).slice(0, 40);
+      if (window.LMQueryAssist && typeof window.LMQueryAssist.markApplied === "function") {
+        window.LMQueryAssist.markApplied(localAssist.intent);
+      }
+    }
+    lastResults = results;
+
+    const answer = buildAnswer(displayQuery, results, mode, matchedProfiles, rankingQuery);
+    renderSidePanels(results, answer.evidence);
+    els.chatFeed.innerHTML = "";
+    appendUserMessage(displayQuery);
+    appendAssistantMessage(answer.html);
+    lastAnswerText = answer.text;
+    state.history.push({
+      query: displayQuery,
+      internalQuery: context.isBanner ? rawQuery : undefined,
+      department: department.key,
+      subfield: context.subfield || undefined,
+      intent: context.intent || (precise ? precise.intent : undefined),
+      mode: context.mode,
+      at: new Date().toISOString()
+    });
+    state.history = state.history.slice(-20);
+    persist();
+  };
+
+  // 초기화 시 학과 선택 단계로 돌아갑니다.
+  els.resetButton.addEventListener("click", () => {
+    dgistActiveDepartmentKey = "";
+    dgistClearSearchContext();
+    els.goalInput.disabled = true;
+    els.goalInput.placeholder = "먼저 학과를 선택해 주세요";
+    els.departmentSearchHint.textContent = "먼저 학과를 선택해 주세요. 선택한 학과 안에서 배너에 없는 연구 주제도 직접 검색할 수 있습니다.";
+    els.subfieldPanel.hidden = true;
+    els.departmentChips.querySelectorAll(".dgist-department-chip").forEach((button) => {
+      button.classList.remove("is-active");
+      button.setAttribute("aria-pressed", "false");
+    });
+    els.exampleChips.innerHTML = "";
+    els.chatFeed.innerHTML = initialMessage();
+  });
+
+  dgistRenderDepartments();
+  renderExamples();
+  els.goalInput.disabled = true;
+  els.chatFeed.innerHTML = initialMessage();
+  // DGIST_DEPARTMENT_FIRST_BROWSER_PATCH_END
+
   // DGIST_FINAL_BETA_FIX_END
 
 })();
