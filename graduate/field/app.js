@@ -218,7 +218,12 @@
     ['계산재료', ['computational materials science','materials informatics','DFT']],
     ['촉매', ['catalysis','catalyst','촉매 반응']],
     ['수처리', ['water treatment','desalination','환경 정화']],
-    ['HCI', ['human computer interaction','UX','user experience']],
+    ['HCI', ['human computer interaction','UX','user experience','interaction design','usability']],
+    ['UX', ['HCI','human computer interaction','user experience','interaction design','usability','user interface']],
+    ['사용자 경험', ['UX','HCI','human computer interaction','interaction design','usability']],
+    ['정보보안', ['cybersecurity','computer security','system security','network security','software security','cryptography','privacy']],
+    ['보안', ['cybersecurity','computer security','system security','network security','software security','cryptography','privacy']],
+    ['암호', ['cryptography','applied cryptography','post-quantum cryptography','privacy']],
     ['컴퓨터비전', ['computer vision','영상 인식','visual recognition']],
     ['자연어처리', ['natural language processing','NLP','언어모델']],
     ['뇌 컴퓨터 인터페이스', ['brain computer interface','BCI','neural interface']]
@@ -314,9 +319,137 @@
 
   const prepared = records.map(prepareRecord);
 
+  function normalizedTermMatch(item, term) {
+    const haystack = normalize(item);
+    const needle = normalize(term);
+    if (!haystack || !needle) return false;
+
+    // UX, AI, CT처럼 짧은 영문 토큰이 auxin, flux, brain 같은 단어 내부에서
+    // 우연히 일치하지 않도록 영문/숫자 검색어는 단어 경계로만 비교합니다.
+    if (/^[0-9a-z\-]+$/.test(needle) && needle.replace(/-/g, '').length <= 3) {
+      const hay = ' ' + haystack.replace(/-/g, ' ') + ' ';
+      const target = ' ' + needle.replace(/-/g, ' ') + ' ';
+      return hay.includes(target);
+    }
+    return haystack.includes(needle);
+  }
+
   function includesTerm(items, term) {
     if (!term) return false;
-    return items.some(function (item) { return item.includes(term); });
+    return items.some(function (item) { return normalizedTermMatch(item, term); });
+  }
+
+  function isAggregatedTaxonomy(value) {
+    const raw = String(value || '');
+    const slashCount = (raw.match(/\//g) || []).length;
+    return slashCount >= 2 ||
+      /대표 연구 분야|whitelist|category-level ranking|공식 연구분야 키워드 기반 추천 분류|한영 동의어 기반 검색 가중치 보강/i.test(raw) ||
+      /^(?:Human-Computer Interaction, Design and Media|Computer Systems, Software and Security|Networks, Security, Cryptography and Privacy|AI & Machine Learning|Robotics & Control|Information, Communication & Coding)$/i.test(raw.trim());
+  }
+
+  // 세부 검색의 정밀 판정에는 넓은 통합 태그와 자동 주입 alias를 제외하고,
+  // 교수의 실제 세부 분야·방법·연구실명·요약에 가까운 정보만 사용합니다.
+  function profileEvidenceItems(record) {
+    const keepSpecific = function (items) {
+      return (items || []).filter(function (item) { return !isAggregatedTaxonomy(item); });
+    };
+    return textArray([
+      keepSpecific(record.subfields),
+      keepSpecific(record.labNames),
+      record.summary,
+      keepSpecific(record.fields),
+      keepSpecific(record.primaryDomains)
+    ]);
+  }
+
+  const QUERY_PROFILES = {
+    ux: {
+      triggers: ['ux','hci','사용자 경험','user experience','human computer interaction','interaction design','usability'],
+      evidence: ['ux','hci','사용자 경험','user experience','human computer interaction','interaction design','usability','user interface','사용자 인터페이스','인간 컴퓨터 상호작용']
+    },
+    security: {
+      triggers: ['정보보안','보안','암호','cybersecurity','computer security','system security','network security','software security','cryptography'],
+      evidence: ['정보보안','정보 보안','사이버보안','사이버 보안','컴퓨터 보안','시스템 보안','네트워크 보안','소프트웨어 보안','웹보안','웹 보안','보안 하드웨어','암호학','암호론','양자암호','동형암호','cryptography','cybersecurity','computer security','system security','network security','software security','web security','secure computing','privacy enhancing','privacy-preserving','취약점','해킹','fuzzing'],
+      departmentType: 'security'
+    },
+    autonomous: {
+      triggers: ['자율주행','자율 주행','autonomous driving','autonomous vehicle','self driving','adas'],
+      evidence: ['자율주행','자율 주행','autonomous driving','autonomous vehicle','self driving','adas','advanced driver assistance','vehicle perception','차량 인지','차량 제어','vehicle control','차량동역학','vehicle dynamics','slam','simultaneous localization and mapping','자율 이동로봇','autonomous mobile robot','mobile robot perception','로봇 비전','robot vision'],
+      departmentType: 'autonomous'
+    }
+  };
+
+  const TOKEN_EQUIVALENTS = {
+    '식물': ['plant'],
+    '면역': ['immune','immunity','immunology'],
+    '딥러닝': ['deep learning'],
+    '머신러닝': ['machine learning'],
+    '의료영상': ['medical imaging','medical image'],
+    '유전체': ['genomics','genome'],
+    '암': ['cancer','tumor','tumour'],
+    '배터리': ['battery','rechargeable battery'],
+    '양극재': ['cathode'],
+    '음극재': ['anode'],
+    '촉매': ['catalyst','catalysis'],
+    '로봇': ['robot','robotics'],
+    '자율주행': ['autonomous driving','autonomous vehicle','self driving','adas'],
+    '차량': ['vehicle','automotive'],
+    '보안': ['security','cybersecurity'],
+    '암호': ['cryptography','encryption'],
+    '사용자': ['user'],
+    '경험': ['experience','ux']
+  };
+
+  function detectQueryProfile(query, preset) {
+    const combined = normalize((preset && preset.label ? preset.label + ' ' : '') + String(query || ''));
+    for (const key of Object.keys(QUERY_PROFILES)) {
+      if (QUERY_PROFILES[key].triggers.some(function (trigger) { return normalizedTermMatch(combined, trigger); })) return key;
+    }
+    return '';
+  }
+
+  function profileDepartmentEligible(record, type) {
+    const departments = (record.departments || []).join(' ');
+    if (type === 'security') {
+      return /전산|컴퓨터|수리|전기정보|전기및전자|전기전자컴퓨터|전자전기|정보보호|인공지능|AI|반도체시스템/i.test(departments);
+    }
+    if (type === 'autonomous') {
+      return /기계|로봇|전기정보|전기및전자|전기전자컴퓨터|전자전기|전산|컴퓨터|인공지능|AI|모빌리티|항공우주/i.test(departments);
+    }
+    return true;
+  }
+
+  function profileMatchCount(record, profileKey) {
+    const profile = QUERY_PROFILES[profileKey];
+    if (!profile) return 0;
+    if (profile.departmentType && !profileDepartmentEligible(record, profile.departmentType)) return 0;
+    const items = profileEvidenceItems(record);
+    return profile.evidence.reduce(function (count, term) {
+      return count + (includesTerm(items, term) ? 1 : 0);
+    }, 0);
+  }
+
+  function conceptTerms(token) {
+    return unique([token].concat(TOKEN_EQUIVALENTS[token] || []));
+  }
+
+  function isSingleProfileConceptQuery(query, profileKey) {
+    const compact = normalize(query).replace(/\s+/g, '');
+    const known = {
+      ux: ['ux','hci','사용자경험','userexperience','humancomputerinteraction'],
+      security: ['정보보안','컴퓨터보안','시스템보안','네트워크보안','소프트웨어보안','사이버보안','cybersecurity','computersecurity','systemsecurity','networksecurity','softwaresecurity','cryptography'],
+      autonomous: ['자율주행','autonomousdriving','autonomousvehicle','selfdriving','adas']
+    };
+    return !!(known[profileKey] && known[profileKey].includes(compact));
+  }
+
+  function matchesAllOriginalConcepts(record, query) {
+    const originalTokens = tokenize(query);
+    if (originalTokens.length < 2) return true;
+    const items = profileEvidenceItems(record);
+    return originalTokens.every(function (token) {
+      return conceptTerms(token).some(function (term) { return includesTerm(items, term); });
+    });
   }
 
   function matchedDisplayTerms(record, queryTerms) {
@@ -422,11 +555,21 @@
     if (!terms.length) return [];
     const queryTerms = terms.map(function (term) { return term.value; });
     const scored = [];
+    const profileKey = detectQueryProfile(query, preset);
 
     for (const record of prepared) {
+      const profileHits = profileKey ? profileMatchCount(record, profileKey) : 0;
+      if (profileKey && profileHits === 0) continue;
+
+      // 직접 입력에서 두 개 이상의 핵심 개념을 함께 쓴 경우에는 모든 개념이
+      // 실제 연구 근거에 존재해야 결과로 인정합니다. 하나만 맞는 OR 추천을 막습니다.
+      if (!preset && (!profileKey || !isSingleProfileConceptQuery(query, profileKey)) && !matchesAllOriginalConcepts(record, query)) continue;
+
       const result = scoreRecord(record, terms);
+      if (profileHits) result.score += Math.min(36, profileHits * 9);
       if (result.score < 7) continue;
-      const relation = result.strongHits > 0 && result.score >= 15 ? 'direct' : 'adjacent';
+      const effectiveStrongHits = Math.max(result.strongHits, profileHits);
+      const relation = effectiveStrongHits > 0 && result.score >= 15 ? 'direct' : 'adjacent';
       const evidence = matchedDisplayTerms(record, queryTerms);
       scored.push({ record, score: result.score, strongHits: result.strongHits, relation, evidence });
     }
