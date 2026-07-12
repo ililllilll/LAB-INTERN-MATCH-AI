@@ -4448,6 +4448,54 @@ const DATA = window.SNU_LAB_MATCH_DATA;
     }
 
 
+
+    // 원본 교수 DB는 유지하고, 카드에 보이는 소개 문장만 1~2줄 분량으로 정리합니다.
+    function concisePublicTopicParts(value) {
+      return String(value || "").replace(/\.\.\.|…/g, " ").split(/\s*(?:,|;|\||·)\s*/)
+        .map((item) => item.replace(/\s+/g, " ").replace(/^(?:연구\s*분야|주요\s*연구\s*분야|세부\s*관심사)\s*[:：]\s*/i, "")
+          .replace(/\s*\([^)]*\d{2,}[^)]*\)\s*/g, " ").replace(/\s+/g, " ")
+          .replace(/^[\s,;:·|]+|[\s,;:·|]+$/g, "").trim()).filter(Boolean);
+    }
+    function concisePublicTopicKey(value) {
+      return normalize(String(value || "")).replace(/(?:분야|연구|기술|공학)$/g, "")
+        .replace(/[^0-9a-z가-힣]+/g, " ").replace(/\s+/g, " ").trim();
+    }
+    function concisePublicTopicOverlap(left, right) {
+      const a = concisePublicTopicKey(left), b = concisePublicTopicKey(right);
+      if (!a || !b) return false;
+      if (a === b || (Math.min(a.length, b.length) >= 4 && (a.includes(b) || b.includes(a)))) return true;
+      const stop = new Set(["및", "기반", "관련", "응용", "분야"]);
+      const at = new Set(a.split(" ").filter((t) => t.length >= 2 && !stop.has(t)));
+      const bt = new Set(b.split(" ").filter((t) => t.length >= 2 && !stop.has(t)));
+      if (!at.size || !bt.size) return false;
+      let hit = 0; at.forEach((t) => { if (bt.has(t)) hit += 1; });
+      return hit / Math.min(at.size, bt.size) >= 0.8;
+    }
+    function concisePublicTopics(lab) {
+      const labNames = new Set((lab.labNames || []).map((item) => normalize(item)));
+      const structured = lab.structuredProfile || {};
+      const raw = [].concat(lab.fields || []).concat(structured.primaryResearchFields || []).concat(structured.detailedKeywords || []);
+      const ko = [], en = [];
+      raw.forEach((value) => concisePublicTopicParts(value).forEach((topic) => {
+        const normalized = normalize(topic);
+        if (!topic || topic.length < 2 || topic.length > 32 || /https?:\/\/|www\./i.test(topic)) return;
+        if (/연구실 소개|본 연구실|교수님은|교수는|관련 연구를|연구를 수행|목표로|대표 성과|공식 페이지|확인 필요|미기재|정보 없음/.test(topic)) return;
+        if (/\d+\s*동/.test(topic) || /연구실|실험실|laboratory|\blab\b/i.test(topic)) return;
+        if (topic.split("/").length >= 4 || labNames.has(normalized)) return;
+        (/[가-힣]/.test(topic) ? ko : en).push(topic);
+      }));
+      const candidates = ko.concat(ko.length < 2 ? en : []), selected = [];
+      let total = 0;
+      candidates.some((topic) => {
+        if (selected.some((old) => concisePublicTopicOverlap(old, topic))) return false;
+        const add = topic.length + (selected.length ? 2 : 0);
+        if (selected.length && total + add > 48) return false;
+        selected.push(topic); total += add;
+        return selected.length >= 3;
+      });
+      return selected;
+    }
+
     function cleanPublicSummarySource(text) {
       let value = String(text || "").replace(/\s+/g, " ").trim();
       if (!value) return "";
@@ -4469,13 +4517,13 @@ const DATA = window.SNU_LAB_MATCH_DATA;
     }
 
     function buildPublicDetailSummary(lab, fieldText) {
-      const rawField = cleanPublicSummarySource(fieldText || (lab.fields || []).join(", ") || "");
-      if (!rawField || rawField === "연구분야 미기재") {
-        const rawSummary = cleanPublicSummarySource(lab.summary || (lab.summaries || [])[0] || "");
-        return rawSummary;
-      }
-      const professorLabel = String(displayProfessorName(lab.professor || "해당 교수님")).replace(/\s*교수님\s*$/g, "").replace(/\s*교수\s*$/g, "").trim();
-      return `${professorLabel} 교수님은 ${rawField} 분야를 중심으로 연구합니다.`;
+      const professorLabel = String(displayProfessorName(lab.professor || "해당 교수님"))
+        .replace(/\s*(?:교수님|정교수|부교수|조교수|교수)\s*$/g, "").trim();
+      const topics = concisePublicTopics(lab);
+      const fallbackTopics = dedupeDisplayItems(lab.fields || [], 3)
+        .filter((topic) => topic.length <= 32 && !/연구실|실험실|\d+\s*동/.test(topic));
+      const topicText = (topics.length ? topics : fallbackTopics).slice(0, 3).join(", ") || "공개된 연구 분야";
+      return `${professorLabel} 교수님은 ${topicText} 분야를 연구합니다.`;
     }
 
     function primaryReason(item) {

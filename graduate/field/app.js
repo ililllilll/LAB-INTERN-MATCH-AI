@@ -448,37 +448,108 @@
     return 'school-postech';
   }
 
+  // 화면 표시용 요약만 간결하게 생성합니다. 원본 summary와 검색용 데이터는 변경하지 않습니다.
+  function summaryTopicParts(value) {
+    return String(value || '')
+      .replace(/\.\.\.|…/g, ' ')
+      .split(/\s*(?:,|;|\||·)\s*/)
+      .map(function (item) {
+        return item
+          .replace(/\s+/g, ' ')
+          .replace(/^(?:연구\s*분야|주요\s*연구\s*분야|세부\s*관심사)\s*[:：]\s*/i, '')
+          .replace(/\s*\([^)]*\d{2,}[^)]*\)\s*/g, ' ')
+          .replace(/\s+/g, ' ')
+          .replace(/^[\s,;:·|]+|[\s,;:·|]+$/g, '')
+          .trim();
+      })
+      .filter(Boolean);
+  }
+
+  function summaryTopicKey(value) {
+    return normalize(String(value || ''))
+      .replace(/(?:분야|연구|기술|공학)$/g, '')
+      .replace(/[^0-9a-z가-힣]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function summaryTopicTokens(value) {
+    return new Set(summaryTopicKey(value).split(' ').filter(function (token) {
+      return token.length >= 2 && !['및', '기반', '관련', '응용', '분야'].includes(token);
+    }));
+  }
+
+  function summaryTopicsOverlap(left, right) {
+    const a = summaryTopicKey(left);
+    const b = summaryTopicKey(right);
+    if (!a || !b) return false;
+    if (a === b) return true;
+    if (Math.min(a.length, b.length) >= 4 && (a.includes(b) || b.includes(a))) return true;
+    const aTokens = summaryTopicTokens(left);
+    const bTokens = summaryTopicTokens(right);
+    if (!aTokens.size || !bTokens.size) return false;
+    let intersection = 0;
+    aTokens.forEach(function (token) { if (bTokens.has(token)) intersection += 1; });
+    return intersection / Math.min(aTokens.size, bTokens.size) >= 0.8;
+  }
+
+  function conciseDisplayTopics(record) {
+    const labNames = new Set((record.labNames || []).map(function (item) { return normalize(item); }));
+    const broadCategories = new Set([
+      '연구', '연구분야', '생명과학', '물리', '화학', '수학', '기계', '전자', '전기전자',
+      '재료', '나노', '에너지', '환경', '바이오', '의료', '인공지능', 'ai',
+      '계산/이론/시뮬레이션', '재료/나노/표면/분석', '배터리/에너지/수소/전기화학',
+      '센서/계측/이미징/웨어러블', '화학/촉매/유기합성/고분자',
+      '바이오/의생명/약물전달', '생명과학/세포/분자/질병',
+      'ai/머신러닝/데이터사이언스', '컴퓨터시스템/보안/네트워크/소프트웨어',
+      '반도체 소자/공정/박막', '디스플레이/포토닉스/광전자',
+      '로봇/제어/자율주행/모빌리티', '신호처리/음성/영상/멀티미디어'
+    ]);
+    const rawValues = []
+      .concat(record.fields || [])
+      .concat(record.primaryDomains || [])
+      .concat(record.subfields || []);
+    const korean = [];
+    const english = [];
+    const fallback = [];
+
+    rawValues.forEach(function (value) {
+      summaryTopicParts(value).forEach(function (topic) {
+        const normalized = normalize(topic);
+        const lower = topic.toLowerCase();
+        if (!topic || topic.length < 2 || topic.length > 32) return;
+        if (/https?:\/\/|www\./i.test(topic)) return;
+        if (/연구실 소개|본 연구실|교수님은|교수는|관련 연구를|연구를 수행|목표로|대표 성과|공식 페이지|확인 필요|미기재|정보 없음/.test(topic)) return;
+        if (/\d+\s*동/.test(topic) || /연구실|실험실|laboratory|\blab\b/i.test(topic)) return;
+        if (topic.split('/').length >= 4) return;
+        if (labNames.has(normalized)) return;
+        if (broadCategories.has(lower)) fallback.push(topic);
+        else if (/[가-힣]/.test(topic)) korean.push(topic);
+        else english.push(topic);
+      });
+    });
+
+    const candidates = korean.concat(korean.length < 2 ? english : []).concat(fallback);
+    const selected = [];
+    let totalLength = 0;
+    candidates.some(function (topic) {
+      if (selected.some(function (existing) { return summaryTopicsOverlap(existing, topic); })) return false;
+      const addedLength = topic.length + (selected.length ? 2 : 0);
+      if (selected.length && totalLength + addedLength > 48) return false;
+      selected.push(topic);
+      totalLength += addedLength;
+      return selected.length >= 3;
+    });
+    return selected;
+  }
+
   function completeSummarySentence(value, record) {
-    let text = String(value || '').replace(/\s+/g, ' ').trim();
-    if (!text) {
-      const fallback = (record.fields || []).slice(0, 3).join(', ');
-      text = fallback ? fallback + ' 관련 연구를 수행합니다.' : '공개된 연구 분야를 바탕으로 관련 연구를 수행합니다.';
-    }
-
-    text = text.replace(/[\s,;:·…]+$/g, '').replace(/\.+$/g, '');
-    text = text
-      .replace(/연구하며$/g, '연구합니다')
-      .replace(/연구한다$/g, '연구합니다')
-      .replace(/수행한다$/g, '수행합니다')
-      .replace(/개발한다$/g, '개발합니다')
-      .replace(/분석한다$/g, '분석합니다')
-      .replace(/다룬다$/g, '다룹니다')
-      .replace(/규명한다$/g, '규명합니다')
-      .replace(/이다$/g, '입니다')
-      .replace(/있다$/g, '있습니다');
-
-    if (!/(합니다|입니다|됩니다|있습니다|없습니다|다룹니다|규명합니다|목표로 합니다)$/.test(text)) {
-      if (text.includes(' 연구실:')) {
-        text = text.replace(' 연구실:', ' 연구실은') + ' 분야를 연구합니다';
-      } else if (/ 분야$/.test(text)) {
-        text += '를 연구합니다';
-      } else if (/ 연구$/.test(text)) {
-        text += '를 수행합니다';
-      } else {
-        text += ' 관련 연구를 수행합니다';
-      }
-    }
-    return text + '.';
+    const professor = String(record.professor || '해당 교수님')
+      .replace(/\s*(?:교수님|정교수|부교수|조교수|교수)\s*$/g, '')
+      .trim();
+    const topics = conciseDisplayTopics(record);
+    const topicText = topics.length ? topics.join(', ') : '공개된 연구 분야';
+    return professor + ' 교수님은 ' + topicText + ' 분야를 연구합니다.';
   }
 
   function linkButtons(record) {
