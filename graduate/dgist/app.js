@@ -4918,6 +4918,90 @@
   els.chatFeed.innerHTML = initialMessage();
   // DGIST_DEPARTMENT_FIRST_BROWSER_PATCH_END
 
+
+
+  // DGIST_RME_OFFICIAL_CURATED_SEARCH_PATCH_START
+  // 로봇및기계전자공학과에서만 공식 교수·연구실 정보를 이용한 정밀 검색을 사용합니다.
+  // 원본 data.js는 수정하지 않으며 다른 DGIST 학과의 검색 로직도 그대로 유지합니다.
+  (function installDgistRmeCuratedSearch() {
+    const engine = window.DGISTRobotSearchEngine;
+    if (!engine || !engine.db) return;
+
+    const robotDepartment = dgistDepartmentCatalog.find((item) => item.key === "robot");
+    if (robotDepartment) robotDepartment.fields = (engine.db.fields || []).map((field) => field.slice());
+
+    Object.keys(engine.db.bannerMap || {}).forEach((fieldKey) => {
+      const field = (engine.db.fields || []).find((item) => item[2] === fieldKey);
+      dgistSubfieldSearchRules[fieldKey] = {
+        query: field ? field[1] : fieldKey,
+        professors: (engine.db.bannerMap || {})[fieldKey].slice(),
+        evidenceLabel: field ? field[0] : fieldKey
+      };
+    });
+
+    // 공식 연구실명과 핵심 분야를 표시용 오버레이로 적용합니다. data.js 파일은 변경하지 않습니다.
+    const curatedByProfessor = new Map(engine.profiles().map((profile) => [profile.professor, profile]));
+    data.labs.filter((lab) => normalize(lab.department || "").includes("로봇및기계전자공학과")).forEach((lab) => {
+      const profile = curatedByProfessor.get(lab.professor);
+      if (!profile) return;
+      dgistLabNameOverrides[lab.id] = profile.labName;
+      lab.summary = `${formatProfessorName(lab.professor)}은 ${profile.officialFields.slice(0, 4).join(", ")} 분야를 연구합니다.`;
+      lab.topics = profile.officialFields.slice();
+    });
+
+    const previousRobotRankLabs = rankLabs;
+    rankLabs = function(query, profileQuery) {
+      if (dgistActiveDepartmentKey !== "robot") return previousRobotRankLabs(query, profileQuery);
+      const actualQuery = String(profileQuery || query || "").trim();
+      return engine.search(actualQuery, { limit: 10 }).map((result) => {
+        const lab = data.labs.find((candidate) => candidate && candidate.professor === result.profile.professor && dgistLabInActiveDepartment(candidate));
+        if (!lab) return null;
+        const evidence = unique(result.evidence || []).slice(0, 5);
+        return {
+          lab,
+          score: result.score,
+          internalMatch: {
+            score: result.score,
+            positiveHits: evidence,
+            subfieldHits: evidence,
+            methodHits: [],
+            materialHits: [],
+            applicationHits: [],
+            weakHits: [],
+            negativeHits: [],
+            strongHitCount: Math.max(1, evidence.length),
+            specificity: Math.min(5, evidence.length),
+            blocked: false
+          },
+          _dgistIntentFirstSpecificHit: true,
+          _dgistIntentFirstFineHits: evidence,
+          _dgistRmeCurated: true
+        };
+      }).filter(Boolean);
+    };
+
+    const previousRobotEvidenceTerms = dgistInternalEvidenceTerms;
+    dgistInternalEvidenceTerms = function(lab, query) {
+      if (dgistActiveDepartmentKey === "robot" && lab && curatedByProfessor.has(lab.professor)) {
+        const terms = engine.evidenceForProfessor(query, lab.professor);
+        if (terms.length) return terms.slice(0, 5);
+        return curatedByProfessor.get(lab.professor).officialFields.slice(0, 3);
+      }
+      return previousRobotEvidenceTerms(lab, query);
+    };
+
+    // 직접 입력은 기존 단일 자율주행 화이트리스트를 우회하고 전용 검색기가 처리합니다.
+    const previousRobotDirectSearchRule = dgistDirectSearchRule;
+    dgistDirectSearchRule = function(query) {
+      if (dgistActiveDepartmentKey === "robot") return null;
+      return previousRobotDirectSearchRule(query);
+    };
+
+    // 학과가 이미 선택된 상태에서 코드가 갱신된 경우에도 새로운 배너를 즉시 표시합니다.
+    if (dgistActiveDepartmentKey === "robot") renderExamples();
+  })();
+  // DGIST_RME_OFFICIAL_CURATED_SEARCH_PATCH_END
+
   // DGIST_FINAL_BETA_FIX_END
 
 })();

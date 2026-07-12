@@ -1,0 +1,23 @@
+DGIST 로봇및기계전자공학과 전용 재구축 변경 목록
+기준: LAB_MATCH_AI_Field_Search_Precision_Fix_Final(1).zip
+
+수정:
+- graduate/dgist/index.html
+- graduate/dgist/app.js
+- VERSION.txt
+
+추가:
+- graduate/dgist/robot-curated-db.js
+- graduate/dgist/robot-search-engine.js
+- analysis/validate_dgist_robot_search.js
+- analysis/audit_dgist_robot_terms.js
+- DGIST_RME_CURATED_DB_AUDIT.csv
+- DGIST_RME_SEARCH_REGRESSION.csv
+- DGIST_RME_SEARCH_REGRESSION_SUMMARY.json
+- DGIST_RME_OFFICIAL_REBUILD_REPORT.md
+- DGIST_RME_CHANGE_MANIFEST.txt
+
+보존 확인:
+- graduate/dgist/data.js: 원본과 SHA-256 동일
+- analytics.js: 원본과 SHA-256 동일
+- 다른 학교·분야별·인턴 서비스 파일: 수정하지 않음

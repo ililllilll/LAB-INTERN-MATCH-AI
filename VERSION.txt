@@ -7,3 +7,5 @@ Primary changes:
 - narrowed unrelated results in selected detailed subfields
 - repaired truncated and professor-name-only lab names
 - preserved existing privacy-minimized GoatCounter analytics without new personal data
+DGIST-RME-OFFICIAL-CURATED-2026-07-12
+DGIST-RME-OFFICIAL-CURATED-V2-2026-07-12
