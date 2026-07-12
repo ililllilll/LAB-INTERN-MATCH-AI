@@ -5002,6 +5002,429 @@
   })();
   // DGIST_RME_OFFICIAL_CURATED_SEARCH_PATCH_END
 
+
+  // DGIST_EECS_OFFICIAL_CURATED_SEARCH_PATCH_START
+  // 전기전자컴퓨터공학과에서만 공식 교수진 페이지와 연구실 정보를 이용한 정밀 검색을 사용합니다.
+  // 원본 data.js는 수정하지 않으며 로봇기계학과 및 다른 학과의 전용/기존 검색은 그대로 유지합니다.
+  (function installDgistEecsCuratedSearch() {
+    const engine = window.DGISTEecsSearchEngine;
+    if (!engine || !engine.db) return;
+
+    const eecsDepartment = dgistDepartmentCatalog.find((item) => item.key === "eecs");
+    if (eecsDepartment) eecsDepartment.fields = (engine.db.fields || []).map((field) => field.slice());
+
+    Object.keys(engine.db.bannerMap || {}).forEach((fieldKey) => {
+      const field = (engine.db.fields || []).find((item) => item[2] === fieldKey);
+      dgistSubfieldSearchRules[fieldKey] = {
+        query: field ? field[1] : fieldKey,
+        professors: (engine.db.bannerMap || {})[fieldKey].slice(),
+        evidenceLabel: field ? field[0] : fieldKey
+      };
+    });
+
+    // 공식 교수진 페이지에 현재 전임교원으로 등록된 최상현 교수를 런타임 카드 데이터에 추가합니다.
+    // 기존 data.js 파일은 그대로 두며, 추천/표시용 객체만 브라우저에서 보완합니다.
+    const choiProfile = engine.profiles().find((profile) => profile.professor === "최상현");
+    if (choiProfile && !data.labs.some((lab) => lab && lab.professor === "최상현" && normalize(lab.department || "").includes("전기전자컴퓨터공학과"))) {
+      data.labs.push({
+        id: "eecs-curated-choi-sanghyeon",
+        deptKey: "eecs",
+        department: "전기전자컴퓨터공학과",
+        category: "전임교원",
+        professor: "최상현",
+        professorEn: "Choi, Sanghyeon",
+        title: "조교수",
+        homepage: "https://tkdgus299.wixsite.com/mysite",
+        labNameKo: choiProfile.labName,
+        labNameEn: "Emerging Semiconductor Device Technology Laboratory",
+        summary: `${formatProfessorName("최상현")}은 ${choiProfile.officialFields.slice(0, 4).join(", ")} 분야를 연구합니다.`,
+        topics: choiProfile.officialFields.slice(),
+        keywords: choiProfile.directTerms.slice(),
+        domainTags: [], topKeywords: choiProfile.directTerms.slice(), publications: [], publicationCount: 0,
+        pdfCourses: [], pdfInternships: [], sourceUrls: choiProfile.sourceUrls.slice(),
+        retrievalText: ["최상현", "Choi, Sanghyeon", ...choiProfile.officialFields, ...choiProfile.directTerms].join("\n")
+      });
+    }
+
+    const curatedByProfessor = new Map(engine.profiles().map((profile) => [profile.professor, profile]));
+    data.labs.filter((lab) => normalize(lab.department || "").includes("전기전자컴퓨터공학과")).forEach((lab) => {
+      const profile = curatedByProfessor.get(lab.professor);
+      if (!profile) return;
+      dgistLabNameOverrides[lab.id] = profile.labName;
+      lab.summary = `${formatProfessorName(lab.professor)}은 ${profile.officialFields.slice(0, 4).join(", ")} 분야를 연구합니다.`;
+      lab.topics = profile.officialFields.slice();
+    });
+
+    const previousEecsRankLabs = rankLabs;
+    rankLabs = function(query, profileQuery) {
+      if (dgistActiveDepartmentKey !== "eecs") return previousEecsRankLabs(query, profileQuery);
+      const actualQuery = String(profileQuery || query || "").trim();
+      return engine.search(actualQuery, { limit: 10 }).map((result) => {
+        const lab = data.labs.find((candidate) => candidate && candidate.professor === result.profile.professor && dgistLabInActiveDepartment(candidate));
+        if (!lab) return null;
+        const evidence = unique(result.evidence || []).slice(0, 5);
+        return {
+          lab,
+          score: result.score,
+          internalMatch: {
+            score: result.score, positiveHits: evidence, subfieldHits: evidence,
+            methodHits: [], materialHits: [], applicationHits: [], weakHits: [], negativeHits: [],
+            strongHitCount: Math.max(1, evidence.length), specificity: Math.min(5, evidence.length), blocked: false
+          },
+          _dgistIntentFirstSpecificHit: true,
+          _dgistIntentFirstFineHits: evidence,
+          _dgistEecsCurated: true
+        };
+      }).filter(Boolean);
+    };
+
+    const previousEecsEvidenceTerms = dgistInternalEvidenceTerms;
+    dgistInternalEvidenceTerms = function(lab, query) {
+      if (dgistActiveDepartmentKey === "eecs" && lab && curatedByProfessor.has(lab.professor)) {
+        const terms = engine.evidenceForProfessor(query, lab.professor);
+        if (terms.length) return terms.slice(0, 5);
+        return curatedByProfessor.get(lab.professor).officialFields.slice(0, 3);
+      }
+      return previousEecsEvidenceTerms(lab, query);
+    };
+
+    // 전전컴 직접 검색은 기존의 넓은 자동 태그 및 단일 화이트리스트를 우회하고 전용 검색기가 처리합니다.
+    const previousEecsDirectSearchRule = dgistDirectSearchRule;
+    dgistDirectSearchRule = function(query) {
+      if (dgistActiveDepartmentKey === "eecs") return null;
+      return previousEecsDirectSearchRule(query);
+    };
+
+    if (dgistActiveDepartmentKey === "eecs") renderExamples();
+  })();
+  // DGIST_EECS_OFFICIAL_CURATED_SEARCH_PATCH_END
+
+
+  // DGIST_BRAIN_OFFICIAL_CURATED_SEARCH_PATCH_START
+  // 뇌과학과에서만 공식 교수진·연구실 정보를 이용한 정밀 검색을 사용합니다.
+  // 원본 data.js는 수정하지 않으며 로봇기계학과·전전컴 및 다른 학과 검색은 그대로 유지합니다.
+  (function installDgistBrainCuratedSearch() {
+    const engine = window.DGISTBrainSearchEngine;
+    if (!engine || !engine.db) return;
+
+    const brainDepartment = dgistDepartmentCatalog.find((item) => item.key === "brain");
+    if (brainDepartment) brainDepartment.fields = (engine.db.fields || []).map((field) => field.slice());
+
+    Object.keys(engine.db.bannerMap || {}).forEach((fieldKey) => {
+      const field = (engine.db.fields || []).find((item) => item[2] === fieldKey);
+      dgistSubfieldSearchRules[fieldKey] = {
+        query: field ? field[1] : fieldKey,
+        professors: (engine.db.bannerMap || {})[fieldKey].slice(),
+        evidenceLabel: field ? field[0] : fieldKey
+      };
+    });
+
+    // 잘려 있던 연구실명과 표시용 연구 분야를 공식 자료 기반 오버레이로 교체합니다.
+    const curatedByProfessor = new Map(engine.profiles().map((profile) => [profile.professor, profile]));
+    data.labs.filter((lab) => normalize(lab.department || "").includes("뇌과학과")).forEach((lab) => {
+      const profile = curatedByProfessor.get(lab.professor);
+      if (!profile) return;
+      dgistLabNameOverrides[lab.id] = profile.labName;
+      lab.summary = `${formatProfessorName(lab.professor)}은 ${profile.officialFields.slice(0, 4).join(", ")} 분야를 연구합니다.`;
+      lab.topics = profile.officialFields.slice();
+    });
+
+    const previousBrainRankLabs = rankLabs;
+    rankLabs = function(query, profileQuery) {
+      if (dgistActiveDepartmentKey !== "brain") return previousBrainRankLabs(query, profileQuery);
+      const actualQuery = String(profileQuery || query || "").trim();
+      return engine.search(actualQuery, { limit: 10 }).map((result) => {
+        const lab = data.labs.find((candidate) =>
+          candidate && candidate.professor === result.profile.professor && dgistLabInActiveDepartment(candidate)
+        );
+        if (!lab) return null;
+        const evidence = unique(result.evidence || []).slice(0, 5);
+        return {
+          lab,
+          score: result.score,
+          internalMatch: {
+            score: result.score,
+            positiveHits: evidence,
+            subfieldHits: evidence,
+            methodHits: [],
+            materialHits: [],
+            applicationHits: [],
+            weakHits: [],
+            negativeHits: [],
+            strongHitCount: Math.max(1, evidence.length),
+            specificity: Math.min(5, evidence.length),
+            blocked: false
+          },
+          _dgistIntentFirstSpecificHit: true,
+          _dgistIntentFirstFineHits: evidence,
+          _dgistBrainCurated: true
+        };
+      }).filter(Boolean);
+    };
+
+    const previousBrainEvidenceTerms = dgistInternalEvidenceTerms;
+    dgistInternalEvidenceTerms = function(lab, query) {
+      if (dgistActiveDepartmentKey === "brain" && lab && curatedByProfessor.has(lab.professor)) {
+        const terms = engine.evidenceForProfessor(query, lab.professor);
+        if (terms.length) return terms.slice(0, 5);
+        return curatedByProfessor.get(lab.professor).officialFields.slice(0, 3);
+      }
+      return previousBrainEvidenceTerms(lab, query);
+    };
+
+    // 뇌과학과 직접 검색은 기존 넓은 자동 태그를 우회하고 전용 검색기가 처리합니다.
+    const previousBrainDirectSearchRule = dgistDirectSearchRule;
+    dgistDirectSearchRule = function(query) {
+      if (dgistActiveDepartmentKey === "brain") return null;
+      return previousBrainDirectSearchRule(query);
+    };
+
+    if (dgistActiveDepartmentKey === "brain") renderExamples();
+  })();
+  // DGIST_BRAIN_OFFICIAL_CURATED_SEARCH_PATCH_END
+
+
+  // DGIST_ENERGY_OFFICIAL_CURATED_SEARCH_PATCH_START
+  // 에너지공학과에서만 공식 교수진·연구실 정보를 이용한 정밀 검색을 사용합니다.
+  // 원본 data.js는 수정하지 않으며 로봇기계·전전컴·뇌과학과 및 다른 학과 검색은 그대로 유지합니다.
+  (function installDgistEnergyCuratedSearch() {
+    const engine = window.DGISTEnergySearchEngine;
+    if (!engine || !engine.db) return;
+
+    const energyDepartment = dgistDepartmentCatalog.find((item) => item.key === "energy");
+    if (energyDepartment) energyDepartment.fields = (engine.db.fields || []).map((field) => field.slice());
+
+    Object.keys(engine.db.bannerMap || {}).forEach((fieldKey) => {
+      const field = (engine.db.fields || []).find((item) => item[2] === fieldKey);
+      dgistSubfieldSearchRules[fieldKey] = {
+        query: field ? field[1] : fieldKey,
+        professors: (engine.db.bannerMap || {})[fieldKey].slice(),
+        evidenceLabel: field ? field[0] : fieldKey
+      };
+    });
+
+    // 표시용 연구실명과 핵심 분야를 공식 자료 기반 오버레이로 교체합니다.
+    const curatedByProfessor = new Map(engine.profiles().map((profile) => [profile.professor, profile]));
+    data.labs.filter((lab) => normalize(lab.department || "").includes("에너지공학과")).forEach((lab) => {
+      const profile = curatedByProfessor.get(lab.professor);
+      if (!profile) return;
+      dgistLabNameOverrides[lab.id] = profile.labName;
+      lab.summary = `${formatProfessorName(lab.professor)}은 ${profile.officialFields.slice(0, 4).join(", ")} 분야를 연구합니다.`;
+      lab.topics = profile.officialFields.slice();
+    });
+
+    const previousEnergyRankLabs = rankLabs;
+    rankLabs = function(query, profileQuery) {
+      if (dgistActiveDepartmentKey !== "energy") return previousEnergyRankLabs(query, profileQuery);
+      const actualQuery = String(profileQuery || query || "").trim();
+      return engine.search(actualQuery, { limit: 10 }).map((result) => {
+        const lab = data.labs.find((candidate) =>
+          candidate && candidate.professor === result.profile.professor && dgistLabInActiveDepartment(candidate)
+        );
+        if (!lab) return null;
+        const evidence = unique(result.evidence || []).slice(0, 5);
+        return {
+          lab,
+          score: result.score,
+          internalMatch: {
+            score: result.score,
+            positiveHits: evidence,
+            subfieldHits: evidence,
+            methodHits: [],
+            materialHits: [],
+            applicationHits: [],
+            weakHits: [],
+            negativeHits: [],
+            strongHitCount: Math.max(1, evidence.length),
+            specificity: Math.min(5, evidence.length),
+            blocked: false
+          },
+          _dgistIntentFirstSpecificHit: true,
+          _dgistIntentFirstFineHits: evidence,
+          _dgistEnergyCurated: true
+        };
+      }).filter(Boolean);
+    };
+
+    const previousEnergyEvidenceTerms = dgistInternalEvidenceTerms;
+    dgistInternalEvidenceTerms = function(lab, query) {
+      if (dgistActiveDepartmentKey === "energy" && lab && curatedByProfessor.has(lab.professor)) {
+        const terms = engine.evidenceForProfessor(query, lab.professor);
+        if (terms.length) return terms.slice(0, 5);
+        return curatedByProfessor.get(lab.professor).officialFields.slice(0, 3);
+      }
+      return previousEnergyEvidenceTerms(lab, query);
+    };
+
+    // 에너지공학과 직접 검색은 기존 넓은 자동 태그를 우회하고 전용 검색기가 처리합니다.
+    const previousEnergyDirectSearchRule = dgistDirectSearchRule;
+    dgistDirectSearchRule = function(query) {
+      if (dgistActiveDepartmentKey === "energy") return null;
+      return previousEnergyDirectSearchRule(query);
+    };
+
+    if (dgistActiveDepartmentKey === "energy") renderExamples();
+  })();
+  // DGIST_ENERGY_OFFICIAL_CURATED_SEARCH_PATCH_END
+
+
+
+  // DGIST_NEWBIOLOGY_OFFICIAL_CURATED_SEARCH_PATCH_START
+  // 뉴바이올로지학과에서만 공식 교수진·연구 클러스터 기반 정밀 검색을 사용합니다.
+  // 원본 data.js와 기존 로봇기계·전전컴·뇌과학·에너지 검색기는 유지합니다.
+  (function installDgistNewBiologyCuratedSearch() {
+    const engine = window.DGISTNewBiologySearchEngine;
+    if (!engine || !engine.db) return;
+
+    const department = dgistDepartmentCatalog.find((item) => item.key === "newbiology");
+    if (department) department.fields = (engine.db.fields || []).map((field) => field.slice());
+
+    Object.keys(engine.db.bannerMap || {}).forEach((fieldKey) => {
+      const field = (engine.db.fields || []).find((item) => item[2] === fieldKey);
+      dgistSubfieldSearchRules[fieldKey] = {
+        query: field ? field[1] : fieldKey,
+        professors: (engine.db.bannerMap || {})[fieldKey].slice(),
+        evidenceLabel: field ? field[0] : fieldKey
+      };
+    });
+
+    const curatedByProfessor = new Map(engine.profiles().map((profile) => [profile.professor, profile]));
+    data.labs.filter((lab) => normalize(lab.department || "").includes("뉴바이올로지학과")).forEach((lab) => {
+      const profile = curatedByProfessor.get(lab.professor);
+      if (!profile) return;
+      dgistLabNameOverrides[lab.id] = profile.labName;
+      lab.summary = `${formatProfessorName(lab.professor)}은 ${profile.officialFields.slice(0, 4).join(", ")} 분야를 연구합니다.`;
+      lab.topics = profile.officialFields.slice();
+    });
+
+    const previousRankLabs = rankLabs;
+    rankLabs = function(query, profileQuery) {
+      if (dgistActiveDepartmentKey !== "newbiology") return previousRankLabs(query, profileQuery);
+      const actualQuery = String(profileQuery || query || "").trim();
+      return engine.search(actualQuery, { limit: 10 }).map((result) => {
+        const lab = data.labs.find((candidate) => candidate && candidate.professor === result.profile.professor && dgistLabInActiveDepartment(candidate));
+        if (!lab) return null;
+        const evidence = unique(result.evidence || []).slice(0, 5);
+        return {lab,score:result.score,internalMatch:{score:result.score,positiveHits:evidence,subfieldHits:evidence,methodHits:[],materialHits:[],applicationHits:[],weakHits:[],negativeHits:[],strongHitCount:Math.max(1,evidence.length),specificity:Math.min(5,evidence.length),blocked:false},_dgistIntentFirstSpecificHit:true,_dgistIntentFirstFineHits:evidence,_dgistNewBiologyCurated:true};
+      }).filter(Boolean);
+    };
+
+    const previousEvidenceTerms = dgistInternalEvidenceTerms;
+    dgistInternalEvidenceTerms = function(lab, query) {
+      if (dgistActiveDepartmentKey === "newbiology" && lab && curatedByProfessor.has(lab.professor)) {
+        const terms = engine.evidenceForProfessor(query, lab.professor);
+        if (terms.length) return terms.slice(0, 5);
+        return curatedByProfessor.get(lab.professor).officialFields.slice(0, 3);
+      }
+      return previousEvidenceTerms(lab, query);
+    };
+
+    const previousDirectSearchRule = dgistDirectSearchRule;
+    dgistDirectSearchRule = function(query) {
+      if (dgistActiveDepartmentKey === "newbiology") return null;
+      return previousDirectSearchRule(query);
+    };
+
+    if (dgistActiveDepartmentKey === "newbiology") renderExamples();
+  })();
+  // DGIST_NEWBIOLOGY_OFFICIAL_CURATED_SEARCH_PATCH_END
+
+
+
+  // DGIST_PHYSCHEM_OFFICIAL_CURATED_SEARCH_PATCH_START
+  // 화학물리학과에서만 현재 공식 교수진과 연구 영역 기반 정밀 검색을 사용합니다.
+  // 원본 data.js는 유지하며 기존 로봇기계·전전컴·뇌과학·에너지·뉴바이올로지 정제 검색기도 유지합니다.
+  (function installDgistPhysChemCuratedSearch() {
+    const engine = window.DGISTPhysChemSearchEngine;
+    if (!engine || !engine.db) return;
+
+    const department = dgistDepartmentCatalog.find((item) => item.key === "physchem");
+    if (department) department.fields = (engine.db.fields || []).map((field) => field.slice());
+
+    Object.keys(engine.db.bannerMap || {}).forEach((fieldKey) => {
+      const field = (engine.db.fields || []).find((item) => item[2] === fieldKey);
+      dgistSubfieldSearchRules[fieldKey] = {
+        query: field ? field[1] : fieldKey,
+        professors: (engine.db.bannerMap || {})[fieldKey].slice(),
+        evidenceLabel: field ? field[0] : fieldKey
+      };
+    });
+
+    const curatedByProfessor = new Map(engine.profiles().map((profile) => [profile.professor, profile]));
+    const currentFaculty = new Set(curatedByProfessor.keys());
+
+    // 현재 공식 교수진에 있으나 원본 정적 DB에는 없는 교수 카드를 런타임에 보완합니다.
+    engine.profiles().forEach((profile) => {
+      const exists = data.labs.some((lab) => lab && lab.professor === profile.professor && normalize(lab.department || "").includes("화학물리학과"));
+      if (exists) return;
+      data.labs.push({
+        id: `physchem-curated-${normalize(profile.professorEn || profile.professor).replace(/[^a-z0-9가-힣]+/g, "-")}`,
+        deptKey: "physchem", department: "화학물리학과", category: "전임교원",
+        professor: profile.professor, professorEn: profile.professorEn || "", title: profile.title || "교수",
+        homepage: profile.homepage || (profile.sourceUrls || [])[0] || "",
+        labNameKo: profile.labName, labNameEn: "",
+        summary: `${formatProfessorName(profile.professor)}은 ${profile.officialFields.slice(0,4).join(", ")} 분야를 연구합니다.`,
+        topics: profile.officialFields.slice(), keywords: profile.directTerms.slice(), domainTags: [],
+        topKeywords: profile.directTerms.slice(), publications: [], publicationCount: 0,
+        pdfCourses: [], pdfInternships: [], sourceUrls: (profile.sourceUrls || []).slice(),
+        retrievalText: [profile.professor, profile.professorEn || "", profile.labName, ...profile.officialFields, ...profile.directTerms].join("\n")
+      });
+    });
+
+    // 현재 공식 교수진의 연구실명과 핵심 분야만 표시용 오버레이로 적용합니다.
+    data.labs.filter((lab) => normalize(lab.department || "").includes("화학물리학과")).forEach((lab) => {
+      const profile = curatedByProfessor.get(lab.professor);
+      if (!profile) return;
+      dgistLabNameOverrides[lab.id] = profile.labName;
+      lab.summary = `${formatProfessorName(lab.professor)}은 ${profile.officialFields.slice(0,4).join(", ")} 분야를 연구합니다.`;
+      lab.topics = profile.officialFields.slice();
+    });
+
+    const previousProfessorMatches = dgistDirectProfessorMatches;
+    dgistDirectProfessorMatches = function(query) {
+      const matches = previousProfessorMatches(query) || [];
+      if (dgistActiveDepartmentKey !== "physchem") return matches;
+      return matches.filter((item) => item && item.lab && currentFaculty.has(item.lab.professor));
+    };
+
+    const previousHasSpecificQuery = dgistIntentFirstHasSpecificQuery;
+    dgistIntentFirstHasSpecificQuery = function(query) {
+      if (dgistActiveDepartmentKey === "physchem" && engine.search(String(query || ""), { limit: 1 }).length) return true;
+      return previousHasSpecificQuery(query);
+    };
+
+    const previousRankLabs = rankLabs;
+    rankLabs = function(query, profileQuery) {
+      if (dgistActiveDepartmentKey !== "physchem") return previousRankLabs(query, profileQuery);
+      const actualQuery = String(profileQuery || query || "").trim();
+      return engine.search(actualQuery, { limit: 10 }).map((result) => {
+        const lab = data.labs.find((candidate) => candidate && candidate.professor === result.profile.professor && dgistLabInActiveDepartment(candidate));
+        if (!lab) return null;
+        const evidence = unique(result.evidence || []).slice(0,5);
+        return { lab, score: result.score, internalMatch: { score: result.score, positiveHits:evidence, subfieldHits:evidence, methodHits:[], materialHits:[], applicationHits:[], weakHits:[], negativeHits:[], strongHitCount:Math.max(1,evidence.length), specificity:Math.min(5,evidence.length), blocked:false }, _dgistIntentFirstSpecificHit:true, _dgistIntentFirstFineHits:evidence, _dgistPhysChemCurated:true };
+      }).filter(Boolean);
+    };
+
+    const previousEvidenceTerms = dgistInternalEvidenceTerms;
+    dgistInternalEvidenceTerms = function(lab, query) {
+      if (dgistActiveDepartmentKey === "physchem" && lab && curatedByProfessor.has(lab.professor)) {
+        const terms = engine.evidenceForProfessor(query, lab.professor);
+        if (terms.length) return terms.slice(0,5);
+        return curatedByProfessor.get(lab.professor).officialFields.slice(0,3);
+      }
+      return previousEvidenceTerms(lab, query);
+    };
+
+    const previousDirectSearchRule = dgistDirectSearchRule;
+    dgistDirectSearchRule = function(query) {
+      if (dgistActiveDepartmentKey === "physchem") return null;
+      return previousDirectSearchRule(query);
+    };
+
+    if (dgistActiveDepartmentKey === "physchem") renderExamples();
+  })();
+  // DGIST_PHYSCHEM_OFFICIAL_CURATED_SEARCH_PATCH_END
+
   // DGIST_FINAL_BETA_FIX_END
 
 })();
