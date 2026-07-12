@@ -1,0 +1,36 @@
+DGIST EECS OFFICIAL CURATED REBUILD
+Build date: 2026-07-12
+Base ZIP: LAB_MATCH_AI_DGIST_RME_Official_Curated_Final.zip
+
+ADDED
+- graduate/dgist/eecs-curated-db.js
+- graduate/dgist/eecs-search-engine.js
+- analysis/validate_dgist_eecs_search.js
+- analysis/audit_dgist_eecs_terms.js
+- DGIST_EECS_OFFICIAL_REBUILD_REPORT.md
+- DGIST_EECS_CURATED_DB_AUDIT.csv
+- DGIST_EECS_SEARCH_REGRESSION.csv
+- DGIST_EECS_SEARCH_REGRESSION_SUMMARY.json
+- DGIST_EECS_CRITICAL_QUERY_VALIDATION.csv
+- DGIST_EECS_CRITICAL_QUERY_VALIDATION_SUMMARY.json
+
+MODIFIED
+- graduate/dgist/app.js
+  * install official curated EECS overlay and dedicated ranker
+  * use current official faculty set at runtime
+  * preserve RME and all other departments
+- graduate/dgist/index.html
+  * load EECS curated DB and search engine before app.js
+- VERSION.txt
+
+UNCHANGED / HASH VERIFIED
+- graduate/dgist/data.js
+- analytics.js
+- graduate/dgist/robot-curated-db.js
+- graduate/dgist/robot-search-engine.js
+- graduate/field/app.js
+- graduate/snu/app.js
+- graduate/kaist/app.js
+- graduate/postech/app.js
+- intern/app.js
+- root index.html

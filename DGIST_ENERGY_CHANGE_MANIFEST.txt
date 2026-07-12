@@ -1,0 +1,7 @@
+DGIST 에너지공학과 재구축 변경 파일
+ADDED    graduate/dgist/energy-curated-db.js
+ADDED    graduate/dgist/energy-search-engine.js
+MODIFIED graduate/dgist/index.html
+MODIFIED graduate/dgist/app.js
+
+원본 data.js, analytics.js 및 다른 서비스 데이터 파일은 수정하지 않았습니다.

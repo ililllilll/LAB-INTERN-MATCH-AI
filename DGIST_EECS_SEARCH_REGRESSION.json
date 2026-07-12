@@ -1,0 +1,3285 @@
+[
+  {
+    "professor": "권혁준",
+    "term": "반도체 소자",
+    "rank": 1,
+    "count": 4,
+    "top3": "권혁준|장재은|최상현"
+  },
+  {
+    "professor": "권혁준",
+    "term": "반도체 공정",
+    "rank": 1,
+    "count": 4,
+    "top3": "권혁준|최상현|장재은"
+  },
+  {
+    "professor": "권혁준",
+    "term": "semiconductor device",
+    "rank": 1,
+    "count": 4,
+    "top3": "권혁준|최상현|장재은"
+  },
+  {
+    "professor": "권혁준",
+    "term": "semiconductor fabrication",
+    "rank": 1,
+    "count": 4,
+    "top3": "권혁준|최상현|장재은"
+  },
+  {
+    "professor": "권혁준",
+    "term": "레이저 반도체 공정",
+    "rank": 1,
+    "count": 4,
+    "top3": "권혁준|최상현|장재은"
+  },
+  {
+    "professor": "권혁준",
+    "term": "laser fabrication",
+    "rank": 1,
+    "count": 1,
+    "top3": "권혁준"
+  },
+  {
+    "professor": "권혁준",
+    "term": "산화물 반도체",
+    "rank": 1,
+    "count": 4,
+    "top3": "권혁준|최상현|장재은"
+  },
+  {
+    "professor": "권혁준",
+    "term": "oxide semiconductor",
+    "rank": 1,
+    "count": 1,
+    "top3": "권혁준"
+  },
+  {
+    "professor": "권혁준",
+    "term": "유연 전자소자",
+    "rank": 1,
+    "count": 2,
+    "top3": "권혁준|이병문"
+  },
+  {
+    "professor": "권혁준",
+    "term": "flexible electronics",
+    "rank": 1,
+    "count": 2,
+    "top3": "권혁준|이병문"
+  },
+  {
+    "professor": "권혁준",
+    "term": "AI 소자",
+    "rank": 1,
+    "count": 10,
+    "top3": "권혁준|목지수|박대희"
+  },
+  {
+    "professor": "권혁준",
+    "term": "ai device",
+    "rank": 1,
+    "count": 10,
+    "top3": "권혁준|목지수|박대희"
+  },
+  {
+    "professor": "길현재",
+    "term": "HCI",
+    "rank": 1,
+    "count": 2,
+    "top3": "길현재|김선준"
+  },
+  {
+    "professor": "길현재",
+    "term": "UX",
+    "rank": 1,
+    "count": 2,
+    "top3": "길현재|김선준"
+  },
+  {
+    "professor": "길현재",
+    "term": "사용자 경험",
+    "rank": 1,
+    "count": 2,
+    "top3": "길현재|김선준"
+  },
+  {
+    "professor": "길현재",
+    "term": "human computer interaction",
+    "rank": 1,
+    "count": 2,
+    "top3": "길현재|김선준"
+  },
+  {
+    "professor": "길현재",
+    "term": "user experience",
+    "rank": 1,
+    "count": 2,
+    "top3": "길현재|김선준"
+  },
+  {
+    "professor": "길현재",
+    "term": "VR",
+    "rank": 1,
+    "count": 2,
+    "top3": "길현재|김선준"
+  },
+  {
+    "professor": "길현재",
+    "term": "AR",
+    "rank": 1,
+    "count": 2,
+    "top3": "길현재|김선준"
+  },
+  {
+    "professor": "길현재",
+    "term": "가상현실",
+    "rank": 1,
+    "count": 2,
+    "top3": "길현재|김선준"
+  },
+  {
+    "professor": "길현재",
+    "term": "증강현실",
+    "rank": 1,
+    "count": 2,
+    "top3": "길현재|김선준"
+  },
+  {
+    "professor": "길현재",
+    "term": "멀티센서리 인터랙션",
+    "rank": 1,
+    "count": 1,
+    "top3": "길현재"
+  },
+  {
+    "professor": "길현재",
+    "term": "multisensory interaction",
+    "rank": 1,
+    "count": 1,
+    "top3": "길현재"
+  },
+  {
+    "professor": "길현재",
+    "term": "햅틱",
+    "rank": 1,
+    "count": 2,
+    "top3": "길현재|김선준"
+  },
+  {
+    "professor": "길현재",
+    "term": "haptics",
+    "rank": 1,
+    "count": 2,
+    "top3": "길현재|김선준"
+  },
+  {
+    "professor": "김가인",
+    "term": "회로설계",
+    "rank": 2,
+    "count": 5,
+    "top3": "이정협|김가인|송민영"
+  },
+  {
+    "professor": "김가인",
+    "term": "아날로그 회로",
+    "rank": 2,
+    "count": 5,
+    "top3": "이정협|김가인|송민영"
+  },
+  {
+    "professor": "김가인",
+    "term": "analog circuit",
+    "rank": 1,
+    "count": 5,
+    "top3": "김가인|송민영|이정협"
+  },
+  {
+    "professor": "김가인",
+    "term": "혼성신호 회로",
+    "rank": 1,
+    "count": 5,
+    "top3": "김가인|이정협|윤종혁"
+  },
+  {
+    "professor": "김가인",
+    "term": "mixed signal circuit",
+    "rank": 1,
+    "count": 5,
+    "top3": "김가인|윤종혁|송민영"
+  },
+  {
+    "professor": "김가인",
+    "term": "집적회로",
+    "rank": 3,
+    "count": 5,
+    "top3": "윤종혁|이정협|김가인"
+  },
+  {
+    "professor": "김가인",
+    "term": "IC design",
+    "rank": 2,
+    "count": 5,
+    "top3": "이정협|김가인|송민영"
+  },
+  {
+    "professor": "김가인",
+    "term": "통신 회로",
+    "rank": 1,
+    "count": 6,
+    "top3": "김가인|최지웅|서대원"
+  },
+  {
+    "professor": "김가인",
+    "term": "communication circuit",
+    "rank": 1,
+    "count": 2,
+    "top3": "김가인|이정협"
+  },
+  {
+    "professor": "김가인",
+    "term": "고속 유선 트랜시버",
+    "rank": 1,
+    "count": 1,
+    "top3": "김가인"
+  },
+  {
+    "professor": "김가인",
+    "term": "wireline transceiver",
+    "rank": 1,
+    "count": 1,
+    "top3": "김가인"
+  },
+  {
+    "professor": "김가인",
+    "term": "SerDes",
+    "rank": 1,
+    "count": 5,
+    "top3": "김가인|이정협|송민영"
+  },
+  {
+    "professor": "김가인",
+    "term": "ADC",
+    "rank": 2,
+    "count": 5,
+    "top3": "이정협|김가인|송민영"
+  },
+  {
+    "professor": "김가인",
+    "term": "멀티칩 하드웨어 가속기",
+    "rank": 1,
+    "count": 1,
+    "top3": "김가인"
+  },
+  {
+    "professor": "김가인",
+    "term": "hardware accelerator",
+    "rank": 1,
+    "count": 1,
+    "top3": "김가인"
+  },
+  {
+    "professor": "김경대",
+    "term": "자율시스템",
+    "rank": 1,
+    "count": 5,
+    "top3": "김경대|박대희|김백규"
+  },
+  {
+    "professor": "김경대",
+    "term": "autonomous system",
+    "rank": 1,
+    "count": 5,
+    "top3": "김경대|박대희|은용순"
+  },
+  {
+    "professor": "김경대",
+    "term": "자율 시스템 계획",
+    "rank": 1,
+    "count": 5,
+    "top3": "김경대|박대희|은용순"
+  },
+  {
+    "professor": "김경대",
+    "term": "planning of autonomous systems",
+    "rank": 1,
+    "count": 5,
+    "top3": "김경대|박대희|은용순"
+  },
+  {
+    "professor": "김경대",
+    "term": "자율 시스템 제어",
+    "rank": 1,
+    "count": 5,
+    "top3": "김경대|은용순|박경준"
+  },
+  {
+    "professor": "김경대",
+    "term": "control of autonomous systems",
+    "rank": 1,
+    "count": 5,
+    "top3": "김경대|박대희|은용순"
+  },
+  {
+    "professor": "김경대",
+    "term": "경로 계획",
+    "rank": 1,
+    "count": 1,
+    "top3": "김경대"
+  },
+  {
+    "professor": "김경대",
+    "term": "path planning",
+    "rank": 1,
+    "count": 5,
+    "top3": "김경대|박대희|은용순"
+  },
+  {
+    "professor": "김경대",
+    "term": "의사결정",
+    "rank": 1,
+    "count": 2,
+    "top3": "김경대|박대희"
+  },
+  {
+    "professor": "김경대",
+    "term": "decision making",
+    "rank": 1,
+    "count": 2,
+    "top3": "김경대|박대희"
+  },
+  {
+    "professor": "김기섭",
+    "term": "AI for software engineering",
+    "rank": 1,
+    "count": 2,
+    "top3": "김기섭|전민석"
+  },
+  {
+    "professor": "김기섭",
+    "term": "소프트웨어공학 AI",
+    "rank": 1,
+    "count": 2,
+    "top3": "김기섭|전민석"
+  },
+  {
+    "professor": "김기섭",
+    "term": "software engineering for AI",
+    "rank": 1,
+    "count": 2,
+    "top3": "김기섭|전민석"
+  },
+  {
+    "professor": "김기섭",
+    "term": "AI 소프트웨어공학",
+    "rank": 1,
+    "count": 2,
+    "top3": "김기섭|전민석"
+  },
+  {
+    "professor": "김기섭",
+    "term": "멀티에이전트 시스템",
+    "rank": 1,
+    "count": 1,
+    "top3": "김기섭"
+  },
+  {
+    "professor": "김기섭",
+    "term": "multi agent systems",
+    "rank": 1,
+    "count": 1,
+    "top3": "김기섭"
+  },
+  {
+    "professor": "김기섭",
+    "term": "소프트웨어 분석",
+    "rank": 1,
+    "count": 2,
+    "top3": "김기섭|전민석"
+  },
+  {
+    "professor": "김기섭",
+    "term": "software analytics",
+    "rank": 1,
+    "count": 1,
+    "top3": "김기섭"
+  },
+  {
+    "professor": "김기섭",
+    "term": "LLM 소프트웨어",
+    "rank": 1,
+    "count": 7,
+    "top3": "김기섭|목지수|박대희"
+  },
+  {
+    "professor": "김기섭",
+    "term": "대규모 언어모델 소프트웨어",
+    "rank": 1,
+    "count": 7,
+    "top3": "김기섭|목지수|박대희"
+  },
+  {
+    "professor": "김백규",
+    "term": "임베디드",
+    "rank": 1,
+    "count": 5,
+    "top3": "김백규|좌훈승|박경준"
+  },
+  {
+    "professor": "김백규",
+    "term": "임베디드 소프트웨어",
+    "rank": 1,
+    "count": 5,
+    "top3": "김백규|좌훈승|박경준"
+  },
+  {
+    "professor": "김백규",
+    "term": "embedded software",
+    "rank": 1,
+    "count": 5,
+    "top3": "김백규|박경준|좌훈승"
+  },
+  {
+    "professor": "김백규",
+    "term": "IoT",
+    "rank": 1,
+    "count": 5,
+    "top3": "김백규|송민영|박경준"
+  },
+  {
+    "professor": "김백규",
+    "term": "사물인터넷",
+    "rank": 1,
+    "count": 5,
+    "top3": "김백규|송민영|박경준"
+  },
+  {
+    "professor": "김백규",
+    "term": "internet of things",
+    "rank": 1,
+    "count": 5,
+    "top3": "김백규|박경준|좌훈승"
+  },
+  {
+    "professor": "김백규",
+    "term": "정형기법",
+    "rank": 1,
+    "count": 2,
+    "top3": "김백규|김윤승"
+  },
+  {
+    "professor": "김백규",
+    "term": "formal method",
+    "rank": 1,
+    "count": 2,
+    "top3": "김백규|김윤승"
+  },
+  {
+    "professor": "김백규",
+    "term": "소프트웨어 검증",
+    "rank": 1,
+    "count": 2,
+    "top3": "김백규|김윤승"
+  },
+  {
+    "professor": "김백규",
+    "term": "software verification",
+    "rank": 1,
+    "count": 1,
+    "top3": "김백규"
+  },
+  {
+    "professor": "김백규",
+    "term": "사이버물리시스템",
+    "rank": 2,
+    "count": 5,
+    "top3": "박경준|김백규|좌훈승"
+  },
+  {
+    "professor": "김백규",
+    "term": "cyber physical system",
+    "rank": 1,
+    "count": 5,
+    "top3": "김백규|박경준|좌훈승"
+  },
+  {
+    "professor": "김백규",
+    "term": "CPS",
+    "rank": 1,
+    "count": 5,
+    "top3": "김백규|박경준|좌훈승"
+  },
+  {
+    "professor": "김백규",
+    "term": "자율시스템",
+    "rank": 3,
+    "count": 5,
+    "top3": "김경대|박대희|김백규"
+  },
+  {
+    "professor": "김선준",
+    "term": "HCI",
+    "rank": 2,
+    "count": 2,
+    "top3": "길현재|김선준"
+  },
+  {
+    "professor": "김선준",
+    "term": "human computer interaction",
+    "rank": 2,
+    "count": 2,
+    "top3": "길현재|김선준"
+  },
+  {
+    "professor": "김선준",
+    "term": "스마트 입력장치",
+    "rank": 1,
+    "count": 2,
+    "top3": "김선준|길현재"
+  },
+  {
+    "professor": "김선준",
+    "term": "smart input device",
+    "rank": 1,
+    "count": 1,
+    "top3": "김선준"
+  },
+  {
+    "professor": "김선준",
+    "term": "텍스트 입력",
+    "rank": 1,
+    "count": 2,
+    "top3": "김선준|길현재"
+  },
+  {
+    "professor": "김선준",
+    "term": "text entry",
+    "rank": 1,
+    "count": 1,
+    "top3": "김선준"
+  },
+  {
+    "professor": "김선준",
+    "term": "터치스크린",
+    "rank": 1,
+    "count": 1,
+    "top3": "김선준"
+  },
+  {
+    "professor": "김선준",
+    "term": "touch screen",
+    "rank": 1,
+    "count": 1,
+    "top3": "김선준"
+  },
+  {
+    "professor": "김선준",
+    "term": "포인팅",
+    "rank": 1,
+    "count": 1,
+    "top3": "김선준"
+  },
+  {
+    "professor": "김선준",
+    "term": "pointing",
+    "rank": 1,
+    "count": 1,
+    "top3": "김선준"
+  },
+  {
+    "professor": "김선준",
+    "term": "인터랙션 디자인",
+    "rank": 1,
+    "count": 1,
+    "top3": "김선준"
+  },
+  {
+    "professor": "김영식",
+    "term": "정보보안",
+    "rank": 1,
+    "count": 5,
+    "top3": "김영식|최원석|신동훈"
+  },
+  {
+    "professor": "김영식",
+    "term": "보안",
+    "rank": 1,
+    "count": 5,
+    "top3": "김영식|신동훈|최원석"
+  },
+  {
+    "professor": "김영식",
+    "term": "암호",
+    "rank": 2,
+    "count": 5,
+    "top3": "최원석|김영식|신동훈"
+  },
+  {
+    "professor": "김영식",
+    "term": "cryptography",
+    "rank": 1,
+    "count": 5,
+    "top3": "김영식|최원석|신동훈"
+  },
+  {
+    "professor": "김영식",
+    "term": "응용암호",
+    "rank": 1,
+    "count": 5,
+    "top3": "김영식|최원석|신동훈"
+  },
+  {
+    "professor": "김영식",
+    "term": "applied cryptography",
+    "rank": 1,
+    "count": 5,
+    "top3": "김영식|최원석|신동훈"
+  },
+  {
+    "professor": "김영식",
+    "term": "양자내성암호",
+    "rank": 2,
+    "count": 5,
+    "top3": "최원석|김영식|신동훈"
+  },
+  {
+    "professor": "김영식",
+    "term": "post quantum cryptography",
+    "rank": 2,
+    "count": 5,
+    "top3": "최원석|김영식|신동훈"
+  },
+  {
+    "professor": "김영식",
+    "term": "AI 보안",
+    "rank": 1,
+    "count": 1,
+    "top3": "김영식"
+  },
+  {
+    "professor": "김영식",
+    "term": "ai security",
+    "rank": 1,
+    "count": 1,
+    "top3": "김영식"
+  },
+  {
+    "professor": "김영식",
+    "term": "프라이버시",
+    "rank": 1,
+    "count": 5,
+    "top3": "김영식|최원석|신동훈"
+  },
+  {
+    "professor": "김영식",
+    "term": "privacy enhancing technology",
+    "rank": 1,
+    "count": 5,
+    "top3": "김영식|최원석|신동훈"
+  },
+  {
+    "professor": "김영식",
+    "term": "동형암호",
+    "rank": 1,
+    "count": 5,
+    "top3": "김영식|최원석|신동훈"
+  },
+  {
+    "professor": "김영식",
+    "term": "homomorphic encryption",
+    "rank": 1,
+    "count": 5,
+    "top3": "김영식|최원석|신동훈"
+  },
+  {
+    "professor": "김영식",
+    "term": "차량 보안",
+    "rank": 1,
+    "count": 5,
+    "top3": "김영식|최지웅|최원석"
+  },
+  {
+    "professor": "김영식",
+    "term": "vehicular security",
+    "rank": 1,
+    "count": 5,
+    "top3": "김영식|최지웅|신동훈"
+  },
+  {
+    "professor": "김윤승",
+    "term": "정형검증",
+    "rank": 1,
+    "count": 2,
+    "top3": "김윤승|김백규"
+  },
+  {
+    "professor": "김윤승",
+    "term": "formal verification",
+    "rank": 1,
+    "count": 2,
+    "top3": "김윤승|김백규"
+  },
+  {
+    "professor": "김윤승",
+    "term": "대화형 정리증명",
+    "rank": 1,
+    "count": 2,
+    "top3": "김윤승|김백규"
+  },
+  {
+    "professor": "김윤승",
+    "term": "interactive theorem proving",
+    "rank": 1,
+    "count": 2,
+    "top3": "김윤승|김백규"
+  },
+  {
+    "professor": "김윤승",
+    "term": "실시간 분산시스템",
+    "rank": 1,
+    "count": 8,
+    "top3": "김윤승|좌훈승|소진현"
+  },
+  {
+    "professor": "김윤승",
+    "term": "real time distributed systems",
+    "rank": 1,
+    "count": 8,
+    "top3": "김윤승|좌훈승|소진현"
+  },
+  {
+    "professor": "김윤승",
+    "term": "프로그래밍 언어",
+    "rank": 2,
+    "count": 5,
+    "top3": "전민석|김윤승|이용우"
+  },
+  {
+    "professor": "김윤승",
+    "term": "programming language",
+    "rank": 2,
+    "count": 5,
+    "top3": "전민석|김윤승|이용우"
+  },
+  {
+    "professor": "김윤승",
+    "term": "무결점 시스템",
+    "rank": 1,
+    "count": 1,
+    "top3": "김윤승"
+  },
+  {
+    "professor": "목지수",
+    "term": "LLM",
+    "rank": 1,
+    "count": 7,
+    "top3": "목지수|김기섭|박대희"
+  },
+  {
+    "professor": "목지수",
+    "term": "대규모 언어모델",
+    "rank": 1,
+    "count": 7,
+    "top3": "목지수|김기섭|박대희"
+  },
+  {
+    "professor": "목지수",
+    "term": "large language model",
+    "rank": 1,
+    "count": 7,
+    "top3": "목지수|배인환|박대희"
+  },
+  {
+    "professor": "목지수",
+    "term": "멀티모달",
+    "rank": 1,
+    "count": 7,
+    "top3": "목지수|윤성훈|박대희"
+  },
+  {
+    "professor": "목지수",
+    "term": "multimodal modeling",
+    "rank": 1,
+    "count": 7,
+    "top3": "목지수|박대희|김기섭"
+  },
+  {
+    "professor": "목지수",
+    "term": "멀티모달 LLM",
+    "rank": 1,
+    "count": 7,
+    "top3": "목지수|박대희|김기섭"
+  },
+  {
+    "professor": "목지수",
+    "term": "multimodal large language model",
+    "rank": 1,
+    "count": 7,
+    "top3": "목지수|박대희|배인환"
+  },
+  {
+    "professor": "목지수",
+    "term": "AI 에이전트",
+    "rank": 1,
+    "count": 10,
+    "top3": "목지수|박대희|배인환"
+  },
+  {
+    "professor": "목지수",
+    "term": "ai agent",
+    "rank": 1,
+    "count": 10,
+    "top3": "목지수|박대희|배인환"
+  },
+  {
+    "professor": "목지수",
+    "term": "비전 언어 행동 모델",
+    "rank": 1,
+    "count": 2,
+    "top3": "목지수|배인환"
+  },
+  {
+    "professor": "목지수",
+    "term": "vision language action",
+    "rank": 1,
+    "count": 1,
+    "top3": "목지수"
+  },
+  {
+    "professor": "목지수",
+    "term": "신뢰가능 AI",
+    "rank": 1,
+    "count": 10,
+    "top3": "목지수|박대희|소진현"
+  },
+  {
+    "professor": "목지수",
+    "term": "trustworthy AI",
+    "rank": 1,
+    "count": 10,
+    "top3": "목지수|박대희|배인환"
+  },
+  {
+    "professor": "박경준",
+    "term": "사이버물리시스템",
+    "rank": 1,
+    "count": 5,
+    "top3": "박경준|김백규|좌훈승"
+  },
+  {
+    "professor": "박경준",
+    "term": "cyber physical system",
+    "rank": 2,
+    "count": 5,
+    "top3": "김백규|박경준|좌훈승"
+  },
+  {
+    "professor": "박경준",
+    "term": "CPS",
+    "rank": 2,
+    "count": 5,
+    "top3": "김백규|박경준|좌훈승"
+  },
+  {
+    "professor": "박경준",
+    "term": "ROS",
+    "rank": 1,
+    "count": 5,
+    "top3": "박경준|김백규|좌훈승"
+  },
+  {
+    "professor": "박경준",
+    "term": "robot operating system",
+    "rank": 1,
+    "count": 4,
+    "top3": "박경준|좌훈승|김백규"
+  },
+  {
+    "professor": "박경준",
+    "term": "스마트 제조",
+    "rank": 1,
+    "count": 5,
+    "top3": "박경준|김백규|좌훈승"
+  },
+  {
+    "professor": "박경준",
+    "term": "smart manufacturing",
+    "rank": 1,
+    "count": 1,
+    "top3": "박경준"
+  },
+  {
+    "professor": "박경준",
+    "term": "네트워크 제어 컴퓨팅 동시설계",
+    "rank": 1,
+    "count": 8,
+    "top3": "박경준|서대원|최지웅"
+  },
+  {
+    "professor": "박경준",
+    "term": "사이버 물리 융합보안",
+    "rank": 1,
+    "count": 5,
+    "top3": "박경준|김영식|최원석"
+  },
+  {
+    "professor": "박대희",
+    "term": "의사결정 AI",
+    "rank": 1,
+    "count": 10,
+    "top3": "박대희|목지수|배인환"
+  },
+  {
+    "professor": "박대희",
+    "term": "decision making AI",
+    "rank": 1,
+    "count": 10,
+    "top3": "박대희|목지수|배인환"
+  },
+  {
+    "professor": "박대희",
+    "term": "멀티모달 학습",
+    "rank": 1,
+    "count": 7,
+    "top3": "박대희|목지수|윤성훈"
+  },
+  {
+    "professor": "박대희",
+    "term": "multimodal learning",
+    "rank": 1,
+    "count": 7,
+    "top3": "박대희|목지수|김기섭"
+  },
+  {
+    "professor": "박대희",
+    "term": "컴퓨터비전",
+    "rank": 2,
+    "count": 2,
+    "top3": "배인환|박대희"
+  },
+  {
+    "professor": "박대희",
+    "term": "computer vision",
+    "rank": 2,
+    "count": 2,
+    "top3": "배인환|박대희"
+  },
+  {
+    "professor": "박대희",
+    "term": "자율시스템",
+    "rank": 2,
+    "count": 5,
+    "top3": "김경대|박대희|김백규"
+  },
+  {
+    "professor": "박대희",
+    "term": "autonomous systems",
+    "rank": 1,
+    "count": 5,
+    "top3": "박대희|김경대|은용순"
+  },
+  {
+    "professor": "박대희",
+    "term": "예측 계획",
+    "rank": 1,
+    "count": 1,
+    "top3": "박대희"
+  },
+  {
+    "professor": "박대희",
+    "term": "prediction planning",
+    "rank": 1,
+    "count": 1,
+    "top3": "박대희"
+  },
+  {
+    "professor": "배인환",
+    "term": "컴퓨터비전",
+    "rank": 1,
+    "count": 2,
+    "top3": "배인환|박대희"
+  },
+  {
+    "professor": "배인환",
+    "term": "computer vision",
+    "rank": 1,
+    "count": 2,
+    "top3": "배인환|박대희"
+  },
+  {
+    "professor": "배인환",
+    "term": "생성형 AI",
+    "rank": 1,
+    "count": 7,
+    "top3": "배인환|목지수|박대희"
+  },
+  {
+    "professor": "배인환",
+    "term": "generative AI",
+    "rank": 1,
+    "count": 7,
+    "top3": "배인환|목지수|박대희"
+  },
+  {
+    "professor": "배인환",
+    "term": "확산 모델",
+    "rank": 1,
+    "count": 7,
+    "top3": "배인환|목지수|김기섭"
+  },
+  {
+    "professor": "배인환",
+    "term": "diffusion model",
+    "rank": 1,
+    "count": 7,
+    "top3": "배인환|목지수|박대희"
+  },
+  {
+    "professor": "배인환",
+    "term": "3D 장면 이해",
+    "rank": 1,
+    "count": 2,
+    "top3": "배인환|박대희"
+  },
+  {
+    "professor": "배인환",
+    "term": "3d scene understanding",
+    "rank": 1,
+    "count": 2,
+    "top3": "배인환|박대희"
+  },
+  {
+    "professor": "배인환",
+    "term": "시각 언어 모델",
+    "rank": 1,
+    "count": 1,
+    "top3": "배인환"
+  },
+  {
+    "professor": "배인환",
+    "term": "vision language model",
+    "rank": 1,
+    "count": 7,
+    "top3": "배인환|목지수|박대희"
+  },
+  {
+    "professor": "배인환",
+    "term": "Physical AI",
+    "rank": 1,
+    "count": 10,
+    "top3": "배인환|윤성훈|목지수"
+  },
+  {
+    "professor": "배인환",
+    "term": "궤적 예측",
+    "rank": 1,
+    "count": 1,
+    "top3": "배인환"
+  },
+  {
+    "professor": "배인환",
+    "term": "trajectory",
+    "rank": 1,
+    "count": 1,
+    "top3": "배인환"
+  },
+  {
+    "professor": "서대원",
+    "term": "무선통신",
+    "rank": 1,
+    "count": 6,
+    "top3": "서대원|최지웅|송민영"
+  },
+  {
+    "professor": "서대원",
+    "term": "wireless communications",
+    "rank": 1,
+    "count": 6,
+    "top3": "서대원|최지웅|송민영"
+  },
+  {
+    "professor": "서대원",
+    "term": "정보이론",
+    "rank": 1,
+    "count": 6,
+    "top3": "서대원|최지웅|송민영"
+  },
+  {
+    "professor": "서대원",
+    "term": "information theory",
+    "rank": 1,
+    "count": 6,
+    "top3": "서대원|최지웅|신동훈"
+  },
+  {
+    "professor": "서대원",
+    "term": "머신러닝 이론",
+    "rank": 1,
+    "count": 10,
+    "top3": "서대원|목지수|박대희"
+  },
+  {
+    "professor": "서대원",
+    "term": "machine learning theory",
+    "rank": 1,
+    "count": 10,
+    "top3": "서대원|박대희|목지수"
+  },
+  {
+    "professor": "서대원",
+    "term": "네트워크 학습",
+    "rank": 1,
+    "count": 6,
+    "top3": "서대원|최지웅|신동훈"
+  },
+  {
+    "professor": "서대원",
+    "term": "learning over networks",
+    "rank": 1,
+    "count": 6,
+    "top3": "서대원|최지웅|송민영"
+  },
+  {
+    "professor": "소진현",
+    "term": "분산 AI",
+    "rank": 1,
+    "count": 10,
+    "top3": "소진현|목지수|박대희"
+  },
+  {
+    "professor": "소진현",
+    "term": "distributed AI",
+    "rank": 1,
+    "count": 10,
+    "top3": "소진현|목지수|박대희"
+  },
+  {
+    "professor": "소진현",
+    "term": "연합학습",
+    "rank": 1,
+    "count": 10,
+    "top3": "소진현|목지수|박대희"
+  },
+  {
+    "professor": "소진현",
+    "term": "federated learning",
+    "rank": 1,
+    "count": 10,
+    "top3": "소진현|박대희|목지수"
+  },
+  {
+    "professor": "소진현",
+    "term": "온디바이스 AI",
+    "rank": 1,
+    "count": 10,
+    "top3": "소진현|목지수|박대희"
+  },
+  {
+    "professor": "소진현",
+    "term": "on device AI",
+    "rank": 1,
+    "count": 10,
+    "top3": "소진현|목지수|박대희"
+  },
+  {
+    "professor": "소진현",
+    "term": "프라이버시 보존 머신러닝",
+    "rank": 1,
+    "count": 1,
+    "top3": "소진현"
+  },
+  {
+    "professor": "소진현",
+    "term": "privacy preserving machine learning",
+    "rank": 1,
+    "count": 1,
+    "top3": "소진현"
+  },
+  {
+    "professor": "소진현",
+    "term": "협업학습",
+    "rank": 1,
+    "count": 1,
+    "top3": "소진현"
+  },
+  {
+    "professor": "소진현",
+    "term": "collaborative learning",
+    "rank": 1,
+    "count": 1,
+    "top3": "소진현"
+  },
+  {
+    "professor": "소진현",
+    "term": "멀티모달 AI",
+    "rank": 1,
+    "count": 7,
+    "top3": "소진현|윤성훈|목지수"
+  },
+  {
+    "professor": "송민영",
+    "term": "회로설계",
+    "rank": 3,
+    "count": 5,
+    "top3": "이정협|김가인|송민영"
+  },
+  {
+    "professor": "송민영",
+    "term": "아날로그 회로",
+    "rank": 3,
+    "count": 5,
+    "top3": "이정협|김가인|송민영"
+  },
+  {
+    "professor": "송민영",
+    "term": "analog circuit",
+    "rank": 2,
+    "count": 5,
+    "top3": "김가인|송민영|이정협"
+  },
+  {
+    "professor": "송민영",
+    "term": "혼성신호",
+    "rank": 1,
+    "count": 5,
+    "top3": "송민영|이정협|김가인"
+  },
+  {
+    "professor": "송민영",
+    "term": "mixed signal",
+    "rank": 1,
+    "count": 5,
+    "top3": "송민영|이정협|김가인"
+  },
+  {
+    "professor": "송민영",
+    "term": "RFIC",
+    "rank": 1,
+    "count": 5,
+    "top3": "송민영|이정협|김가인"
+  },
+  {
+    "professor": "송민영",
+    "term": "RF IC",
+    "rank": 1,
+    "count": 1,
+    "top3": "송민영"
+  },
+  {
+    "professor": "송민영",
+    "term": "무선 집적회로",
+    "rank": 1,
+    "count": 5,
+    "top3": "송민영|이정협|김가인"
+  },
+  {
+    "professor": "송민영",
+    "term": "wireless IC",
+    "rank": 1,
+    "count": 1,
+    "top3": "송민영"
+  },
+  {
+    "professor": "송민영",
+    "term": "저전력 무선센서",
+    "rank": 1,
+    "count": 1,
+    "top3": "송민영"
+  },
+  {
+    "professor": "송민영",
+    "term": "low power wireless sensor",
+    "rank": 1,
+    "count": 3,
+    "top3": "송민영|이경태|이정협"
+  },
+  {
+    "professor": "송민영",
+    "term": "IoT",
+    "rank": 2,
+    "count": 5,
+    "top3": "김백규|송민영|박경준"
+  },
+  {
+    "professor": "송민영",
+    "term": "사물인터넷",
+    "rank": 2,
+    "count": 5,
+    "top3": "김백규|송민영|박경준"
+  },
+  {
+    "professor": "송민영",
+    "term": "ultra wideband",
+    "rank": 1,
+    "count": 1,
+    "top3": "송민영"
+  },
+  {
+    "professor": "송민영",
+    "term": "UWB",
+    "rank": 1,
+    "count": 1,
+    "top3": "송민영"
+  },
+  {
+    "professor": "송민영",
+    "term": "Cryo CMOS",
+    "rank": 1,
+    "count": 1,
+    "top3": "송민영"
+  },
+  {
+    "professor": "송민영",
+    "term": "양자 센싱 회로",
+    "rank": 1,
+    "count": 1,
+    "top3": "송민영"
+  },
+  {
+    "professor": "신동훈",
+    "term": "계산이론",
+    "rank": 1,
+    "count": 1,
+    "top3": "신동훈"
+  },
+  {
+    "professor": "신동훈",
+    "term": "theory of computation",
+    "rank": 1,
+    "count": 1,
+    "top3": "신동훈"
+  },
+  {
+    "professor": "신동훈",
+    "term": "계산기하",
+    "rank": 1,
+    "count": 1,
+    "top3": "신동훈"
+  },
+  {
+    "professor": "신동훈",
+    "term": "computational geometry",
+    "rank": 1,
+    "count": 1,
+    "top3": "신동훈"
+  },
+  {
+    "professor": "신동훈",
+    "term": "그래프이론",
+    "rank": 1,
+    "count": 1,
+    "top3": "신동훈"
+  },
+  {
+    "professor": "신동훈",
+    "term": "graph theory",
+    "rank": 1,
+    "count": 1,
+    "top3": "신동훈"
+  },
+  {
+    "professor": "신동훈",
+    "term": "무선센서네트워크",
+    "rank": 1,
+    "count": 6,
+    "top3": "신동훈|최지웅|서대원"
+  },
+  {
+    "professor": "신동훈",
+    "term": "wireless sensor network",
+    "rank": 1,
+    "count": 6,
+    "top3": "신동훈|서대원|송민영"
+  },
+  {
+    "professor": "신동훈",
+    "term": "주요 인프라 보안",
+    "rank": 1,
+    "count": 5,
+    "top3": "신동훈|김영식|최원석"
+  },
+  {
+    "professor": "신동훈",
+    "term": "critical infrastructure security",
+    "rank": 1,
+    "count": 5,
+    "top3": "신동훈|김영식|최원석"
+  },
+  {
+    "professor": "신동훈",
+    "term": "ICS 보안",
+    "rank": 1,
+    "count": 5,
+    "top3": "신동훈|김영식|최원석"
+  },
+  {
+    "professor": "신동훈",
+    "term": "산업제어시스템 보안",
+    "rank": 1,
+    "count": 2,
+    "top3": "신동훈|박경준"
+  },
+  {
+    "professor": "윤성훈",
+    "term": "멀티모달 AI",
+    "rank": 2,
+    "count": 7,
+    "top3": "소진현|윤성훈|목지수"
+  },
+  {
+    "professor": "윤성훈",
+    "term": "multimodal AI",
+    "rank": 1,
+    "count": 7,
+    "top3": "윤성훈|목지수|박대희"
+  },
+  {
+    "professor": "윤성훈",
+    "term": "의료 AI",
+    "rank": 1,
+    "count": 4,
+    "top3": "윤성훈|장진호|황재윤"
+  },
+  {
+    "professor": "윤성훈",
+    "term": "medical AI",
+    "rank": 1,
+    "count": 4,
+    "top3": "윤성훈|장진호|황재윤"
+  },
+  {
+    "professor": "윤성훈",
+    "term": "Physical AI",
+    "rank": 2,
+    "count": 10,
+    "top3": "배인환|윤성훈|목지수"
+  },
+  {
+    "professor": "윤성훈",
+    "term": "robotics AI",
+    "rank": 1,
+    "count": 10,
+    "top3": "윤성훈|목지수|박대희"
+  },
+  {
+    "professor": "윤성훈",
+    "term": "로봇 AI",
+    "rank": 1,
+    "count": 10,
+    "top3": "윤성훈|박대희|목지수"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "메모리 반도체",
+    "rank": 2,
+    "count": 4,
+    "top3": "최상현|윤종혁|권혁준"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "인메모리 컴퓨팅",
+    "rank": 2,
+    "count": 3,
+    "top3": "최상현|윤종혁|장재은"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "in memory computing",
+    "rank": 2,
+    "count": 3,
+    "top3": "최상현|윤종혁|장재은"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "processing in memory",
+    "rank": 1,
+    "count": 3,
+    "top3": "윤종혁|최상현|장재은"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "PIM",
+    "rank": 1,
+    "count": 3,
+    "top3": "윤종혁|최상현|장재은"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "뉴로모픽",
+    "rank": 2,
+    "count": 3,
+    "top3": "최상현|윤종혁|장재은"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "neuromorphic",
+    "rank": 1,
+    "count": 3,
+    "top3": "윤종혁|최상현|장재은"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "AI 집적회로",
+    "rank": 1,
+    "count": 1,
+    "top3": "윤종혁"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "AI integrated IC",
+    "rank": 1,
+    "count": 10,
+    "top3": "윤종혁|목지수|박대희"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "집적회로",
+    "rank": 1,
+    "count": 5,
+    "top3": "윤종혁|이정협|김가인"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "회로설계",
+    "rank": 4,
+    "count": 5,
+    "top3": "이정협|김가인|송민영"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "혼성신호 회로",
+    "rank": 3,
+    "count": 5,
+    "top3": "김가인|이정협|윤종혁"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "mixed signal circuit",
+    "rank": 2,
+    "count": 5,
+    "top3": "김가인|윤종혁|송민영"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "엣지 지능",
+    "rank": 1,
+    "count": 2,
+    "top3": "윤종혁|소진현"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "edge intelligence",
+    "rank": 1,
+    "count": 1,
+    "top3": "윤종혁"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "고속 트랜시버",
+    "rank": 1,
+    "count": 2,
+    "top3": "윤종혁|김가인"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "transceiver IC",
+    "rank": 1,
+    "count": 1,
+    "top3": "윤종혁"
+  },
+  {
+    "professor": "윤종혁",
+    "term": "clock data recovery",
+    "rank": 1,
+    "count": 1,
+    "top3": "윤종혁"
+  },
+  {
+    "professor": "은용순",
+    "term": "강인 제어",
+    "rank": 1,
+    "count": 1,
+    "top3": "은용순"
+  },
+  {
+    "professor": "은용순",
+    "term": "resilient control",
+    "rank": 1,
+    "count": 1,
+    "top3": "은용순"
+  },
+  {
+    "professor": "은용순",
+    "term": "비선형 센서 액추에이터 제어",
+    "rank": 1,
+    "count": 1,
+    "top3": "은용순"
+  },
+  {
+    "professor": "은용순",
+    "term": "nonlinear sensors and actuators",
+    "rank": 1,
+    "count": 1,
+    "top3": "은용순"
+  },
+  {
+    "professor": "은용순",
+    "term": "네트워크 제어",
+    "rank": 1,
+    "count": 8,
+    "top3": "은용순|서대원|최지웅"
+  },
+  {
+    "professor": "은용순",
+    "term": "networked control",
+    "rank": 1,
+    "count": 7,
+    "top3": "은용순|최지웅|서대원"
+  },
+  {
+    "professor": "은용순",
+    "term": "준선형 제어",
+    "rank": 1,
+    "count": 1,
+    "top3": "은용순"
+  },
+  {
+    "professor": "은용순",
+    "term": "quasi linear control",
+    "rank": 1,
+    "count": 1,
+    "top3": "은용순"
+  },
+  {
+    "professor": "은용순",
+    "term": "지능형 교통시스템",
+    "rank": 1,
+    "count": 5,
+    "top3": "은용순|김경대|박대희"
+  },
+  {
+    "professor": "은용순",
+    "term": "intelligent transportation system",
+    "rank": 1,
+    "count": 5,
+    "top3": "은용순|김경대|박대희"
+  },
+  {
+    "professor": "이경태",
+    "term": "센서 IC",
+    "rank": 1,
+    "count": 1,
+    "top3": "이경태"
+  },
+  {
+    "professor": "이경태",
+    "term": "sensor IC",
+    "rank": 1,
+    "count": 1,
+    "top3": "이경태"
+  },
+  {
+    "professor": "이경태",
+    "term": "저전력 센서 회로",
+    "rank": 1,
+    "count": 3,
+    "top3": "이경태|송민영|이정협"
+  },
+  {
+    "professor": "이경태",
+    "term": "low power sensor IC",
+    "rank": 1,
+    "count": 3,
+    "top3": "이경태|송민영|이정협"
+  },
+  {
+    "professor": "이경태",
+    "term": "바이오메디컬 센서",
+    "rank": 1,
+    "count": 2,
+    "top3": "이경태|이정협"
+  },
+  {
+    "professor": "이경태",
+    "term": "biomedical sensor",
+    "rank": 1,
+    "count": 1,
+    "top3": "이경태"
+  },
+  {
+    "professor": "이경태",
+    "term": "배터리 관리 IC",
+    "rank": 1,
+    "count": 1,
+    "top3": "이경태"
+  },
+  {
+    "professor": "이경태",
+    "term": "battery management IC",
+    "rank": 1,
+    "count": 1,
+    "top3": "이경태"
+  },
+  {
+    "professor": "이경태",
+    "term": "BMS IC",
+    "rank": 1,
+    "count": 1,
+    "top3": "이경태"
+  },
+  {
+    "professor": "이경태",
+    "term": "바이오메디컬 회로",
+    "rank": 1,
+    "count": 8,
+    "top3": "이경태|이정협|이병문"
+  },
+  {
+    "professor": "이경태",
+    "term": "biomedical circuit",
+    "rank": 1,
+    "count": 8,
+    "top3": "이경태|이병문|이정협"
+  },
+  {
+    "professor": "이기준",
+    "term": "확산광 단층촬영",
+    "rank": 1,
+    "count": 5,
+    "top3": "이기준|장진호|이병권"
+  },
+  {
+    "professor": "이기준",
+    "term": "diffuse optical tomography",
+    "rank": 1,
+    "count": 5,
+    "top3": "이기준|이병권|황재윤"
+  },
+  {
+    "professor": "이기준",
+    "term": "DOT",
+    "rank": 1,
+    "count": 1,
+    "top3": "이기준"
+  },
+  {
+    "professor": "이기준",
+    "term": "생체광학",
+    "rank": 1,
+    "count": 5,
+    "top3": "이기준|황재윤|장진호"
+  },
+  {
+    "professor": "이기준",
+    "term": "biomedical optics",
+    "rank": 1,
+    "count": 5,
+    "top3": "이기준|장진호|이병권"
+  },
+  {
+    "professor": "이기준",
+    "term": "근적외선 분광",
+    "rank": 1,
+    "count": 5,
+    "top3": "이기준|황재윤|장진호"
+  },
+  {
+    "professor": "이기준",
+    "term": "NIRS",
+    "rank": 1,
+    "count": 5,
+    "top3": "이기준|장진호|황재윤"
+  },
+  {
+    "professor": "이기준",
+    "term": "기능성 근적외선 분광",
+    "rank": 1,
+    "count": 5,
+    "top3": "이기준|황재윤|장진호"
+  },
+  {
+    "professor": "이기준",
+    "term": "fNIRS",
+    "rank": 1,
+    "count": 1,
+    "top3": "이기준"
+  },
+  {
+    "professor": "이기준",
+    "term": "스펙클 혈류",
+    "rank": 1,
+    "count": 1,
+    "top3": "이기준"
+  },
+  {
+    "professor": "이기준",
+    "term": "speckle contrast",
+    "rank": 1,
+    "count": 1,
+    "top3": "이기준"
+  },
+  {
+    "professor": "이기준",
+    "term": "양자광학",
+    "rank": 1,
+    "count": 1,
+    "top3": "이기준"
+  },
+  {
+    "professor": "이기준",
+    "term": "quantum optics",
+    "rank": 1,
+    "count": 1,
+    "top3": "이기준"
+  },
+  {
+    "professor": "이기준",
+    "term": "혈류 모니터링",
+    "rank": 1,
+    "count": 1,
+    "top3": "이기준"
+  },
+  {
+    "professor": "이민선",
+    "term": "PET",
+    "rank": 1,
+    "count": 6,
+    "top3": "이민선|장진호|황재윤"
+  },
+  {
+    "professor": "이민선",
+    "term": "양전자방출단층촬영",
+    "rank": 1,
+    "count": 6,
+    "top3": "이민선|장진호|황재윤"
+  },
+  {
+    "professor": "이민선",
+    "term": "positron emission tomography",
+    "rank": 1,
+    "count": 1,
+    "top3": "이민선"
+  },
+  {
+    "professor": "이민선",
+    "term": "방사선 의료영상",
+    "rank": 1,
+    "count": 6,
+    "top3": "이민선|황재윤|장진호"
+  },
+  {
+    "professor": "이민선",
+    "term": "radiation medical imaging",
+    "rank": 1,
+    "count": 6,
+    "top3": "이민선|황재윤|장진호"
+  },
+  {
+    "professor": "이민선",
+    "term": "나노포토닉 방사선 센서",
+    "rank": 1,
+    "count": 1,
+    "top3": "이민선"
+  },
+  {
+    "professor": "이민선",
+    "term": "nanophotonic radiation sensor",
+    "rank": 1,
+    "count": 1,
+    "top3": "이민선"
+  },
+  {
+    "professor": "이민선",
+    "term": "의료영상 정량화",
+    "rank": 1,
+    "count": 6,
+    "top3": "이민선|황재윤|장진호"
+  },
+  {
+    "professor": "이민선",
+    "term": "medical image quantification",
+    "rank": 1,
+    "count": 1,
+    "top3": "이민선"
+  },
+  {
+    "professor": "이민선",
+    "term": "광자 수송 모델링",
+    "rank": 1,
+    "count": 1,
+    "top3": "이민선"
+  },
+  {
+    "professor": "이민선",
+    "term": "photon transport",
+    "rank": 1,
+    "count": 1,
+    "top3": "이민선"
+  },
+  {
+    "professor": "이병권",
+    "term": "OCT",
+    "rank": 1,
+    "count": 5,
+    "top3": "이병권|장진호|황재윤"
+  },
+  {
+    "professor": "이병권",
+    "term": "광간섭단층촬영",
+    "rank": 1,
+    "count": 5,
+    "top3": "이병권|장진호|황재윤"
+  },
+  {
+    "professor": "이병권",
+    "term": "optical coherence tomography",
+    "rank": 1,
+    "count": 1,
+    "top3": "이병권"
+  },
+  {
+    "professor": "이병권",
+    "term": "망막 영상",
+    "rank": 1,
+    "count": 6,
+    "top3": "이병권|장진호|황재윤"
+  },
+  {
+    "professor": "이병권",
+    "term": "retinal imaging",
+    "rank": 1,
+    "count": 6,
+    "top3": "이병권|장진호|황재윤"
+  },
+  {
+    "professor": "이병권",
+    "term": "파장가변 레이저",
+    "rank": 1,
+    "count": 1,
+    "top3": "이병권"
+  },
+  {
+    "professor": "이병권",
+    "term": "wavelength swept laser",
+    "rank": 1,
+    "count": 1,
+    "top3": "이병권"
+  },
+  {
+    "professor": "이병권",
+    "term": "전산광학",
+    "rank": 1,
+    "count": 1,
+    "top3": "이병권"
+  },
+  {
+    "professor": "이병권",
+    "term": "computational optics",
+    "rank": 1,
+    "count": 1,
+    "top3": "이병권"
+  },
+  {
+    "professor": "이병권",
+    "term": "3D k space 영상처리",
+    "rank": 1,
+    "count": 1,
+    "top3": "이병권"
+  },
+  {
+    "professor": "이병권",
+    "term": "푸리에 영상처리",
+    "rank": 1,
+    "count": 1,
+    "top3": "이병권"
+  },
+  {
+    "professor": "이병문",
+    "term": "스킨 일렉트로닉스",
+    "rank": 1,
+    "count": 1,
+    "top3": "이병문"
+  },
+  {
+    "professor": "이병문",
+    "term": "skin electronics",
+    "rank": 1,
+    "count": 8,
+    "top3": "이병문|이경태|이정협"
+  },
+  {
+    "professor": "이병문",
+    "term": "전자피부",
+    "rank": 1,
+    "count": 8,
+    "top3": "이병문|이경태|이정협"
+  },
+  {
+    "professor": "이병문",
+    "term": "bioelectronics",
+    "rank": 1,
+    "count": 8,
+    "top3": "이병문|이경태|이정협"
+  },
+  {
+    "professor": "이병문",
+    "term": "바이오전자",
+    "rank": 1,
+    "count": 8,
+    "top3": "이병문|장재은|이경태"
+  },
+  {
+    "professor": "이병문",
+    "term": "지능형 의수",
+    "rank": 1,
+    "count": 1,
+    "top3": "이병문"
+  },
+  {
+    "professor": "이병문",
+    "term": "intelligent prosthetic",
+    "rank": 1,
+    "count": 1,
+    "top3": "이병문"
+  },
+  {
+    "professor": "이병문",
+    "term": "유연 전자소자",
+    "rank": 2,
+    "count": 2,
+    "top3": "권혁준|이병문"
+  },
+  {
+    "professor": "이병문",
+    "term": "flexible electronics",
+    "rank": 2,
+    "count": 2,
+    "top3": "권혁준|이병문"
+  },
+  {
+    "professor": "이병문",
+    "term": "적층 제조",
+    "rank": 1,
+    "count": 1,
+    "top3": "이병문"
+  },
+  {
+    "professor": "이병문",
+    "term": "additive manufacturing",
+    "rank": 1,
+    "count": 1,
+    "top3": "이병문"
+  },
+  {
+    "professor": "이용우",
+    "term": "컴파일러",
+    "rank": 1,
+    "count": 5,
+    "top3": "이용우|전민석|김윤승"
+  },
+  {
+    "professor": "이용우",
+    "term": "compiler",
+    "rank": 1,
+    "count": 5,
+    "top3": "이용우|전민석|김윤승"
+  },
+  {
+    "professor": "이용우",
+    "term": "컴파일러 최적화",
+    "rank": 1,
+    "count": 5,
+    "top3": "이용우|전민석|김윤승"
+  },
+  {
+    "professor": "이용우",
+    "term": "compiler optimization",
+    "rank": 1,
+    "count": 5,
+    "top3": "이용우|전민석|김윤승"
+  },
+  {
+    "professor": "이용우",
+    "term": "동형암호 컴파일러",
+    "rank": 2,
+    "count": 2,
+    "top3": "신동훈|이용우"
+  },
+  {
+    "professor": "이용우",
+    "term": "homomorphic encryption compiler",
+    "rank": 2,
+    "count": 2,
+    "top3": "신동훈|이용우"
+  },
+  {
+    "professor": "이용우",
+    "term": "GPU 컴파일러",
+    "rank": 1,
+    "count": 5,
+    "top3": "이용우|전민석|김윤승"
+  },
+  {
+    "professor": "이용우",
+    "term": "AI 컴파일러",
+    "rank": 1,
+    "count": 3,
+    "top3": "이용우|김기섭|전민석"
+  },
+  {
+    "professor": "이용우",
+    "term": "도메인 특화 컴파일러",
+    "rank": 1,
+    "count": 5,
+    "top3": "이용우|전민석|김윤승"
+  },
+  {
+    "professor": "이용우",
+    "term": "domain specific compiler",
+    "rank": 1,
+    "count": 5,
+    "top3": "이용우|전민석|김윤승"
+  },
+  {
+    "professor": "이용우",
+    "term": "런타임 시스템",
+    "rank": 1,
+    "count": 1,
+    "top3": "이용우"
+  },
+  {
+    "professor": "이용우",
+    "term": "runtime system",
+    "rank": 1,
+    "count": 1,
+    "top3": "이용우"
+  },
+  {
+    "professor": "이정협",
+    "term": "회로설계",
+    "rank": 1,
+    "count": 5,
+    "top3": "이정협|김가인|송민영"
+  },
+  {
+    "professor": "이정협",
+    "term": "아날로그 회로",
+    "rank": 1,
+    "count": 5,
+    "top3": "이정협|김가인|송민영"
+  },
+  {
+    "professor": "이정협",
+    "term": "analog IC",
+    "rank": 1,
+    "count": 1,
+    "top3": "이정협"
+  },
+  {
+    "professor": "이정협",
+    "term": "혼성신호 회로",
+    "rank": 2,
+    "count": 5,
+    "top3": "김가인|이정협|윤종혁"
+  },
+  {
+    "professor": "이정협",
+    "term": "mixed signal IC",
+    "rank": 1,
+    "count": 5,
+    "top3": "이정협|송민영|김가인"
+  },
+  {
+    "professor": "이정협",
+    "term": "집적회로",
+    "rank": 2,
+    "count": 5,
+    "top3": "윤종혁|이정협|김가인"
+  },
+  {
+    "professor": "이정협",
+    "term": "IC design",
+    "rank": 1,
+    "count": 5,
+    "top3": "이정협|김가인|송민영"
+  },
+  {
+    "professor": "이정협",
+    "term": "스마트 센서 시스템",
+    "rank": 1,
+    "count": 1,
+    "top3": "이정협"
+  },
+  {
+    "professor": "이정협",
+    "term": "smart sensor system",
+    "rank": 1,
+    "count": 1,
+    "top3": "이정협"
+  },
+  {
+    "professor": "이정협",
+    "term": "ADC",
+    "rank": 1,
+    "count": 5,
+    "top3": "이정협|김가인|송민영"
+  },
+  {
+    "professor": "이정협",
+    "term": "저전력 회로",
+    "rank": 1,
+    "count": 3,
+    "top3": "이정협|송민영|이경태"
+  },
+  {
+    "professor": "이정협",
+    "term": "low power circuit",
+    "rank": 1,
+    "count": 3,
+    "top3": "이정협|송민영|이경태"
+  },
+  {
+    "professor": "이정협",
+    "term": "BCI 마이크로시스템",
+    "rank": 1,
+    "count": 8,
+    "top3": "이정협|최지웅|이병문"
+  },
+  {
+    "professor": "이정협",
+    "term": "body channel communication",
+    "rank": 1,
+    "count": 1,
+    "top3": "이정협"
+  },
+  {
+    "professor": "이효근",
+    "term": "컴퓨터구조",
+    "rank": 1,
+    "count": 2,
+    "top3": "이효근|윤종혁"
+  },
+  {
+    "professor": "이효근",
+    "term": "computer architecture",
+    "rank": 1,
+    "count": 2,
+    "top3": "이효근|윤종혁"
+  },
+  {
+    "professor": "이효근",
+    "term": "자원 분리",
+    "rank": 1,
+    "count": 2,
+    "top3": "이효근|윤종혁"
+  },
+  {
+    "professor": "이효근",
+    "term": "resource disaggregation",
+    "rank": 1,
+    "count": 2,
+    "top3": "이효근|윤종혁"
+  },
+  {
+    "professor": "이효근",
+    "term": "메모리 기술",
+    "rank": 1,
+    "count": 4,
+    "top3": "이효근|최상현|윤종혁"
+  },
+  {
+    "professor": "이효근",
+    "term": "memory technologies",
+    "rank": 1,
+    "count": 1,
+    "top3": "이효근"
+  },
+  {
+    "professor": "이효근",
+    "term": "메모리 시스템",
+    "rank": 1,
+    "count": 4,
+    "top3": "이효근|윤종혁|최상현"
+  },
+  {
+    "professor": "이효근",
+    "term": "memory system",
+    "rank": 1,
+    "count": 2,
+    "top3": "이효근|윤종혁"
+  },
+  {
+    "professor": "이효근",
+    "term": "대규모 컴퓨터 시스템",
+    "rank": 1,
+    "count": 1,
+    "top3": "이효근"
+  },
+  {
+    "professor": "이효근",
+    "term": "computer systems",
+    "rank": 1,
+    "count": 2,
+    "top3": "이효근|박대희"
+  },
+  {
+    "professor": "이효근",
+    "term": "프로세서 구조",
+    "rank": 1,
+    "count": 2,
+    "top3": "이효근|윤종혁"
+  },
+  {
+    "professor": "이효근",
+    "term": "server architecture",
+    "rank": 1,
+    "count": 1,
+    "top3": "이효근"
+  },
+  {
+    "professor": "장재은",
+    "term": "반도체 소자",
+    "rank": 2,
+    "count": 4,
+    "top3": "권혁준|장재은|최상현"
+  },
+  {
+    "professor": "장재은",
+    "term": "advanced semiconductor device",
+    "rank": 1,
+    "count": 4,
+    "top3": "장재은|권혁준|최상현"
+  },
+  {
+    "professor": "장재은",
+    "term": "나노전자소자",
+    "rank": 1,
+    "count": 4,
+    "top3": "장재은|권혁준|최상현"
+  },
+  {
+    "professor": "장재은",
+    "term": "nanoelectronic device",
+    "rank": 1,
+    "count": 1,
+    "top3": "장재은"
+  },
+  {
+    "professor": "장재은",
+    "term": "뉴로모픽",
+    "rank": 3,
+    "count": 3,
+    "top3": "최상현|윤종혁|장재은"
+  },
+  {
+    "professor": "장재은",
+    "term": "인공뇌 하드웨어",
+    "rank": 1,
+    "count": 1,
+    "top3": "장재은"
+  },
+  {
+    "professor": "장재은",
+    "term": "artificial brain hardware",
+    "rank": 1,
+    "count": 1,
+    "top3": "장재은"
+  },
+  {
+    "professor": "장재은",
+    "term": "인공 감각 센서",
+    "rank": 1,
+    "count": 1,
+    "top3": "장재은"
+  },
+  {
+    "professor": "장재은",
+    "term": "artificial sensor",
+    "rank": 1,
+    "count": 1,
+    "top3": "장재은"
+  },
+  {
+    "professor": "장재은",
+    "term": "휴먼 머신 인터페이스",
+    "rank": 1,
+    "count": 1,
+    "top3": "장재은"
+  },
+  {
+    "professor": "장재은",
+    "term": "human machine interface",
+    "rank": 1,
+    "count": 1,
+    "top3": "장재은"
+  },
+  {
+    "professor": "장재은",
+    "term": "HMI",
+    "rank": 1,
+    "count": 1,
+    "top3": "장재은"
+  },
+  {
+    "professor": "장재은",
+    "term": "햅틱 소자",
+    "rank": 3,
+    "count": 3,
+    "top3": "길현재|김선준|장재은"
+  },
+  {
+    "professor": "장재은",
+    "term": "haptic device",
+    "rank": 1,
+    "count": 1,
+    "top3": "장재은"
+  },
+  {
+    "professor": "장재은",
+    "term": "바이오전자",
+    "rank": 2,
+    "count": 8,
+    "top3": "이병문|장재은|이경태"
+  },
+  {
+    "professor": "장준기",
+    "term": "데이터마이닝",
+    "rank": 1,
+    "count": 2,
+    "top3": "장준기|김기섭"
+  },
+  {
+    "professor": "장준기",
+    "term": "data mining",
+    "rank": 1,
+    "count": 2,
+    "top3": "장준기|김기섭"
+  },
+  {
+    "professor": "장준기",
+    "term": "대규모 데이터 분석",
+    "rank": 1,
+    "count": 2,
+    "top3": "장준기|김기섭"
+  },
+  {
+    "professor": "장준기",
+    "term": "large scale data analytics",
+    "rank": 1,
+    "count": 2,
+    "top3": "장준기|김기섭"
+  },
+  {
+    "professor": "장준기",
+    "term": "텐서 마이닝",
+    "rank": 1,
+    "count": 2,
+    "top3": "장준기|김기섭"
+  },
+  {
+    "professor": "장준기",
+    "term": "tensor mining",
+    "rank": 1,
+    "count": 2,
+    "top3": "장준기|김기섭"
+  },
+  {
+    "professor": "장준기",
+    "term": "시계열 분석",
+    "rank": 1,
+    "count": 2,
+    "top3": "장준기|김기섭"
+  },
+  {
+    "professor": "장준기",
+    "term": "time series analysis",
+    "rank": 1,
+    "count": 2,
+    "top3": "장준기|김기섭"
+  },
+  {
+    "professor": "장준기",
+    "term": "응용 데이터과학",
+    "rank": 1,
+    "count": 1,
+    "top3": "장준기"
+  },
+  {
+    "professor": "장준기",
+    "term": "applied data science",
+    "rank": 1,
+    "count": 1,
+    "top3": "장준기"
+  },
+  {
+    "professor": "장진호",
+    "term": "초음파",
+    "rank": 1,
+    "count": 2,
+    "top3": "장진호|황재윤"
+  },
+  {
+    "professor": "장진호",
+    "term": "ultrasound",
+    "rank": 1,
+    "count": 2,
+    "top3": "장진호|황재윤"
+  },
+  {
+    "professor": "장진호",
+    "term": "의료 초음파",
+    "rank": 1,
+    "count": 2,
+    "top3": "장진호|황재윤"
+  },
+  {
+    "professor": "장진호",
+    "term": "medical ultrasound",
+    "rank": 1,
+    "count": 2,
+    "top3": "장진호|황재윤"
+  },
+  {
+    "professor": "장진호",
+    "term": "초음파 영상",
+    "rank": 1,
+    "count": 2,
+    "top3": "장진호|황재윤"
+  },
+  {
+    "professor": "장진호",
+    "term": "ultrasound imaging",
+    "rank": 1,
+    "count": 2,
+    "top3": "장진호|황재윤"
+  },
+  {
+    "professor": "장진호",
+    "term": "초음파 치료",
+    "rank": 1,
+    "count": 2,
+    "top3": "장진호|황재윤"
+  },
+  {
+    "professor": "장진호",
+    "term": "ultrasound therapy",
+    "rank": 1,
+    "count": 2,
+    "top3": "장진호|황재윤"
+  },
+  {
+    "professor": "장진호",
+    "term": "광음향 영상",
+    "rank": 1,
+    "count": 5,
+    "top3": "장진호|황재윤|이병권"
+  },
+  {
+    "professor": "장진호",
+    "term": "photoacoustic imaging",
+    "rank": 1,
+    "count": 5,
+    "top3": "장진호|황재윤|이병권"
+  },
+  {
+    "professor": "장진호",
+    "term": "초음파 센서",
+    "rank": 1,
+    "count": 2,
+    "top3": "장진호|황재윤"
+  },
+  {
+    "professor": "장진호",
+    "term": "ultrasound transducer",
+    "rank": 1,
+    "count": 2,
+    "top3": "장진호|황재윤"
+  },
+  {
+    "professor": "장진호",
+    "term": "의료영상 AI",
+    "rank": 2,
+    "count": 4,
+    "top3": "황재윤|장진호|이민선"
+  },
+  {
+    "professor": "장진호",
+    "term": "medical imaging AI",
+    "rank": 1,
+    "count": 4,
+    "top3": "장진호|황재윤|이민선"
+  },
+  {
+    "professor": "장진호",
+    "term": "생체신호 영상처리",
+    "rank": 1,
+    "count": 7,
+    "top3": "장진호|최지웅|최재호"
+  },
+  {
+    "professor": "전민석",
+    "term": "프로그래밍 언어",
+    "rank": 1,
+    "count": 5,
+    "top3": "전민석|김윤승|이용우"
+  },
+  {
+    "professor": "전민석",
+    "term": "programming language",
+    "rank": 1,
+    "count": 5,
+    "top3": "전민석|김윤승|이용우"
+  },
+  {
+    "professor": "전민석",
+    "term": "소프트웨어공학",
+    "rank": 1,
+    "count": 5,
+    "top3": "전민석|김기섭|이용우"
+  },
+  {
+    "professor": "전민석",
+    "term": "software engineering",
+    "rank": 1,
+    "count": 5,
+    "top3": "전민석|김기섭|이용우"
+  },
+  {
+    "professor": "전민석",
+    "term": "프로그램 합성",
+    "rank": 1,
+    "count": 5,
+    "top3": "전민석|이용우|김윤승"
+  },
+  {
+    "professor": "전민석",
+    "term": "program synthesis",
+    "rank": 1,
+    "count": 5,
+    "top3": "전민석|이용우|김윤승"
+  },
+  {
+    "professor": "전민석",
+    "term": "도메인 특화 언어",
+    "rank": 1,
+    "count": 5,
+    "top3": "전민석|이용우|김윤승"
+  },
+  {
+    "professor": "전민석",
+    "term": "DSL",
+    "rank": 1,
+    "count": 5,
+    "top3": "전민석|이용우|김윤승"
+  },
+  {
+    "professor": "전민석",
+    "term": "머신러닝 프로그래밍 언어",
+    "rank": 1,
+    "count": 2,
+    "top3": "전민석|김기섭"
+  },
+  {
+    "professor": "전민석",
+    "term": "PL4ML",
+    "rank": 1,
+    "count": 1,
+    "top3": "전민석"
+  },
+  {
+    "professor": "전민석",
+    "term": "설명가능 AI 프로그래밍",
+    "rank": 1,
+    "count": 10,
+    "top3": "전민석|목지수|박대희"
+  },
+  {
+    "professor": "좌훈승",
+    "term": "운영체제",
+    "rank": 1,
+    "count": 4,
+    "top3": "좌훈승|김백규|김윤승"
+  },
+  {
+    "professor": "좌훈승",
+    "term": "operating system",
+    "rank": 1,
+    "count": 4,
+    "top3": "좌훈승|박경준|김백규"
+  },
+  {
+    "professor": "좌훈승",
+    "term": "실시간 시스템",
+    "rank": 1,
+    "count": 4,
+    "top3": "좌훈승|김백규|김윤승"
+  },
+  {
+    "professor": "좌훈승",
+    "term": "real time system",
+    "rank": 1,
+    "count": 4,
+    "top3": "좌훈승|김윤승|김백규"
+  },
+  {
+    "professor": "좌훈승",
+    "term": "실시간 AI 서비스",
+    "rank": 1,
+    "count": 10,
+    "top3": "좌훈승|목지수|박대희"
+  },
+  {
+    "professor": "좌훈승",
+    "term": "real time AI",
+    "rank": 1,
+    "count": 10,
+    "top3": "좌훈승|목지수|박대희"
+  },
+  {
+    "professor": "좌훈승",
+    "term": "사이버물리시스템",
+    "rank": 3,
+    "count": 5,
+    "top3": "박경준|김백규|좌훈승"
+  },
+  {
+    "professor": "좌훈승",
+    "term": "CPS",
+    "rank": 3,
+    "count": 5,
+    "top3": "김백규|박경준|좌훈승"
+  },
+  {
+    "professor": "좌훈승",
+    "term": "모바일 시스템",
+    "rank": 1,
+    "count": 4,
+    "top3": "좌훈승|김백규|김윤승"
+  },
+  {
+    "professor": "좌훈승",
+    "term": "mobile system",
+    "rank": 1,
+    "count": 4,
+    "top3": "좌훈승|김백규|김윤승"
+  },
+  {
+    "professor": "좌훈승",
+    "term": "실시간 컴퓨팅",
+    "rank": 1,
+    "count": 3,
+    "top3": "좌훈승|김백규|박경준"
+  },
+  {
+    "professor": "좌훈승",
+    "term": "real time computing",
+    "rank": 1,
+    "count": 1,
+    "top3": "좌훈승"
+  },
+  {
+    "professor": "최상현",
+    "term": "멤리스터",
+    "rank": 1,
+    "count": 3,
+    "top3": "최상현|윤종혁|장재은"
+  },
+  {
+    "professor": "최상현",
+    "term": "memristor",
+    "rank": 1,
+    "count": 3,
+    "top3": "최상현|윤종혁|장재은"
+  },
+  {
+    "professor": "최상현",
+    "term": "차세대 반도체 소자",
+    "rank": 1,
+    "count": 4,
+    "top3": "최상현|권혁준|장재은"
+  },
+  {
+    "professor": "최상현",
+    "term": "emerging semiconductor device",
+    "rank": 1,
+    "count": 4,
+    "top3": "최상현|권혁준|장재은"
+  },
+  {
+    "professor": "최상현",
+    "term": "뉴로모픽",
+    "rank": 1,
+    "count": 3,
+    "top3": "최상현|윤종혁|장재은"
+  },
+  {
+    "professor": "최상현",
+    "term": "neuromorphic computing",
+    "rank": 1,
+    "count": 3,
+    "top3": "최상현|윤종혁|장재은"
+  },
+  {
+    "professor": "최상현",
+    "term": "인메모리 컴퓨팅",
+    "rank": 1,
+    "count": 3,
+    "top3": "최상현|윤종혁|장재은"
+  },
+  {
+    "professor": "최상현",
+    "term": "in memory computing",
+    "rank": 1,
+    "count": 3,
+    "top3": "최상현|윤종혁|장재은"
+  },
+  {
+    "professor": "최상현",
+    "term": "메모리 반도체",
+    "rank": 1,
+    "count": 4,
+    "top3": "최상현|윤종혁|권혁준"
+  },
+  {
+    "professor": "최상현",
+    "term": "3D 소자 구조",
+    "rank": 1,
+    "count": 1,
+    "top3": "최상현"
+  },
+  {
+    "professor": "최상현",
+    "term": "3d architecture",
+    "rank": 1,
+    "count": 1,
+    "top3": "최상현"
+  },
+  {
+    "professor": "최상현",
+    "term": "스위칭 소자",
+    "rank": 1,
+    "count": 1,
+    "top3": "최상현"
+  },
+  {
+    "professor": "최상현",
+    "term": "emerging switching device",
+    "rank": 1,
+    "count": 1,
+    "top3": "최상현"
+  },
+  {
+    "professor": "최상현",
+    "term": "AI 가속기",
+    "rank": 1,
+    "count": 10,
+    "top3": "최상현|목지수|박대희"
+  },
+  {
+    "professor": "최상현",
+    "term": "bio inspired computing",
+    "rank": 1,
+    "count": 1,
+    "top3": "최상현"
+  },
+  {
+    "professor": "최원석",
+    "term": "정보보안",
+    "rank": 2,
+    "count": 5,
+    "top3": "김영식|최원석|신동훈"
+  },
+  {
+    "professor": "최원석",
+    "term": "암호",
+    "rank": 1,
+    "count": 5,
+    "top3": "최원석|김영식|신동훈"
+  },
+  {
+    "professor": "최원석",
+    "term": "cryptography",
+    "rank": 2,
+    "count": 5,
+    "top3": "김영식|최원석|신동훈"
+  },
+  {
+    "professor": "최원석",
+    "term": "양자암호",
+    "rank": 1,
+    "count": 5,
+    "top3": "최원석|김영식|신동훈"
+  },
+  {
+    "professor": "최원석",
+    "term": "quantum cryptography",
+    "rank": 1,
+    "count": 5,
+    "top3": "최원석|김영식|신동훈"
+  },
+  {
+    "professor": "최원석",
+    "term": "양자내성암호",
+    "rank": 1,
+    "count": 5,
+    "top3": "최원석|김영식|신동훈"
+  },
+  {
+    "professor": "최원석",
+    "term": "post quantum cryptography",
+    "rank": 1,
+    "count": 5,
+    "top3": "최원석|김영식|신동훈"
+  },
+  {
+    "professor": "최원석",
+    "term": "분산 컴퓨팅",
+    "rank": 1,
+    "count": 8,
+    "top3": "최원석|김윤승|소진현"
+  },
+  {
+    "professor": "최원석",
+    "term": "distributed computing",
+    "rank": 1,
+    "count": 8,
+    "top3": "최원석|김윤승|소진현"
+  },
+  {
+    "professor": "최원석",
+    "term": "블록체인",
+    "rank": 1,
+    "count": 5,
+    "top3": "최원석|김영식|신동훈"
+  },
+  {
+    "professor": "최원석",
+    "term": "blockchain",
+    "rank": 1,
+    "count": 5,
+    "top3": "최원석|김영식|신동훈"
+  },
+  {
+    "professor": "최원석",
+    "term": "프라이버시 강화 기술",
+    "rank": 2,
+    "count": 5,
+    "top3": "김영식|최원석|신동훈"
+  },
+  {
+    "professor": "최원석",
+    "term": "privacy enhancing technology",
+    "rank": 2,
+    "count": 5,
+    "top3": "김영식|최원석|신동훈"
+  },
+  {
+    "professor": "최원석",
+    "term": "동형암호",
+    "rank": 2,
+    "count": 5,
+    "top3": "김영식|최원석|신동훈"
+  },
+  {
+    "professor": "최원석",
+    "term": "homomorphic encryption",
+    "rank": 2,
+    "count": 5,
+    "top3": "김영식|최원석|신동훈"
+  },
+  {
+    "professor": "최재호",
+    "term": "무선센싱",
+    "rank": 1,
+    "count": 2,
+    "top3": "최재호|송민영"
+  },
+  {
+    "professor": "최재호",
+    "term": "wireless sensing",
+    "rank": 1,
+    "count": 2,
+    "top3": "최재호|송민영"
+  },
+  {
+    "professor": "최재호",
+    "term": "레이더 신호처리",
+    "rank": 1,
+    "count": 1,
+    "top3": "최재호"
+  },
+  {
+    "professor": "최재호",
+    "term": "radar signal processing",
+    "rank": 1,
+    "count": 1,
+    "top3": "최재호"
+  },
+  {
+    "professor": "최재호",
+    "term": "센서융합",
+    "rank": 1,
+    "count": 2,
+    "top3": "최재호|송민영"
+  },
+  {
+    "professor": "최재호",
+    "term": "sensor fusion",
+    "rank": 1,
+    "count": 2,
+    "top3": "최재호|송민영"
+  },
+  {
+    "professor": "최재호",
+    "term": "Radio AI",
+    "rank": 1,
+    "count": 1,
+    "top3": "최재호"
+  },
+  {
+    "professor": "최재호",
+    "term": "무선 AI",
+    "rank": 1,
+    "count": 10,
+    "top3": "최재호|목지수|박대희"
+  },
+  {
+    "professor": "최재호",
+    "term": "원격센싱",
+    "rank": 1,
+    "count": 2,
+    "top3": "최재호|송민영"
+  },
+  {
+    "professor": "최재호",
+    "term": "remote sensing",
+    "rank": 1,
+    "count": 2,
+    "top3": "최재호|송민영"
+  },
+  {
+    "professor": "최재호",
+    "term": "디지털 휴먼",
+    "rank": 1,
+    "count": 1,
+    "top3": "최재호"
+  },
+  {
+    "professor": "최지웅",
+    "term": "통신",
+    "rank": 1,
+    "count": 6,
+    "top3": "최지웅|서대원|김가인"
+  },
+  {
+    "professor": "최지웅",
+    "term": "communications",
+    "rank": 1,
+    "count": 6,
+    "top3": "최지웅|서대원|송민영"
+  },
+  {
+    "professor": "최지웅",
+    "term": "통신시스템",
+    "rank": 1,
+    "count": 6,
+    "top3": "최지웅|서대원|송민영"
+  },
+  {
+    "professor": "최지웅",
+    "term": "communication system",
+    "rank": 1,
+    "count": 2,
+    "top3": "최지웅|이정협"
+  },
+  {
+    "professor": "최지웅",
+    "term": "신호처리",
+    "rank": 1,
+    "count": 7,
+    "top3": "최지웅|최재호|황재윤"
+  },
+  {
+    "professor": "최지웅",
+    "term": "signal processing",
+    "rank": 1,
+    "count": 7,
+    "top3": "최지웅|최재호|황재윤"
+  },
+  {
+    "professor": "최지웅",
+    "term": "5G",
+    "rank": 1,
+    "count": 6,
+    "top3": "최지웅|서대원|송민영"
+  },
+  {
+    "professor": "최지웅",
+    "term": "6G",
+    "rank": 1,
+    "count": 6,
+    "top3": "최지웅|서대원|송민영"
+  },
+  {
+    "professor": "최지웅",
+    "term": "V2X",
+    "rank": 1,
+    "count": 6,
+    "top3": "최지웅|서대원|송민영"
+  },
+  {
+    "professor": "최지웅",
+    "term": "차량통신",
+    "rank": 1,
+    "count": 6,
+    "top3": "최지웅|서대원|송민영"
+  },
+  {
+    "professor": "최지웅",
+    "term": "vehicular communication",
+    "rank": 1,
+    "count": 1,
+    "top3": "최지웅"
+  },
+  {
+    "professor": "최지웅",
+    "term": "차량 보안",
+    "rank": 2,
+    "count": 5,
+    "top3": "김영식|최지웅|최원석"
+  },
+  {
+    "professor": "최지웅",
+    "term": "vehicular security",
+    "rank": 2,
+    "count": 5,
+    "top3": "김영식|최지웅|신동훈"
+  },
+  {
+    "professor": "최지웅",
+    "term": "BCI",
+    "rank": 1,
+    "count": 8,
+    "top3": "최지웅|이정협|이병문"
+  },
+  {
+    "professor": "최지웅",
+    "term": "BMI",
+    "rank": 1,
+    "count": 8,
+    "top3": "최지웅|이병문|이경태"
+  },
+  {
+    "professor": "최지웅",
+    "term": "뇌 컴퓨터 인터페이스",
+    "rank": 1,
+    "count": 1,
+    "top3": "최지웅"
+  },
+  {
+    "professor": "최지웅",
+    "term": "생체신호 처리",
+    "rank": 1,
+    "count": 7,
+    "top3": "최지웅|최재호|장진호"
+  },
+  {
+    "professor": "황재윤",
+    "term": "초음파",
+    "rank": 2,
+    "count": 2,
+    "top3": "장진호|황재윤"
+  },
+  {
+    "professor": "황재윤",
+    "term": "ultrasound",
+    "rank": 2,
+    "count": 2,
+    "top3": "장진호|황재윤"
+  },
+  {
+    "professor": "황재윤",
+    "term": "초음파 신호처리",
+    "rank": 1,
+    "count": 2,
+    "top3": "황재윤|장진호"
+  },
+  {
+    "professor": "황재윤",
+    "term": "ultrasound signal processing",
+    "rank": 1,
+    "count": 2,
+    "top3": "황재윤|장진호"
+  },
+  {
+    "professor": "황재윤",
+    "term": "다중의료영상",
+    "rank": 1,
+    "count": 6,
+    "top3": "황재윤|장진호|이민선"
+  },
+  {
+    "professor": "황재윤",
+    "term": "multimodal imaging",
+    "rank": 1,
+    "count": 7,
+    "top3": "황재윤|목지수|박대희"
+  },
+  {
+    "professor": "황재윤",
+    "term": "의료영상",
+    "rank": 1,
+    "count": 6,
+    "top3": "황재윤|이민선|장진호"
+  },
+  {
+    "professor": "황재윤",
+    "term": "medical imaging",
+    "rank": 1,
+    "count": 6,
+    "top3": "황재윤|장진호|이민선"
+  },
+  {
+    "professor": "황재윤",
+    "term": "광학 분광영상",
+    "rank": 1,
+    "count": 1,
+    "top3": "황재윤"
+  },
+  {
+    "professor": "황재윤",
+    "term": "optical spectral imaging",
+    "rank": 1,
+    "count": 1,
+    "top3": "황재윤"
+  },
+  {
+    "professor": "황재윤",
+    "term": "의료영상 AI",
+    "rank": 1,
+    "count": 4,
+    "top3": "황재윤|장진호|이민선"
+  },
+  {
+    "professor": "황재윤",
+    "term": "AI medical image analysis",
+    "rank": 1,
+    "count": 10,
+    "top3": "황재윤|목지수|박대희"
+  },
+  {
+    "professor": "황재윤",
+    "term": "고주파 초음파",
+    "rank": 1,
+    "count": 2,
+    "top3": "황재윤|장진호"
+  },
+  {
+    "professor": "황재윤",
+    "term": "remote sensing AI",
+    "rank": 2,
+    "count": 2,
+    "top3": "최재호|황재윤"
+  }
+]

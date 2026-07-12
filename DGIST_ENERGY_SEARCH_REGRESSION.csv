@@ -1,0 +1,405 @@
+﻿professor,query,rank,result_count,top5,included_top3,included_top5
+위태웅,전기화학 에너지변환,2,2,이호춘 | 위태웅,True,True
+위태웅,electrochemical energy conversion,1,1,위태웅,True,True
+위태웅,에너지 저장 시스템,1,1,위태웅,True,True
+위태웅,energy storage system,1,1,위태웅,True,True
+위태웅,CO2 전환,1,3,위태웅 | 김찬연 | 인수일,True,True
+위태웅,CO₂ 전환,1,3,위태웅 | 김찬연 | 인수일,True,True
+위태웅,carbon capture utilization and storage,1,1,위태웅,True,True
+위태웅,CCUS,1,3,위태웅 | 김찬연 | 인수일,True,True
+위태웅,오페란도 분석,2,2,김영규 | 위태웅,True,True
+위태웅,operando analysis,2,2,김영규 | 위태웅,True,True
+위태웅,in-situ TEM,1,2,위태웅 | 김영규,True,True
+위태웅,in situ TEM,1,2,위태웅 | 김영규,True,True
+위태웅,cryo TEM,1,2,위태웅 | 김영규,True,True
+위태웅,극저온 TEM,1,2,위태웅 | 김영규,True,True
+위태웅,리튬황전지,2,2,김운혁 | 위태웅,True,True
+위태웅,Li-S battery,2,2,김운혁 | 위태웅,True,True
+위태웅,아연공기전지,2,2,상가라쥬 샨무감 | 위태웅,True,True
+위태웅,zinc air battery,1,8,위태웅 | 김운혁 | 권혁진 | 김영규 | 홍승태,True,True
+권혁진,차세대 전지,1,2,권혁진 | 김진수,True,True
+권혁진,next generation battery,1,8,권혁진 | 김진수 | 김운혁 | 김영규 | 이호춘,True,True
+권혁진,리튬금속전지,1,1,권혁진,True,True
+권혁진,lithium metal battery,1,8,권혁진 | 김운혁 | 김영규 | 이호춘 | 홍승태,True,True
+권혁진,나트륨전지,3,3,홍승태 | 이호춘 | 권혁진,True,True
+권혁진,sodium battery,3,3,이호춘 | 홍승태 | 권혁진,True,True
+권혁진,고체전해질,1,2,권혁진 | 김영규,True,True
+권혁진,solid electrolyte,1,2,권혁진 | 김영규,True,True
+권혁진,전고체전지,1,5,권혁진 | 김영규 | 김운혁 | 홍승태 | 김진수,True,True
+권혁진,all solid state battery,1,5,권혁진 | 김운혁 | 김영규 | 홍승태 | 김진수,True,True
+권혁진,전해질,1,6,권혁진 | 이호춘 | 상가라쥬 샨무감 | 장윤희 | 최승호,True,True
+권혁진,electrolyte,1,6,권혁진 | 이호춘 | 장윤희 | 상가라쥬 샨무감 | 김영규,True,True
+권혁진,전극 전해질 계면,1,6,권혁진 | 이호춘 | 김영규 | 장윤희 | 상가라쥬 샨무감,True,True
+권혁진,electrode electrolyte interface,1,6,권혁진 | 이호춘 | 김영규 | 장윤희 | 상가라쥬 샨무감,True,True
+권혁진,interphase,1,6,권혁진 | 김영규 | 이호춘 | 장윤희 | 상가라쥬 샨무감,True,True
+권혁진,멀티스케일 시뮬레이션,1,6,권혁진 | 장윤희 | 이태훈 | 허수미 | 박인철,True,True
+권혁진,multiscale simulation,2,6,허수미 | 권혁진 | 장윤희 | 이태훈 | 박인철,True,True
+이태훈,계산재료과학,1,6,이태훈 | 장윤희 | 박인철 | 허수미 | 최승호,True,True
+이태훈,computational materials science,1,1,이태훈,True,True
+이태훈,계산화학,2,4,장윤희 | 이태훈 | 최승호 | 허수미,True,True
+이태훈,computational chemistry,2,4,장윤희 | 이태훈 | 최승호 | 허수미,True,True
+이태훈,DFT,1,6,이태훈 | 박인철 | 장윤희 | 최승호 | 허수미,True,True
+이태훈,density functional theory,1,1,이태훈,True,True
+이태훈,제일원리 계산,1,6,이태훈 | 박인철 | 장윤희 | 허수미 | 최승호,True,True
+이태훈,first principles calculation,1,6,이태훈 | 박인철 | 장윤희 | 허수미 | 최승호,True,True
+이태훈,분자동역학,2,4,장윤희 | 이태훈 | 최승호 | 허수미,True,True
+이태훈,molecular dynamics,2,4,장윤희 | 이태훈 | 최승호 | 허수미,True,True
+이태훈,머신러닝 포텐셜,1,1,이태훈,True,True
+이태훈,machine learning interatomic potential,1,1,이태훈,True,True
+이태훈,소재 AI,1,3,이태훈 | 박인철 | 허수미,True,True
+이태훈,AI for materials science,1,3,이태훈 | 박인철 | 허수미,True,True
+이태훈,전기화학 계면,1,1,이태훈,True,True
+이태훈,electrochemical interface,1,1,이태훈,True,True
+이태훈,반도체 물리,1,1,이태훈,True,True
+이태훈,semiconductor physics,1,1,이태훈,True,True
+박인철,리튬이온전지,4,8,이호춘 | 김운혁 | 김영규 | 박인철 | 홍승태,False,True
+박인철,lithium ion battery,4,8,이호춘 | 김운혁 | 김영규 | 박인철 | 홍승태,False,True
+박인철,양극재,1,3,박인철 | 김운혁 | 김진수,True,True
+박인철,cathode material,1,3,박인철 | 김운혁 | 김진수,True,True
+박인철,양극 소재,1,3,박인철 | 김운혁 | 김진수,True,True
+박인철,리튬이온 양극재,1,3,박인철 | 김운혁 | 김진수,True,True
+박인철,제일원리 계산,2,6,이태훈 | 박인철 | 장윤희 | 허수미 | 최승호,True,True
+박인철,first principles calculation,2,6,이태훈 | 박인철 | 장윤희 | 허수미 | 최승호,True,True
+박인철,DFT,2,6,이태훈 | 박인철 | 장윤희 | 최승호 | 허수미,True,True
+박인철,AI 소재설계,1,3,박인철 | 허수미 | 이태훈,True,True
+박인철,AI driven materials design,1,3,박인철 | 허수미 | 이태훈,True,True
+박인철,자율실험실,1,1,박인철,True,True
+박인철,autonomous laboratory,1,1,박인철,True,True
+박인철,self driving laboratory,1,1,박인철,True,True
+박인철,고속 소재탐색,1,1,박인철,True,True
+박인철,high throughput screening,1,1,박인철,True,True
+허수미,고분자,2,7,박치영 | 허수미 | 김승현 | 최승호 | 장윤희,True,True
+허수미,polymer,2,7,박치영 | 허수미 | 김승현 | 장윤희 | 최승호,True,True
+허수미,고분자 정보학,1,7,허수미 | 박치영 | 김승현 | 장윤희 | 최승호,True,True
+허수미,polymer informatics,1,7,허수미 | 박치영 | 김승현 | 장윤희 | 최승호,True,True
+허수미,고분자 시뮬레이션,1,3,허수미 | 장윤희 | 최승호,True,True
+허수미,polymer simulation,1,3,허수미 | 장윤희 | 최승호,True,True
+허수미,연성물질,1,3,허수미 | 최승호 | 박치영,True,True
+허수미,soft matter,1,3,허수미 | 최승호 | 박치영,True,True
+허수미,다중스케일 시뮬레이션,1,6,허수미 | 권혁진 | 장윤희 | 이태훈 | 박인철,True,True
+허수미,multiscale simulation,1,6,허수미 | 권혁진 | 장윤희 | 이태훈 | 박인철,True,True
+허수미,분자 자기조립,1,2,허수미 | 최승호,True,True
+허수미,molecular self assembly,1,2,허수미 | 최승호,True,True
+허수미,AI 소재설계,2,3,박인철 | 허수미 | 이태훈,True,True
+허수미,AI driven materials design,2,3,박인철 | 허수미 | 이태훈,True,True
+허수미,EUV 리소그래피 모델링,1,1,허수미,True,True
+허수미,EUV lithography modeling,1,1,허수미,True,True
+김영규,리튬이온전지,3,8,이호춘 | 김운혁 | 김영규 | 박인철 | 홍승태,True,True
+김영규,lithium ion battery,3,8,이호춘 | 김운혁 | 김영규 | 박인철 | 홍승태,True,True
+김영규,전고체전지,2,5,권혁진 | 김영규 | 김운혁 | 홍승태 | 김진수,True,True
+김영규,all solid state battery,3,5,권혁진 | 김운혁 | 김영규 | 홍승태 | 김진수,True,True
+김영규,배터리 계면,1,3,김영규 | 권혁진 | 이호춘,True,True
+김영규,battery interface,1,3,김영규 | 권혁진 | 이호춘,True,True
+김영규,계면 분석,1,2,김영규 | 홍승태,True,True
+김영규,interfacial characterization,1,1,김영규,True,True
+김영규,오페란도 분석,1,2,김영규 | 위태웅,True,True
+김영규,operando analysis,1,2,김영규 | 위태웅,True,True
+김영규,X선 분광,1,2,김영규 | 홍승태,True,True
+김영규,x ray spectroscopy,1,2,김영규 | 홍승태,True,True
+김영규,다중모드 분석,1,1,김영규,True,True
+김영규,multi modal analysis,1,1,김영규,True,True
+김영규,배터리 열화,1,8,김영규 | 김운혁 | 권혁진 | 이호춘 | 김진수,True,True
+김영규,battery degradation,1,8,김영규 | 김운혁 | 권혁진 | 이호춘 | 홍승태,True,True
+이종민,전기화학 촉매,1,1,이종민,True,True
+이종민,electrochemical catalyst,1,1,이종민,True,True
+이종민,전기촉매,1,3,이종민 | 김찬연 | 위태웅,True,True
+이종민,electrocatalysis,1,3,이종민 | 김찬연 | 위태웅,True,True
+이종민,촉매 표면,1,6,이종민 | 김찬연 | 김승현 | 위태웅 | 인수일,True,True
+이종민,catalyst surface,1,1,이종민,True,True
+이종민,촉매 계면,1,6,이종민 | 김찬연 | 김승현 | 위태웅 | 인수일,True,True
+이종민,catalyst interface,7,7,권혁진 | 김영규 | 이호춘 | 장윤희 | 상가라쥬 샨무감,False,False
+이종민,질산염 환원,1,2,이종민 | 위태웅,True,True
+이종민,nitrate reduction,1,1,이종민,True,True
+이종민,수소 전기촉매,1,3,이종민 | 김찬연 | 위태웅,True,True
+이종민,hydrogen electrocatalysis,1,3,이종민 | 김찬연 | 위태웅,True,True
+이종민,나노촉매,1,6,이종민 | 김찬연 | 위태웅 | 김승현 | 인수일,True,True
+이종민,nanocatalyst,1,1,이종민,True,True
+고서진,태양전지,1,6,고서진 | 이종수 | 최종민 | 인수일 | 이윤구,True,True
+고서진,solar cell,1,6,고서진 | 이종수 | 최종민 | 인수일 | 이윤구,True,True
+고서진,유기 태양전지,1,6,고서진 | 이종수 | 이윤구 | 최종민 | 인수일,True,True
+고서진,organic solar cell,1,6,고서진 | 이윤구 | 이종수 | 최종민 | 인수일,True,True
+고서진,광검출기,1,2,고서진 | 이종수,True,True
+고서진,photodetector,1,2,고서진 | 이종수,True,True
+고서진,유무기 하이브리드 광전자소자,1,4,고서진 | 이종수 | 최종민 | 양지웅,True,True
+고서진,hybrid optoelectronic device,1,1,고서진,True,True
+고서진,신축성 전자소자,1,5,고서진 | 호동해 | 이주혁 | 이윤구 | 박치영,True,True
+고서진,stretchable electronics,1,1,고서진,True,True
+고서진,소자 물리,1,1,고서진,True,True
+고서진,device physics,1,1,고서진,True,True
+고서진,광학 시뮬레이션,1,7,고서진 | 장윤희 | 이태훈 | 허수미 | 박인철,True,True
+고서진,optical simulation,1,7,고서진 | 장윤희 | 이태훈 | 허수미 | 박인철,True,True
+김승현,고분자,3,7,박치영 | 허수미 | 김승현 | 최승호 | 장윤희,True,True
+김승현,polymer,3,7,박치영 | 허수미 | 김승현 | 장윤희 | 최승호,True,True
+김승현,고분자 화학,1,7,김승현 | 박치영 | 허수미 | 장윤희 | 최승호,True,True
+김승현,polymer chemistry,1,7,김승현 | 박치영 | 허수미 | 장윤희 | 최승호,True,True
+김승현,고분자 광촉매,1,1,김승현,True,True
+김승현,polymer photocatalyst,1,1,김승현,True,True
+김승현,광촉매,1,3,김승현 | 양지웅 | 인수일,True,True
+김승현,photocatalysis,1,2,김승현 | 인수일,True,True
+김승현,지속가능 화학,2,3,박치영 | 김승현 | 김찬연,True,True
+김승현,sustainable chemistry,1,3,김승현 | 박치영 | 김찬연,True,True
+김승현,태양연료,2,2,인수일 | 김승현,True,True
+김승현,solar fuel,2,2,인수일 | 김승현,True,True
+김승현,광촉매 수소생산,1,2,김승현 | 인수일,True,True
+김승현,photocatalytic hydrogen production,1,4,김승현 | 상가라쥬 샨무감 | 인수일 | 이종민,True,True
+김진수,차세대전지,1,8,김진수 | 김운혁 | 권혁진 | 김영규 | 이호춘,True,True
+김진수,next generation battery,2,8,권혁진 | 김진수 | 김운혁 | 김영규 | 이호춘,True,True
+김진수,배터리 설계,1,8,김진수 | 김운혁 | 김영규 | 권혁진 | 이호춘,True,True
+김진수,battery design,1,8,김진수 | 김운혁 | 권혁진 | 김영규 | 이호춘,True,True
+김진수,배터리 공정,1,1,김진수,True,True
+김진수,battery processing,1,1,김진수,True,True
+김진수,전극 공정,1,1,김진수,True,True
+김진수,electrode processing,1,1,김진수,True,True
+김진수,배터리 제조,1,1,김진수,True,True
+김진수,battery manufacturing,1,1,김진수,True,True
+김진수,양극 복합층,1,3,김진수 | 박인철 | 김운혁,True,True
+김진수,cathode composite layer,1,3,김진수 | 박인철 | 김운혁,True,True
+김진수,전고체전지,5,5,권혁진 | 김영규 | 김운혁 | 홍승태 | 김진수,False,True
+김진수,all solid state battery,5,5,권혁진 | 김운혁 | 김영규 | 홍승태 | 김진수,False,True
+김진수,불소계 바인더 대체,1,1,김진수,True,True
+김진수,fluorine free processing,1,1,김진수,True,True
+김운혁,리튬이온전지,2,8,이호춘 | 김운혁 | 김영규 | 박인철 | 홍승태,True,True
+김운혁,lithium ion battery,2,8,이호춘 | 김운혁 | 김영규 | 박인철 | 홍승태,True,True
+김운혁,전고체전지,3,5,권혁진 | 김영규 | 김운혁 | 홍승태 | 김진수,True,True
+김운혁,all solid state battery,2,5,권혁진 | 김운혁 | 김영규 | 홍승태 | 김진수,True,True
+김운혁,리튬황전지,1,2,김운혁 | 위태웅,True,True
+김운혁,lithium sulfur battery,1,1,김운혁,True,True
+김운혁,Li-S battery,1,2,김운혁 | 위태웅,True,True
+김운혁,양극재,2,3,박인철 | 김운혁 | 김진수,True,True
+김운혁,cathode material,2,3,박인철 | 김운혁 | 김진수,True,True
+김운혁,양극소재,1,1,김운혁,True,True
+김운혁,배터리 소재,1,8,김운혁 | 김영규 | 권혁진 | 이호춘 | 홍승태,True,True
+김운혁,battery material,1,8,김운혁 | 권혁진 | 김영규 | 홍승태 | 이호춘,True,True
+김운혁,배터리 재활용,1,1,김운혁,True,True
+김운혁,battery recycling,1,1,김운혁,True,True
+호동해,소프트 전자,1,5,호동해 | 고서진 | 이주혁 | 이윤구 | 박치영,True,True
+호동해,soft electronics,1,5,호동해 | 고서진 | 이주혁 | 이윤구 | 박치영,True,True
+호동해,에너지 하베스팅,2,2,이주혁 | 호동해,True,True
+호동해,energy harvesting,2,2,이주혁 | 호동해,True,True
+호동해,웨어러블 헬스케어,1,2,호동해 | 이주혁,True,True
+호동해,wearable healthcare,1,2,호동해 | 이주혁,True,True
+호동해,웨어러블 전자소자,1,3,호동해 | 양지웅 | 이주혁,True,True
+호동해,wearable electronics,1,2,호동해 | 이주혁,True,True
+호동해,아이오닉스,1,1,호동해,True,True
+호동해,iontronics,1,1,호동해,True,True
+호동해,이온 열전,1,1,호동해,True,True
+호동해,ionic thermoelectric,2,2,이종수 | 호동해,True,True
+호동해,마찰전기,1,2,호동해 | 이주혁,True,True
+호동해,triboelectric,1,2,호동해 | 이주혁,True,True
+호동해,액체금속 복합체,1,1,호동해,True,True
+호동해,liquid metal composite,1,1,호동해,True,True
+김찬연,불균일 촉매,1,6,김찬연 | 이종민 | 김승현 | 위태웅 | 인수일,True,True
+김찬연,heterogeneous catalysis,1,6,김찬연 | 이종민 | 김승현 | 위태웅 | 인수일,True,True
+김찬연,전기촉매,2,3,이종민 | 김찬연 | 위태웅,True,True
+김찬연,electrocatalysis,2,3,이종민 | 김찬연 | 위태웅,True,True
+김찬연,CO2 전환,2,3,위태웅 | 김찬연 | 인수일,True,True
+김찬연,CO₂ 전환,2,3,위태웅 | 김찬연 | 인수일,True,True
+김찬연,CO2 conversion,1,3,김찬연 | 인수일 | 위태웅,True,True
+김찬연,CO 전환,1,1,김찬연,True,True
+김찬연,NOx 전환,1,1,김찬연,True,True
+김찬연,촉매 미세환경,1,6,김찬연 | 이종민 | 김승현 | 위태웅 | 인수일,True,True
+김찬연,catalytic microenvironment,1,1,김찬연,True,True
+김찬연,반응 메커니즘,1,2,김찬연 | 김운혁,True,True
+김찬연,reaction mechanism,1,1,김찬연,True,True
+김찬연,청정연료 생산,1,1,김찬연,True,True
+김찬연,clean fuel production,1,1,김찬연,True,True
+양지웅,양자점,1,3,양지웅 | 이종수 | 최종민,True,True
+양지웅,quantum dot,1,3,양지웅 | 이종수 | 최종민,True,True
+양지웅,나노결정,1,3,양지웅 | 이종수 | 최종민,True,True
+양지웅,nanocrystal,1,3,양지웅 | 이종수 | 최종민,True,True
+양지웅,QLED,1,3,양지웅 | 이종수 | 이윤구,True,True
+양지웅,양자점 디스플레이,1,2,양지웅 | 이종수,True,True
+양지웅,quantum dot display,1,2,양지웅 | 이종수,True,True
+양지웅,태양에너지,1,1,양지웅,True,True
+양지웅,solar energy,1,1,양지웅,True,True
+양지웅,양자점 태양전지,2,3,최종민 | 양지웅 | 이종수,True,True
+양지웅,quantum dot solar cell,2,3,최종민 | 양지웅 | 이종수,True,True
+양지웅,광촉매,2,3,김승현 | 양지웅 | 인수일,True,True
+양지웅,photocatalyst,1,3,양지웅 | 김승현 | 인수일,True,True
+양지웅,액상 TEM,1,1,양지웅,True,True
+양지웅,liquid phase TEM,1,1,양지웅,True,True
+양지웅,웨어러블 전자소자,2,3,호동해 | 양지웅 | 이주혁,True,True
+박치영,고분자,1,7,박치영 | 허수미 | 김승현 | 최승호 | 장윤희,True,True
+박치영,polymer,1,7,박치영 | 허수미 | 김승현 | 장윤희 | 최승호,True,True
+박치영,전도성 고분자,1,7,박치영 | 허수미 | 김승현 | 장윤희 | 최승호,True,True
+박치영,conducting polymer,1,7,박치영 | 허수미 | 김승현 | 장윤희 | 최승호,True,True
+박치영,고분자 복합체,1,7,박치영 | 허수미 | 김승현 | 장윤희 | 최승호,True,True
+박치영,polymer composite,1,7,박치영 | 허수미 | 김승현 | 장윤희 | 최승호,True,True
+박치영,기능성 고분자,1,7,박치영 | 허수미 | 김승현 | 장윤희 | 최승호,True,True
+박치영,functional polymer,1,7,박치영 | 허수미 | 김승현 | 장윤희 | 최승호,True,True
+박치영,액정,1,1,박치영,True,True
+박치영,liquid crystal,1,2,박치영 | 양지웅,True,True
+박치영,기능성 다공성 소재,1,1,박치영,True,True
+박치영,porous material,1,1,박치영,True,True
+박치영,분자기계,1,1,박치영,True,True
+박치영,molecular machine,1,2,박치영 | 이태훈,True,True
+박치영,지속가능 화학,1,3,박치영 | 김승현 | 김찬연,True,True
+박치영,circular chemistry,1,1,박치영,True,True
+최종민,페로브스카이트,1,1,최종민,True,True
+최종민,perovskite,1,1,최종민,True,True
+최종민,페로브스카이트 태양전지,1,1,최종민,True,True
+최종민,perovskite solar cell,1,1,최종민,True,True
+최종민,양자점 태양전지,1,3,최종민 | 양지웅 | 이종수,True,True
+최종민,quantum dot solar cell,1,3,최종민 | 양지웅 | 이종수,True,True
+최종민,양자점,3,3,양지웅 | 이종수 | 최종민,True,True
+최종민,quantum dot,3,3,양지웅 | 이종수 | 최종민,True,True
+최종민,금속산화물,1,1,최종민,True,True
+최종민,metal oxide,1,1,최종민,True,True
+최종민,촉매 소재,1,6,최종민 | 김찬연 | 이종민 | 인수일 | 김승현,True,True
+최종민,catalytic material,1,1,최종민,True,True
+최종민,환경소재,1,1,최종민,True,True
+최종민,environmental material,1,1,최종민,True,True
+최종민,광전소자,1,4,최종민 | 고서진 | 이종수 | 양지웅,True,True
+최종민,optoelectronic material,1,1,최종민,True,True
+이주혁,에너지 하베스팅,1,2,이주혁 | 호동해,True,True
+이주혁,energy harvesting,1,2,이주혁 | 호동해,True,True
+이주혁,압전 발전기,1,2,이주혁 | 호동해,True,True
+이주혁,piezoelectric generator,1,2,이주혁 | 호동해,True,True
+이주혁,마찰전기 발전기,1,2,이주혁 | 호동해,True,True
+이주혁,triboelectric generator,1,2,이주혁 | 호동해,True,True
+이주혁,자가발전 전자소자,1,2,이주혁 | 호동해,True,True
+이주혁,self powered electronics,1,1,이주혁,True,True
+이주혁,생체모사 에너지소재,1,1,이주혁,True,True
+이주혁,biomimetic energy material,1,1,이주혁,True,True
+이주혁,촉각 센서,1,1,이주혁,True,True
+이주혁,tactile sensor,1,1,이주혁,True,True
+이주혁,웨어러블 센서,1,1,이주혁,True,True
+이주혁,wearable sensor,1,1,이주혁,True,True
+이호춘,리튬이온전지,1,8,이호춘 | 김운혁 | 김영규 | 박인철 | 홍승태,True,True
+이호춘,lithium ion battery,1,8,이호춘 | 김운혁 | 김영규 | 박인철 | 홍승태,True,True
+이호춘,포스트 리튬이온전지,1,2,이호춘 | 홍승태,True,True
+이호춘,post lithium ion battery,1,2,이호춘 | 홍승태,True,True
+이호춘,나트륨전지,2,3,홍승태 | 이호춘 | 권혁진,True,True
+이호춘,sodium battery,1,3,이호춘 | 홍승태 | 권혁진,True,True
+이호춘,마그네슘전지,2,2,홍승태 | 이호춘,True,True
+이호춘,magnesium battery,1,2,이호춘 | 홍승태,True,True
+이호춘,전해질,2,6,권혁진 | 이호춘 | 상가라쥬 샨무감 | 장윤희 | 최승호,True,True
+이호춘,electrolyte,2,6,권혁진 | 이호춘 | 장윤희 | 상가라쥬 샨무감 | 김영규,True,True
+이호춘,이오닉스,1,2,이호춘 | 호동해,True,True
+이호춘,ionics,1,1,이호춘,True,True
+이호춘,전기화학,1,1,이호춘,True,True
+이호춘,electrochemistry,1,1,이호춘,True,True
+이호춘,열전기화학전지,1,1,이호춘,True,True
+이호춘,thermo electrochemical cell,1,1,이호춘,True,True
+이종수,양자점,2,3,양지웅 | 이종수 | 최종민,True,True
+이종수,quantum dot,2,3,양지웅 | 이종수 | 최종민,True,True
+이종수,QLED,2,3,양지웅 | 이종수 | 이윤구,True,True
+이종수,양자점 패터닝,1,3,이종수 | 양지웅 | 최종민,True,True
+이종수,quantum dot patterning,1,3,이종수 | 양지웅 | 최종민,True,True
+이종수,용액공정 태양전지,1,6,이종수 | 고서진 | 최종민 | 이윤구 | 인수일,True,True
+이종수,solution processed solar cell,1,6,이종수 | 고서진 | 최종민 | 이윤구 | 인수일,True,True
+이종수,태양전지,2,6,고서진 | 이종수 | 최종민 | 인수일 | 이윤구,True,True
+이종수,solar cell,2,6,고서진 | 이종수 | 최종민 | 인수일 | 이윤구,True,True
+이종수,2D TMDC,1,1,이종수,True,True
+이종수,이차원 반도체,1,1,이종수,True,True
+이종수,2d semiconductor,1,1,이종수,True,True
+이종수,광검출기,2,2,고서진 | 이종수,True,True
+이종수,photodetector,2,2,고서진 | 이종수,True,True
+이종수,열전소자,1,1,이종수,True,True
+이종수,thermoelectric device,1,1,이종수,True,True
+이종수,발광소자,1,3,이종수 | 양지웅 | 이윤구,True,True
+이종수,light emitting device,1,1,이종수,True,True
+장윤희,계산화학,1,4,장윤희 | 이태훈 | 최승호 | 허수미,True,True
+장윤희,computational chemistry,1,4,장윤희 | 이태훈 | 최승호 | 허수미,True,True
+장윤희,전산화학,1,4,장윤희 | 이태훈 | 최승호 | 허수미,True,True
+장윤희,quantum chemistry,1,4,장윤희 | 이태훈 | 최승호 | 허수미,True,True
+장윤희,양자화학,1,4,장윤희 | 이태훈 | 최승호 | 허수미,True,True
+장윤희,다중스케일 분자모델링,1,4,장윤희 | 이태훈 | 허수미 | 최승호,True,True
+장윤희,multiscale molecular modeling,1,4,장윤희 | 허수미 | 이태훈 | 최승호,True,True
+장윤희,양자역학 계산,1,1,장윤희,True,True
+장윤희,quantum mechanics calculation,1,1,장윤희,True,True
+장윤희,분자동역학,1,4,장윤희 | 이태훈 | 최승호 | 허수미,True,True
+장윤희,molecular dynamics,1,4,장윤희 | 이태훈 | 최승호 | 허수미,True,True
+장윤희,QM MD,1,1,장윤희,True,True
+장윤희,고분자 시뮬레이션,2,3,허수미 | 장윤희 | 최승호,True,True
+장윤희,polymer simulation,2,3,허수미 | 장윤희 | 최승호,True,True
+장윤희,전해질 시뮬레이션,1,3,장윤희 | 최승호 | 권혁진,True,True
+장윤희,electrolyte simulation,1,3,장윤희 | 최승호 | 권혁진,True,True
+이윤구,유기태양전지,1,6,이윤구 | 고서진 | 이종수 | 최종민 | 인수일,True,True
+이윤구,organic photovoltaic,1,6,이윤구 | 고서진 | 최종민 | 인수일 | 이종수,True,True
+이윤구,organic solar cell,2,6,고서진 | 이윤구 | 이종수 | 최종민 | 인수일,True,True
+이윤구,유연 투명전극,1,2,이윤구 | 고서진,True,True
+이윤구,flexible transparent conductor,1,1,이윤구,True,True
+이윤구,OLED,1,3,이윤구 | 양지웅 | 이종수,True,True
+이윤구,유기발광다이오드,1,1,이윤구,True,True
+이윤구,organic light emitting diode,1,1,이윤구,True,True
+이윤구,인쇄전자,1,1,이윤구,True,True
+이윤구,printed electronics,1,1,이윤구,True,True
+이윤구,롤투롤,1,1,이윤구,True,True
+이윤구,roll to roll,1,1,이윤구,True,True
+이윤구,유기 전자소자,1,2,이윤구 | 고서진,True,True
+이윤구,organic electronics,1,2,이윤구 | 고서진,True,True
+인수일,CO2 전환,3,3,위태웅 | 김찬연 | 인수일,True,True
+인수일,CO₂ 전환,3,3,위태웅 | 김찬연 | 인수일,True,True
+인수일,CO2 conversion,2,3,김찬연 | 인수일 | 위태웅,True,True
+인수일,CO2 연료전환,1,1,인수일,True,True
+인수일,CO2 fuel conversion,1,3,인수일 | 김찬연 | 위태웅,True,True
+인수일,광촉매 수소생산,2,2,김승현 | 인수일,True,True
+인수일,photocatalytic hydrogen generation,1,1,인수일,True,True
+인수일,수소생산,2,4,상가라쥬 샨무감 | 인수일 | 김승현 | 이종민,True,True
+인수일,hydrogen generation,1,1,인수일,True,True
+인수일,물분해,1,4,인수일 | 상가라쥬 샨무감 | 김승현 | 이종민,True,True
+인수일,water splitting,1,4,인수일 | 상가라쥬 샨무감 | 김승현 | 이종민,True,True
+인수일,하이브리드 태양전지,1,6,인수일 | 고서진 | 이종수 | 최종민 | 이윤구,True,True
+인수일,hybrid solar cell,1,6,인수일 | 고서진 | 이종수 | 최종민 | 이윤구,True,True
+인수일,염료감응 태양전지,1,6,인수일 | 고서진 | 이종수 | 최종민 | 이윤구,True,True
+인수일,dye sensitized solar cell,1,6,인수일 | 고서진 | 이종수 | 최종민 | 이윤구,True,True
+인수일,미생물 연료전지,1,2,인수일 | 상가라쥬 샨무감,True,True
+인수일,microbial fuel cell,1,2,인수일 | 상가라쥬 샨무감,True,True
+인수일,태양연료,1,2,인수일 | 김승현,True,True
+인수일,solar fuel,1,2,인수일 | 김승현,True,True
+상가라쥬 샨무감,연료전지,1,2,상가라쥬 샨무감 | 인수일,True,True
+상가라쥬 샨무감,fuel cell,1,2,상가라쥬 샨무감 | 인수일,True,True
+상가라쥬 샨무감,PEMFC,1,2,상가라쥬 샨무감 | 인수일,True,True
+상가라쥬 샨무감,고분자전해질 연료전지,1,1,상가라쥬 샨무감,True,True
+상가라쥬 샨무감,polymer electrolyte membrane fuel cell,1,1,상가라쥬 샨무감,True,True
+상가라쥬 샨무감,수전해,1,4,상가라쥬 샨무감 | 인수일 | 김승현 | 이종민,True,True
+상가라쥬 샨무감,water electrolysis,1,4,상가라쥬 샨무감 | 인수일 | 김승현 | 이종민,True,True
+상가라쥬 샨무감,수전해 촉매,1,4,상가라쥬 샨무감 | 이종민 | 김승현 | 인수일,True,True
+상가라쥬 샨무감,water electrolyzer,1,1,상가라쥬 샨무감,True,True
+상가라쥬 샨무감,수소생산,1,4,상가라쥬 샨무감 | 인수일 | 김승현 | 이종민,True,True
+상가라쥬 샨무감,hydrogen production,1,4,상가라쥬 샨무감 | 김승현 | 인수일 | 이종민,True,True
+상가라쥬 샨무감,금속공기전지,1,1,상가라쥬 샨무감,True,True
+상가라쥬 샨무감,metal air battery,1,1,상가라쥬 샨무감,True,True
+상가라쥬 샨무감,리튬공기전지,1,1,상가라쥬 샨무감,True,True
+상가라쥬 샨무감,Li air battery,1,1,상가라쥬 샨무감,True,True
+상가라쥬 샨무감,고분자전해질막,1,3,상가라쥬 샨무감 | 장윤희 | 최승호,True,True
+상가라쥬 샨무감,polymer electrolyte membrane,1,3,상가라쥬 샨무감 | 장윤희 | 최승호,True,True
+상가라쥬 샨무감,레독스흐름전지,1,1,상가라쥬 샨무감,True,True
+상가라쥬 샨무감,redox flow battery,1,1,상가라쥬 샨무감,True,True
+최승호,계산생물물리,1,1,최승호,True,True
+최승호,computational biophysics,1,1,최승호,True,True
+최승호,분자동역학,3,4,장윤희 | 이태훈 | 최승호 | 허수미,True,True
+최승호,molecular dynamics,3,4,장윤희 | 이태훈 | 최승호 | 허수미,True,True
+최승호,막단백질,1,1,최승호,True,True
+최승호,membrane protein,1,1,최승호,True,True
+최승호,단백질 지질 상호작용,1,1,최승호,True,True
+최승호,protein lipid interaction,1,1,최승호,True,True
+최승호,고분자 자기조립,1,7,최승호 | 허수미 | 박치영 | 김승현 | 장윤희,True,True
+최승호,polymer self assembly,1,7,최승호 | 허수미 | 박치영 | 김승현 | 장윤희,True,True
+최승호,전해질 시뮬레이션,2,3,장윤희 | 최승호 | 권혁진,True,True
+최승호,electrolyte simulation,2,3,장윤희 | 최승호 | 권혁진,True,True
+최승호,이온수송,1,1,최승호,True,True
+최승호,ion transport,1,1,최승호,True,True
+최승호,연성물질,2,3,허수미 | 최승호 | 박치영,True,True
+최승호,soft matter,2,3,허수미 | 최승호 | 박치영,True,True
+홍승태,포스트 리튬이온전지,2,2,이호춘 | 홍승태,True,True
+홍승태,post lithium ion battery,2,2,이호춘 | 홍승태,True,True
+홍승태,마그네슘전지,1,2,홍승태 | 이호춘,True,True
+홍승태,magnesium battery,2,2,이호춘 | 홍승태,True,True
+홍승태,칼슘전지,1,1,홍승태,True,True
+홍승태,calcium battery,1,8,홍승태 | 김운혁 | 권혁진 | 김영규 | 이호춘,True,True
+홍승태,아연전지,1,1,홍승태,True,True
+홍승태,zinc battery,1,8,홍승태 | 김운혁 | 권혁진 | 김영규 | 이호춘,True,True
+홍승태,알루미늄전지,1,1,홍승태,True,True
+홍승태,aluminum battery,1,8,홍승태 | 김운혁 | 권혁진 | 김영규 | 이호춘,True,True
+홍승태,나트륨전지,1,3,홍승태 | 이호춘 | 권혁진,True,True
+홍승태,sodium battery,2,3,이호춘 | 홍승태 | 권혁진,True,True
+홍승태,고체 리튬이온 전도체,1,1,홍승태,True,True
+홍승태,solid lithium ion conductor,1,3,홍승태 | 김영규 | 김운혁,True,True
+홍승태,전고체전지,4,5,권혁진 | 김영규 | 김운혁 | 홍승태 | 김진수,False,True
+홍승태,all solid state battery,4,5,권혁진 | 김운혁 | 김영규 | 홍승태 | 김진수,False,True
+홍승태,무기소재 발견,1,1,홍승태,True,True
+홍승태,inorganic materials discovery,1,1,홍승태,True,True
+홍승태,X선 결정학,1,1,홍승태,True,True
+홍승태,x ray crystallography,1,1,홍승태,True,True

@@ -9,3 +9,4 @@ Primary changes:
 - preserved existing privacy-minimized GoatCounter analytics without new personal data
 DGIST-RME-OFFICIAL-CURATED-2026-07-12
 DGIST-RME-OFFICIAL-CURATED-V2-2026-07-12
+DGIST-EECS-OFFICIAL-CURATED-V2-2026-07-12

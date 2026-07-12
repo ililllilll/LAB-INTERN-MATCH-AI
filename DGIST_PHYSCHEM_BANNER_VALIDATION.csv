@@ -1,0 +1,18 @@
+﻿banner,field_key,result_count,results,zero_result,over_10
+나노포토닉스·광자소자,photonics-device,1,조창희,False,False
+광물성·초고속 분광,photophysics-spectroscopy,2,성주영 | 김소연,False,False
+계산물질·DFT·AI,computational-dft,2,강준구 | 이재동,False,False
+강상관·양자다체 이론,correlated-theory,3,김아람 | 이재동 | 김소연,False,False
+초전도·양자물질,superconducting-quantum-materials,5,권용성 | 박기성 | 서정필 | 김아람 | 김소연,False,False
+양자컴퓨팅·양자정보,quantum-computing,2,김영욱 | 조창희,False,False
+2D·위상물질·양자수송,topological-2d,3,김영욱 | 서정필 | 박기성,False,False
+스핀트로닉스·자성소자,spintronics,3,유천열 | 홍정일 | 김철기,False,False
+반도체·센서·웨어러블소자,semiconductor-sensor,3,이신범 | 이성원 | 김철기,False,False
+MOF·다공성 소재,mof-porous,2,박진희 | 정낙천,False,False
+유기합성·촉매,organic-synthesis-catalysis,3,정병혁 | 이성기 | 서상원,False,False
+지속가능화학·업사이클링,sustainable-chemistry,2,김성균 | 서상원,False,False
+바이오소재·표면화학,biomaterials,2,홍선기 | 이성원,False,False
+단분자·라이브셀 이미징,single-molecule,1,서대하,False,False
+반응메커니즘·구조동역학,reaction-dynamics,3,김종구 | 김소연 | 성주영,False,False
+자기센서·BioMEMS,magnetic-bio-device,1,김철기,False,False
+에너지물질·광전자특성,energy-optoelectronics,3,성주영 | 조창희 | 이신범,False,False

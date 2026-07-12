@@ -1,0 +1,12 @@
+{
+  "total": 280,
+  "top1": 248,
+  "top3": 280,
+  "top5": 280,
+  "top10": 280,
+  "missing": 0,
+  "top1Rate": 0.8857142857142857,
+  "top3Rate": 1,
+  "top5Rate": 1,
+  "top10Rate": 1
+}

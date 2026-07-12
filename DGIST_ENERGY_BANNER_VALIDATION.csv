@@ -1,0 +1,16 @@
+﻿banner,field_key,result_count,results,zero_result,over_10
+리튬이온·차세대전지,battery,8,김운혁 | 권혁진 | 김영규 | 이호춘 | 홍승태 | 김진수 | 박인철 | 위태웅,False,False
+전고체·전해질·계면,all-solid-state,5,권혁진 | 김영규 | 김운혁 | 홍승태 | 김진수,False,False
+양극재·전극공정,cathode-processing,5,박인철 | 김운혁 | 김진수 | 권혁진 | 홍승태,False,False
+배터리 진단·오페란도,battery-operando,5,김영규 | 위태웅 | 권혁진 | 홍승태 | 김운혁,False,False
+태양전지·광전변환,solar-cell,6,고서진 | 최종민 | 이윤구 | 인수일 | 이종수 | 양지웅,False,False
+양자점·디스플레이,quantum-display,4,양지웅 | 이종수 | 최종민 | 이윤구,False,False
+촉매·전기촉매,catalysis,7,김찬연 | 이종민 | 상가라쥬 샨무감 | 위태웅 | 김승현 | 인수일 | 최종민,False,False
+CO₂ 전환·태양연료,co2-solar-fuel,4,김찬연 | 인수일 | 위태웅 | 김승현,False,False
+수소·연료전지·수전해,hydrogen-fuel-cell,5,상가라쥬 샨무감 | 인수일 | 김승현 | 이종민 | 김찬연,False,False
+에너지 하베스팅,energy-harvesting,2,이주혁 | 호동해,False,False
+소프트·웨어러블 전자,soft-wearable,6,호동해 | 이주혁 | 고서진 | 박치영 | 이윤구 | 양지웅,False,False
+고분자·유기 에너지소재,polymer-organic,7,박치영 | 허수미 | 김승현 | 장윤희 | 최승호 | 이윤구 | 호동해,False,False
+계산화학·분자모델링,computational-chemistry,6,장윤희 | 이태훈 | 허수미 | 최승호 | 박인철 | 권혁진,False,False
+AI·자율소재탐색,ai-materials,4,박인철 | 이태훈 | 허수미 | 김영규,False,False
+나노소재·광전자소자,nano-optoelectronics,6,양지웅 | 이종수 | 최종민 | 고서진 | 이주혁 | 호동해,False,False

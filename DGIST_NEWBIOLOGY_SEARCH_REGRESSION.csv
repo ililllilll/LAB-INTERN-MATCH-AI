@@ -1,0 +1,259 @@
+﻿professor,query,rank,result_count,top5,included_top3
+곽준명,식물발달,1,2,곽준명 | 우혜련,True
+곽준명,식물 발달,1,2,곽준명 | 우혜련,True
+곽준명,plant development,1,2,곽준명 | 우혜련,True
+곽준명,세포정밀성,1,1,곽준명,True
+곽준명,cellular precision,1,1,곽준명,True
+곽준명,환경응답,2,2,우혜련 | 곽준명,True
+곽준명,환경 반응,1,2,곽준명 | 우혜련,True
+곽준명,environmental response,1,2,곽준명 | 우혜련,True
+곽준명,식물 환경응답,1,2,곽준명 | 우혜련,True
+곽준명,식물 적응,1,2,곽준명 | 우혜련,True
+곽준명,식물 노화,1,2,곽준명 | 우혜련,True
+곽준명,plant senescence,1,2,곽준명 | 우혜련,True
+곽준명,세포사,1,1,곽준명,True
+곽준명,cell death,1,1,곽준명,True
+곽준명,탈리,1,1,곽준명,True
+곽준명,abscission,1,1,곽준명,True
+우혜련,식물분자유전학,1,2,우혜련 | 곽준명,True
+우혜련,plant molecular genetics,1,2,우혜련 | 곽준명,True
+우혜련,식물 분자 커뮤니케이션,1,2,우혜련 | 곽준명,True
+우혜련,plant molecular communication,1,2,우혜련 | 곽준명,True
+우혜련,식물 신호전달,1,2,우혜련 | 곽준명,True
+우혜련,plant signaling,1,2,우혜련 | 곽준명,True
+우혜련,환경응답,1,2,우혜련 | 곽준명,True
+우혜련,환경 스트레스,1,2,우혜련 | 곽준명,True
+우혜련,environmental stress response,1,2,우혜련 | 곽준명,True
+우혜련,식물 환경응답,2,2,곽준명 | 우혜련,True
+우혜련,식물 노화,2,2,곽준명 | 우혜련,True
+우혜련,plant senescence,2,2,곽준명 | 우혜련,True
+이상임,동물생태,1,1,이상임,True
+이상임,동물 생태,1,1,이상임,True
+이상임,animal ecology,1,1,이상임,True
+이상임,통합 동물생태학,1,1,이상임,True
+이상임,integrative animal ecology,1,1,이상임,True
+이상임,행동생태,1,1,이상임,True
+이상임,behavioral ecology,1,1,이상임,True
+이상임,인지생태,1,1,이상임,True
+이상임,cognitive ecology,1,1,이상임,True
+이상임,감각생태,1,1,이상임,True
+이상임,sensory ecology,1,1,이상임,True
+이상임,진화생태,1,1,이상임,True
+이상임,evolutionary ecology,1,1,이상임,True
+이상임,조류 행동,1,1,이상임,True
+구재형,뇌면역,1,1,구재형,True
+구재형,뇌 면역,1,1,구재형,True
+구재형,brain immune axis,1,1,구재형,True
+구재형,brain-immune axis,1,1,구재형,True
+구재형,신경면역학,1,1,구재형,True
+구재형,neuroimmunology,1,1,구재형,True
+구재형,신경염증,1,1,구재형,True
+구재형,neuroinflammation,1,1,구재형,True
+구재형,장내미생물,1,1,구재형,True
+구재형,gut microbiome,1,1,구재형,True
+구재형,감염균 대사체,1,3,구재형 | 이재민 | 남창훈,True
+구재형,알츠하이머,1,1,구재형,True
+구재형,뇌종양,1,2,구재형 | 정찬,True
+기영훈,유전체 불안정성,1,2,기영훈 | 김유리,True
+기영훈,genomic instability,1,2,기영훈 | 김유리,True
+기영훈,유전체 안정성,1,2,기영훈 | 김유리,True
+기영훈,genome stability,1,2,기영훈 | 김유리,True
+기영훈,DNA 손상,1,2,기영훈 | 김유리,True
+기영훈,dna damage,1,2,기영훈 | 김유리,True
+기영훈,DNA 복구,1,2,기영훈 | 김유리,True
+기영훈,dna repair,1,2,기영훈 | 김유리,True
+기영훈,암 취약성,1,4,기영훈 | 정영태 | 정찬 | 최일규,True
+기영훈,cancer vulnerability,1,4,기영훈 | 정영태 | 정찬 | 최일규,True
+기영훈,암 유전학,1,4,기영훈 | 정영태 | 정찬 | 최일규,True
+김민석,나노바이오의학,1,1,김민석,True
+김민석,nanobiomedicine,1,1,김민석,True
+김민석,전자약,1,1,김민석,True
+김민석,electroceuticals,1,1,김민석,True
+김민석,바이오의료기기,1,1,김민석,True
+김민석,biomedical device,1,1,김민석,True
+김민석,암세포 분리,1,5,김민석 | 기영훈 | 정영태 | 정찬 | 최일규,True
+김민석,cancer cell isolation,1,5,김민석 | 기영훈 | 정영태 | 정찬 | 최일규,True
+김민석,중개의학,1,1,김민석,True
+김민식,프로테오믹스,1,2,김민식 | 요나스 페릭스,True
+김민식,proteomics,1,2,김민식 | 요나스 페릭스,True
+김민식,단백체학,1,1,김민식,True
+김민식,PTM,1,1,김민식,True
+김민식,post translational modification,1,1,김민식,True
+김민식,다중오믹스,1,2,김민식 | 요나스 페릭스,True
+김민식,multi omics,1,2,김민식 | 요나스 페릭스,True
+김민식,멀티오믹스,1,2,김민식 | 요나스 페릭스,True
+김민식,정량생물학,1,1,김민식,True
+김민식,quantitative biology,1,1,김민식,True
+김민식,정밀의학,1,2,김민식 | 정영태,True
+김민식,precision medicine,1,2,김민식 | 정영태,True
+김민식,질량분석,1,1,김민식,True
+김민식,mass spectrometry,1,1,김민식,True
+김민식,바이오마커,1,1,김민식,True
+김유리,크로마틴,1,1,김유리,True
+김유리,chromatin,1,1,김유리,True
+김유리,3D 크로마틴,1,1,김유리,True
+김유리,3d chromatin,1,1,김유리,True
+김유리,분자후성유전학,1,2,김유리 | 정찬,True
+김유리,molecular epigenetics,1,2,김유리 | 정찬,True
+김유리,후성유전학,1,2,김유리 | 정찬,True
+김유리,epigenetics,1,2,김유리 | 정찬,True
+김유리,유전체 조직화,1,1,김유리,True
+김유리,genome organization,1,1,김유리,True
+김유리,DNA 복구,2,2,기영훈 | 김유리,True
+김유리,dna repair,2,2,기영훈 | 김유리,True
+김유리,마이크로플루이딕스,1,1,김유리,True
+김진해,단백질 구조,1,1,김진해,True
+김진해,protein structure,1,1,김진해,True
+김진해,단백질 노화,1,1,김진해,True
+김진해,protein aging,1,1,김진해,True
+김진해,구조생물학,1,2,김진해 | 이창훈,True
+김진해,structural biology,1,2,김진해 | 이창훈,True
+김진해,NMR,1,1,김진해,True
+김진해,NMR 분광학,1,1,김진해,True
+김진해,nmr spectroscopy,1,1,김진해,True
+김진해,단백질 동역학,1,1,김진해,True
+김진해,protein dynamics,1,1,김진해,True
+김태완,줄기세포 공학,1,2,김태완 | 정영태,True
+김태완,stem cell engineering,1,2,김태완 | 정영태,True
+김태완,줄기세포,1,2,김태완 | 정영태,True
+김태완,stem cell,1,2,김태완 | 정영태,True
+김태완,세포치료,1,1,김태완,True
+김태완,cell therapy,1,1,김태완,True
+김태완,재생의학,1,1,김태완,True
+김태완,regenerative medicine,1,1,김태완,True
+김태완,조직재생,1,1,김태완,True
+김태완,tissue regeneration,1,1,김태완,True
+김태완,질병 모델링,1,1,김태완,True
+김태완,disease modeling,1,1,김태완,True
+남창훈,노화와 면역,1,1,남창훈,True
+남창훈,aging and immunity,1,1,남창훈,True
+남창훈,면역노화,1,1,남창훈,True
+남창훈,immunosenescence,1,1,남창훈,True
+남창훈,노화성 염증,1,3,남창훈 | 이영삼 | 이재민,True
+남창훈,inflammaging,1,1,남창훈,True
+남창훈,미토콘드리아 항상성,1,1,남창훈,True
+남창훈,mitochondrial homeostasis,1,1,남창훈,True
+남창훈,산화 스트레스,1,1,남창훈,True
+남창훈,oxidative stress,1,1,남창훈,True
+예경무,바이오치료제,1,1,예경무,True
+예경무,biotherapeutics,1,1,예경무,True
+예경무,항체공학,1,1,예경무,True
+예경무,antibody engineering,1,1,예경무,True
+예경무,치료용 항체,1,1,예경무,True
+예경무,therapeutic antibody,1,1,예경무,True
+예경무,단백질 설계,1,2,예경무 | 이송이,True
+예경무,protein design,1,2,예경무 | 이송이,True
+예경무,바이오의약품,1,1,예경무,True
+예경무,biologics,1,1,예경무,True
+이병훈,단백질 항상성,1,1,이병훈,True
+이병훈,protein homeostasis,1,1,이병훈,True
+이병훈,proteostasis,1,1,이병훈,True
+이병훈,단백질 분해,1,1,이병훈,True
+이병훈,protein degradation,1,1,이병훈,True
+이병훈,유비퀴틴,1,1,이병훈,True
+이병훈,ubiquitin,1,1,이병훈,True
+이병훈,프로테아좀,1,1,이병훈,True
+이병훈,proteasome,1,1,이병훈,True
+이병훈,유비퀴틴 프로테아좀,1,1,이병훈,True
+이병훈,ubiquitin proteasome system,1,1,이병훈,True
+이병훈,표적 단백질 분해,1,1,이병훈,True
+이병훈,targeted protein degradation,1,1,이병훈,True
+이송이,화학생물학,1,1,이송이,True
+이송이,chemical biology,1,1,이송이,True
+이송이,단백질공학,1,2,이송이 | 예경무,True
+이송이,protein engineering,1,2,이송이 | 예경무,True
+이송이,생체분자 설계,1,1,이송이,True
+이송이,biomolecular design,1,1,이송이,True
+이송이,단백질 기능 조절,1,2,이송이 | 요나스 페릭스,True
+이송이,protein function control,1,2,이송이 | 요나스 페릭스,True
+이송이,분자 도구,1,1,이송이,True
+이영삼,세포노화,1,1,이영삼,True
+이영삼,세포 노화,1,1,이영삼,True
+이영삼,cellular senescence,1,1,이영삼,True
+이영삼,senescence associated mechanism,1,1,이영삼,True
+이영삼,노화 연관 기전,1,3,이영삼 | 이재민 | 남창훈,True
+이영삼,노화 회복,1,3,이영삼 | 이재민 | 남창훈,True
+이영삼,senescence reversal,1,1,이영삼,True
+이영삼,노화세포,1,3,이영삼 | 이재민 | 남창훈,True
+이영삼,senescent cell,2,2,최일규 | 이영삼,True
+이영삼,미토콘드리아 리소좀 핵 소통,1,1,이영삼,True
+이재민,노화 대사,1,1,이재민,True
+이재민,aging metabolism,1,1,이재민,True
+이재민,aging and metabolism,1,2,이재민 | 남창훈,True
+이재민,노화와 대사,1,1,이재민,True
+이재민,대사생리학,1,1,이재민,True
+이재민,metabolic physiology,1,1,이재민,True
+이재민,대사 항상성,1,2,이재민 | 남창훈,True
+이재민,metabolic homeostasis,1,1,이재민,True
+이재민,생리학,1,1,이재민,True
+이재민,physiology,1,1,이재민,True
+이종찬,단분자 생물물리,1,1,이종찬,True
+이종찬,single molecule biophysics,1,1,이종찬,True
+이종찬,단분자 이미징,1,1,이종찬,True
+이종찬,single molecule imaging,1,1,이종찬,True
+이종찬,초고해상도 현미경,1,1,이종찬,True
+이종찬,super resolution microscopy,1,1,이종찬,True
+이종찬,STED,1,1,이종찬,True
+이종찬,smFRET,1,1,이종찬,True
+이종찬,smFISH,1,1,이종찬,True
+이종찬,세포동역학,1,1,이종찬,True
+이종찬,cell dynamics,1,1,이종찬,True
+이종찬,바이오이미징,1,1,이종찬,True
+이종찬,bioimaging,1,1,이종찬,True
+이종찬,액액상분리,1,1,이종찬,True
+이종찬,liquid liquid phase separation,1,1,이종찬,True
+이종찬,LLPS,1,1,이종찬,True
+이종찬,RNA 이미징,1,1,이종찬,True
+이창훈,피부생물학,1,1,이창훈,True
+이창훈,skin biology,1,1,이창훈,True
+이창훈,피부생리,1,2,이창훈 | 이재민,True
+이창훈,skin physiology,1,1,이창훈,True
+이창훈,바이오인터페이스,1,1,이창훈,True
+이창훈,biointerface,1,1,이창훈,True
+이창훈,구조 기반 신약설계,1,1,이창훈,True
+이창훈,structure based drug design,1,1,이창훈,True
+이창훈,인공피부,1,1,이창훈,True
+이창훈,artificial skin,1,1,이창훈,True
+이창훈,피부 조직공학,1,1,이창훈,True
+정영태,줄기세포 생물학,1,2,정영태 | 김태완,True
+정영태,stem cell biology,1,2,정영태 | 김태완,True
+정영태,암 정밀의학,1,1,정영태,True
+정영태,cancer precision medicine,1,1,정영태,True
+정영태,암줄기세포,1,1,정영태,True
+정영태,cancer stem cell,1,1,정영태,True
+정영태,오가노이드,1,1,정영태,True
+정영태,organoid,1,1,정영태,True
+정영태,종양면역,1,4,정영태 | 최일규 | 구재형 | 남창훈,True
+정영태,tumor immunology,1,4,정영태 | 최일규 | 구재형 | 남창훈,True
+정영태,NK 세포,1,1,정영태,True
+정영태,폐섬유증,1,1,정영태,True
+정찬,암 후성유전학,1,1,정찬,True
+정찬,cancer epigenetics,1,1,정찬,True
+정찬,후성유전 조절,1,2,정찬 | 김유리,True
+정찬,epigenetic regulation,1,1,정찬,True
+정찬,뇌종양,2,2,구재형 | 정찬,True
+정찬,brain tumor,1,1,정찬,True
+정찬,종양 발생,1,1,정찬,True
+정찬,tumorigenesis,1,1,정찬,True
+최일규,T세포,1,1,최일규,True
+최일규,T cell,1,1,최일규,True
+최일규,T세포 생물학,1,1,최일규,True
+최일규,T cell biology,1,1,최일규,True
+최일규,면역치료,1,1,최일규,True
+최일규,immunotherapy,1,1,최일규,True
+최일규,암면역학,1,2,최일규 | 정영태,True
+최일규,cancer immunology,1,2,최일규 | 정영태,True
+최일규,T세포 치료,1,1,최일규,True
+최일규,T cell therapy,1,1,최일규,True
+요나스 페릭스,유전자 조절,1,1,요나스 페릭스,True
+요나스 페릭스,gene regulation,1,1,요나스 페릭스,True
+요나스 페릭스,단백질 기능,1,2,요나스 페릭스 | 이송이,True
+요나스 페릭스,protein function,1,2,요나스 페릭스 | 이송이,True
+요나스 페릭스,오믹스,1,2,요나스 페릭스 | 김민식,True
+요나스 페릭스,omics science,1,1,요나스 페릭스,True
+요나스 페릭스,전사체학,1,1,요나스 페릭스,True
+요나스 페릭스,transcriptomics,1,1,요나스 페릭스,True
+요나스 페릭스,프로테오믹스,2,2,김민식 | 요나스 페릭스,True
+요나스 페릭스,proteomics,2,2,김민식 | 요나스 페릭스,True
+요나스 페릭스,시스템생물학,1,1,요나스 페릭스,True
+요나스 페릭스,systems biology,1,1,요나스 페릭스,True

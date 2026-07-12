@@ -1,0 +1,369 @@
+﻿professor,query,rank,result_count,top5,included_top3,included_top5
+조창희,광자소자,1,1,조창희,True,True
+조창희,포토닉스 소자,1,1,조창희,True,True
+조창희,나노포토닉스,1,1,조창희,True,True
+조창희,반도체 포토닉스,1,1,조창희,True,True
+조창희,미래 반도체 나노포토닉스,1,1,조창희,True,True
+조창희,광자 양자정보,1,2,조창희 | 김영욱,True,True
+조창희,광자 양자정보 소자,1,2,조창희 | 김영욱,True,True
+조창희,photonic quantum information,1,2,조창희 | 김영욱,True,True
+조창희,photonic quantum information devices,1,2,조창희 | 김영욱,True,True
+조창희,light-matter interaction,1,1,조창희,True,True
+조창희,광-물질 상호작용,1,2,조창희 | 김소연,True,True
+조창희,optical microcavity,1,1,조창희,True,True
+조창희,광공진기,1,1,조창희,True,True
+조창희,nanocavity,1,1,조창희,True,True
+조창희,나노공동,1,1,조창희,True,True
+조창희,exciton-polariton,1,1,조창희,True,True
+조창희,엑시톤 폴라리톤,1,1,조창희,True,True
+조창희,quantum light source,1,1,조창희,True,True
+조창희,양자광원,1,1,조창희,True,True
+홍정일,스핀트로닉스,2,3,유천열 | 홍정일 | 김철기,True,True
+홍정일,spintronics,2,3,유천열 | 홍정일 | 김철기,True,True
+홍정일,스핀공학,1,1,홍정일,True,True
+홍정일,자성박막,1,3,홍정일 | 유천열 | 김철기,True,True
+홍정일,magnetic thin film,1,3,홍정일 | 유천열 | 김철기,True,True
+홍정일,전기 자기 나노소재,1,1,홍정일,True,True
+홍정일,electric and magnetic nanomaterial,1,1,홍정일,True,True
+홍정일,교환 바이어스,1,1,홍정일,True,True
+홍정일,exchange bias,1,1,홍정일,True,True
+홍정일,스커미온,1,3,홍정일 | 유천열 | 김철기,True,True
+홍정일,skyrmion,1,3,홍정일 | 유천열 | 김철기,True,True
+홍정일,도메인월,1,3,홍정일 | 유천열 | 김철기,True,True
+홍정일,domain wall,1,3,홍정일 | 유천열 | 김철기,True,True
+홍정일,자기 이방성,1,1,홍정일,True,True
+홍선기,생체모사 유기소재,1,3,홍선기 | 이성원 | 서대하,True,True
+홍선기,bio-inspired organic materials,1,3,홍선기 | 이성원 | 서대하,True,True
+홍선기,고분자 생체재료,1,3,홍선기 | 이성원 | 서대하,True,True
+홍선기,polymeric biomaterials,1,3,홍선기 | 이성원 | 서대하,True,True
+홍선기,표면 생체기능화,1,3,홍선기 | 이성원 | 서대하,True,True
+홍선기,surface biofunctionalization,1,1,홍선기,True,True
+홍선기,카테콜,1,3,홍선기 | 이성원 | 서대하,True,True
+홍선기,catechol,1,3,홍선기 | 이성원 | 서대하,True,True
+홍선기,폴리페놀,1,3,홍선기 | 이성원 | 서대하,True,True
+홍선기,polyphenol,1,3,홍선기 | 이성원 | 서대하,True,True
+홍선기,바이오칩,1,3,홍선기 | 이성원 | 서대하,True,True
+홍선기,biochip,1,1,홍선기,True,True
+홍선기,바이오잉크,1,1,홍선기,True,True
+홍선기,bioink,1,1,홍선기,True,True
+홍선기,멜라닌 모사,1,1,홍선기,True,True
+홍선기,theranostics,1,1,홍선기,True,True
+정낙천,금속유기구조체,2,2,박진희 | 정낙천,True,True
+정낙천,MOF,2,2,박진희 | 정낙천,True,True
+정낙천,metal-organic framework,2,2,박진희 | 정낙천,True,True
+정낙천,나노다공성 소재,1,2,정낙천 | 박진희,True,True
+정낙천,nanoporous materials,1,2,정낙천 | 박진희,True,True
+정낙천,전자 수송,1,2,정낙천 | 김영욱,True,True
+정낙천,electron transport,1,2,정낙천 | 김영욱,True,True
+정낙천,이온 수송,1,1,정낙천,True,True
+정낙천,ion transport,1,1,정낙천,True,True
+정낙천,나노공간화학,1,1,정낙천,True,True
+정낙천,프로톤 전도,1,1,정낙천,True,True
+정낙천,proton conductivity,1,1,정낙천,True,True
+정낙천,연료전지 막,1,1,정낙천,True,True
+정낙천,fuel-cell membrane,1,1,정낙천,True,True
+정낙천,해수담수화 막,3,3,김성균 | 서상원 | 정낙천,True,True
+정낙천,supercapacitor MOF,1,2,정낙천 | 박진희,True,True
+정병혁,비대칭 합성,1,3,정병혁 | 이성기 | 서상원,True,True
+정병혁,asymmetric synthesis,1,3,정병혁 | 이성기 | 서상원,True,True
+정병혁,촉매 비대칭 합성,1,3,정병혁 | 이성기 | 서상원,True,True
+정병혁,catalytic asymmetric synthesis,1,3,정병혁 | 이성기 | 서상원,True,True
+정병혁,합성 방법론,1,1,정병혁,True,True
+정병혁,synthetic methodology,1,3,정병혁 | 이성기 | 서상원,True,True
+정병혁,의약품 합성,1,1,정병혁,True,True
+정병혁,drug synthesis,1,1,정병혁,True,True
+정병혁,천연물 합성,1,1,정병혁,True,True
+정병혁,natural product synthesis,1,1,정병혁,True,True
+정병혁,키랄 촉매,1,5,정병혁 | 이성기 | 서상원 | 김성균 | 박진희,True,True
+정병혁,chiral catalyst,1,5,정병혁 | 이성기 | 서상원 | 김성균 | 박진희,True,True
+정병혁,구리 촉매,1,5,정병혁 | 이성기 | 서상원 | 김성균 | 박진희,True,True
+정병혁,니켈 촉매,1,5,정병혁 | 이성기 | 서상원 | 김성균 | 박진희,True,True
+강준구,DFT,1,2,강준구 | 이재동,True,True
+강준구,density functional theory,2,2,이재동 | 강준구,True,True
+강준구,밀도범함수이론,1,2,강준구 | 이재동,True,True
+강준구,제일원리,1,2,강준구 | 이재동,True,True
+강준구,제일원리 계산,1,2,강준구 | 이재동,True,True
+강준구,first-principles calculation,1,2,강준구 | 이재동,True,True
+강준구,first principles,1,2,강준구 | 이재동,True,True
+강준구,ab initio,1,2,강준구 | 이재동,True,True
+강준구,계산물질과학,1,2,강준구 | 이재동,True,True
+강준구,computational materials science,1,2,강준구 | 이재동,True,True
+강준구,계산물질이론,1,2,강준구 | 이재동,True,True
+강준구,소재설계,1,1,강준구,True,True
+강준구,materials design,1,1,강준구,True,True
+강준구,machine-learned potential,1,1,강준구,True,True
+강준구,머신러닝 포텐셜,1,1,강준구,True,True
+강준구,생성형 AI 소재,1,1,강준구,True,True
+강준구,metadynamics,1,1,강준구,True,True
+김아람,강상관계,1,3,김아람 | 이재동 | 김소연,True,True
+김아람,strongly correlated systems,1,3,김아람 | 김소연 | 이재동,True,True
+김아람,양자다체,1,3,김아람 | 이재동 | 김소연,True,True
+김아람,quantum many-body,1,3,김아람 | 이재동 | 김소연,True,True
+김아람,양자다체 알고리즘,1,3,김아람 | 이재동 | 김소연,True,True
+김아람,quantum many-body algorithm,1,3,김아람 | 이재동 | 김소연,True,True
+김아람,양자 몬테카를로,1,10,김아람 | 김영욱 | 권용성 | 박기성 | 서정필,True,True
+김아람,quantum Monte Carlo,1,10,김아람 | 김영욱 | 권용성 | 박기성 | 서정필,True,True
+김아람,QMC,1,3,김아람 | 이재동 | 김소연,True,True
+김아람,동적평균장이론,1,1,김아람,True,True
+김아람,dynamical mean-field theory,1,1,김아람,True,True
+김아람,DMFT,1,3,김아람 | 이재동 | 김소연,True,True
+김아람,파인만 도표,1,3,김아람 | 이재동 | 김소연,True,True
+김아람,Feynman diagram,1,3,김아람 | 이재동 | 김소연,True,True
+김아람,허바드 모델,1,3,김아람 | 이재동 | 김소연,True,True
+김아람,Hubbard model,1,3,김아람 | 이재동 | 김소연,True,True
+김아람,비전통 초전도,1,4,김아람 | 권용성 | 박기성 | 서정필,True,True
+김철기,자기센서,1,1,김철기,True,True
+김철기,magnetic sensor,1,1,김철기,True,True
+김철기,3축 자기장 센서,1,5,김철기 | 이성원 | 이신범 | 박진희 | 정낙천,True,True
+김철기,3D field sensor,1,5,김철기 | 이성원 | 이신범 | 박진희 | 정낙천,True,True
+김철기,스핀트로닉스 소자,1,3,김철기 | 유천열 | 홍정일,True,True
+김철기,spintronics device,1,3,김철기 | 유천열 | 홍정일,True,True
+김철기,Planar Hall,1,1,김철기,True,True
+김철기,평면 홀 자기저항,1,1,김철기,True,True
+김철기,PHMR,1,1,김철기,True,True
+김철기,Bio-NEMS,1,1,김철기,True,True
+김철기,Bio MEMS,1,1,김철기,True,True
+김철기,바이오 자기소자,1,1,김철기,True,True
+김철기,magnetophoresis,1,1,김철기,True,True
+김철기,자기 영동,1,1,김철기,True,True
+김철기,나노바이오 스핀트로닉스,1,3,김철기 | 유천열 | 홍정일,True,True
+김성균,지속가능화학,1,2,김성균 | 서상원,True,True
+김성균,sustainable chemistry,1,2,김성균 | 서상원,True,True
+김성균,수처리 소재,1,2,김성균 | 서상원,True,True
+김성균,water treatment materials,1,2,김성균 | 서상원,True,True
+김성균,해수담수화,1,2,김성균 | 서상원,True,True
+김성균,seawater desalination,1,2,김성균 | 서상원,True,True
+김성균,폐플라스틱 업사이클링,1,2,김성균 | 서상원,True,True
+김성균,plastic upcycling,1,2,김성균 | 서상원,True,True
+김성균,바이오매스 업사이클링,1,2,김성균 | 서상원,True,True
+김성균,biomass upcycling,1,2,김성균 | 서상원,True,True
+김성균,기능성 고분자,1,2,김성균 | 박진희,True,True
+김성균,functional polymers,1,1,김성균,True,True
+김성균,엔지니어링 플라스틱,1,1,김성균,True,True
+김성균,태양열 증발,1,1,김성균,True,True
+김영욱,위상 양자컴퓨팅,1,2,김영욱 | 조창희,True,True
+김영욱,topological quantum computing,1,2,김영욱 | 조창희,True,True
+김영욱,양자컴퓨팅,1,2,김영욱 | 조창희,True,True
+김영욱,quantum computing,1,2,김영욱 | 조창희,True,True
+김영욱,위상 양자소자,1,10,김영욱 | 권용성 | 박기성 | 서정필 | 김아람,True,True
+김영욱,topological quantum device,1,10,김영욱 | 권용성 | 박기성 | 서정필 | 김아람,True,True
+김영욱,2차원 전자계,1,1,김영욱,True,True
+김영욱,2D electron system,1,1,김영욱,True,True
+김영욱,양자수송,1,1,김영욱,True,True
+김영욱,quantum transport,1,1,김영욱,True,True
+김영욱,반데르발스 이종접합,1,1,김영욱,True,True
+김영욱,van der Waals heterostructure,1,1,김영욱,True,True
+김영욱,위상 양자회로,1,2,김영욱 | 조창희,True,True
+김영욱,topological quantum circuit,1,2,김영욱 | 조창희,True,True
+김영욱,스핀 기반 양자컴퓨팅,1,2,김영욱 | 조창희,True,True
+권용성,고온 초전도,1,4,권용성 | 박기성 | 서정필 | 김아람,True,True
+권용성,high Tc superconductor,1,4,권용성 | 서정필 | 박기성 | 김아람,True,True
+권용성,철계 초전도,1,4,권용성 | 박기성 | 서정필 | 김아람,True,True
+권용성,iron-based superconductor,1,4,권용성 | 박기성 | 서정필 | 김아람,True,True
+권용성,초전도와 자성,1,4,권용성 | 박기성 | 서정필 | 김아람,True,True
+권용성,superconductivity and magnetism,1,4,권용성 | 박기성 | 서정필 | 김아람,True,True
+권용성,열전소재,1,1,권용성,True,True
+권용성,thermoelectric materials,1,1,권용성,True,True
+권용성,제벡 효과,1,1,권용성,True,True
+권용성,Seebeck effect,1,1,권용성,True,True
+권용성,펠티어 효과,1,1,권용성,True,True
+권용성,Peltier effect,1,1,권용성,True,True
+권용성,양자상전이,1,10,권용성 | 김영욱 | 박기성 | 서정필 | 김아람,True,True
+권용성,quantum phase transition,1,10,권용성 | 김영욱 | 박기성 | 서정필 | 김아람,True,True
+권용성,양자 임계점,1,10,권용성 | 김영욱 | 박기성 | 서정필 | 김아람,True,True
+이재동,이론 응집물질물리,2,2,강준구 | 이재동,True,True
+이재동,theoretical condensed matter physics,1,1,이재동,True,True
+이재동,DFT,2,2,강준구 | 이재동,True,True
+이재동,density functional theory,1,2,이재동 | 강준구,True,True
+이재동,제일원리,2,2,강준구 | 이재동,True,True
+이재동,first-principles,2,2,강준구 | 이재동,True,True
+이재동,광물성 이론,3,3,성주영 | 김소연 | 이재동,True,True
+이재동,light and matter theory,1,2,이재동 | 김아람,True,True
+이재동,초고속 동역학,1,1,이재동,True,True
+이재동,ultrafast dynamics,1,1,이재동,True,True
+이재동,비평형 현상,1,1,이재동,True,True
+이재동,nonequilibrium phenomena,1,1,이재동,True,True
+이재동,실시간 TDDFT,1,1,이재동,True,True
+이재동,time-dependent density functional theory,1,2,이재동 | 강준구,True,True
+이재동,양자동역학,1,10,이재동 | 김영욱 | 권용성 | 박기성 | 서정필,True,True
+이신범,반도체 에너지 센서,1,5,이신범 | 김철기 | 이성원 | 박진희 | 정낙천,True,True
+이신범,semiconductor energy sensor,1,5,이신범 | 김철기 | 이성원 | 박진희 | 정낙천,True,True
+이신범,다기능 박막,1,2,이신범 | 이성원,True,True
+이신범,multifunctional films,1,2,이신범 | 이성원,True,True
+이신범,나노구조 소자,1,1,이신범,True,True
+이신범,nanostructured devices,1,1,이신범,True,True
+이신범,신흥 물질,1,1,이신범,True,True
+이신범,emerging materials,1,1,이신범,True,True
+이신범,반도체 센서,1,2,이신범 | 이성원,True,True
+이신범,에너지 센서,1,5,이신범 | 김철기 | 이성원 | 박진희 | 정낙천,True,True
+이신범,전기 자기 광학 화학 물성,1,1,이신범,True,True
+이신범,multifunctional device,1,1,이신범,True,True
+이성기,유기합성,1,3,이성기 | 서상원 | 정병혁,True,True
+이성기,organic synthesis,1,3,이성기 | 정병혁 | 서상원,True,True
+이성기,반응 개발,1,1,이성기,True,True
+이성기,reaction development,1,1,이성기,True,True
+이성기,촉매 개발,1,5,이성기 | 정병혁 | 서상원 | 김성균 | 박진희,True,True
+이성기,catalyst development,1,5,이성기 | 정병혁 | 서상원 | 김성균 | 박진희,True,True
+이성기,라디칼 화학,1,3,이성기 | 정병혁 | 서상원,True,True
+이성기,radical chemistry,1,1,이성기,True,True
+이성기,이온 반응,1,1,이성기,True,True
+이성기,ionic reaction,1,1,이성기,True,True
+이성기,유기 촉매,1,5,이성기 | 정병혁 | 서상원 | 김성균 | 박진희,True,True
+이성기,organocatalyst,1,5,이성기 | 정병혁 | 서상원 | 김성균 | 박진희,True,True
+이성기,전이금속 촉매,2,5,정병혁 | 이성기 | 서상원 | 김성균 | 박진희,True,True
+이성기,유기분자 설계,1,1,이성기,True,True
+이성원,초박막 소자,1,1,이성원,True,True
+이성원,ultrathin device,1,2,이성원 | 이신범,True,True
+이성원,유연 소자,1,1,이성원,True,True
+이성원,flexible device,1,1,이성원,True,True
+이성원,바이오센서,1,2,이성원 | 이신범,True,True
+이성원,biosensor,1,2,이성원 | 이신범,True,True
+이성원,전자피부,1,2,이성원 | 이신범,True,True
+이성원,e-skin,1,2,이성원 | 이신범,True,True
+이성원,웨어러블 소자,1,2,이성원 | 이신범,True,True
+이성원,wearable device,1,1,이성원,True,True
+이성원,땀 투과 소자,1,1,이성원,True,True
+이성원,sweat permeable device,1,1,이성원,True,True
+이성원,생체적합 소자,1,1,이성원,True,True
+이성원,bio-compatible device,1,1,이성원,True,True
+이성원,장기 건강 모니터링,1,1,이성원,True,True
+박진희,금속유기구조체,1,2,박진희 | 정낙천,True,True
+박진희,MOF,1,2,박진희 | 정낙천,True,True
+박진희,metal-organic framework,1,2,박진희 | 정낙천,True,True
+박진희,금속유기다각체,1,2,박진희 | 정낙천,True,True
+박진희,MOP,1,2,박진희 | 정낙천,True,True
+박진희,metal-organic polyhedra,1,1,박진희,True,True
+박진희,금속유기에어로겔,1,1,박진희,True,True
+박진희,MOA,1,2,박진희 | 정낙천,True,True
+박진희,다공성 고분자 네트워크,1,1,박진희,True,True
+박진희,porous polymer network,1,1,박진희,True,True
+박진희,유무기 하이브리드,1,1,박진희,True,True
+박진희,organic-inorganic hybrid,1,1,박진희,True,True
+박진희,가스 흡착,1,1,박진희,True,True
+박진희,ion exchange,1,1,박진희,True,True
+박진희,MOF 광촉매,1,2,박진희 | 정낙천,True,True
+박진희,MOF 센싱,1,2,박진희 | 정낙천,True,True
+박기성,고온 초전도체,3,4,권용성 | 서정필 | 박기성 | 김아람,True,True
+박기성,high-temperature superconductor,1,4,박기성 | 권용성 | 서정필 | 김아람,True,True
+박기성,양자물질,1,10,박기성 | 서정필 | 김영욱 | 권용성 | 김소연,True,True
+박기성,quantum materials,1,10,박기성 | 김영욱 | 권용성 | 김소연 | 서정필,True,True
+박기성,위상 양자물질,1,3,박기성 | 김영욱 | 서정필,True,True
+박기성,topological quantum materials,1,10,박기성 | 김영욱 | 권용성 | 서정필 | 김아람,True,True
+박기성,자성물질,1,1,박기성,True,True
+박기성,magnetic materials,1,2,박기성 | 유천열,True,True
+박기성,단결정 합성,1,1,박기성,True,True
+박기성,single crystal synthesis,1,1,박기성,True,True
+박기성,flux method,1,2,박기성 | 권용성,True,True
+박기성,화학기상수송,1,1,박기성,True,True
+박기성,chemical vapor transport,1,1,박기성,True,True
+박기성,저온 물성,1,1,박기성,True,True
+박기성,low temperature physics,1,1,박기성,True,True
+서대하,단분자 생물물리,1,1,서대하,True,True
+서대하,single molecule biophysics,1,1,서대하,True,True
+서대하,단분자 이미징,1,1,서대하,True,True
+서대하,single molecule imaging,1,1,서대하,True,True
+서대하,라이브셀 이미징,1,1,서대하,True,True
+서대하,live-cell imaging,1,1,서대하,True,True
+서대하,생세포 이미징,1,1,서대하,True,True
+서대하,수용체 동역학,1,1,서대하,True,True
+서대하,receptor dynamics,1,1,서대하,True,True
+서대하,초고해상도 현미경,1,1,서대하,True,True
+서대하,super-resolution microscopy,1,1,서대하,True,True
+서대하,광집게,1,1,서대하,True,True
+서대하,optical tweezer,1,1,서대하,True,True
+서대하,나노메디슨,1,1,서대하,True,True
+서대하,nanomedicine,1,1,서대하,True,True
+서대하,세포 신호전달,1,1,서대하,True,True
+서정필,2D 반도체,1,3,서정필 | 조창희 | 김영욱,True,True
+서정필,2D semiconductor,1,3,서정필 | 조창희 | 김영욱,True,True
+서정필,저차원 양자물질,1,10,서정필 | 박기성 | 김영욱 | 권용성 | 김아람,True,True
+서정필,low dimensional quantum matter,1,10,서정필 | 김영욱 | 권용성 | 박기성 | 김아람,True,True
+서정필,위상물질,1,3,서정필 | 김영욱 | 박기성,True,True
+서정필,topological matter,1,3,서정필 | 김영욱 | 박기성,True,True
+서정필,초전도체,1,4,서정필 | 권용성 | 박기성 | 김아람,True,True
+서정필,superconductors,1,4,서정필 | 권용성 | 박기성 | 김아람,True,True
+서정필,고온 초전도체,2,4,권용성 | 서정필 | 박기성 | 김아람,True,True
+서정필,high Tc superconductors,1,4,서정필 | 권용성 | 박기성 | 김아람,True,True
+서정필,주사터널링현미경,1,3,서정필 | 김영욱 | 박기성,True,True
+서정필,scanning tunneling microscopy,1,1,서정필,True,True
+서정필,STM,1,3,서정필 | 김영욱 | 박기성,True,True
+서정필,중페르미온,1,1,서정필,True,True
+서정필,heavy fermion,1,1,서정필,True,True
+서정필,국소 상태밀도,1,1,서정필,True,True
+성주영,에너지물질 반응동력학,1,4,성주영 | 조창희 | 이신범 | 강준구,True,True
+성주영,energy materials dynamics,1,4,성주영 | 이신범 | 조창희 | 강준구,True,True
+성주영,광전자 특성,1,4,성주영 | 조창희 | 이신범 | 강준구,True,True
+성주영,optoelectronic properties,1,4,성주영 | 조창희 | 이신범 | 강준구,True,True
+성주영,시분해 분광,1,3,성주영 | 김소연 | 김종구,True,True
+성주영,time-resolved spectroscopy,1,2,성주영 | 김소연,True,True
+성주영,공간분해 분광,1,3,성주영 | 김소연 | 김종구,True,True
+성주영,space-resolved spectroscopy,1,3,성주영 | 김소연 | 김종구,True,True
+성주영,펨토초 분광,1,3,성주영 | 김소연 | 김종구,True,True
+성주영,femtosecond spectroscopy,1,3,성주영 | 김소연 | 김종구,True,True
+성주영,광물성,1,2,성주영 | 김소연,True,True
+성주영,photophysics,1,2,성주영 | 김소연,True,True
+성주영,엑시톤 동역학,1,2,성주영 | 김소연,True,True
+성주영,exciton dynamics,1,2,성주영 | 김소연,True,True
+성주영,캐리어 동역학,1,2,성주영 | 김소연,True,True
+성주영,carrier dynamics,1,2,성주영 | 김소연,True,True
+성주영,페로브스카이트,1,4,성주영 | 조창희 | 이신범 | 강준구,True,True
+성주영,perovskite,1,4,성주영 | 조창희 | 이신범 | 강준구,True,True
+성주영,양자점 광물성,1,1,성주영,True,True
+성주영,유기반도체 광물성,1,1,성주영,True,True
+유천열,스핀정보 나노소자,1,1,유천열,True,True
+유천열,spin information nanodevice,1,1,유천열,True,True
+유천열,스핀트로닉스,1,3,유천열 | 홍정일 | 김철기,True,True
+유천열,spintronics,1,3,유천열 | 홍정일 | 김철기,True,True
+유천열,자성 소재,1,3,유천열 | 홍정일 | 권용성,True,True
+유천열,magnetic materials,2,2,박기성 | 유천열,True,True
+유천열,자성 박막,2,2,홍정일 | 유천열,True,True
+유천열,magnetic thin films,1,3,유천열 | 홍정일 | 김철기,True,True
+유천열,마이크로자기 시뮬레이션,1,1,유천열,True,True
+유천열,micromagnetic simulation,1,1,유천열,True,True
+유천열,스핀 나노소자,1,1,유천열,True,True
+유천열,spin nanodevice,1,1,유천열,True,True
+유천열,차세대 메모리 소자,1,1,유천열,True,True
+유천열,자기 논리소자,1,1,유천열,True,True
+서상원,친환경 촉매반응,1,5,서상원 | 정병혁 | 이성기 | 김성균 | 박진희,True,True
+서상원,sustainable catalysis,1,5,서상원 | 정병혁 | 이성기 | 김성균 | 박진희,True,True
+서상원,비귀금속 촉매,1,5,서상원 | 정병혁 | 이성기 | 김성균 | 박진희,True,True
+서상원,base metal catalysis,1,5,서상원 | 정병혁 | 이성기 | 김성균 | 박진희,True,True
+서상원,바이오촉매,1,5,서상원 | 정병혁 | 이성기 | 김성균 | 박진희,True,True
+서상원,biocatalysis,1,5,서상원 | 정병혁 | 이성기 | 김성균 | 박진희,True,True
+서상원,분자설계,1,1,서상원,True,True
+서상원,molecular design,1,1,서상원,True,True
+서상원,지속가능 합성,1,2,서상원 | 김성균,True,True
+서상원,sustainable synthesis,1,1,서상원,True,True
+서상원,유기금속 촉매,1,5,서상원 | 정병혁 | 이성기 | 김성균 | 박진희,True,True
+서상원,organometallic catalysis,1,5,서상원 | 정병혁 | 이성기 | 김성균 | 박진희,True,True
+서상원,반응 메커니즘 연구,2,2,김종구 | 서상원,True,True
+서상원,원자경제적 합성,1,1,서상원,True,True
+김종구,반응 메커니즘,1,1,김종구,True,True
+김종구,reaction mechanism,1,1,김종구,True,True
+김종구,구조동역학,1,1,김종구,True,True
+김종구,structural dynamics,1,1,김종구,True,True
+김종구,단백질 구조동역학,1,1,김종구,True,True
+김종구,protein structural dynamics,1,1,김종구,True,True
+김종구,용액상 반응동역학,1,1,김종구,True,True
+김종구,solution-phase reaction dynamics,1,1,김종구,True,True
+김종구,시간분해 X선 산란,1,1,김종구,True,True
+김종구,time-resolved x-ray scattering,1,1,김종구,True,True
+김종구,분자구조 실시간 추적,1,1,김종구,True,True
+김종구,몬테카를로 구조분석,1,1,김종구,True,True
+김종구,분자동역학 구조분석,1,1,김종구,True,True
+김소연,강상관 물질 분광,1,3,김소연 | 김아람 | 이재동,True,True
+김소연,correlated matter spectroscopy,1,3,김소연 | 성주영 | 김종구,True,True
+김소연,강상관 양자물질,1,3,김소연 | 김아람 | 이재동,True,True
+김소연,strongly correlated quantum materials,1,3,김소연 | 김아람 | 이재동,True,True
+김소연,집단 들뜸,1,1,김소연,True,True
+김소연,collective excitations,1,1,김소연,True,True
+김소연,창발현상,1,1,김소연,True,True
+김소연,emergent phenomena,1,1,김소연,True,True
+김소연,초고속 광분광,1,2,김소연 | 성주영,True,True
+김소연,ultrafast optical spectroscopy,1,2,김소연 | 성주영,True,True
+김소연,평형 광분광,1,2,김소연 | 성주영,True,True
+김소연,equilibrium optical spectroscopy,1,2,김소연 | 성주영,True,True
+김소연,XFEL X선 산란,1,1,김소연,True,True
+김소연,XFEL-based x-ray scattering,1,1,김소연,True,True
+김소연,광펌프,1,1,김소연,True,True
+김소연,일축 변형 분광,1,3,김소연 | 성주영 | 김종구,True,True

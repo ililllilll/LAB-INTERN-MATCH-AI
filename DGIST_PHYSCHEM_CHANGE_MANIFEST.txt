@@ -1,0 +1,8 @@
+DGIST 화학물리학과 재구축 변경 파일
+=====================================
+ADDED    graduate/dgist/physchem-curated-db.js
+ADDED    graduate/dgist/physchem-search-engine.js
+MODIFIED graduate/dgist/index.html
+MODIFIED graduate/dgist/app.js
+
+원본 graduate/dgist/data.js, analytics.js 및 다른 서비스 데이터 파일은 수정하지 않았습니다.

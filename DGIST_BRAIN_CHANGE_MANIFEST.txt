@@ -1,0 +1,29 @@
+DGIST 뇌과학과 공식 자료 기반 재구축 변경 파일
+
+추가:
+- graduate/dgist/brain-curated-db.js
+- graduate/dgist/brain-search-engine.js
+- analysis/validate_dgist_brain_search.js
+- analysis/audit_dgist_brain_terms.js
+- DGIST_BRAIN_CURATED_DB_AUDIT.csv
+- DGIST_BRAIN_SEARCH_REGRESSION.csv
+- DGIST_BRAIN_SEARCH_REGRESSION_SUMMARY.json
+- DGIST_BRAIN_CRITICAL_QUERY_VALIDATION.csv
+- DGIST_BRAIN_CRITICAL_QUERY_VALIDATION_SUMMARY.json
+- DGIST_BRAIN_OFFICIAL_REBUILD_REPORT.md
+- DGIST_BRAIN_CHANGE_MANIFEST.txt
+
+수정:
+- graduate/dgist/index.html
+  - 뇌과학과 정제 DB와 검색 엔진 스크립트 로드 추가
+- graduate/dgist/app.js
+  - 뇌과학과 선택 시에만 전용 검색 엔진과 연구실명 오버레이 적용
+
+변경하지 않음:
+- graduate/dgist/data.js
+- analytics.js
+- graduate/dgist/robot-curated-db.js
+- graduate/dgist/robot-search-engine.js
+- graduate/dgist/eecs-curated-db.js
+- graduate/dgist/eecs-search-engine.js
+- 다른 학교와 다른 DGIST 학과 데이터

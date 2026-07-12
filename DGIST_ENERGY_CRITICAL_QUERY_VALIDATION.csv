@@ -1,0 +1,21 @@
+﻿query,result_count,results,zero_result,over_10
+계산화학,4,장윤희 | 이태훈 | 최승호 | 허수미,False,False
+전산화학,4,장윤희 | 이태훈 | 최승호 | 허수미,False,False
+CO2 전환,3,위태웅 | 김찬연 | 인수일,False,False
+양극재,3,박인철 | 김운혁 | 김진수,False,False
+고분자,7,박치영 | 허수미 | 김승현 | 최승호 | 장윤희 | 호동해 | 이윤구,False,False
+태양전지,6,고서진 | 이종수 | 최종민 | 인수일 | 이윤구 | 양지웅,False,False
+페로브스카이트,1,최종민,False,False
+전고체전지,5,권혁진 | 김영규 | 김운혁 | 홍승태 | 김진수,False,False
+전해질,6,권혁진 | 이호춘 | 상가라쥬 샨무감 | 장윤희 | 최승호 | 김영규,False,False
+배터리 공정,1,김진수,False,False
+오페란도,2,김영규 | 위태웅,False,False
+연료전지,2,상가라쥬 샨무감 | 인수일,False,False
+수전해,4,상가라쥬 샨무감 | 인수일 | 김승현 | 이종민,False,False
+에너지 하베스팅,2,이주혁 | 호동해,False,False
+웨어러블 전자,2,호동해 | 이주혁,False,False
+양자점,3,양지웅 | 이종수 | 최종민,False,False
+QLED,3,양지웅 | 이종수 | 이윤구,False,False
+광검출기,2,고서진 | 이종수,False,False
+AI 소재,3,박인철 | 허수미 | 이태훈,False,False
+자율실험실,1,박인철,False,False

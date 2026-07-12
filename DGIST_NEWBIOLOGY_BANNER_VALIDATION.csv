@@ -1,0 +1,18 @@
+﻿banner,field_key,result_count,results,zero_result,over_10
+식물발달·환경응답,plant-environment,2,우혜련 | 곽준명,False,False
+식물노화·환경스트레스,plant-aging,2,곽준명 | 우혜련,False,False
+동물행동·생태,animal-ecology,1,이상임,False,False
+유전체 안정성·DNA 복구,genome-dna-repair,2,기영훈 | 김유리,False,False
+크로마틴·후성유전,chromatin-epigenetics,2,김유리 | 정찬,False,False
+암·정밀의학,cancer-precision,4,기영훈 | 정영태 | 정찬 | 김민식,False,False
+면역·뇌-면역·면역치료,immunity-therapy,4,최일규 | 구재형 | 남창훈 | 정영태,False,False
+세포노화·역노화,cellular-aging,3,이영삼 | 김유리 | 김진해,False,False
+노화·대사·생리,aging-metabolism,3,이재민 | 남창훈 | 이영삼,False,False
+줄기세포·재생의학,stem-regeneration,2,김태완 | 정영태,False,False
+단백질 항상성·분해,protein-degradation,1,이병훈,False,False
+단백질 구조·공학·치료제,protein-structure-engineering,3,김진해 | 이송이 | 예경무,False,False
+화학생물학·신약개발,chemical-biology-drug,3,이송이 | 이병훈 | 예경무,False,False
+오믹스·정밀의학·바이오정보학,omics-precision,2,김민식 | 요나스 페릭스,False,False
+단분자·바이오이미징,single-molecule-imaging,2,이종찬 | 김유리,False,False
+나노바이오·전자약,nanobiomedicine,1,김민석,False,False
+피부·바이오인터페이스,skin-biointerface,1,이창훈,False,False
