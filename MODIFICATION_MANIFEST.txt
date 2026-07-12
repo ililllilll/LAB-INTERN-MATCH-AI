@@ -27,3 +27,16 @@ MODIFIED
 - Added DGIST department/subfield outcome and official-link aggregate events.
 - Added dgist_department_performance.csv and dgist_subfield_performance.csv analyzer outputs.
 - Updated analytics documentation and deployment handoff notes.
+
+DGIST CRITICAL SEARCH QUALITY FIX (2026-07-12)
+MODIFIED
+- graduate/dgist/app.js
+- VERSION.txt
+- MODIFICATION_MANIFEST.txt
+
+NEW
+- DGIST_CRITICAL_SEARCH_FIX_REPORT.md
+
+UNCHANGED FOR ANALYTICS CONTINUITY
+- analytics.js
+- analysis/goatcounter_analysis.py

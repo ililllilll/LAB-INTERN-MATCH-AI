@@ -100,13 +100,24 @@
     ["environment", "climate", "carbon neutral", "carbon capture", "co2 reduction", "water treatment", "separation", "sustainability", "환경", "기후", "탄소중립", "탄소포집", "이산화탄소 환원", "수처리", "분리", "지속가능성"]
   ];
 
+  function dgistGlossaryContainsTerm(source, term) {
+    const text = normalize(source || "");
+    const needle = normalize(term || "");
+    if (!text || !needle) return false;
+    if (/^[a-z0-9]+$/i.test(needle) && needle.length <= 3) {
+      const escaped = needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return new RegExp(`(^|[^a-z0-9])${escaped}([^a-z0-9]|$)`, "i").test(text);
+    }
+    return text.includes(needle);
+  }
+
   function hiddenBilingualSearchText(rawText) {
     const source = normalize(rawText);
     const out = new Set();
     if (!source) return "";
     bilingualSearchGlossary.forEach((group) => {
     const normalizedGroup = group.map((term) => normalize(term)).filter(Boolean);
-    if (normalizedGroup.some((term) => source.includes(term))) {
+    if (normalizedGroup.some((term) => dgistGlossaryContainsTerm(source, term))) {
       normalizedGroup.forEach((term) => out.add(term));
     }
     });
@@ -122,7 +133,7 @@
     const normalizedGroup = group.map((term) => normalize(term)).filter(Boolean);
     const queryHit = normalizedGroup.some((term) => q.includes(term));
     if (!queryHit) return;
-    const textHitCount = normalizedGroup.reduce((acc, term) => acc + (t.includes(term) ? 1 : 0), 0);
+    const textHitCount = normalizedGroup.reduce((acc, term) => acc + (dgistGlossaryContainsTerm(t, term) ? 1 : 0), 0);
     if (textHitCount > 0) boost += Math.min(44, 18 + textHitCount * 4);
     });
     return boost;
@@ -1687,11 +1698,17 @@
 
   function countIncludes(text, token) {
     if (!token) return 0;
+    const source = String(text || "");
+    const needle = String(token || "");
+    if (/^[a-z0-9]+$/i.test(needle) && needle.length <= 3) {
+      const escaped = needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return (source.match(new RegExp(`(^|[^a-z0-9])${escaped}(?=[^a-z0-9]|$)`, "gi")) || []).length;
+    }
     let count = 0;
-    let index = text.indexOf(token);
+    let index = source.indexOf(needle);
     while (index !== -1) {
       count += 1;
-      index = text.indexOf(token, index + token.length);
+      index = source.indexOf(needle, index + needle.length);
     }
     return count;
   }
@@ -1829,8 +1846,54 @@
     return value || polishProfessorWord(text || "연구분야 미기재");
   }
 
+  const dgistLabNameOverrides = {
+    "physchem-002": "미래 반도체 나노포토닉스 연구실",
+    "physchem-005": "극저온 원자 및 양자 시스템 설계 연구실",
+    "physchem-007": "비대칭 유기합성 및 의약품 합성 연구실",
+    "physchem-010": "반응 메커니즘 및 구조동역학 연구실",
+    "physchem-013": "위상 양자소자 연구실",
+    "physchem-016": "반도체 에너지 센서 연구실",
+    "eecs-004": "지능형 로봇 제어 연구실(ARC Lab)",
+    "eecs-029": "컴퓨터 비전 연구실(CV Lab)",
+    "brain-006": "화학감각신경계 연구실",
+    "brain-009": "뇌신호조절 연구실",
+    "brain-015": "환경생명공학 연구실",
+    "brain-018": "막단백질 구조세포생물학 연구실",
+    "robot-004": "로봇 설계 및 제조 연구실",
+    "robot-006": "신경인터페이스 및 마이크로시스템 연구실",
+    "robot-010": "지능형 이미징 및 비전 시스템 연구실",
+    "energy-001": "첨단 촉매 및 에너지 시스템 연구실(ACES Lab)"
+  };
+
+  function dgistIncompleteLabName(value, professor) {
+    const name = String(value || "").replace(/\s+/g, " ").trim();
+    const prof = String(professor || "").replace(/\s+/g, " ").trim();
+    if (!name) return true;
+    if (name === prof || name === `${prof} 교수님` || name === `${prof} 교수`) return true;
+    if (/(?:및|and|&|·|\/)$/i.test(name)) return true;
+    if (name === "반도체 에너지 컴퓨터 센서") return true;
+    return false;
+  }
+
+  function dgistInternshipLabName(lab) {
+    const item = (lab.pdfInternships || []).find((entry) => entry && entry.labNameRaw);
+    if (!item) return "";
+    return String(item.labNameRaw || "")
+      .replace(/\([^)]*교수[^)]*\)/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
   function displayLabName(lab) {
-    return lab.labNameKo || lab.labNameEn || formatProfessorName(lab.professor) || "연구실명 없음";
+    if (!lab) return "연구실명 미등록";
+    if (dgistLabNameOverrides[lab.id]) return dgistLabNameOverrides[lab.id];
+    const courseKo = (lab.pdfCourses || []).map((item) => item && item.labNameKo).find((value) => !dgistIncompleteLabName(value, lab.professor));
+    const internshipName = dgistInternshipLabName(lab);
+    const candidates = [lab.labNameKo, courseKo, internshipName, lab.labNameEn]
+      .map((value) => String(value || "").replace(/\s+/g, " ").trim())
+      .filter(Boolean);
+    const complete = candidates.find((value) => !dgistIncompleteLabName(value, lab.professor));
+    return complete || "연구실명 미등록";
   }
 
   function cleanCourseName(value) {
@@ -2009,7 +2072,7 @@
   }
 
   function dgistNoResultHtml(query) {
-    return `<h3>조건에 적합한 후보를 찾지 못했습니다.</h3><p>현재 DGIST DB에서 <strong>${escapeHtml(query)}</strong>와 직접 연결되는 연구실을 찾지 못했습니다. 검색어를 조금 넓히거나 빠른 탐색용 대표 분야 버튼을 선택해 주세요.</p>`;
+    return `<h3>조건에 적합한 후보를 찾지 못했습니다.</h3><p>현재 DGIST DB에서 <strong>${escapeHtml(query)}</strong>에 직접 연결되는 연구실을 찾지 못했습니다. 검색어를 조금 넓히거나 빠른 탐색용 대표 분야 버튼을 선택해 주세요.</p>`;
   }
 
   const dgistOriginalAnswerQuestion = answerQuestion;
@@ -2185,7 +2248,7 @@
         if (terms.length >= 5) return;
         const norm = normalize(term);
         if (!norm || norm.length < 2 || stop.has(norm)) return;
-        if (labText.includes(norm)) terms.push(term);
+        if (dgistGlossaryContainsTerm(labText, norm)) terms.push(term);
       });
     });
 
@@ -2200,7 +2263,7 @@
       if (terms.length >= 5) return;
       const matched = candidateTerms.find((term) => {
         const norm = normalize(term);
-        return norm && norm.length >= 2 && (norm.includes(token) || token.includes(norm));
+        return norm && norm.length >= 2 && (dgistGlossaryContainsTerm(norm, token) || dgistGlossaryContainsTerm(token, norm));
       });
       if (matched) terms.push(matched);
     });
@@ -2208,8 +2271,14 @@
     if (!terms.length) {
       terms.push(...candidateTerms.slice(0, 3));
     }
+    const normalizedQuery = normalize(query || "");
     return unique(terms)
       .filter((term) => term && !/개론|과목|실험|일반|기초|수업/.test(term))
+      .filter((term) => {
+        const normalizedTerm = normalize(term);
+        if (normalizedTerm === "ct" && !dgistGlossaryContainsTerm(normalizedQuery, "ct")) return false;
+        return true;
+      })
       .filter((term) => term.length > 1)
       .slice(0, 5);
   };
@@ -2712,9 +2781,14 @@
     const internalTerms = dgistInternalEvidenceTerms(lab, query || "");
     const fineTerms = (typeof dgistFineReadableTerms === "function") ? dgistFineReadableTerms(lab, query || "") : [];
     const base = dgistIntentFirstPreviousRelevantEvidenceTerms(lab, query, profiles);
+    const normalizedQuery = normalize(query || "");
     return unique([...internalTerms, ...fineTerms, ...base])
       .filter((term) => term && !/개론|과목|실험|일반|기초|수업/.test(term))
-      .filter((term) => !dgistInternalIsBroadQuery(term))
+      .filter((term) => {
+        const normalizedTerm = normalize(term);
+        if (normalizedTerm === "ct" && !dgistGlossaryContainsTerm(normalizedQuery, "ct")) return false;
+        return !dgistInternalIsBroadQuery(term);
+      })
       .slice(0, 5);
   };
 
@@ -4331,6 +4405,15 @@
   function dgistAlgorithm5PreciseContext(query) {
     const raw = String(query || "").trim();
     if (!raw) return null;
+    const normalizedRaw = normalize(raw);
+    if (["자율주행", "자율주행차", "autonomous driving", "autonomous vehicle"].includes(normalizedRaw)) {
+      return {
+        id: "dgist_direct_autonomous_driving",
+        intent: "자율주행·모빌리티·SLAM",
+        profileIds: ["autonomous_robot_mobility", "robot_control", "general_robotics"],
+        expansion: "자율주행 모빌리티 SLAM localization navigation path planning autonomous driving autonomous vehicle 차량제어"
+      };
+    }
     return dgistAlgorithm5DiverseProfiles.find((profile) =>
       (profile.triggers || []).some((term) => dgistAlgorithm5TermMatches(raw, term))
     ) || null;
@@ -4451,7 +4534,7 @@
         ["컴퓨터비전·멀티모달", "컴퓨터비전 멀티모달 생성형 AI", "vision-multimodal"],
         ["컴퓨터시스템·컴파일러", "컴파일러 운영체제 컴퓨터구조 분산시스템", "computer-systems"],
         ["통신·신호처리", "무선통신 네트워크 신호처리 6G", "communications"],
-        ["보안·암호", "정보보안 암호 포스트양자 보안", "security"],
+        ["보안·암호", "정보보안 암호 보안 프라이버시 cryptography security", "security"],
         ["임베디드·IoT", "임베디드 시스템 IoT 에지컴퓨팅", "embedded-iot"],
         ["바이오전자·의료영상", "바이오전자 의료영상 초음파 광학영상", "bioelectronics-imaging"],
         ["HCI·인터랙션", "HCI 사용자경험 멀티센서리 인터랙션", "hci"]
@@ -4496,12 +4579,12 @@
         ["전해질·이온전도", "배터리 전해질 이온전도 리튬금속", "electrolyte-ion"],
         ["배터리 공정·진단", "배터리 제조 공정 열화 진단 operando", "battery-process"],
         ["수소·연료전지", "수소 연료전지 수전해 전기촉매", "hydrogen-fuel-cell"],
-        ["CO2 전환·촉매", "이산화탄소 전환 촉매 전기화학", "co2-catalysis"],
+        ["CO2 전환·촉매", "CO2 전환 CO2 환원 이산화탄소 전환 전기촉매 carbon dioxide conversion", "co2-catalysis"],
         ["태양전지·광전소자", "태양전지 페로브스카이트 광전소자", "solar-optoelectronics"],
         ["양자점·발광소자", "양자점 QLED 발광소자 디스플레이", "quantum-dot"],
         ["에너지 하베스팅·웨어러블", "에너지 하베스팅 자가발전 웨어러블 소자", "energy-harvesting"],
         ["계산·AI 에너지소재", "계산화학 DFT AI 에너지 소재", "computational-energy"],
-        ["고분자·지속가능 소재", "고분자 지속가능 소재 광촉매 재활용", "sustainable-materials"]
+        ["고분자·지속가능 소재", "고분자 polymer 고분자 광촉매 지속가능 화학 배터리 재활용", "sustainable-materials"]
       ]
     },
     {
@@ -4674,6 +4757,76 @@
     }
   });
 
+  const dgistSubfieldSearchRules = {
+    "co2-catalysis": {
+      query: "CO2 전환 CO2 환원 이산화탄소 전환 전기촉매 carbon dioxide conversion",
+      professors: ["김찬연", "위태웅", "인수일"],
+      evidenceLabel: "CO2 전환·촉매"
+    },
+    "sustainable-materials": {
+      query: "고분자 polymer 고분자 광촉매 지속가능 화학 배터리 재활용",
+      professors: ["김승현", "허수미", "박치영", "김운혁", "김진수", "김찬연"],
+      evidenceLabel: "고분자·지속가능 소재"
+    },
+    "bioelectronics-imaging": {
+      query: "바이오전자 의료영상 초음파 광학영상 bioelectronics biomedical imaging",
+      professors: ["이병문", "장재은", "장진호", "황재윤", "이병권", "이민선", "이경태", "이기준", "윤성훈"],
+      evidenceLabel: "바이오전자·의료영상"
+    },
+    "security": {
+      query: "정보보안 암호 보안 프라이버시 cryptography security",
+      professors: ["김영식", "최원석", "신동훈", "최지웅"],
+      evidenceLabel: "보안·암호"
+    },
+    "plant-biology": {
+      query: "식물발달 식물 신호전달 환경응답 plant development plant signaling",
+      professors: ["우혜련", "곽준명"],
+      evidenceLabel: "식물생명·환경응답"
+    },
+    "computational-energy": {
+      query: "계산화학 DFT 분자동역학 AI 에너지 소재 computational materials",
+      professors: ["이태훈", "허수미", "장윤희", "강준구", "최승호"],
+      evidenceLabel: "계산·AI 에너지소재"
+    },
+    "autonomous-mobility": {
+      query: "자율주행 모빌리티 SLAM localization navigation path planning autonomous driving",
+      professors: ["김기섭", "남강현", "임용섭", "김동욱", "김경대", "박대희", "임성훈"],
+      evidenceLabel: "자율주행·모빌리티"
+    }
+  };
+
+  function dgistDirectSearchRule(query) {
+    const q = normalize(query || "");
+    if (["자율주행", "자율주행차", "autonomous driving", "autonomous vehicle"].includes(q)) {
+      return dgistSubfieldSearchRules["autonomous-mobility"];
+    }
+    return null;
+  }
+
+  function dgistCuratedResults(results, rule, rankingQuery) {
+    if (!rule || !(rule.professors || []).length) return results || [];
+    const existingByProfessor = new Map();
+    (results || []).forEach((item) => {
+      const name = item && item.lab && item.lab.professor;
+      if (name && !existingByProfessor.has(name)) existingByProfessor.set(name, item);
+    });
+    return rule.professors.map((name, index) => {
+      let item = existingByProfessor.get(name);
+      if (!item) {
+        const lab = data.labs.find((candidate) => candidate && candidate.professor === name && isRecommendableFaculty(candidate));
+        if (!lab) return null;
+        item = { lab, score: 0, internalMatch: dgistInternalScoreLab(lab, rankingQuery || "") };
+      }
+      return {
+        ...item,
+        score: 1000000 - index * 10000,
+        internalMatch: item.internalMatch || dgistInternalScoreLab(item.lab, rankingQuery || ""),
+        _dgistIntentFirstSpecificHit: true,
+        _dgistIntentFirstFineHits: [rule.evidenceLabel || "세부 분야 직접 일치"]
+      };
+    }).filter(Boolean);
+  }
+
   const dgistDepartmentPreviousAnswerQuestion = answerQuestion;
   answerQuestion = function(mode, silent) {
     const department = dgistCurrentDepartment();
@@ -4691,11 +4844,16 @@
       return;
     }
 
+    const subfieldRule = context.isBanner ? dgistSubfieldSearchRules[context.subfield] : null;
+    const directRule = context.isBanner ? null : dgistDirectSearchRule(rawQuery);
+    const activeSearchRule = subfieldRule || directRule;
     const precise = context.isBanner ? null : dgistAlgorithm5PreciseContext(rawQuery);
-    const localAssist = (!context.isBanner && !precise && window.LMQueryAssist)
+    const localAssist = (!context.isBanner && !precise && !activeSearchRule && window.LMQueryAssist)
       ? window.LMQueryAssist.expand(rawQuery)
       : { query: rawQuery, applied: false, intent: "other" };
-    let rankingQuery = precise ? `${rawQuery} ${precise.expansion || ""}`.trim() : rawQuery;
+    let rankingQuery = activeSearchRule && activeSearchRule.query
+      ? activeSearchRule.query
+      : (precise ? `${rawQuery} ${precise.expansion || ""}`.trim() : rawQuery);
     const nameMatches = context.isBanner ? [] : dgistDirectProfessorMatches(rawQuery);
     let matchedProfiles = nameMatches.length ? [] : (precise ? dgistAlgorithm5ProfilesByIds(precise.profileIds) : detectFieldProfiles(rankingQuery));
     let results = [];
@@ -4705,13 +4863,17 @@
     } else if (matchedProfiles.length || context.isBanner || dgistIntentFirstHasSpecificQuery(rankingQuery)) {
       results = rankLabs(`${rankingQuery} ${userProfileText}`, rankingQuery).slice(0, 40);
     }
-    if (!context.isBanner && !precise && !nameMatches.length && !results.length && localAssist.applied) {
+    if (!context.isBanner && !precise && !activeSearchRule && !nameMatches.length && !results.length && localAssist.applied) {
       rankingQuery = localAssist.query || rawQuery;
       matchedProfiles = detectFieldProfiles(rankingQuery);
       results = rankLabs(`${rankingQuery} ${userProfileText}`, rankingQuery).slice(0, 40);
       if (window.LMQueryAssist && typeof window.LMQueryAssist.markApplied === "function") {
         window.LMQueryAssist.markApplied(localAssist.intent);
       }
+    }
+    if (activeSearchRule) {
+      results = dgistCuratedResults(results, activeSearchRule, rankingQuery);
+      matchedProfiles = [];
     }
     lastResults = results;
 

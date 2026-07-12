@@ -1,8 +1,9 @@
-LAB MATCH AI - DGIST Department-First + Data-Driven Query Recovery
+LAB MATCH AI - DGIST Critical Search Quality Fix
 Build date: 2026-07-12
-Baseline window: 2026-07-10 20:00 KST to 2026-07-12 01:00 KST
+Base: DGIST Department-First + Data-Driven Query Recovery
 Primary changes:
-- zero-result-only short-query assistance and guided recovery
-- DGIST department-first browser with department-scoped recommendations
-- New Biology department and detailed subfields
-- privacy-preserving department/subfield outcome and official-link analytics
+- fixed zero-result DGIST subfield banners
+- restored basic autonomous-driving direct search
+- narrowed unrelated results in selected detailed subfields
+- repaired truncated and professor-name-only lab names
+- preserved existing privacy-minimized GoatCounter analytics without new personal data
