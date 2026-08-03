@@ -1,0 +1,112 @@
+{
+  "applied_after": "P1R2_B2_PUBLIC_MAPPING",
+  "behavior": "REMOVE_ONLY_THE_CONFIRMED_PROFESSOR_TO_SMALL_FIELD_PATH;_PRESERVE_PROFESSOR_RECORD_AND_ALL_OTHER_PATHS",
+  "blocked_paths": [
+    {
+      "big_field_id": "civil_environment",
+      "big_field_label_ko": "도시·환경·인프라",
+      "name_ko": "김민성",
+      "professor_id": "POSTECH-PERSON-0066",
+      "reason": "구조생물학의 분자 구조 분석이 토목 구조공학으로 오인됨",
+      "small_field_id": "structural_engineering",
+      "small_field_label_ko": "구조공학"
+    },
+    {
+      "big_field_id": "civil_environment",
+      "big_field_label_ko": "도시·환경·인프라",
+      "name_ko": "서종철",
+      "professor_id": "POSTECH-PERSON-0051",
+      "reason": "분자 클러스터 구조 분석이 토목 구조공학으로 오인됨",
+      "small_field_id": "structural_engineering",
+      "small_field_label_ko": "구조공학"
+    },
+    {
+      "big_field_id": "civil_environment",
+      "big_field_label_ko": "도시·환경·인프라",
+      "name_ko": "송윤주",
+      "professor_id": "SNU-CHEM-0016",
+      "reason": "생무기화학·단백질 구조 분석이 토목 구조공학으로 오인됨",
+      "small_field_id": "structural_engineering",
+      "small_field_label_ko": "구조공학"
+    },
+    {
+      "big_field_id": "civil_environment",
+      "big_field_label_ko": "도시·환경·인프라",
+      "name_ko": "윤동기",
+      "professor_id": "KAIST-CHEM-YOON-DONG-KI",
+      "reason": "연성물질 구조 분석이 토목 구조공학으로 오인됨",
+      "small_field_id": "structural_engineering",
+      "small_field_label_ko": "구조공학"
+    },
+    {
+      "big_field_id": "civil_environment",
+      "big_field_label_ko": "도시·환경·인프라",
+      "name_ko": "이규철",
+      "professor_id": "SNU-PHYS-0018",
+      "reason": "반도체 나노구조 분석이 토목 구조공학으로 오인됨",
+      "small_field_id": "structural_engineering",
+      "small_field_label_ko": "구조공학"
+    },
+    {
+      "big_field_id": "civil_environment",
+      "big_field_label_ko": "도시·환경·인프라",
+      "name_ko": "이기라",
+      "professor_id": "POSTECH-PERSON-0235",
+      "reason": "나노입자 구조·조립 연구가 토목 구조공학으로 오인됨",
+      "small_field_id": "structural_engineering",
+      "small_field_label_ko": "구조공학"
+    },
+    {
+      "big_field_id": "civil_environment",
+      "big_field_label_ko": "도시·환경·인프라",
+      "name_ko": "이성근",
+      "professor_id": "SNU-SEES-0022",
+      "reason": "지구물질 원자 구조 분석이 토목 구조공학으로 오인됨",
+      "small_field_id": "structural_engineering",
+      "small_field_label_ko": "구조공학"
+    },
+    {
+      "big_field_id": "civil_environment",
+      "big_field_label_ko": "도시·환경·인프라",
+      "name_ko": "장소연",
+      "professor_id": "SNU-PHYS-0023",
+      "reason": "산화물 피코미터 구조 분석이 토목 구조공학으로 오인됨",
+      "small_field_id": "structural_engineering",
+      "small_field_label_ko": "구조공학"
+    },
+    {
+      "big_field_id": "civil_environment",
+      "big_field_label_ko": "도시·환경·인프라",
+      "name_ko": "조윤제",
+      "professor_id": "POSTECH-PERSON-0087",
+      "reason": "수용체 구조생물학이 토목 구조공학으로 오인됨",
+      "small_field_id": "structural_engineering",
+      "small_field_label_ko": "구조공학"
+    },
+    {
+      "big_field_id": "computer_science",
+      "big_field_label_ko": "컴퓨터",
+      "name_ko": "배중면",
+      "professor_id": "KAIST-ME-BAE-JOONGMYEON",
+      "reason": "수소 저장 시스템이 컴퓨터 저장 시스템으로 오인됨",
+      "small_field_id": "operating_systems",
+      "small_field_label_ko": "운영체제"
+    },
+    {
+      "big_field_id": "computer_science",
+      "big_field_label_ko": "컴퓨터",
+      "name_ko": "위태웅",
+      "professor_id": "DGIST_ENERGY_001",
+      "reason": "배터리·에너지 저장 시스템이 컴퓨터 저장 시스템으로 오인됨",
+      "small_field_id": "operating_systems",
+      "small_field_label_ko": "운영체제"
+    }
+  ],
+  "id": "CONFIRMED_FALSE_POSITIVE_PATH_BLOCKLIST_11_V1",
+  "match_key": [
+    "professor_id",
+    "small_field_id"
+  ],
+  "schema_version": "1.0.0",
+  "source_package": "LAB_MATCH_AI_DGIST_CURRICULUM_INTERNSHIP_GITHUB_PAGES_DEPLOY_V7_DIRECT_SEARCH_EXACT_ANALYTICS_R1"
+}

@@ -1,15 +1,20 @@
 (function () {
   'use strict';
 
-  const CONSENT_KEY = 'labmatch_analytics_consent_v1';
+  const CONSENT_KEY = 'labmatch_analytics_consent_v2';
+  const LEGACY_CONSENT_KEY = 'labmatch_analytics_consent_v1';
   const SCRIPT_ID = 'lm-goatcounter-script';
   const currentScript = document.currentScript;
   const privacyUrl = currentScript ? new URL('privacy.html', currentScript.src).href : 'privacy.html';
   const dataPolicyUrl = currentScript ? new URL('data-policy.html', currentScript.src).href : 'data-policy.html';
 
   function getChoice() {
-    try { return localStorage.getItem(CONSENT_KEY) || 'unset'; }
-    catch (_) { return 'unset'; }
+    try {
+      const current = localStorage.getItem(CONSENT_KEY);
+      if (current) return current;
+      // 기존 거부 선택은 존중합니다. 기존 동의는 수집 범위가 늘었으므로 다시 안내합니다.
+      return localStorage.getItem(LEGACY_CONSENT_KEY) === 'denied' ? 'denied' : 'unset';
+    } catch (_) { return 'unset'; }
   }
 
   function setChoice(value) {
@@ -28,6 +33,12 @@
     script.async = true;
     script.src = 'https://gc.zgo.at/count.js';
     script.setAttribute('data-goatcounter', 'https://dgist-intern-match.goatcounter.com/count');
+    script.addEventListener('load', function () {
+      window.dispatchEvent(new CustomEvent('lm-analytics-ready'));
+    }, { once: true });
+    script.addEventListener('error', function () {
+      window.dispatchEvent(new CustomEvent('lm-analytics-error'));
+    }, { once: true });
     document.head.appendChild(script);
     window.dispatchEvent(new CustomEvent('lm-analytics-consent-granted'));
   }
@@ -57,7 +68,7 @@
       .lm-consent-btn.primary{border-color:#1f6f5f;background:#1f6f5f;color:#fff}
       .lm-consent-link{color:#3151a3;font-size:12px;font-weight:750;text-decoration:underline;text-underline-offset:2px}
       .lm-privacy-footer{margin:22px auto 8px;padding:0 14px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",Arial,sans-serif;font-size:11px;line-height:1.6;color:#667085}
-      .lm-privacy-footer a,.lm-privacy-footer button{color:#52627a;background:none;border:0;padding:0;font:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+      .lm-privacy-footer a,.lm-privacy-footer button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;color:#52627a;background:none;border:0;padding:8px 4px;font:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
       .lm-data-notice{max-width:980px;margin:22px auto 6px;padding:14px 16px;border:1px solid #dfe6ef;border-radius:14px;background:#f8fafc;color:#52627a;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",Arial,sans-serif;font-size:12px;line-height:1.7;word-break:keep-all}
       .lm-data-notice strong{color:#344054}.lm-data-notice a{color:#3151a3;font-weight:800;text-decoration:underline;text-underline-offset:2px}
       @media(max-width:560px){.lm-consent-banner{left:10px;right:10px;bottom:10px;padding:14px}.lm-consent-actions{display:grid;grid-template-columns:1fr 1fr}.lm-consent-btn{width:100%}.lm-consent-link{grid-column:1/-1;text-align:center;padding-top:3px}}
@@ -74,7 +85,7 @@
     banner.setAttribute('role', 'dialog');
     banner.setAttribute('aria-label', '서비스 이용 정보 선택');
     banner.innerHTML = `
-      <p class="lm-consent-text"><strong>서비스 이용 정보 안내</strong><br>서비스 개선을 위해 이용 현황과 만족도 응답을 익명으로 집계합니다. 사용자의 개인정보는 저장하지 않으며, 통계 수집을 거부해도 모든 기능을 이용할 수 있습니다.</p>
+      <p class="lm-consent-text"><strong>서비스 이용 정보 안내</strong><br>서비스 개선을 위해 방문 페이지와 직접 검색 통계를 익명으로 집계합니다. 직접 검색에서는 검색어 원문이 아니라 공백을 제외한 글자 수와 최종 결과 인원만 기록하며, 교수·연구실·결과 목록·사용자 식별자는 수집하지 않습니다. 통계 수집을 거부해도 모든 기능을 이용할 수 있습니다.</p>
       <div class="lm-consent-actions">
         <button type="button" class="lm-consent-btn primary" data-lm-consent="granted">동의</button>
         <button type="button" class="lm-consent-btn" data-lm-consent="denied">거부</button>
@@ -88,7 +99,7 @@
   }
 
   function isGraduateLabPage() {
-    return /\/graduate\/(dgist|snu|kaist|postech)\/?(?:index\.html)?$/.test(window.location.pathname);
+    return /\/graduate\/(field|dgist|snu|kaist|postech)\/?(?:index\.html)?$/.test(window.location.pathname);
   }
 
   function addDataNotice() {

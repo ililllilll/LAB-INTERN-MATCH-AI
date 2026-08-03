@@ -1,0 +1,296 @@
+{
+  "packageVersion": "V7_DIRECT_SEARCH_P1R2_CONTEXT_FILTER_GITHUB_PAGES_DEPLOY_R1",
+  "fileCount": 58,
+  "files": [
+    {
+      "path": ".nojekyll",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "CONFIRMED_FALSE_POSITIVE_PATH_BLOCKLIST_11_V1.json",
+      "bytes": 4530,
+      "sha256": "fbebf49bf0e9ea480e0ec74b736cc2f27aad0247cbaedff29ca4f3ab746fb0d4"
+    },
+    {
+      "path": "CONFIRMED_PATH_BLOCKLIST_11_REPORT_KO.md",
+      "bytes": 1368,
+      "sha256": "2d2826a4b91731dd8ca6a5f8200df05355f950d4560ce7ca009ad75bacad9581"
+    },
+    {
+      "path": "DEPLOYMENT_INFO.json",
+      "bytes": 1548,
+      "sha256": "3db40e41cde18ddd8ef3fb72b886bb6face97c6361088807b2e00be387511dae"
+    },
+    {
+      "path": "DIRECT_SEARCH_P1R2_DEPLOY_REPORT_KO.md",
+      "bytes": 1438,
+      "sha256": "a0616a4f9376bda158ee10a4797ee61f644ee8374a84db73c27746e9923f36b5"
+    },
+    {
+      "path": "GITHUB_PAGES_UPLOAD_INSTRUCTIONS_KO.txt",
+      "bytes": 986,
+      "sha256": "8db8b5d33d8954501353935fdaf618435d3d13ac8bf2f6aa61b7666f0c29302d"
+    },
+    {
+      "path": "analytics.js",
+      "bytes": 3497,
+      "sha256": "997b3c919058f3060f04c0483abf960d3aafbcb4648ea4dfc88d28ca321cb5d5"
+    },
+    {
+      "path": "data-policy.html",
+      "bytes": 5008,
+      "sha256": "45c982a46600323f8a5df7af262d7f73e1300e7c47a906a7d4c7aceee7f03244"
+    },
+    {
+      "path": "favicon.ico",
+      "bytes": 163,
+      "sha256": "fd4729ccf15dcf7703bd45622ee7d78a71f6cdef538df8ebc1ab6ea09a511655"
+    },
+    {
+      "path": "graduate/assets/css/graduate.css",
+      "bytes": 20852,
+      "sha256": "1699a10c30b00f3f4b4915b4240a730f68d957a59890c36b7a19bc16adc30ec8"
+    },
+    {
+      "path": "graduate/assets/js/graduate-app.js",
+      "bytes": 62183,
+      "sha256": "5a634668ee3b850310df4ae82675e935c85f00771ab5c3a1aa51ce456138b611"
+    },
+    {
+      "path": "graduate/assets/js/runtime-loader.js",
+      "bytes": 3538,
+      "sha256": "4ac01f1944b37196908b7054b2398314f740404c1087babbd692882deaabcd8c"
+    },
+    {
+      "path": "graduate/assets/js/search-core.js",
+      "bytes": 34483,
+      "sha256": "92bc3eff9c0662a0a68de7ecabdb610cd6c8c6da3c568b4c75e908894448ef60"
+    },
+    {
+      "path": "graduate/assets/js/search-worker.js",
+      "bytes": 819,
+      "sha256": "0af4051ad4e64e31b27ac8feca48ec80ea89cff34a2b69a0cb2a5510576ede45"
+    },
+    {
+      "path": "graduate/assets/runtime/abbreviation-lookup.json",
+      "bytes": 49721,
+      "sha256": "5314e73d0ed42d325be2b82f3a4c6f4770578d236d019f0564b88cd6916bc7a5"
+    },
+    {
+      "path": "graduate/assets/runtime/ambiguity-lookup.json",
+      "bytes": 993262,
+      "sha256": "51b0e61c1f9ef6d1e61370225b408e7599affea48ad1fc2f4795ec868fc5b8c9"
+    },
+    {
+      "path": "graduate/assets/runtime/banner-config.json",
+      "bytes": 19784,
+      "sha256": "2a383976e68e5fdb951dd60b02a1ee59c2fc61c0fe201c6927755613d8e42375"
+    },
+    {
+      "path": "graduate/assets/runtime/browse-taxonomy-v3-professor-map.json",
+      "bytes": 5444475,
+      "sha256": "26ac7e519380c475583d315d8c9dc82f43b2108572b05d46327eb4b775dacdaf"
+    },
+    {
+      "path": "graduate/assets/runtime/browse-taxonomy-v3.json",
+      "bytes": 183643,
+      "sha256": "8ae684cd9269069e09efec7bd9fcae47d62ebdad6ad09db6bcc14fa74a662f8b"
+    },
+    {
+      "path": "graduate/assets/runtime/component-manifest.json",
+      "bytes": 7292,
+      "sha256": "9429fb46eb45420c92b94b8d7329d594397169ae6342b0bf77e79735b0bff08b"
+    },
+    {
+      "path": "graduate/assets/runtime/dgist-professor-enrichment.json",
+      "bytes": 462809,
+      "sha256": "b3b1d566e52140cab7069dec522a8bf1989085181ab2c540df126633ab799f4f"
+    },
+    {
+      "path": "graduate/assets/runtime/direct-p1r2-config.json",
+      "bytes": 2842,
+      "sha256": "c502e91d2d88028fc8904c0433d3a157f49fe13b0659925982cebeb3b717a297"
+    },
+    {
+      "path": "graduate/assets/runtime/display-records.json",
+      "bytes": 1039763,
+      "sha256": "f495b8ef0bd7f22e8a62ab283efbc74afd62582af2d95dc05b3b68e03c6124ee"
+    },
+    {
+      "path": "graduate/assets/runtime/document-dictionary.json",
+      "bytes": 30193,
+      "sha256": "0e598f25156a534632ac5fb7fad7f14292f20bd77397b711037bdc8578a55777"
+    },
+    {
+      "path": "graduate/assets/runtime/exact-phrase-lookup.json",
+      "bytes": 6147386,
+      "sha256": "847c5b565efd2f34f1a2476db50ded3aa4e21b5a945f3e60f2085ecb94ee71ff"
+    },
+    {
+      "path": "graduate/assets/runtime/field-registry.json",
+      "bytes": 1806,
+      "sha256": "e7ad3e9ba7b2be5c49e63da5a79ce0c629fbaa6d3f1162dca36faa0f0b70e365"
+    },
+    {
+      "path": "graduate/assets/runtime/filter-indexes.json",
+      "bytes": 22986,
+      "sha256": "a28621b02a37295b2cd639fc99482aaa19af6641f8a0c17fab8e98492060ab47"
+    },
+    {
+      "path": "graduate/assets/runtime/global-concept-lookup.json",
+      "bytes": 2516080,
+      "sha256": "79ce6be7723c17d6b5c5804994b8dea57a6e5e35a2c9341db81435d299df6bc6"
+    },
+    {
+      "path": "graduate/assets/runtime/global-concept-postings.json",
+      "bytes": 629256,
+      "sha256": "f4db0f2ffd216fe961997f7575f4803e31aa18ab412028e337463ffc98e323bb"
+    },
+    {
+      "path": "graduate/assets/runtime/metadata.json",
+      "bytes": 1640,
+      "sha256": "8ff08b2db2107b350c91f77f036dc827b05638cbad063041371d183318de774d"
+    },
+    {
+      "path": "graduate/assets/runtime/postings-00.json",
+      "bytes": 398611,
+      "sha256": "e89b614871d125d2be95690f8fa07058e9be9518f4dab838c30005ae9abee39a"
+    },
+    {
+      "path": "graduate/assets/runtime/postings-01.json",
+      "bytes": 399706,
+      "sha256": "58a27b68ad082ea4f822cb877c4a2ce7197a6f65e2dbb4548f265b03d82031c1"
+    },
+    {
+      "path": "graduate/assets/runtime/postings-02.json",
+      "bytes": 431788,
+      "sha256": "5b7d1e787c8adbf32f5ff455add451e7371e0dd43e9081bf5c4d503cd2cfd682"
+    },
+    {
+      "path": "graduate/assets/runtime/postings-03.json",
+      "bytes": 421885,
+      "sha256": "3c03f7dfc2311d680389096a9c0af0fc6d836152a65e7a2ee76aea5cf37f1acb"
+    },
+    {
+      "path": "graduate/assets/runtime/postings-04.json",
+      "bytes": 424716,
+      "sha256": "d64bbffeb9c4a91f034a05ba969c6d78c6b886cdc84f2f2ef35c01164a266e91"
+    },
+    {
+      "path": "graduate/assets/runtime/postings-05.json",
+      "bytes": 419435,
+      "sha256": "3eaf7e080746777718ae068627cdc4826fea694016c58c1ba00c6d1309d9e2af"
+    },
+    {
+      "path": "graduate/assets/runtime/postings-06.json",
+      "bytes": 435916,
+      "sha256": "012d34abe5e79b1730a26b28882f32fdc41863b74b7c83a4c60997fbcdae6bd7"
+    },
+    {
+      "path": "graduate/assets/runtime/postings-07.json",
+      "bytes": 413105,
+      "sha256": "43f1341e06cf98fd2498d849e5ed2e39cfc481854858a12b9aef626bd91d9e73"
+    },
+    {
+      "path": "graduate/assets/runtime/professor-documents.json",
+      "bytes": 8684687,
+      "sha256": "178b8aa4436d0af6d8e76bfbd68ca8b151ef21f5ff4a05f6a4148909c4da2b60"
+    },
+    {
+      "path": "graduate/assets/runtime/professor-name-lookup.json",
+      "bytes": 60586,
+      "sha256": "bcf546e72bd9ba2e397aa142a80c9901a9a39b7ea8ed6b5fe5113b62e4efc182"
+    },
+    {
+      "path": "graduate/assets/runtime/recovery-config.json",
+      "bytes": 464,
+      "sha256": "08229cd0612340ef4145676832114e4d0867e5cdceb0e073d98de0e174e280f9"
+    },
+    {
+      "path": "graduate/assets/runtime/safe-spacing-lookup.json",
+      "bytes": 1010667,
+      "sha256": "f71da6f0c7796fb04036b750415979d2577bf1ef870ea40e5fceff1c1ffb5c23"
+    },
+    {
+      "path": "graduate/assets/runtime/scorer-config.json",
+      "bytes": 916,
+      "sha256": "f77c922a6bf61494d68e56a768716d998d5d5a77ebaf0146c38adfd95197d9ef"
+    },
+    {
+      "path": "graduate/assets/runtime/taxonomy-runtime.json",
+      "bytes": 256960,
+      "sha256": "9f0f7e1c9441c66a4940df3f1450d27be6c1c1abd55a1a5c378bfd74d6732250"
+    },
+    {
+      "path": "graduate/assets/runtime/tier-config.json",
+      "bytes": 315,
+      "sha256": "940391de1dc68a60fddec26ca066b84c733aee2d67344d04c599acf3cc01fdae"
+    },
+    {
+      "path": "graduate/assets/runtime/token-dictionary.json",
+      "bytes": 440274,
+      "sha256": "69f3014af31985ba17e6dc850cc20efd29c0d483005a03cc1789816994aacdfa"
+    },
+    {
+      "path": "graduate/dgist/index.html",
+      "bytes": 6720,
+      "sha256": "48f3e1cc29e9fc540f418862ff110b86ba1d11caa813d65deccdd90981391a29"
+    },
+    {
+      "path": "graduate/field/index.html",
+      "bytes": 1751,
+      "sha256": "931256e6a0ae45f218b6fbb54fb2a6e03aac6dd9b4483a99eb9be3590081c47b"
+    },
+    {
+      "path": "graduate/index.html",
+      "bytes": 4909,
+      "sha256": "974dfaf73ffcf279010369acadf46c824c6c6086e1ad8ea2c71d5e7a4e1ab2b1"
+    },
+    {
+      "path": "graduate/kaist/index.html",
+      "bytes": 6720,
+      "sha256": "7fb89fcad50f74dcb8b76c62a84b47c422d1e0b99c0026983c4b9e9801d5850b"
+    },
+    {
+      "path": "graduate/postech/index.html",
+      "bytes": 6730,
+      "sha256": "da3e9929df6bc3a26b7ce6b4c7aacc88b6bd7a27f744e504e3adcd9c11bd3386"
+    },
+    {
+      "path": "graduate/snu/index.html",
+      "bytes": 6758,
+      "sha256": "1af5f42a42213c533acb6d2f53f239b5a5973429773f31c13e02e8db440f8202"
+    },
+    {
+      "path": "index.html",
+      "bytes": 5243,
+      "sha256": "26a4d480e5e096a75ae72a0e3eb54eaff9cdac21649527bb3a1d80b9cea23fad"
+    },
+    {
+      "path": "intern/app.js",
+      "bytes": 43192,
+      "sha256": "3a59fd2a6bc89df48f7591462ddf49f347034ac10bcf49dafa60b169f181f302"
+    },
+    {
+      "path": "intern/data.js",
+      "bytes": 431388,
+      "sha256": "cb7e8a27cccb0865af5333df53e5cb35a2d5a88700a17583cb3ef3b5e6c7130a"
+    },
+    {
+      "path": "intern/index.html",
+      "bytes": 21516,
+      "sha256": "89f8ede65e355a5044a7594b97daf439caa90a9d379b0c4919c86a1e4679275a"
+    },
+    {
+      "path": "privacy-consent.js",
+      "bytes": 8111,
+      "sha256": "0d64fda334f5ff9b41e4b8a689689df8ea096f771aee9fa1de5c2c2e5af1bf0e"
+    },
+    {
+      "path": "privacy.html",
+      "bytes": 5510,
+      "sha256": "02b1fccb483bdaa62327869fbe1b3d5f5fa437ff13e113df87ae555cc88f0f49"
+    }
+  ]
+}

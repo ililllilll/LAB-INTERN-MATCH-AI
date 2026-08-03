@@ -1,0 +1,1 @@
+{"adjacent":{"minimumScore":1.15},"direct":{"allowDirectSmallField":true,"allowExactConcept":true,"allowExactPhrase":true,"minimumIndependentAxes":2,"minimumScore":13.0},"minimumCandidateScore":1.15,"partial":{"minimumIndependentAxes":1,"minimumScore":4.25},"status":"PROVISIONAL_TIER_AND_CUTOFF_NOT_HUMAN_LABELED"}
