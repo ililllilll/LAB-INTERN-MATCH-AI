@@ -1,0 +1,1985 @@
+{
+  "status": "ALL_1993_INDIRECT_BROWSE_DISCOVERABLE",
+  "universities": 6,
+  "professor_count": 1993,
+  "professors_by_university": {
+    "DGIST": 157,
+    "KAIST": 584,
+    "POSTECH": 256,
+    "SNU": 534,
+    "GIST": 158,
+    "UNIST": 304
+  },
+  "large_fields_before_and_after": 16,
+  "small_fields_before": 207,
+  "small_fields_after": 247,
+  "new_research_topic_fields": 30,
+  "new_affiliation_only_fields": 10,
+  "previously_unlinked": 145,
+  "newly_linked_by_research_evidence": 72,
+  "newly_linked_by_department_only": 73,
+  "unique_mapped_professors": 1993,
+  "unmapped_professors": 0,
+  "new_small_fields": [
+    {
+      "id": "energy_harvesting",
+      "label": "에너지 하베스팅",
+      "parents": [
+        "battery_energy",
+        "electrical_electronics"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "nano_biomedicine",
+      "label": "나노바이오의학",
+      "parents": [
+        "biomedical_health",
+        "life_science"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "aging_metabolism",
+      "label": "노화·대사 연구",
+      "parents": [
+        "life_science",
+        "biomedical_health"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "digital_humanities",
+      "label": "디지털 인문학",
+      "parents": [
+        "industrial_convergence",
+        "data_science"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "technology_law",
+      "label": "디지털 기술법·지식재산",
+      "parents": [
+        "industrial_convergence"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "graph_theory_combinatorics",
+      "label": "그래프 이론·조합론",
+      "parents": [
+        "mathematics",
+        "computer_science"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "inverse_problems",
+      "label": "역문제·역산",
+      "parents": [
+        "mathematics",
+        "data_science"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "quantum_field_theory",
+      "label": "양자장론·수리물리",
+      "parents": [
+        "physics",
+        "mathematics"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "materials_characterization",
+      "label": "첨단 재료 분석·계측",
+      "parents": [
+        "materials_science"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "architecture_history",
+      "label": "건축사·건축문화",
+      "parents": [
+        "civil_environment",
+        "industrial_convergence"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "architectural_design",
+      "label": "건축 설계·구조디자인",
+      "parents": [
+        "civil_environment",
+        "industrial_convergence"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "superconducting_technology",
+      "label": "초전도 응용",
+      "parents": [
+        "physics",
+        "electrical_electronics"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "geophysical_exploration",
+      "label": "지구물리 탐사·지하영상",
+      "parents": [
+        "civil_environment",
+        "data_science"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "metal_recycling",
+      "label": "금속 제련·재활용",
+      "parents": [
+        "materials_science",
+        "battery_energy"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "thin_film_materials",
+      "label": "박막 소재·표면공학",
+      "parents": [
+        "materials_science"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "computational_physics",
+      "label": "계산물리",
+      "parents": [
+        "physics",
+        "data_science"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "high_energy_density_physics",
+      "label": "고에너지밀도물리",
+      "parents": [
+        "physics"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "xray_nanoscience",
+      "label": "X선 나노과학",
+      "parents": [
+        "physics",
+        "materials_science"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "solid_state_chemistry",
+      "label": "고체화학",
+      "parents": [
+        "chemistry",
+        "materials_science"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "protein_engineering",
+      "label": "단백질 공학",
+      "parents": [
+        "life_science",
+        "biomedical_health"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "nanoenergy_processing",
+      "label": "나노·에너지 소재 가공",
+      "parents": [
+        "materials_science",
+        "battery_energy"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "intelligent_materials_devices",
+      "label": "지능형 소재·소자",
+      "parents": [
+        "materials_science",
+        "electrical_electronics"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "energy_biotechnology",
+      "label": "에너지 생명공학",
+      "parents": [
+        "battery_energy",
+        "life_science"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "drug_target_research",
+      "label": "신약 표적 연구",
+      "parents": [
+        "life_science",
+        "biomedical_health"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "cell_signaling",
+      "label": "세포 신호전달",
+      "parents": [
+        "life_science"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "metabolic_diseases",
+      "label": "대사질환 연구",
+      "parents": [
+        "life_science",
+        "biomedical_health"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "information_systems",
+      "label": "지능형 정보시스템",
+      "parents": [
+        "computer_science",
+        "data_science"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "audio_intelligence",
+      "label": "오디오 지능·음성처리",
+      "parents": [
+        "electrical_electronics",
+        "artificial_intelligence"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "biochemical_engineering",
+      "label": "생물화학공학",
+      "parents": [
+        "chemistry",
+        "life_science",
+        "industrial_convergence"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "design_thinking",
+      "label": "디자인 사고·사용자 경험",
+      "parents": [
+        "industrial_convergence"
+      ],
+      "type": "research"
+    },
+    {
+      "id": "affiliation_discovery_battery_energy",
+      "label": "배터리·에너지 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "parents": [
+        "battery_energy"
+      ],
+      "type": "affiliation_only"
+    },
+    {
+      "id": "affiliation_discovery_computer_science",
+      "label": "컴퓨터 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "parents": [
+        "computer_science"
+      ],
+      "type": "affiliation_only"
+    },
+    {
+      "id": "affiliation_discovery_mechanical_engineering",
+      "label": "기계 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "parents": [
+        "mechanical_engineering"
+      ],
+      "type": "affiliation_only"
+    },
+    {
+      "id": "affiliation_discovery_semiconductor",
+      "label": "반도체 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "parents": [
+        "semiconductor"
+      ],
+      "type": "affiliation_only"
+    },
+    {
+      "id": "affiliation_discovery_industrial_convergence",
+      "label": "산업·융합 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "parents": [
+        "industrial_convergence"
+      ],
+      "type": "affiliation_only"
+    },
+    {
+      "id": "affiliation_discovery_life_science",
+      "label": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "parents": [
+        "life_science"
+      ],
+      "type": "affiliation_only"
+    },
+    {
+      "id": "affiliation_discovery_electrical_electronics",
+      "label": "전기전자 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "parents": [
+        "electrical_electronics"
+      ],
+      "type": "affiliation_only"
+    },
+    {
+      "id": "affiliation_discovery_physics",
+      "label": "물리학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "parents": [
+        "physics"
+      ],
+      "type": "affiliation_only"
+    },
+    {
+      "id": "affiliation_discovery_mathematics",
+      "label": "수학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "parents": [
+        "mathematics"
+      ],
+      "type": "affiliation_only"
+    },
+    {
+      "id": "affiliation_discovery_chemistry",
+      "label": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "parents": [
+        "chemistry"
+      ],
+      "type": "affiliation_only"
+    }
+  ],
+  "new_research_mappings": [
+    {
+      "professor_id": "DGIST_ENERGY_012",
+      "school": "DGIST",
+      "name": "호동해",
+      "departments": [
+        "에너지공학과"
+      ],
+      "small_field_id": "energy_harvesting",
+      "small_field_name": "에너지 하베스팅",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "DGIST_NEWBIO_004",
+      "school": "DGIST",
+      "name": "김민석",
+      "departments": [
+        "뉴바이올로지학과"
+      ],
+      "small_field_id": "nano_biomedicine",
+      "small_field_name": "나노바이오의학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "DGIST_NEWBIO_016",
+      "school": "DGIST",
+      "name": "이재민",
+      "departments": [
+        "뉴바이올로지학과"
+      ],
+      "small_field_id": "aging_metabolism",
+      "small_field_name": "노화·대사 연구",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-CHEM-KIM-WOO-YOUN",
+      "school": "KAIST",
+      "name": "김우연",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "computational_chemistry",
+      "small_field_name": "계산화학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-CS-조성호",
+      "school": "KAIST",
+      "name": "조성호",
+      "departments": [
+        "전산학부",
+        "반도체시스템공학과"
+      ],
+      "small_field_id": "human_computer_interaction",
+      "small_field_name": "인간컴퓨터 상호작용",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-CS-한동수",
+      "school": "KAIST",
+      "name": "한동수",
+      "departments": [
+        "전산학부"
+      ],
+      "small_field_id": "geospatial_engineering",
+      "small_field_name": "공간정보공학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-EE-배준우",
+      "school": "KAIST",
+      "name": "배준우",
+      "departments": [
+        "전기및전자공학부",
+        "반도체시스템공학과"
+      ],
+      "small_field_id": "quantum_information",
+      "small_field_name": "양자정보",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-EE-신민철",
+      "school": "KAIST",
+      "name": "신민철",
+      "departments": [
+        "전기및전자공학부"
+      ],
+      "small_field_id": "nanoelectronics",
+      "small_field_name": "나노전자",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-EE-심현철",
+      "school": "KAIST",
+      "name": "심현철",
+      "departments": [
+        "전기및전자공학부"
+      ],
+      "small_field_id": "autonomous_systems",
+      "small_field_name": "자율시스템",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-EE-윤영규",
+      "school": "KAIST",
+      "name": "윤영규",
+      "departments": [
+        "전기및전자공학부",
+        "반도체시스템공학과"
+      ],
+      "small_field_id": "neuroengineering",
+      "small_field_name": "신경공학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-EE-윤인수",
+      "school": "KAIST",
+      "name": "윤인수",
+      "departments": [
+        "전기및전자공학부",
+        "반도체시스템공학과"
+      ],
+      "small_field_id": "cybersecurity",
+      "small_field_name": "사이버보안",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-EE-이준구",
+      "school": "KAIST",
+      "name": "이준구",
+      "departments": [
+        "전기및전자공학부"
+      ],
+      "small_field_id": "quantum_information",
+      "small_field_name": "양자정보",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-EE-장동의",
+      "school": "KAIST",
+      "name": "장동의",
+      "departments": [
+        "전기및전자공학부",
+        "반도체시스템공학과"
+      ],
+      "small_field_id": "robot_control",
+      "small_field_name": "로봇제어",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-EE-장민석",
+      "school": "KAIST",
+      "name": "장민석",
+      "departments": [
+        "전기및전자공학부"
+      ],
+      "small_field_id": "optics",
+      "small_field_name": "광학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-EE-정혜원",
+      "school": "KAIST",
+      "name": "정혜원",
+      "departments": [
+        "전기및전자공학부",
+        "반도체시스템공학과"
+      ],
+      "small_field_id": "statistics",
+      "small_field_name": "통계학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-EE-최신현",
+      "school": "KAIST",
+      "name": "최신현",
+      "departments": [
+        "전기및전자공학부",
+        "반도체시스템공학과"
+      ],
+      "small_field_id": "memory_devices",
+      "small_field_name": "메모리 소자",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-EE-최창식",
+      "school": "KAIST",
+      "name": "최창식",
+      "departments": [
+        "전기및전자공학부"
+      ],
+      "small_field_id": "wireless_communications",
+      "small_field_name": "무선통신",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-GGGS-김지효",
+      "school": "KAIST",
+      "name": "김지효",
+      "departments": [
+        "녹색성장지속가능대학원"
+      ],
+      "small_field_id": "technology_policy",
+      "small_field_name": "기술정책",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-GSMV-4630030794A4",
+      "school": "KAIST",
+      "name": "전봉관",
+      "departments": [
+        "메타버스대학원"
+      ],
+      "small_field_id": "digital_humanities",
+      "small_field_name": "디지털 인문학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-GSMV-BB8AA7574DE0",
+      "school": "KAIST",
+      "name": "박성필",
+      "departments": [
+        "메타버스대학원"
+      ],
+      "small_field_id": "technology_law",
+      "small_field_name": "디지털 기술법·지식재산",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-GSMV-C60FE065AB7E",
+      "school": "KAIST",
+      "name": "정서현",
+      "departments": [
+        "메타버스대학원"
+      ],
+      "small_field_id": "digital_humanities",
+      "small_field_name": "디지털 인문학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-MATHSCI-KIM-JAEHOON",
+      "school": "KAIST",
+      "name": "김재훈",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "graph_theory_combinatorics",
+      "small_field_name": "그래프 이론·조합론",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-MATHSCI-LIM-MIKYOUNG",
+      "school": "KAIST",
+      "name": "임미경",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "inverse_problems",
+      "small_field_name": "역문제·역산",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-MATHSCI-SANG-IL-OUM",
+      "school": "KAIST",
+      "name": "엄상일",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "graph_theory_combinatorics",
+      "small_field_name": "그래프 이론·조합론",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-ME-CHANG-DAEJUN",
+      "school": "KAIST",
+      "name": "장대준",
+      "departments": [
+        "기계공학과"
+      ],
+      "small_field_id": "energy_conversion",
+      "small_field_name": "에너지 변환",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-MSE-정성윤",
+      "school": "KAIST",
+      "name": "정성윤",
+      "departments": [
+        "신소재공학과"
+      ],
+      "small_field_id": "energy_materials",
+      "small_field_name": "에너지 재료",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-MSE-최벽파",
+      "school": "KAIST",
+      "name": "최벽파",
+      "departments": [
+        "신소재공학과"
+      ],
+      "small_field_id": "materials_characterization",
+      "small_field_name": "첨단 재료 분석·계측",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-PHYS-13872",
+      "school": "KAIST",
+      "name": "김희연",
+      "departments": [
+        "물리학과"
+      ],
+      "small_field_id": "quantum_field_theory",
+      "small_field_name": "양자장론·수리물리",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "KAIST-PHYS-318",
+      "school": "KAIST",
+      "name": "김은성",
+      "departments": [
+        "물리학과"
+      ],
+      "small_field_id": "condensed_matter_physics",
+      "small_field_name": "응집물질물리",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "POSTECH-PERSON-0110",
+      "school": "POSTECH",
+      "name": "한현",
+      "departments": [
+        "신소재공학과"
+      ],
+      "small_field_id": "thin_film_materials",
+      "small_field_name": "박막 소재·표면공학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "SNU-ARCH-0003",
+      "school": "SNU",
+      "name": "전봉희",
+      "departments": [
+        "건축학과"
+      ],
+      "small_field_id": "architecture_history",
+      "small_field_name": "건축사·건축문화",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "SNU-ARCH-0007",
+      "school": "SNU",
+      "name": "서현",
+      "departments": [
+        "건축학과"
+      ],
+      "small_field_id": "architectural_design",
+      "small_field_name": "건축 설계·구조디자인",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "SNU-ECE-0068",
+      "school": "SNU",
+      "name": "한승용",
+      "departments": [
+        "전기정보공학부"
+      ],
+      "small_field_id": "superconducting_technology",
+      "small_field_name": "초전도 응용",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "SNU-ECE-0071",
+      "school": "SNU",
+      "name": "홍용택",
+      "departments": [
+        "전기정보공학부"
+      ],
+      "small_field_id": "electronic_materials",
+      "small_field_name": "전자재료",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "SNU-ERE-001",
+      "school": "SNU",
+      "name": "허은녕",
+      "departments": [
+        "에너지자원공학과"
+      ],
+      "small_field_id": "technology_policy",
+      "small_field_name": "기술정책",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "SNU-ERE-003",
+      "school": "SNU",
+      "name": "조용채",
+      "departments": [
+        "에너지자원공학과"
+      ],
+      "small_field_id": "geophysical_exploration",
+      "small_field_name": "지구물리 탐사·지하영상",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "SNU-ERE-012",
+      "school": "SNU",
+      "name": "강정신",
+      "departments": [
+        "에너지자원공학과"
+      ],
+      "small_field_id": "metal_recycling",
+      "small_field_name": "금속 제련·재활용",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "SNU-MATH-0018",
+      "school": "SNU",
+      "name": "유필상",
+      "departments": [
+        "수리과학부"
+      ],
+      "small_field_id": "quantum_field_theory",
+      "small_field_name": "양자장론·수리물리",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "SNU-MSE-0032",
+      "school": "SNU",
+      "name": "박주혁",
+      "departments": [
+        "재료공학부"
+      ],
+      "small_field_id": "polymer_science",
+      "small_field_name": "고분자과학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_DEC25AE0CA69",
+      "school": "GIST",
+      "name": "노도영",
+      "departments": [
+        "물리광과학과"
+      ],
+      "small_field_id": "xray_nanoscience",
+      "small_field_name": "X선 나노과학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_81C0FFE8E058",
+      "school": "GIST",
+      "name": "유운종",
+      "departments": [
+        "물리광과학과"
+      ],
+      "small_field_id": "computational_physics",
+      "small_field_name": "계산물리",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_11CED0A7AC5B",
+      "school": "GIST",
+      "name": "조병익",
+      "departments": [
+        "물리광과학과"
+      ],
+      "small_field_id": "high_energy_density_physics",
+      "small_field_name": "고에너지밀도물리",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_E7BB78B8BCF1",
+      "school": "GIST",
+      "name": "김상륜",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "solid_state_chemistry",
+      "small_field_name": "고체화학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_368C0181BDA6",
+      "school": "GIST",
+      "name": "권인찬",
+      "departments": [
+        "신소재공학과"
+      ],
+      "small_field_id": "protein_engineering",
+      "small_field_name": "단백질 공학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_F73EF0B69753",
+      "school": "GIST",
+      "name": "김봉중",
+      "departments": [
+        "신소재공학과"
+      ],
+      "small_field_id": "nanoenergy_processing",
+      "small_field_name": "나노·에너지 소재 가공",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_146C0B304639",
+      "school": "GIST",
+      "name": "하민정",
+      "departments": [
+        "신소재공학과"
+      ],
+      "small_field_id": "intelligent_materials_devices",
+      "small_field_name": "지능형 소재·소자",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_EC778F896491",
+      "school": "GIST",
+      "name": "박영준",
+      "departments": [
+        "환경에너지공학과"
+      ],
+      "small_field_id": "energy_conversion",
+      "small_field_name": "에너지 변환",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_E757E93A70CE",
+      "school": "GIST",
+      "name": "윤진호",
+      "departments": [
+        "환경에너지공학과"
+      ],
+      "small_field_id": "climate_science",
+      "small_field_name": "기후과학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_653F77CD6612",
+      "school": "GIST",
+      "name": "장인섭",
+      "departments": [
+        "환경에너지공학과"
+      ],
+      "small_field_id": "energy_biotechnology",
+      "small_field_name": "에너지 생명공학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_72E492355652",
+      "school": "GIST",
+      "name": "주종훈",
+      "departments": [
+        "환경에너지공학과"
+      ],
+      "small_field_id": "energy_materials",
+      "small_field_name": "에너지 재료",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_D7061E33A95E",
+      "school": "GIST",
+      "name": "최희철",
+      "departments": [
+        "환경에너지공학과"
+      ],
+      "small_field_id": "environmental_engineering",
+      "small_field_name": "환경공학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_A5859EB4FAEF",
+      "school": "GIST",
+      "name": "허호길",
+      "departments": [
+        "환경에너지공학과"
+      ],
+      "small_field_id": "microbiology",
+      "small_field_name": "미생물학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_9365083053FB",
+      "school": "GIST",
+      "name": "황희정",
+      "departments": [
+        "환경에너지공학과"
+      ],
+      "small_field_id": "earth_science",
+      "small_field_name": "지구과학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_1EAFB4F16892",
+      "school": "GIST",
+      "name": "다런 윌리암스",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "drug_target_research",
+      "small_field_name": "신약 표적 연구",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_56F6E37AD79F",
+      "school": "GIST",
+      "name": "조정희",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "genetics",
+      "small_field_name": "유전학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_8BA6C3AC4B18",
+      "school": "GIST",
+      "name": "진석원",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "cell_signaling",
+      "small_field_name": "세포 신호전달",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_D45F15711914",
+      "school": "GIST",
+      "name": "최진욱",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "regenerative_medicine",
+      "small_field_name": "재생의학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_79FD250F3A78",
+      "school": "GIST",
+      "name": "김재관",
+      "departments": [
+        "의생명공학과"
+      ],
+      "small_field_id": "biomedical_engineering",
+      "small_field_name": "의공학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_15D20C1246B1",
+      "school": "GIST",
+      "name": "박래길",
+      "departments": [
+        "의생명공학과"
+      ],
+      "small_field_id": "aging_metabolism",
+      "small_field_name": "노화·대사 연구",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_7AA1A9844CB9",
+      "school": "GIST",
+      "name": "오창명",
+      "departments": [
+        "의생명공학과"
+      ],
+      "small_field_id": "metabolic_diseases",
+      "small_field_name": "대사질환 연구",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_D34F99323D73",
+      "school": "GIST",
+      "name": "Brian J. d'Auriol",
+      "departments": [
+        "전기전자컴퓨터공학과"
+      ],
+      "small_field_id": "computer_graphics",
+      "small_field_name": "컴퓨터 그래픽스",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_8CDDD9A32A7B",
+      "school": "GIST",
+      "name": "Byoung Seung Ham",
+      "departments": [
+        "전기전자컴퓨터공학과"
+      ],
+      "small_field_id": "photonics",
+      "small_field_name": "광자공학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_87B839C8E85C",
+      "school": "GIST",
+      "name": "Euiseok Hwang",
+      "departments": [
+        "전기전자컴퓨터공학과"
+      ],
+      "small_field_id": "information_systems",
+      "small_field_name": "지능형 정보시스템",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_20C7EB037CAC",
+      "school": "GIST",
+      "name": "Hong Kook Kim",
+      "departments": [
+        "전기전자컴퓨터공학과"
+      ],
+      "small_field_id": "audio_intelligence",
+      "small_field_name": "오디오 지능·음성처리",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_4D7CEABD5884",
+      "school": "GIST",
+      "name": "Jae Woong Soh",
+      "departments": [
+        "전기전자컴퓨터공학과"
+      ],
+      "small_field_id": "computer_vision",
+      "small_field_name": "컴퓨터비전",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_6E5A54BDF90B",
+      "school": "GIST",
+      "name": "Kangwook Kim",
+      "departments": [
+        "전기전자컴퓨터공학과"
+      ],
+      "small_field_id": "microwave_engineering",
+      "small_field_name": "마이크로파공학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "GIST_0854D1EAC4FD",
+      "school": "GIST",
+      "name": "Sangjin Kim",
+      "departments": [
+        "전기전자컴퓨터공학과"
+      ],
+      "small_field_id": "memory_devices",
+      "small_field_name": "메모리 소자",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "UNIST_C95D342EA84A",
+      "school": "UNIST",
+      "name": "이강수",
+      "departments": [
+        "기계공학과"
+      ],
+      "small_field_id": "biomedical_engineering",
+      "small_field_name": "의공학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "UNIST_1E03992A2CA8",
+      "school": "UNIST",
+      "name": "신승재",
+      "departments": [
+        "에너지화학공학과"
+      ],
+      "small_field_id": "computational_materials",
+      "small_field_name": "계산재료과학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "UNIST_840A3E799D7E",
+      "school": "UNIST",
+      "name": "이성국",
+      "departments": [
+        "에너지화학공학과"
+      ],
+      "small_field_id": "biochemical_engineering",
+      "small_field_name": "생물화학공학",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "UNIST_BCED16E50AB8",
+      "school": "UNIST",
+      "name": "이종훈",
+      "departments": [
+        "신소재공학과"
+      ],
+      "small_field_id": "two_dimensional_materials",
+      "small_field_name": "이차원 재료",
+      "basis": "RESEARCH_EVIDENCE"
+    },
+    {
+      "professor_id": "UNIST_9B2D7436FCD3",
+      "school": "UNIST",
+      "name": "James Andrew Self",
+      "departments": [
+        "디자인학과"
+      ],
+      "small_field_id": "design_thinking",
+      "small_field_name": "디자인 사고·사용자 경험",
+      "basis": "RESEARCH_EVIDENCE"
+    }
+  ],
+  "new_department_only_mappings": [
+    {
+      "professor_id": "GIST_7C319A030947",
+      "school": "GIST",
+      "name": "김형록",
+      "departments": [
+        "환경에너지공학과"
+      ],
+      "small_field_id": "affiliation_discovery_battery_energy",
+      "small_field_name": "배터리·에너지 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "GIST_F65A009AC9D4",
+      "school": "GIST",
+      "name": "Suthipong Sthiannopako",
+      "departments": [
+        "환경에너지공학과"
+      ],
+      "small_field_id": "affiliation_discovery_battery_energy",
+      "small_field_name": "배터리·에너지 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "GIST_60D92B5D2CDD",
+      "school": "GIST",
+      "name": "Heung-No Lee",
+      "departments": [
+        "전기전자컴퓨터공학과"
+      ],
+      "small_field_id": "affiliation_discovery_computer_science",
+      "small_field_name": "컴퓨터 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "GIST_D9DB84C09124",
+      "school": "GIST",
+      "name": "Hyeon-Ho Jeong",
+      "departments": [
+        "전기전자컴퓨터공학과"
+      ],
+      "small_field_id": "affiliation_discovery_computer_science",
+      "small_field_name": "컴퓨터 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "GIST_62B126467DDE",
+      "school": "GIST",
+      "name": "Suman Pandey",
+      "departments": [
+        "전기전자컴퓨터공학과"
+      ],
+      "small_field_id": "affiliation_discovery_computer_science",
+      "small_field_name": "컴퓨터 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "GIST_72EAB1069C94",
+      "school": "GIST",
+      "name": "Yongsoon Park",
+      "departments": [
+        "전기전자컴퓨터공학과"
+      ],
+      "small_field_id": "affiliation_discovery_computer_science",
+      "small_field_name": "컴퓨터 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_D42AF5249C5A",
+      "school": "UNIST",
+      "name": "김건호",
+      "departments": [
+        "기계공학과"
+      ],
+      "small_field_id": "affiliation_discovery_mechanical_engineering",
+      "small_field_name": "기계 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_7C1400F035D1",
+      "school": "UNIST",
+      "name": "FynanDouglas",
+      "departments": [
+        "원자력공학과"
+      ],
+      "small_field_id": "affiliation_discovery_battery_energy",
+      "small_field_name": "배터리·에너지 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_0978B87D3F8D",
+      "school": "UNIST",
+      "name": "허민섭",
+      "departments": [
+        "반도체소재·부품대학원"
+      ],
+      "small_field_id": "affiliation_discovery_semiconductor",
+      "small_field_name": "반도체 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_E8516674506C",
+      "school": "UNIST",
+      "name": "박성훈",
+      "departments": [
+        "탄소중립대학원"
+      ],
+      "small_field_id": "affiliation_discovery_battery_energy",
+      "small_field_name": "배터리·에너지 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_4DB04EF298C0",
+      "school": "UNIST",
+      "name": "Chajoong Kim",
+      "departments": [
+        "디자인학과"
+      ],
+      "small_field_id": "affiliation_discovery_industrial_convergence",
+      "small_field_name": "산업·융합 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_EFE95392D155",
+      "school": "UNIST",
+      "name": "HongYeul Eom",
+      "departments": [
+        "디자인학과"
+      ],
+      "small_field_id": "affiliation_discovery_industrial_convergence",
+      "small_field_name": "산업·융합 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_1FBCF9B7C409",
+      "school": "UNIST",
+      "name": "Hui Sung Lee",
+      "departments": [
+        "디자인학과"
+      ],
+      "small_field_id": "affiliation_discovery_industrial_convergence",
+      "small_field_name": "산업·융합 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_0EFCAF22E3D7",
+      "school": "UNIST",
+      "name": "Hwang Kim",
+      "departments": [
+        "디자인학과"
+      ],
+      "small_field_id": "affiliation_discovery_industrial_convergence",
+      "small_field_name": "산업·융합 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_8ABFE11A26B9",
+      "school": "UNIST",
+      "name": "KwanMyung Kim",
+      "departments": [
+        "디자인학과"
+      ],
+      "small_field_id": "affiliation_discovery_industrial_convergence",
+      "small_field_name": "산업·융합 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_E591713D295E",
+      "school": "UNIST",
+      "name": "KyungHo Lee",
+      "departments": [
+        "디자인학과"
+      ],
+      "small_field_id": "affiliation_discovery_industrial_convergence",
+      "small_field_name": "산업·융합 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_F6D4B16816A2",
+      "school": "UNIST",
+      "name": "Marco Comuzzi",
+      "departments": [
+        "산업공학과"
+      ],
+      "small_field_id": "affiliation_discovery_industrial_convergence",
+      "small_field_name": "산업·융합 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_C6A498B0AB0A",
+      "school": "UNIST",
+      "name": "MitchellRobertJames",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_B28835BA1C6C",
+      "school": "UNIST",
+      "name": "강병헌",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_5A66399C84A4",
+      "school": "UNIST",
+      "name": "강세병",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_2096E3019121",
+      "school": "UNIST",
+      "name": "고명곤",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_0A3F1AC43D6D",
+      "school": "UNIST",
+      "name": "김은희",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_5C5732E2F476",
+      "school": "UNIST",
+      "name": "김재익",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_63266D73D316",
+      "school": "UNIST",
+      "name": "김정석",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_BC379860F877",
+      "school": "UNIST",
+      "name": "김홍태",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_A1FC03977F78",
+      "school": "UNIST",
+      "name": "남덕우",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_D92030A27740",
+      "school": "UNIST",
+      "name": "박성호",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_2D3FDDA26698",
+      "school": "UNIST",
+      "name": "박지영",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_836CD168DACE",
+      "school": "UNIST",
+      "name": "박태주",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_CA62D7261E73",
+      "school": "UNIST",
+      "name": "윤혜진",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_75123E865E22",
+      "school": "UNIST",
+      "name": "이상준",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_323CD8727B2A",
+      "school": "UNIST",
+      "name": "이자일",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_76C2A78101E9",
+      "school": "UNIST",
+      "name": "최장현",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_76611F6C0A5E",
+      "school": "UNIST",
+      "name": "황성민",
+      "departments": [
+        "생명과학과"
+      ],
+      "small_field_id": "affiliation_discovery_life_science",
+      "small_field_name": "생명과학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_2651F8411E76",
+      "school": "UNIST",
+      "name": "이재용",
+      "departments": [
+        "전기전자공학과"
+      ],
+      "small_field_id": "affiliation_discovery_electrical_electronics",
+      "small_field_name": "전기전자 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_8C58B7494A4F",
+      "school": "UNIST",
+      "name": "위성일",
+      "departments": [
+        "컴퓨터공학과"
+      ],
+      "small_field_id": "affiliation_discovery_computer_science",
+      "small_field_name": "컴퓨터 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_B0EF3300D0FD",
+      "school": "UNIST",
+      "name": "이재연",
+      "departments": [
+        "컴퓨터공학과"
+      ],
+      "small_field_id": "affiliation_discovery_computer_science",
+      "small_field_name": "컴퓨터 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_6CA14255F11E",
+      "school": "UNIST",
+      "name": "이주용",
+      "departments": [
+        "컴퓨터공학과"
+      ],
+      "small_field_id": "affiliation_discovery_computer_science",
+      "small_field_name": "컴퓨터 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_44D752EA1ED6",
+      "school": "UNIST",
+      "name": "임영빈",
+      "departments": [
+        "컴퓨터공학과"
+      ],
+      "small_field_id": "affiliation_discovery_computer_science",
+      "small_field_name": "컴퓨터 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_46D0E7BBA706",
+      "school": "UNIST",
+      "name": "남인혁",
+      "departments": [
+        "물리학과"
+      ],
+      "small_field_id": "affiliation_discovery_physics",
+      "small_field_name": "물리학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_D67A49533A25",
+      "school": "UNIST",
+      "name": "손창희",
+      "departments": [
+        "물리학과"
+      ],
+      "small_field_id": "affiliation_discovery_physics",
+      "small_field_name": "물리학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_DF200F5FD311",
+      "school": "UNIST",
+      "name": "Bongsoo Jang",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "affiliation_discovery_mathematics",
+      "small_field_name": "수학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_DD6A0355FC74",
+      "school": "UNIST",
+      "name": "Bongsuk Kwon",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "affiliation_discovery_mathematics",
+      "small_field_name": "수학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_57D8C14099CF",
+      "school": "UNIST",
+      "name": "Chang Hyeong Lee",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "affiliation_discovery_mathematics",
+      "small_field_name": "수학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_26D93517943B",
+      "school": "UNIST",
+      "name": "Chang-Yeol Jung",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "affiliation_discovery_mathematics",
+      "small_field_name": "수학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_6B68FD480F92",
+      "school": "UNIST",
+      "name": "Chol Park",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "affiliation_discovery_mathematics",
+      "small_field_name": "수학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_40DD77B42AEF",
+      "school": "UNIST",
+      "name": "Hae-Sang Sun",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "affiliation_discovery_mathematics",
+      "small_field_name": "수학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_9F498C27B19D",
+      "school": "UNIST",
+      "name": "Hantaek Bae",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "affiliation_discovery_mathematics",
+      "small_field_name": "수학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_3D3FB0421BEB",
+      "school": "UNIST",
+      "name": "Jaehyun Cho",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "affiliation_discovery_mathematics",
+      "small_field_name": "수학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_41A43B2A20A2",
+      "school": "UNIST",
+      "name": "Jin Hyuk Choi",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "affiliation_discovery_mathematics",
+      "small_field_name": "수학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_5A080A8DA7B0",
+      "school": "UNIST",
+      "name": "Kyudong Choi",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "affiliation_discovery_mathematics",
+      "small_field_name": "수학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_6E3B1EF31C37",
+      "school": "UNIST",
+      "name": "Pilwon Kim",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "affiliation_discovery_mathematics",
+      "small_field_name": "수학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_95BA1BA06D2C",
+      "school": "UNIST",
+      "name": "Rak-Kyeong Seong",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "affiliation_discovery_mathematics",
+      "small_field_name": "수학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_115905E3137F",
+      "school": "UNIST",
+      "name": "Youngae Lee",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "affiliation_discovery_mathematics",
+      "small_field_name": "수학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_30A3325C0F73",
+      "school": "UNIST",
+      "name": "Younggeun Kim",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "affiliation_discovery_mathematics",
+      "small_field_name": "수학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_E75A68C424C1",
+      "school": "UNIST",
+      "name": "Yunho Kim",
+      "departments": [
+        "수리과학과"
+      ],
+      "small_field_id": "affiliation_discovery_mathematics",
+      "small_field_name": "수학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_ACE40CD013BF",
+      "school": "UNIST",
+      "name": "Bartosz Andrzej Grzybowski",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_8A9428E70B9C",
+      "school": "UNIST",
+      "name": "Christopher W Bielawski",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_E47B084D6A50",
+      "school": "UNIST",
+      "name": "Jan-Uwe Rohde",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_87FA0E362587",
+      "school": "UNIST",
+      "name": "Rodney Scott Ruoff",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_93ABE2F9F3F6",
+      "school": "UNIST",
+      "name": "Thomas Schultz",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_C1A4E5D1188D",
+      "school": "UNIST",
+      "name": "권정욱",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_274A788B8C45",
+      "school": "UNIST",
+      "name": "기정민",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_ECEE847021D5",
+      "school": "UNIST",
+      "name": "김영삼",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_80F36B61694E",
+      "school": "UNIST",
+      "name": "민두영",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_E261BC28F10F",
+      "school": "UNIST",
+      "name": "민승규",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_D92063775F7F",
+      "school": "UNIST",
+      "name": "박영석",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_CA19E4DDF7EF",
+      "school": "UNIST",
+      "name": "박철민",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_BA67283114D9",
+      "school": "UNIST",
+      "name": "심교승",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_2A03F9F885B3",
+      "school": "UNIST",
+      "name": "유자형",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_C3987D96BA79",
+      "school": "UNIST",
+      "name": "이근식",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_C9F503B13576",
+      "school": "UNIST",
+      "name": "조범석",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    },
+    {
+      "professor_id": "UNIST_8D0EA61B01CA",
+      "school": "UNIST",
+      "name": "진호",
+      "departments": [
+        "화학과"
+      ],
+      "small_field_id": "affiliation_discovery_chemistry",
+      "small_field_name": "화학 소속 기반 탐색 (세부 연구 주제 미확인)",
+      "basis": "DEPARTMENT_ONLY_NO_RESEARCH_CLAIM"
+    }
+  ],
+  "existing_1848_mapping_policy": "Unchanged; prior mappings preserved",
+  "limitations": [
+    "Department-only mappings are discoverability by official department, not verified detailed research expertise.",
+    "The 2026-08 original GIST/UNIST candidate DB is not revalidated against current official sites.",
+    "Existing documented professor inclusion/omission errors and identity merge errors beyond original two dedupes have not been resolved.",
+    "Direct BM25 Plus search and its 4-university corpus remain unchanged."
+  ],
+  "revision": "2026-10-30",
+  "source": "Previous 6-university 1993-person browse ZIP, no new person profiles added or deleted"
+}

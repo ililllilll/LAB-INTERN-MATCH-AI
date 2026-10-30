@@ -37,8 +37,8 @@
   });
   const FIELD_MODE_COPY = Object.freeze({
     selection: {
-      title: "검색 방식을 선택해 주세요",
-      lead: "분야를 둘러보는 탐색과 구체적인 연구 내용 검색을 분리했습니다.",
+      title: "관심 분야로 연구실 찾기",
+      lead: "큰 연구 분야와 세부 연구 분야를 선택해 관련 연구실을 둘러보세요.",
     },
     browse: {
       title: "분야를 선택해서 찾기",
@@ -288,8 +288,8 @@
       <section class="panel mode-selection-panel" aria-labelledby="modeSelectionTitle">
         <div class="panel-head">
           <div class="title-group"><span class="step">1</span><div>
-            <h2 id="modeSelectionTitle">어떻게 연구실을 찾고 싶으신가요?</h2>
-            <p>선택하지 않은 방식의 검색 폼은 함께 열리지 않습니다.</p>
+            <h2 id="modeSelectionTitle">관심 분야로 연구실 찾기</h2>
+            <p>연구 분야를 선택해 관련 교수님과 연구실을 둘러보세요.</p>
           </div></div>
         </div>
         <div class="mode-choice-grid">
@@ -299,13 +299,6 @@
             <p>큰 연구 분야와 세부 연구 분야를 차례로 선택해 관련 연구실을 둘러봅니다.</p>
             <button class="primary-button" type="button" data-recommendation-mode="browse"
                     aria-label="분야를 선택해서 찾기 시작">분야 선택 시작</button>
-          </article>
-          <article class="mode-choice-card">
-            <span class="mode-choice-number" aria-hidden="true">02</span>
-            <h3>연구 내용을 직접 입력해 찾기</h3>
-            <p>관심 연구 주제, 소재, 연구 방법, 현상 또는 응용 내용을 직접 입력해 연구실을 찾습니다.</p>
-            <button class="primary-button" type="button" data-recommendation-mode="detailed"
-                    aria-label="연구 내용을 직접 입력해 찾기 시작">상세 검색 시작</button>
           </article>
         </div>
       </section>`;
@@ -322,7 +315,7 @@
         <div class="panel-head">
           <div class="title-group"><span class="step">1</span><div>
             <h2 id="bigFieldTitle">큰 연구 분야 선택</h2>
-            <p>1,531명 권위 연구정보를 다시 분석한 16개 탐색 분야입니다.</p>
+            <p>6개 대학 교수 연구정보를 바탕으로 구성한 16개 탐색 분야입니다.</p>
           </div></div>
         </div>
         <div id="bigFields" class="major-grid" aria-label="큰 연구 분야"></div>
@@ -331,7 +324,7 @@
         <div class="panel-head">
           <div class="title-group"><span class="step">2</span><div>
             <h2 id="smallFieldTitle">세부 연구 분야 선택</h2>
-            <p>세부 분야를 선택하면 핵심 또는 주요 연구인 교수·연구실이 바로 표시됩니다.</p>
+            <p>세부 분야를 선택하면 해당 연구 분야에 관련된 교수·연구실이 표시됩니다. 소속 기반 탐색 항목은 연구 주제가 확인되지 않은 교수도 포함합니다.</p>
           </div></div>
           <label>
             <span class="sr-only">세부 분야 검색</span>
@@ -601,11 +594,9 @@
           fieldLabel(big)
         )} &gt; ${escapeHtml(fieldLabel(small))}</strong></span>`;
       if (elements.browseSelectionMessage) {
-        elements.browseSelectionMessage.textContent = `${fieldLabel(
-          small
-        )}이 핵심 또는 주요 연구인 교수·연구실 ${Number(
-          small.professor_count || 0
-        ).toLocaleString("ko-KR")}개`;
+        elements.browseSelectionMessage.textContent = small.affiliation_only
+          ? `소속 학과 기준으로 찾은 교수 ${Number(small.professor_count || 0).toLocaleString("ko-KR")}명 · 세부 연구 주제는 미확인`
+          : `${fieldLabel(small)}에 연결된 교수·연구실 ${Number(small.professor_count || 0).toLocaleString("ko-KR")}개`;
       }
       return;
     }
@@ -855,12 +846,16 @@
     elements.resultMeta.textContent = result.nameNavigation
       ? "교수명 정확 탐색 결과이며 연구 관련성 순위가 아닙니다."
       : result.recommendationMode === "browse"
-        ? `선택 분야의 핵심 또는 주요 연구 근거가 확인된 교수·연구실 ${result.results.length}개`
+        ? (browseSmallById[result.options?.smallFieldId]?.affiliation_only
+            ? `공식 소속 학과에 근거한 교수 ${result.results.length}명 · 개인별 세부 연구 분야 미확인`
+            : `선택 분야에 연결된 교수·연구실 ${result.results.length}개`)
         : `${TIER_LABELS.Direct} ${result.sections.Direct.length} · ${TIER_LABELS.Partial} ${result.sections.Partial.length} · ${TIER_LABELS.Adjacent} ${result.sections.Adjacent.length}${p1r2Meta}`;
     if (elements.resultPolicy) {
       elements.resultPolicy.textContent =
         result.recommendationMode === "browse"
-          ? "선택 분야가 핵심 또는 주요 연구로 확인된 결과만 표시합니다. 숫자 점수나 교수·연구실 순위는 제공하지 않습니다."
+          ? (browseSmallById[result.options?.smallFieldId]?.affiliation_only
+              ? "소속 학과 기준 탐색입니다. 교수 개인의 세부 연구 주제는 검증되지 않았으며, 공식 프로필에서 확인해 주세요."
+              : "연구 정보가 있는 분야 연결 결과입니다. 숫자 점수나 교수·연구실 순위는 제공하지 않습니다.")
           : "직접 관련 결과가 0명일 수 있으며 약한 결과로 강제 충원하지 않습니다. 점수는 교수·연구실의 우수성 평가가 아닙니다.";
     }
     if (!result.results.length) {
@@ -1038,9 +1033,11 @@
           matchedSmallFieldId: requestedSmallFieldId,
           matchedEvidence: { taxonomy: evidenceValues.slice(0, 9) },
           reason:
-            mapping.centrality === "PRIMARY"
-              ? "권위 연구정보에서 선택 분야가 핵심 연구로 직접 확인됩니다."
-              : "권위 연구정보에서 선택 분야가 주요 연구 중 하나로 확인됩니다.",
+            mapping.mapping_source === "AFFILIATION_ONLY_UNVERIFIED_TOPIC"
+              ? "공식 소속 학과를 기준으로 표시했습니다. 개인별 세부 연구 주제는 검증되지 않았으므로 공식 프로필을 확인해 주세요."
+              : mapping.centrality === "PRIMARY"
+                ? "공개 연구정보에서 선택 분야가 핵심 연구로 확인됩니다."
+                : "공개 연구정보에서 선택 분야와 연결된 근거가 확인됩니다.",
         };
       })
       .filter(Boolean)
