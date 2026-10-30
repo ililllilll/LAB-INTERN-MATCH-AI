@@ -34,22 +34,31 @@
     return map[filename] || filename.replace(/\.json$/, "").replace(/-([a-z0-9])/g, (_, char) => char.toUpperCase());
   }
 
-  async function fetchJson(filename) {
-    if (!cache.has(filename)) {
-      const promise = fetch(new URL(filename, runtimeBase), {
-        cache: filename === "component-manifest.json" ? "no-cache" : "force-cache",
+  // Runtime manifests are revalidated on every page load. Every data file URL
+  // includes its content hash from the current manifest, preventing an old
+  // cached JSON response from being mixed with a newly deployed site.
+  async function fetchJson(filename, contentHash = "") {
+    const cacheKey = `${filename}:${contentHash}`;
+    if (!cache.has(cacheKey)) {
+      const url = new URL(filename, runtimeBase);
+      if (contentHash) url.searchParams.set("v", contentHash.slice(0, 16));
+      const promise = fetch(url, {
+        cache: filename === "component-manifest.json" ? "no-cache" : "default",
         credentials: "same-origin",
       }).then(async (response) => {
         if (!response.ok) throw new Error(`RUNTIME_COMPONENT_HTTP_${response.status}:${filename}`);
         return response.json();
       });
-      cache.set(filename, promise);
+      cache.set(cacheKey, promise);
     }
-    return cache.get(filename);
+    return cache.get(cacheKey);
   }
 
-  async function loadFiles(filenames) {
-    const values = await Promise.all(filenames.map(fetchJson));
+  async function loadFiles(filenames, manifest) {
+    const hashes = new Map((manifest.components || []).map((item) => [item.path, item.sha256]));
+    const values = await Promise.all(filenames.map((filename) =>
+      fetchJson(filename, hashes.get(filename) || manifest.runtimeVersion || "")
+    ));
     return Object.fromEntries(
       filenames.map((filename, index) => [componentKey(filename), values[index]])
     );
@@ -69,7 +78,7 @@
     async loadInitial() {
       if (!this.initialPromise) {
         this.initialPromise = this.manifestPromise.then((manifest) =>
-          loadFiles(manifest.initialComponents)
+          loadFiles(manifest.initialComponents, manifest)
         );
       }
       return this.initialPromise;
@@ -79,7 +88,7 @@
       if (!this.searchPromise) {
         this.searchPromise = Promise.all([this.loadInitial(), this.manifestPromise]).then(
           async ([initial, manifest]) => {
-            const search = await loadFiles(manifest.searchComponents);
+            const search = await loadFiles(manifest.searchComponents, manifest);
             const postings = [];
             for (let index = 0; index < manifest.postingShardCount; index += 1) {
               postings.push(search[`postings${String(index).padStart(2, "0")}`]);
