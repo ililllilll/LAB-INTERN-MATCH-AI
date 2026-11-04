@@ -30,6 +30,7 @@
       "recovery-config.json": "recoveryConfig",
       "dgist-professor-enrichment.json": "dgistProfessorEnrichment",
       "direct-p1r2-config.json": "directP1R2Config",
+      "six-university-direct-index.json": "sixUniversityDirectIndex",
     };
     return map[filename] || filename.replace(/\.json$/, "").replace(/-([a-z0-9])/g, (_, char) => char.toUpperCase());
   }
@@ -69,6 +70,7 @@
       this.manifestPromise = fetchJson("component-manifest.json");
       this.initialPromise = null;
       this.searchPromise = null;
+      this.sixDirectPromise = null;
     }
 
     async manifest() {
@@ -82,6 +84,18 @@
         );
       }
       return this.initialPromise;
+    }
+
+    // Loaded only if the visitor selects direct research search. Browse mode
+    // retains its original taxonomy and does not download this index.
+    async loadSixDirect() {
+      if (!this.sixDirectPromise) {
+        this.sixDirectPromise = this.manifestPromise.then(async (manifest) => {
+          const values = await loadFiles(["six-university-direct-index.json"], manifest);
+          return values.sixUniversityDirectIndex;
+        });
+      }
+      return this.sixDirectPromise;
     }
 
     async loadSearch() {

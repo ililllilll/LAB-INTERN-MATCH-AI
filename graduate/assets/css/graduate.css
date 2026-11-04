@@ -726,3 +726,10 @@ summary:focus-visible, label:has(input:focus-visible) {
 .direct-p1r2-note { display: grid; gap: 4px; margin: 0 0 16px; padding: 13px 15px; border: 1px solid #b9cdfb; border-radius: 14px; background: #eef4ff; color: #243b64; }
 .direct-p1r2-note strong { color: #17449a; font-size: 13px; }
 .direct-p1r2-note span { font-size: 12px; line-height: 1.6; }
+
+/* Restore both modes on the six-university research discovery screen. */
+@media(min-width:700px){.mode-selection-panel .mode-choice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.mode-selection-panel .mode-choice-card{min-height:246px}
+.direct-university-label{display:block;margin:1px 0 9px;font-size:14px;font-weight:850}
+.direct-university-select{display:block;width:100%;min-height:46px;margin:0 0 9px;padding:10px 14px;border:1px solid #ccd7e9;border-radius:12px;background:#fff;color:#152033;font-size:15px}
+.direct-university-select:focus-visible{outline:3px solid rgba(36,87,255,.25);outline-offset:2px}

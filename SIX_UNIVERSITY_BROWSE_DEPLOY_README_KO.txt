@@ -1,3 +1,5 @@
+※ 이 파일은 2026-10-30 당시 배포 기록입니다. 2026-11-04 최신 직접 검색 복원 내역은 SIX_UNIVERSITY_DIRECT_SEARCH_RELEASE_NOTES_KO.md를 참조하세요.
+
 LAB MATCH AI — 6개 대학 1993명 전체 간접 탐색 확장판
 
 업로드: 압축을 풀고 LAB-INTERN-MATCH-AI-main 폴더 내부 파일과 폴더를 GitHub 저장소 루트에 업로드하세요.

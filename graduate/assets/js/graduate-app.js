@@ -223,6 +223,18 @@
   }
 
   const transport = new SearchTransport();
+  let sixDirectEnginePromise = null;
+  async function sixDirectEngine() {
+    if (!sixDirectEnginePromise) {
+      sixDirectEnginePromise = loader.loadSixDirect().then((index) =>
+        new window.LabMatchSixDirect.Engine(index, initial.displayRecords)
+      ).catch((error) => {
+        sixDirectEnginePromise = null; // permit retry after transient fetch failure
+        throw error;
+      });
+    }
+    return sixDirectEnginePromise;
+  }
   let initial = null;
   let bigById = {};
   let smallById = {};
@@ -296,9 +308,16 @@
           <article class="mode-choice-card">
             <span class="mode-choice-number" aria-hidden="true">01</span>
             <h3>분야를 선택해서 찾기</h3>
-            <p>큰 연구 분야와 세부 연구 분야를 차례로 선택해 관련 연구실을 둘러봅니다.</p>
+            <p>6개 대학 1,993명의 교수 정보를 큰 분야와 세부 분야로 둘러봅니다.</p>
             <button class="primary-button" type="button" data-recommendation-mode="browse"
                     aria-label="분야를 선택해서 찾기 시작">분야 선택 시작</button>
+          </article>
+          <article class="mode-choice-card">
+            <span class="mode-choice-number" aria-hidden="true">02</span>
+            <h3>연구 내용 직접 검색</h3>
+            <p>관심 연구 주제, 소재, 공정, 방법을 입력하면 GIST와 UNIST까지 포함해 6개 대학에서 찾습니다.</p>
+            <button class="primary-button" type="button" data-recommendation-mode="detailed"
+                    aria-label="연구 내용 직접 검색 시작">직접 검색 시작</button>
           </article>
         </div>
       </section>`;
@@ -366,6 +385,17 @@
             <p>관심 있는 연구 주제, 소재, 연구 방법, 현상 또는 응용 분야를 구체적으로 입력해 주세요.</p>
           </div></div>
         </div>
+        <label class="direct-university-label" for="directUniversityFilter">검색 대상 대학</label>
+        <select id="directUniversityFilter" class="direct-university-select">
+          <option value="">전체 6개 대학 · 1,993명</option>
+          <option value="DGIST">DGIST · 157명</option>
+          <option value="KAIST">KAIST · 584명</option>
+          <option value="SNU">서울대학교 · 534명</option>
+          <option value="POSTECH">POSTECH · 256명</option>
+          <option value="GIST">GIST · 158명</option>
+          <option value="UNIST">UNIST · 304명</option>
+        </select>
+        <p class="helper">2026년 10월 30일 통합된 6개 대학 교수 DB를 대상으로 검색합니다. GIST·UNIST의 연구정보는 2026년 8월 확보된 자료이므로 공식 프로필에서 최신 내용을 확인해 주세요.</p>
         <label class="query-label" for="researchQuery">연구 내용을 직접 입력해 주세요</label>
         <textarea id="researchQuery" class="query-area"
                   placeholder="예: 전고체 배터리에서 고체전해질 계면 저항을 분석하는 연구"></textarea>
@@ -380,9 +410,9 @@
         </div>
         <label class="direct-p1r2-control" for="directP1R2Toggle">
           <input id="directP1R2Toggle" type="checkbox" ${store.get().directP1R2Enabled ? "checked" : ""}>
-          <span><strong>직접 검색 P1R2 문맥 필터</strong><small>다의어가 포함된 복합 검색어에서 전체 문구·같은 근거 안의 근접 일치를 우선하고, 단어 하나만 맞는 후보를 제거합니다.</small></span>
+          <span><strong>복합 검색어 문맥 필터</strong><small>검색어가 두 개 이상일 때 같은 연구 근거나 서로 다른 연구 축에 함께 나타나는 후보를 우선합니다. 기본적으로 켜져 있습니다.</small></span>
         </label>
-        <p class="helper">BM25 Plus 후보 생성 후 P1R2 문맥 게이트를 적용합니다. Ctrl/⌘ + Enter로 검색할 수 있습니다.</p>
+        <p class="helper">6개 대학 통합 가중 BM25+ 검색을 사용합니다. 기존 학교별 BM25 Plus 기능은 그대로 유지됩니다. Ctrl/⌘ + Enter로 검색할 수 있습니다.</p>
         <div class="action-row">
           <button id="searchButton" class="primary-button" type="button">검색 실행</button>
           <button id="resetButton" class="secondary-button" type="button">입력 초기화</button>
@@ -407,6 +437,10 @@
           : selectionMarkup();
     renderedFieldMode = state.recommendationMode;
     elements = collectElements();
+    if (state.recommendationMode === "detailed") {
+      const filter = root.querySelector("#directUniversityFilter");
+      if (filter) filter.value = state.universities[0] || "";
+    }
   }
 
   function fieldLabel(field) {
@@ -841,7 +875,7 @@
     }
     elements.resultCount.textContent = `${result.results.length.toLocaleString("ko-KR")}명`;
     const p1r2Meta = result.directP1R2?.applied
-      ? ` · P1R2 ${result.directP1R2.beforeCount}→${result.directP1R2.afterCount}`
+      ? ` · 문맥 필터 ${result.directP1R2.beforeCount}→${result.directP1R2.afterCount}`
       : "";
     elements.resultMeta.textContent = result.nameNavigation
       ? "교수명 정확 탐색 결과이며 연구 관련성 순위가 아닙니다."
@@ -873,8 +907,8 @@
           )} · 학교/학과 필터 유지</span></aside>`
       : "";
     const directP1R2Note = result.directP1R2?.applied
-      ? `<aside class="direct-p1r2-note"><strong>직접 검색 P1R2 문맥 필터 적용</strong>
-          <span>BM25 Plus 결과 ${result.directP1R2.beforeCount}명 중 ${result.directP1R2.afterCount}명을 유지했습니다. 전체 문구·같은 공식 근거 안의 순서/근접 일치를 우선하며 약한 후보를 강제 충원하지 않습니다.</span></aside>`
+      ? `<aside class="direct-p1r2-note"><strong>복합 검색어 문맥 필터 적용</strong>
+          <span>후보 ${result.directP1R2.beforeCount}명 중 ${result.directP1R2.afterCount}명을 유지했습니다. 같은 연구 근거 또는 독립적인 연구 축에서 함께 확인되는 표현을 우선합니다. 약한 후보는 강제 충원하지 않습니다.</span></aside>`
       : "";
     if (result.recommendationMode === "browse") {
       const visible = result.results.slice(0, state.visible.Browse);
@@ -963,9 +997,11 @@
           : state.ready
             ? state.recommendationMode === "browse"
               ? "명시적 taxonomy-교수 ID 매핑을 사용할 준비가 되었습니다."
-              : `검색 준비 완료 · ${
-                  transport.mode === "uninitialized" ? "Worker 대기" : transport.mode
-                }`
+              : mode === "field"
+                ? "6개 대학 · 1,993명 직접 검색 준비 완료"
+                : `검색 준비 완료 · ${
+                    transport.mode === "uninitialized" ? "Worker 대기" : transport.mode
+                  }`
             : "권위 데이터를 준비하고 있습니다.";
     }
   }
@@ -1104,18 +1140,16 @@
       query,
       bigFieldId: "",
       smallFieldId: "",
-      universities: [],
+      universities: state.universities,
       departments: [],
       result: null,
       searchSource: source || "detailed",
       visible: { Direct: PAGE_SIZE, Partial: PAGE_SIZE, Adjacent: PAGE_SIZE },
     });
     try {
-      const result = await transport.search(query, {
-        universities: [],
-        departments: [],
-        smallFieldId: "",
-        bigFieldId: "",
+      const engine = await sixDirectEngine();
+      const result = engine.search(query, {
+        universities: state.universities,
         directP1R2: state.directP1R2Enabled,
       });
       result.recommendationMode = "detailed";
@@ -1226,6 +1260,8 @@
     const safeMode = FIELD_MODES.has(nextMode) ? nextMode : "selection";
     updateModeUrl(safeMode, historyAction);
     if (elements.query) elements.query.value = "";
+    const directFilter = root.querySelector("#directUniversityFilter");
+    if (directFilter) directFilter.value = "";
     if (elements.smallFieldSearch) elements.smallFieldSearch.value = "";
     renderedFieldMode = "";
     browseRunSequence += 1;
@@ -1280,6 +1316,8 @@
 
   function reset() {
     if (elements.query) elements.query.value = "";
+    const directFilter = root.querySelector("#directUniversityFilter");
+    if (directFilter) directFilter.value = "";
     if (elements.smallFieldSearch) elements.smallFieldSearch.value = "";
     if (elements.departmentSearch) elements.departmentSearch.value = "";
     const state = store.get();
@@ -1398,6 +1436,11 @@
   root.addEventListener("change", (event) => {
     const target = event.target instanceof Element ? event.target : null;
     if (!target) return;
+    if (mode === "field" && target.matches("#directUniversityFilter")) {
+      const university = target.value;
+      store.set({ universities: university ? [university] : [], result: null, error: "" });
+      return;
+    }
     if (target.matches("#directP1R2Toggle")) {
       store.set({ directP1R2Enabled: target.checked, result: null, error: "" });
       return;
@@ -1497,7 +1540,7 @@
       renderBanners(store.get());
       store.set({ ready: true });
       if (mode === "field") restoreFieldLocation();
-      if (mode === "school" || store.get().recommendationMode === "detailed") {
+      if (mode === "school") {
         transport.initializeWorker();
       }
       return true;

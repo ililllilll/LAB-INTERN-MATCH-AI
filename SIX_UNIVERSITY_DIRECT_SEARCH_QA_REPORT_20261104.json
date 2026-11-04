@@ -1,0 +1,68 @@
+{
+  "release": "LAB_MATCH_SIX_UNIVERSITY_DIRECT_SEARCH_20261104",
+  "status": "STATIC_AND_FUNCTIONAL_QA_PASS",
+  "sourceSnapshot": "LAB_MATCH_AI_6개대학_캐시수정_1993명_GitHub업로드용.zip (2026-10-30)",
+  "professorCount": 1993,
+  "universityCounts": {
+    "DGIST": 157,
+    "KAIST": 584,
+    "POSTECH": 256,
+    "SNU": 534,
+    "GIST": 158,
+    "UNIST": 304
+  },
+  "newDirectResearchIndexCount": 1993,
+  "legacyFourUniversitySearchDocumentsUnchanged": 1531,
+  "originalFeaturesProtectedExactBytes": 13,
+  "originalFeaturePathsProtected": [
+    "graduate/assets/js/search-core.js",
+    "graduate/assets/js/search-worker.js",
+    "graduate/assets/runtime/browse-taxonomy-v3-professor-map.json",
+    "graduate/assets/runtime/browse-taxonomy-v3.json",
+    "graduate/assets/runtime/display-records.json",
+    "graduate/assets/runtime/professor-documents.json",
+    "graduate/dgist/index.html",
+    "graduate/kaist/index.html",
+    "graduate/postech/index.html",
+    "graduate/snu/index.html",
+    "intern/app.js",
+    "intern/data.js",
+    "intern/index.html"
+  ],
+  "jsSyntaxChecks": "PASS",
+  "browserLocalInterceptedAssets": {
+    "status": "PASS",
+    "tested": "2026-11-04",
+    "selectionModesShown": [
+      "browse",
+      "detailed"
+    ],
+    "gistExample": {
+      "query": "아토초 레이저",
+      "university": "GIST",
+      "resultCount": 1,
+      "professor": "김경택"
+    },
+    "unistExample": {
+      "query": "레이저 가공",
+      "university": "UNIST",
+      "resultCount": 3,
+      "professor": "기형선"
+    },
+    "allSixExample": {
+      "query": "바이오센서",
+      "resultCount": 20
+    },
+    "browseModeSwitch": {
+      "status": "PASS",
+      "resultCount": 16
+    },
+    "browserConsoleErrors": 0
+  },
+  "limitations": [
+    "Live GitHub Pages deployment not checked; upload and push required.",
+    "GIST/UNIST source snapshot 2026-08-13 not recrawled in November.",
+    "Direct unified field-weighted BM25+ is a new index, not identical scoring to legacy 4-university engine.",
+    "UNIST Quantum Graduate School source remains incomplete in the historical dataset."
+  ]
+}
