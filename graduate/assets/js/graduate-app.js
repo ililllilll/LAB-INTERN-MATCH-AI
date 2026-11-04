@@ -395,7 +395,6 @@
           <option value="GIST">GIST · 158명</option>
           <option value="UNIST">UNIST · 304명</option>
         </select>
-        <p class="helper">2026년 10월 30일 통합된 6개 대학 교수 DB를 대상으로 검색합니다. GIST·UNIST의 연구정보는 2026년 8월 확보된 자료이므로 공식 프로필에서 최신 내용을 확인해 주세요.</p>
         <label class="query-label" for="researchQuery">연구 내용을 직접 입력해 주세요</label>
         <textarea id="researchQuery" class="query-area"
                   placeholder="예: 전고체 배터리에서 고체전해질 계면 저항을 분석하는 연구"></textarea>
